@@ -21,7 +21,7 @@ def cadastro_cliente(nome:str, cpf:str, rg:str, filiacao:str, endereco:str, data
     Returns:
         Cliente: Objeto referente ao cliente criado.
     """
-    
+
     novo_cliente = Cliente(
                     nome=nome,
                     cpf=cpf,
@@ -34,7 +34,7 @@ def cadastro_cliente(nome:str, cpf:str, rg:str, filiacao:str, endereco:str, data
                     )
     
     session.add(novo_cliente)
-    
+
     try:
         session.commit()
         return novo_cliente
@@ -54,7 +54,7 @@ def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) 
 
     Returns:
         Funcionario: Objeto referente ao funcionario criado.
-    """ 
+    """
     novo_funcionario = Funcionario(
                         nome=nome,
                         cpf=cpf,
@@ -64,7 +64,7 @@ def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) 
                         )
     
     session.add(novo_funcionario)
-    
+
     try:
         session.commit()
         return novo_funcionario
