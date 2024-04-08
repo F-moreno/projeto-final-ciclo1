@@ -24,6 +24,7 @@ class Cliente(Base):
         nome (str): Nome completo do cliente.
         cpf (str): Número de CPF do cliente.
         rg (str): Número de RG do cliente.
+        filiacao (str): pai ou mae do cliente.
         endereco (str): Endereço do cliente.
         data_nascimento (Date): Data de nascimento do cliente.
         telefone (str, opcional): Número de telefone do cliente.
@@ -35,6 +36,7 @@ class Cliente(Base):
     nome = Column(String, nullable=False)
     cpf = Column(String, nullable=False)
     rg = Column(String, nullable=False)
+    filiacao = Column(String, nullable=False)
     endereco = Column(String, nullable=False)
     data_nascimento = Column(Date, nullable=False)
     telefone = Column(String)
@@ -49,12 +51,10 @@ class Funcionario(Base):
         id (int): Identificador único do funcionário (chave primária).
         nome (str): Nome completo do funcionário.
         cpf (str): Número de CPF do funcionário.
-        rg (str): Número de RG do funcionário.
-        endereco (str): Endereço do funcionário.
         telefone (str): Número de telefone do funcionário.
-        senha (str): Senha de login do funcionário.
         email (str): Endereço de e-mail do funcionario.
-        data_nascimento (Date): Data de nascimento do funcionario.
+        senha (str): Senha de login do funcionário.
+
         
         sessoes (relationship): Relacionamento com as sessões do funcionário.
     """
@@ -63,12 +63,9 @@ class Funcionario(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String, nullable=False)
     cpf = Column(String, nullable=False)
-    rg = Column(String, nullable=False)
-    endereco = Column(String, nullable=False)
     telefone = Column(String, nullable=False)
     email = Column(String, nullable=False)
     senha = Column(String, nullable=False)
-    data_nascimento = Column(Date)
     
     sessoes = relationship("Sessao", back_populates="funcionario")
     
