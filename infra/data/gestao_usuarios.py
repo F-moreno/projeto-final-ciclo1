@@ -1,10 +1,19 @@
-from .bd_classes import session, Cliente, Funcionario
+from bd_classes import session, Cliente, Funcionario
 from datetime import datetime
 from passlib.hash import argon2
 
 # CADASTROS
 
-def cadastro_cliente(nome:str, cpf:str, rg:str, endereco:str, data_nascimento:str, telefone:str=None, email:str=None) -> Cliente:
+
+def cadastro_cliente(
+    nome: str,
+    cpf: str,
+    rg: str,
+    endereco: str,
+    data_nascimento: str,
+    telefone: str = None,
+    email: str = None,
+) -> Cliente:
     """Adiciona um Cliente ao Banco de Dados.
 
     Args:
@@ -19,19 +28,19 @@ def cadastro_cliente(nome:str, cpf:str, rg:str, endereco:str, data_nascimento:st
     Returns:
         Cliente: Objeto referente ao cliente criado.
     """
-    
+
     novo_cliente = Cliente(
-                    nome=nome,
-                    cpf=cpf,
-                    rg=rg,
-                    endereco=endereco,
-                    data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
-                    telefone=telefone,
-                    email=email
-                    )
-    
+        nome=nome,
+        cpf=cpf,
+        rg=rg,
+        endereco=endereco,
+        data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
+        telefone=telefone,
+        email=email,
+    )
+
     session.add(novo_cliente)
-    
+
     try:
         session.commit()
         return novo_cliente
@@ -39,7 +48,16 @@ def cadastro_cliente(nome:str, cpf:str, rg:str, endereco:str, data_nascimento:st
         print(f"Erro ao cadastrar cliente: {e}")
 
 
-def cadastro_funcionario(nome:str, cpf:str, rg:str, endereco:str, data_nascimento:str, telefone:str, email:str, senha:str) -> Funcionario:
+def cadastro_funcionario(
+    nome: str,
+    cpf: str,
+    rg: str,
+    endereco: str,
+    data_nascimento: str,
+    telefone: str,
+    email: str,
+    senha: str,
+) -> Funcionario:
     """Adiciona um Funcionario ao Banco de Dados.
 
     Args:
@@ -54,29 +72,31 @@ def cadastro_funcionario(nome:str, cpf:str, rg:str, endereco:str, data_nasciment
 
     Returns:
         Funcionario: Objeto referente ao funcionario criado.
-    """ 
+    """
     novo_funcionario = Funcionario(
-                        nome=nome,
-                        cpf=cpf,
-                        rg=rg,
-                        endereco=endereco,
-                        data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
-                        telefone=telefone,
-                        email=email,
-                        senha=argon2.hash(senha)
-                        )
-    
+        nome=nome,
+        cpf=cpf,
+        rg=rg,
+        endereco=endereco,
+        data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
+        telefone=telefone,
+        email=email,
+        senha=argon2.hash(senha),
+    )
+
     session.add(novo_funcionario)
-    
+
     try:
         session.commit()
         return novo_funcionario
     except Exception as e:
         print(f"Erro ao cadastrar funcionario: {e}")
 
+
 # LOGIN
 
-def iniciar_sessao(cpf:str, senha:str) -> Funcionario:
+
+def iniciar_sessao(cpf: str, senha: str) -> Funcionario:
     """Seleciona uma Funcionario do Banco de Dados a partir do cpf do funcionário e senha.
     Além disso, cria uma instância de sessão com a data e horário atual.
 
@@ -93,6 +113,5 @@ def iniciar_sessao(cpf:str, senha:str) -> Funcionario:
         return funcionario
     else:
         raise Exception("usuario ou senha incorretos")
-    
+
     # Criando sessão
-    
