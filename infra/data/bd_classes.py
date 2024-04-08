@@ -76,9 +76,9 @@ class Sessao(Base):
     Atributos:
         id (int): Identificador único da sessão (chave primária).
         fk_funcionario (int): Chave estrangeira que referencia o funcionário da sessão.
-        Data (Date): Data da sessão.
+        data (Date): Data da sessão.
         inicio (Time): Hora de início da sessão.
-        fim (Time): Hora de fim da sessão.
+        fim (Time, opcional): Hora de fim da sessão.
         
         funcionario (relationship): Relacionamento com o funcionário da sessão.
         registros (relationship): Relacionamento com os registros da sessão.
@@ -87,7 +87,7 @@ class Sessao(Base):
     
     id = Column(Integer, primary_key=True)
     fk_funcionario = Column(Integer, ForeignKey("funcionario.id"), nullable=False)
-    Data = Column(Date, nullable=False)
+    data = Column(Date, nullable=False)
     inicio = Column(Time, nullable=False)
     fim = Column(Time)
     

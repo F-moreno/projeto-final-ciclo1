@@ -17,5 +17,7 @@ cadastro_funcionario("Artur",
                     "artur123"
                     )
 
-artur = iniciar_sessao("12345678912", "artur123")
-print(artur.cpf)
+sessao = iniciar_sessao("12345678912", "artur123")
+print(sessao.funcionario.cpf)
+
+encerrar_sessao(sessao)

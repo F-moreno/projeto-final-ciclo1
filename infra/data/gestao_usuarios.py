@@ -1,9 +1,9 @@
-from bd_classes import session, Cliente, Funcionario
+from bd_classes import session, Cliente, Funcionario, Sessao
 from datetime import datetime
 from passlib.hash import argon2
 
 
-# CADASTROS
+# GESTÃO DE USUARIOS
 
 def cadastro_cliente(nome:str, cpf:str, rg:str, filiacao:str, endereco:str, data_nascimento:str, telefone:str=None, email:str=None) -> Cliente:
     """Adiciona um Cliente ao Banco de Dados.
@@ -71,9 +71,10 @@ def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) 
     except Exception as e:
         print(f"Erro ao cadastrar funcionario: {e}")
 
-# LOGIN
 
-def iniciar_sessao(cpf:str, senha:str) -> Funcionario:
+# GERENCIAMENTO DE SESSÃO
+
+def iniciar_sessao(cpf:str, senha:str) -> Sessao:
     """Seleciona uma Funcionario do Banco de Dados a partir do cpf do funcionário e senha.
     Além disso, cria uma instância de sessão com a data e horário atual.
 
@@ -82,11 +83,37 @@ def iniciar_sessao(cpf:str, senha:str) -> Funcionario:
         senha (str): Senha do funcionario referente ao cpf inserido.
 
     Returns:
-        Funcionario: Objeto referente ao funcionário logado
+        Sessao: Objeto referente à sessão iniciada
     """
-    # Selecionando funcionario
-    funcionario = session.query(Funcionario).filter_by(cpf=cpf).first()
+    funcionario = session.query(Funcionario).filter_by(cpf=cpf).first() # Selecionando funcionario
     if funcionario and argon2.verify(senha, funcionario.senha):
-        return funcionario
+        
+        sessao = Sessao(fk_funcionario=funcionario.id, # Criando sessão
+                        data=datetime.date(datetime.now()),
+                        inicio=datetime.time(datetime.now())
+                        )
+        
+        session.add(sessao)
+        
+        try:
+            session.commit()
+        except Exception as e:
+            raise Exception(f"Erro ao registrar início de sessão: {e}")
+    
+        return sessao
     else:
         raise Exception("usuario ou senha incorretos")
+
+
+def encerrar_sessao(sessao: Sessao):
+    """Atualiza a sessão, registrando o horário de fim no Banco de Dados.
+
+    Args:
+        sessao (Sessao): Registro de sessão do funcionario retornado pela função iniciar_sessao().
+    """
+    sessao.fim = datetime.time(datetime.now())
+    
+    try:
+        session.commit()
+    except Exception as e:
+        raise Exception(f"Erro ao registrar fim de sessão: {e}")
