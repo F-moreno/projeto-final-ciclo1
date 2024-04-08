@@ -5,7 +5,15 @@ from passlib.hash import argon2
 
 # GESTÃO DE USUARIOS
 
-def cadastro_cliente(nome:str, cpf:str, rg:str, filiacao:str, endereco:str, data_nascimento:str, telefone:str=None, email:str=None) -> Cliente:
+def cadastro_cliente(nome:str,
+                     cpf:str,
+                     rg:str,
+                     filiacao:str,
+                     endereco:str,
+                     data_nascimento:str,
+                     telefone:str=None,
+                     email:str=None
+                     ) -> Cliente:
     """Adiciona um Cliente ao Banco de Dados.
 
     Args:
