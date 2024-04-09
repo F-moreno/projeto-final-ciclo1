@@ -61,7 +61,11 @@ if __name__ == "__main__":
         )
 
         # Exibe a imagem processada
-        print(texto_reconhecido)
+        texto = texto_reconhecido.split("\n")
+        # texto = dict(texto[1:])
+        print(texto)
+        for linha in texto_reconhecido:
+            print(linha)
         cv2.imshow("Imagem Processada", imagem_processada)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
