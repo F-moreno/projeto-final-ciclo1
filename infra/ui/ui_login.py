@@ -16,13 +16,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QStackedWidget, QWidget)
-
+    QPushButton, QSizePolicy, QStackedWidget, QWidget, QFormLayout)
+from PySide6 import QtCore
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(911, 625)
+        Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.login_h = QFrame(Form)
         self.login_h.setObjectName(u"login_h")
         self.login_h.setGeometry(QRect(100, 150, 661, 321))
