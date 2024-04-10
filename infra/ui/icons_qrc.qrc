@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/cobra.png</file>
+    <file>icons/option.png</file>
+    <file>icons/settings.png</file>
+  </qresource>
+</RCC>
