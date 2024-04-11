@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, text, Column, Integer, String, Date, ForeignKey, Time, LargeBinary
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from sqlalchemy.exc import OperationalError
+from datetime import datetime
 
 load_dotenv()
 
@@ -37,7 +38,7 @@ engine = create_engine(f'postgresql://{db_user}:{db_pass}@{db_host}/{db_name}')
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
-print(f"Conectado ao Banco de Dados '{db_name}' com sucesso")
+print(f"Conectado ao Banco de Dados '{db_name}' com sucesso.")
 
 class Cliente(Base):
     """Representa um cliente cadastrado no sistema através dos documentos.
@@ -52,6 +53,8 @@ class Cliente(Base):
         data_nascimento (Date): Data de nascimento do cliente.
         telefone (str, opcional): Número de telefone do cliente.
         email (str, opcional): Endereço de e-mail do cliente.
+        
+        documentos (relationship): Relacionamento com os documentos associado ao cliente.
     """
     __tablename__ = "cliente"
     
@@ -95,31 +98,6 @@ class Funcionario(Base):
     sessoes = relationship("Sessao", back_populates="funcionario")
     
     
-class Sessao(Base):
-    """Representa uma sessão de login de um funcionário no sistema.
-    
-    Atributos:
-        id (int): Identificador único da sessão (chave primária).
-        fk_funcionario (int): Chave estrangeira que referencia o funcionário da sessão.
-        data (Date): Data da sessão.
-        inicio (Time): Hora de início da sessão.
-        fim (Time, opcional): Hora de fim da sessão.
-        
-        funcionario (relationship): Relacionamento com o funcionário da sessão.
-        registros (relationship): Relacionamento com os registros da sessão.
-    """
-    __tablename__ = "sessao"
-    
-    id = Column(Integer, primary_key=True)
-    fk_funcionario = Column(Integer, ForeignKey("funcionario.id"), nullable=False)
-    data = Column(Date, nullable=False)
-    inicio = Column(Time, nullable=False)
-    fim = Column(Time)
-    
-    funcionario = relationship("Funcionario", back_populates="sessoes")
-    registros = relationship("Registro", back_populates="sessao")
-    
-
 class Registro(Base):
     """Representa uma atividade registrada durante uma sessão de um funcionário.
     
@@ -146,16 +124,17 @@ class Registro(Base):
 
 
 class Documento(Base):
-    """Indica um documento lido pelo sistema.
+    """Representa um documento lido pelo sistema.
     
     Atributos:
         id (int): Identificador único do documento (chave primária).
         fk_cliente (int, opcional): Chave estrangeira que referencia um cliente (Caso haja um associado).
         tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
         conteudo (str): Conteúdo extraído do arquivo original.
-        original (LargeBinary): Representação binária do documento original.
+        arquivo_original (LargeBinary): Representação binária do documento original.
         
         registro (relationship): Relacionamento com o registro associado ao documento.
+        cliente (relationship): Relacionamento com o cliente associado ao documento.
     """
     __tablename__ = "documento"
     
@@ -169,6 +148,73 @@ class Documento(Base):
     cliente = relationship("Cliente", back_populates="documentos")
     
 
+class Sessao(Base):
+    """Representa uma sessão de login de um funcionário no sistema.
+    
+    Atributos:
+        id (int): Identificador único da sessão (chave primária).
+        fk_funcionario (int): Chave estrangeira que referencia o funcionário da sessão.
+        data (Date): Data da sessão.
+        inicio (Time): Hora de início da sessão.
+        fim (Time, opcional): Hora de fim da sessão.
+        
+        funcionario (relationship): Relacionamento com o funcionário da sessão.
+        registros (relationship): Relacionamento com os registros da sessão.
+    """
+    __tablename__ = "sessao"
+    
+    id = Column(Integer, primary_key=True)
+    fk_funcionario = Column(Integer, ForeignKey("funcionario.id"), nullable=False)
+    data = Column(Date, nullable=False)
+    inicio = Column(Time, nullable=False)
+    fim = Column(Time)
+    
+    funcionario = relationship("Funcionario", back_populates="sessoes")
+    registros = relationship("Registro", back_populates="sessao")
+    
+    
+    def salvar_documento(self, tipo:str, arquivo_original:bytes, conteudo:str, cliente:Cliente=None) -> Documento:
+        """Registra um documento no Banco de Dados a partir dos dados dessa sessão
+
+        Args:
+            tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
+            arquivo_original (LargeBinary): Representação binária do documento original.
+            conteudo (str): Conteúdo extraído do arquivo original.
+            id_cliente (int, optional): Chave estrangeira que referencia um cliente (Caso haja um associado).
+            
+        Raises:
+            Exception: Erro ao efetuar o commit do registro e documento.
+        """
+        
+        titulo = f"Salvou um documento."
+        if cliente:
+            titulo = f"Salvou um documento de {cliente.nome}."
+        
+        # Criando Registro.
+        registro = Registro(
+            fk_sessao=self.id,
+            horario=datetime.time(datetime.now()),
+            titulo_atividade=titulo
+        )
+        
+        # Criando Documento.
+        documento = Documento(
+                fk_cliente=cliente.id,
+                tipo=tipo,
+                conteudo=conteudo,
+                arquivo_original=arquivo_original
+            )
+        
+        registro.documento = documento
+        
+        session.add(registro)
+        try:
+            session.commit()
+            return documento
+        except Exception as e:
+            raise Exception(f"Erro ao salvar documento: {e}")
+        
+        
 if __name__ == "__main__":
     
     Base.metadata.create_all(engine)
