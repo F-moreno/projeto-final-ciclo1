@@ -13,9 +13,11 @@ Este é um sistema de Gerenciamento Eletrônico de Documentos (GED) desenvolvido
 ## Pré-requisitos
 
 - Python 3.x instalado
-- Poetry instalado (para instalar as dependências)
+- Bibliotecas necessárias (serão listadas no arquivo `requirements.txt`)
 
 ## Instalação
+
+### Com pip
 
 1. Clone este repositório em sua máquina local:
 
@@ -23,25 +25,27 @@ Este é um sistema de Gerenciamento Eletrônico de Documentos (GED) desenvolvido
 git clone https://github.com/F-moreno/projeto-final-ciclo1.git
 ```
 
-2. Navegue até o diretório do projeto:
+2. Instale as dependências usando o pip:
+
+```
+pip install -r requirements.txt
+```
+
+### Com poetry
+
+1. Clone este repositório em sua máquina local:
+
+```
+git clone https://github.com/F-moreno/projeto-final-ciclo1.git
+```
+
+2. Acesse a pasta do projeto:
 
 ```
 cd projeto-final-ciclo1
 ```
 
-3. Instale o Poetry (caso ainda não tenha instalado):
-
-```
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-```
-
-4. Ative o Poetry (caso não tenha sido ativado automaticamente):
-
-```
-source $HOME/.poetry/env
-```
-
-5. Instale as dependências usando o Poetry:
+3. Instale as dependências usando o poetry:
 
 ```
 poetry install
