@@ -17,6 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QStackedWidget, QWidget)
+from PySide6 import QtCore
 import icons_rc
 
 class Ui_Form(object):
@@ -25,6 +26,8 @@ class Ui_Form(object):
             Form.setObjectName(u"Form")
         Form.resize(911, 625)
         self.login_h = QFrame(Form)
+        Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.login_h.setObjectName(u"login_h")
         self.login_h.setGeometry(QRect(100, 150, 661, 321))
         self.login_h.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));\n"
