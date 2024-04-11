@@ -16,15 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QStackedWidget, QWidget, QFormLayout)
-from PySide6 import QtCore
+    QPushButton, QSizePolicy, QStackedWidget, QWidget)
+import icons_rc
+
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(911, 625)
-        Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.login_h = QFrame(Form)
         self.login_h.setObjectName(u"login_h")
         self.login_h.setGeometry(QRect(100, 150, 661, 321))
@@ -40,13 +39,49 @@ class Ui_Form(object):
         self.pg_config.setObjectName(u"pg_config")
         self.label_3 = QLabel(self.pg_config)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(120, 10, 131, 41))
+        self.label_3.setGeometry(QRect(20, 30, 131, 41))
         font = QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.label_3.setFont(font)
         self.label_3.setStyleSheet(u"background:transparent;\n"
 "color: #fff")
+        self.txt_ip = QLineEdit(self.pg_config)
+        self.txt_ip.setObjectName(u"txt_ip")
+        self.txt_ip.setGeometry(QRect(20, 110, 281, 31))
+        self.txt_ip.setStyleSheet(u"background-color: rgba(0,0,0,25);")
+        self.txt_porta = QLineEdit(self.pg_config)
+        self.txt_porta.setObjectName(u"txt_porta")
+        self.txt_porta.setGeometry(QRect(20, 160, 281, 31))
+        self.txt_porta.setStyleSheet(u"background-color: rgba(0,0,0,20);")
+        self.pushButton = QPushButton(self.pg_config)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(210, 210, 75, 23))
+        self.pushButton.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
+        self.btn_padrao = QPushButton(self.pg_config)
+        self.btn_padrao.setObjectName(u"btn_padrao")
+        self.btn_padrao.setGeometry(QRect(20, 210, 75, 23))
+        self.btn_padrao.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
         self.stackedWidget.addWidget(self.pg_config)
         self.pg_home = QWidget()
         self.pg_home.setObjectName(u"pg_home")
@@ -63,7 +98,7 @@ class Ui_Form(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(110, 140, 141, 131))
         self.label_2.setStyleSheet(u"background:transparent;")
-        self.label_2.setPixmap(QPixmap(u"../../../../Sistema PyForm/icons/cobra.png"))
+        self.label_2.setPixmap(QPixmap(u":/icons/icons/cobra.png"))
         self.label_2.setScaledContents(True)
         self.label_5 = QLabel(self.pg_home)
         self.label_5.setObjectName(u"label_5")
@@ -93,7 +128,7 @@ class Ui_Form(object):
 "\n"
 "")
         icon = QIcon()
-        icon.addFile(u"../../../../Sistema PyForm/icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_config.setIcon(icon)
         self.btn_config.setIconSize(QSize(30, 30))
         self.stackedWidget.addWidget(self.pg_home)
@@ -231,6 +266,22 @@ class Ui_Form(object):
 "	background-color: rgb(96, 194, 255);\n"
 "}\n"
 "")
+        self.btn_closed = QPushButton(self.login_v)
+        self.btn_closed.setObjectName(u"btn_closed")
+        self.btn_closed.setGeometry(QRect(214, 10, 41, 41))
+        self.btn_closed.setStyleSheet(u"QPushButton {\n"
+"	background: transparent;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: red;\n"
+"}\n"
+"")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/icons/close.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_closed.setIcon(icon1)
+        self.btn_closed.setIconSize(QSize(20, 20))
 
         self.retranslateUi(Form)
 
@@ -243,6 +294,10 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Configura\u00e7\u00e3o", None))
+        self.txt_ip.setPlaceholderText(QCoreApplication.translate("Form", u"  Endere\u00e7o de IP", None))
+        self.txt_porta.setPlaceholderText(QCoreApplication.translate("Form", u"  Porta", None))
+        self.pushButton.setText(QCoreApplication.translate("Form", u"Salvar", None))
+        self.btn_padrao.setText(QCoreApplication.translate("Form", u"Padr\u00e3o", None))
         self.label.setText(QCoreApplication.translate("Form", u"Bem Vindo", None))
         self.label_2.setText("")
         self.label_5.setText(QCoreApplication.translate("Form", u"Vers\u00e3o 1.1", None))
@@ -263,5 +318,6 @@ class Ui_Form(object):
         self.btn_esqueci_login.setText(QCoreApplication.translate("Form", u"Esqueci a senha", None))
         self.btn_cadastrar_login.setText(QCoreApplication.translate("Form", u"Cadastrar", None))
         self.btn_entrar_login.setText(QCoreApplication.translate("Form", u"Entrar", None))
+        self.btn_closed.setText("")
     # retranslateUi
 
