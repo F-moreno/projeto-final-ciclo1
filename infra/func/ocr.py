@@ -53,19 +53,31 @@ def processar_imagem(img, config_tesseract):
     return cv2.bitwise_not(img), texto
 
 
+def extrai_dados(texto):
+    # Exibe a imagem processada
+    texto = texto_reconhecido.split("\n")
+    # texto = dict(texto[1:])
+    print(texto)
+    json = {}
+    for linha in texto:
+        if ":" in linha:
+            print(linha)
+            key, value = linha.split(":")
+            json[key.lower()] = value.strip()
+
+    return json
+
+
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     for arquivo in arquivos:
         imagem_processada, texto_reconhecido = processar_imagem(
             arquivo, config_tesseract
         )
+        print(texto_reconhecido)
 
-        # Exibe a imagem processada
-        texto = texto_reconhecido.split("\n")
-        # texto = dict(texto[1:])
-        print(texto)
-        for linha in texto_reconhecido:
-            print(linha)
+        json = extrai_dados(texto_reconhecido)
+        print(json["nome"])
         cv2.imshow("Imagem Processada", imagem_processada)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
