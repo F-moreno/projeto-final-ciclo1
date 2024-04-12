@@ -17,27 +17,27 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QStackedWidget, QWidget)
-from PySide6 import QtCore
 import icons_rc
+from PySide6 import QtCore
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(911, 625)
-        self.login_h = QFrame(Form)
         Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.login_h = QFrame(Form)
         self.login_h.setObjectName(u"login_h")
         self.login_h.setGeometry(QRect(100, 150, 661, 321))
         self.login_h.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));\n"
 "border-radius: 8px")
         self.login_h.setFrameShape(QFrame.StyledPanel)
         self.login_h.setFrameShadow(QFrame.Raised)
-        self.stackedWidget = QStackedWidget(self.login_h)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setGeometry(QRect(10, 0, 361, 311))
-        self.stackedWidget.setStyleSheet(u"backgroun:transparent;")
+        self.Pages = QStackedWidget(self.login_h)
+        self.Pages.setObjectName(u"Pages")
+        self.Pages.setGeometry(QRect(10, 0, 361, 311))
+        self.Pages.setStyleSheet(u"backgroun:transparent;")
         self.pg_config = QWidget()
         self.pg_config.setObjectName(u"pg_config")
         self.label_3 = QLabel(self.pg_config)
@@ -85,7 +85,7 @@ class Ui_Form(object):
 "	background-color: rgb(96, 194, 255);\n"
 "}\n"
 "")
-        self.stackedWidget.addWidget(self.pg_config)
+        self.Pages.addWidget(self.pg_config)
         self.pg_home = QWidget()
         self.pg_home.setObjectName(u"pg_home")
         self.label = QLabel(self.pg_home)
@@ -134,7 +134,7 @@ class Ui_Form(object):
         icon.addFile(u":/icons/icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_config.setIcon(icon)
         self.btn_config.setIconSize(QSize(30, 30))
-        self.stackedWidget.addWidget(self.pg_home)
+        self.Pages.addWidget(self.pg_home)
         self.pg_cadastrar = QWidget()
         self.pg_cadastrar.setObjectName(u"pg_cadastrar")
         self.label_4 = QLabel(self.pg_cadastrar)
@@ -197,7 +197,7 @@ class Ui_Form(object):
 "	background-color: rgb(96, 194, 255);\n"
 "}\n"
 "")
-        self.stackedWidget.addWidget(self.pg_cadastrar)
+        self.Pages.addWidget(self.pg_cadastrar)
         self.login_v = QFrame(Form)
         self.login_v.setObjectName(u"login_v")
         self.login_v.setGeometry(QRect(470, 100, 261, 411))
@@ -288,7 +288,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.Pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)

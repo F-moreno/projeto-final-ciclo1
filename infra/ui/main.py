@@ -13,6 +13,9 @@ class Login(QWidget, Ui_Form):
         self.setWindowTitle("Login do Sistema")
         
         self.btn_entrar_login.clicked.connect(self.abrir_sistema)
+        self.btn_cadastrar_login.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastrar))
+        self.btn_config.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_config))
+        self.btn_closed.clicked.connect(self.close)
         
     #Parte de teste na fase de criação da tela principal
     def abrir_sistema(self):

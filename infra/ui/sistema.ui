@@ -319,7 +319,7 @@ QPushButton {
           <item>
            <widget class="QStackedWidget" name="Pages">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="pg_home">
              <layout class="QVBoxLayout" name="verticalLayout_5">
