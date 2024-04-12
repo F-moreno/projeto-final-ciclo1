@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 from pytesseract import Output
 import os
 
-
-os.system("clear" if os.name == "posix" else "cls")
-# Define o caminho para o diretório contendo as imagens do formulário
 diretorio = "tests/forms"
 
 # Lista os arquivos de imagem no diretório
@@ -17,8 +14,36 @@ arquivos = [
     os.path.join(diretorio, f) for f in os.listdir(diretorio) if f.endswith(".png")
 ]
 
+
+class TesseractOCR:
+    def __init__(self, config):
+        self.config_tesseract = "--tessdata-dir infra/func/tessdata"
+
+    def read_text(self, img_path):
+        return self.__get_text_from_img(img_path)
+
+    def __get_text_from_img(self, img_path):
+        img = self.__get_rgb_img(img_path)
+        return pytesseract.image_to_string(
+            img, lang="por", config=self.config_tesseract
+        )
+
+    def __get_rgb_img(self, img_path):
+        img_bgr = cv2.imread(img_path)
+        img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        self.__show_two_images(img_bgr, img_rgb)
+
+        return img_rgb
+
+    def __show_two_images(self, img1, img2):
+        numpy_horizontal_concat = np.concatenate((img1, img2), axis=1)
+        cv2.imshow("BGR -> RGB", numpy_horizontal_concat)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+
 # Configuração do Tesseract
-config_tesseract = "--tessdata-dir infra/func/tessdata --psm 6"
+config_tesseract = "--tessdata-dir infra/func/tessdata"
 
 
 def teste(imagem):
