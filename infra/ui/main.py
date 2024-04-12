@@ -30,8 +30,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             super(MainWindow,self).__init__()
             self.setupUi(self)
             self.setWindowTitle("Sistema de Cadastro de Áreas Remotas")
+            self.btn_toogle.clicked.connect(self.LeftMenu)
+            self.btn_home_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_home))
+            self.btn_cadastrar_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastrar))
+            self.btn_historico_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_historico))
+            self.btn_enviar_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_enviar_doc))
+            self.btn_perfil_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_perfil))
+            self.btn_alterar_dados.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_alteracao_perfil))
             
-        
+        def LeftMenu(self):
+            width = self.menu.width()
+            
+            if width == 9:
+                newWidth = 200
+            else:
+                newWidth = 9
+            self.animation = QtCore.QPropertyAnimation(self.menu, b"maximumWidth")
+            self.animation.setDuration(500)
+            self.animation.setStartValue(width)
+            self.animation.setEndValue(newWidth)
+            self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
+            self.animation.start()
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
