@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>782</width>
-    <height>592</height>
+    <width>808</width>
+    <height>525</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,11 +75,11 @@
                <x>0</x>
                <y>0</y>
                <width>160</width>
-               <height>468</height>
+               <height>401</height>
               </rect>
              </property>
              <attribute name="label">
-              <string>Page 1</string>
+              <string/>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
@@ -277,8 +277,8 @@ QPushButton {
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>icons/option.png</normaloff>icons/option.png</iconset>
+             <iconset resource="icons_.qrc">
+              <normaloff>:/icons/icons/option.png</normaloff>:/icons/icons/option.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -319,7 +319,7 @@ QPushButton {
           <item>
            <widget class="QStackedWidget" name="Pages">
             <property name="currentIndex">
-             <number>5</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="pg_home">
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -348,18 +348,220 @@ QPushButton {
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QFrame" name="frame_9">
+                <property name="styleSheet">
+                 <string notr="true">background:transparent;</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <layout class="QVBoxLayout" name="verticalLayout_16">
                  <item>
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Aqui vai a parte de cadastro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <widget class="QFrame" name="frame_11">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
                    </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QPushButton" name="pushButton">
+                      <property name="styleSheet">
+                       <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(0, 170, 255);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Formulário</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_2">
+                      <property name="styleSheet">
+                       <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(0, 170, 255);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Documentos</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_12">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background:transparent;</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <item>
+                     <widget class="QFrame" name="frame_13">
+                      <property name="styleSheet">
+                       <string notr="true">background:transparent;</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_18">
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_nome">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Nome</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_cpf">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  CPF</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_rg">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  RG</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_endereco">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Endereço</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_municipio">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Municipio</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_estado">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Estado</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_telefone">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Telefone</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_14">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background:transparent;</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_17">
+                       <item>
+                        <widget class="QListView" name="lista_documentos_cadastro">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_cadastro_enviar">
+                         <property name="styleSheet">
+                          <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(0, 170, 255);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+}
+</string>
+                         </property>
+                         <property name="text">
+                          <string>Enviar Cadastro</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>

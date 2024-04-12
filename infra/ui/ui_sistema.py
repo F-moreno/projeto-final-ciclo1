@@ -16,16 +16,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QToolBox, QVBoxLayout,
-    QWidget)
+    QLineEdit, QListView, QMainWindow, QPushButton,
+    QSizePolicy, QSpacerItem, QStackedWidget, QToolBox,
+    QVBoxLayout, QWidget)
 import icons_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(782, 592)
+        MainWindow.resize(808, 525)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName(u"toolBox")
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 160, 468))
+        self.page.setGeometry(QRect(0, 0, 160, 401))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.btn_home_menu = QPushButton(self.page)
@@ -173,7 +173,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.btn_encerrar_menu)
 
-        self.toolBox.addItem(self.page, u"Page 1")
+        self.toolBox.addItem(self.page, u"")
 
         self.verticalLayout_3.addWidget(self.toolBox)
 
@@ -201,7 +201,7 @@ class Ui_MainWindow(object):
         self.btn_toogle.setObjectName(u"btn_toogle")
         self.btn_toogle.setCursor(QCursor(Qt.PointingHandCursor))
         icon = QIcon()
-        icon.addFile(u"icons/option.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/icons/option.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_toogle.setIcon(icon)
         self.btn_toogle.setIconSize(QSize(28, 28))
 
@@ -254,14 +254,149 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.frame_9 = QFrame(self.pg_cadastrar)
         self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setStyleSheet(u"background:transparent;")
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.frame_9)
+        self.verticalLayout_16 = QVBoxLayout(self.frame_9)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.frame_11 = QFrame(self.frame_9)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.label_5 = QLabel(self.frame_9)
-        self.label_5.setObjectName(u"label_5")
+        self.pushButton = QPushButton(self.frame_11)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
 
-        self.horizontalLayout_5.addWidget(self.label_5)
+        self.horizontalLayout_5.addWidget(self.pushButton)
+
+        self.pushButton_2 = QPushButton(self.frame_11)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
+
+        self.horizontalLayout_5.addWidget(self.pushButton_2)
+
+
+        self.verticalLayout_16.addWidget(self.frame_11)
+
+        self.frame_12 = QFrame(self.frame_9)
+        self.frame_12.setObjectName(u"frame_12")
+        sizePolicy.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
+        self.frame_12.setSizePolicy(sizePolicy)
+        self.frame_12.setStyleSheet(u"background:transparent;")
+        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.frame_13 = QFrame(self.frame_12)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setStyleSheet(u"background:transparent;")
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.frame_13)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.txt_cadastro_nome = QLineEdit(self.frame_13)
+        self.txt_cadastro_nome.setObjectName(u"txt_cadastro_nome")
+        self.txt_cadastro_nome.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_nome)
+
+        self.txt_cadastro_cpf = QLineEdit(self.frame_13)
+        self.txt_cadastro_cpf.setObjectName(u"txt_cadastro_cpf")
+        self.txt_cadastro_cpf.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_cpf)
+
+        self.txt_cadastro_rg = QLineEdit(self.frame_13)
+        self.txt_cadastro_rg.setObjectName(u"txt_cadastro_rg")
+        self.txt_cadastro_rg.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_rg)
+
+        self.txt_cadastro_endereco = QLineEdit(self.frame_13)
+        self.txt_cadastro_endereco.setObjectName(u"txt_cadastro_endereco")
+        self.txt_cadastro_endereco.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_endereco)
+
+        self.txt_cadastro_municipio = QLineEdit(self.frame_13)
+        self.txt_cadastro_municipio.setObjectName(u"txt_cadastro_municipio")
+        self.txt_cadastro_municipio.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_municipio)
+
+        self.txt_cadastro_estado = QLineEdit(self.frame_13)
+        self.txt_cadastro_estado.setObjectName(u"txt_cadastro_estado")
+        self.txt_cadastro_estado.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_estado)
+
+        self.txt_cadastro_telefone = QLineEdit(self.frame_13)
+        self.txt_cadastro_telefone.setObjectName(u"txt_cadastro_telefone")
+        self.txt_cadastro_telefone.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+
+        self.verticalLayout_18.addWidget(self.txt_cadastro_telefone)
+
+
+        self.horizontalLayout_9.addWidget(self.frame_13)
+
+        self.frame_14 = QFrame(self.frame_12)
+        self.frame_14.setObjectName(u"frame_14")
+        sizePolicy.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
+        self.frame_14.setSizePolicy(sizePolicy)
+        self.frame_14.setStyleSheet(u"background:transparent;")
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_17 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.lista_documentos_cadastro = QListView(self.frame_14)
+        self.lista_documentos_cadastro.setObjectName(u"lista_documentos_cadastro")
+        self.lista_documentos_cadastro.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.verticalLayout_17.addWidget(self.lista_documentos_cadastro)
+
+        self.btn_cadastro_enviar = QPushButton(self.frame_14)
+        self.btn_cadastro_enviar.setObjectName(u"btn_cadastro_enviar")
+        self.btn_cadastro_enviar.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
+
+        self.verticalLayout_17.addWidget(self.btn_cadastro_enviar)
+
+
+        self.horizontalLayout_9.addWidget(self.frame_14)
+
+
+        self.verticalLayout_16.addWidget(self.frame_12)
 
 
         self.verticalLayout_6.addWidget(self.frame_9)
@@ -466,7 +601,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toolBox.setCurrentIndex(0)
-        self.Pages.setCurrentIndex(5)
+        self.Pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -481,11 +616,20 @@ class Ui_MainWindow(object):
         self.btn_enviar_menu.setText(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
         self.btn_perfil_menu.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
         self.btn_encerrar_menu.setText(QCoreApplication.translate("MainWindow", u"Encerrar", None))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Page 1", None))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page), "")
         self.btn_toogle.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; color:#ffffff;\">Nome do Sistema</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Seja Bem Vindo!</span></p><p align=\"center\"><img src=\":/icons/icons/cobra.png\"/></p></body></html>", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Aqui vai a parte de cadastro</p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Formul\u00e1rio", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Documentos", None))
+        self.txt_cadastro_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Nome", None))
+        self.txt_cadastro_cpf.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  CPF", None))
+        self.txt_cadastro_rg.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  RG", None))
+        self.txt_cadastro_endereco.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Endere\u00e7o", None))
+        self.txt_cadastro_municipio.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Municipio", None))
+        self.txt_cadastro_estado.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Estado", None))
+        self.txt_cadastro_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
+        self.btn_cadastro_enviar.setText(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Aqui vai o hist\u00f3rico de cadastros do usu\u00e1rio</p></body></html>", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Aqui vai a tela de envio de documentos</p></body></html>", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Altere seus Dados</span></p></body></html>", None))
