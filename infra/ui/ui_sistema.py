@@ -15,17 +15,18 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QListView, QMainWindow, QPushButton,
-    QSizePolicy, QSpacerItem, QStackedWidget, QToolBox,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QListView, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QToolBox, QVBoxLayout, QWidget)
 import icons_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(808, 525)
+        MainWindow.resize(723, 462)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
@@ -33,7 +34,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.menu = QFrame(self.centralwidget)
         self.menu.setObjectName(u"menu")
-        self.menu.setMaximumSize(QSize(200, 16777215))
+        self.menu.setMaximumSize(QSize(9, 16777215))
         self.menu.setStyleSheet(u"background: transparent;")
         self.menu.setFrameShape(QFrame.StyledPanel)
         self.menu.setFrameShadow(QFrame.Raised)
@@ -63,7 +64,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName(u"toolBox")
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 160, 401))
+        self.page.setGeometry(QRect(0, 0, 113, 321))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.btn_home_menu = QPushButton(self.page)
@@ -173,7 +174,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.btn_encerrar_menu)
 
-        self.toolBox.addItem(self.page, u"")
+        self.toolBox.addItem(self.page, u"Menu")
 
         self.verticalLayout_3.addWidget(self.toolBox)
 
@@ -265,9 +266,9 @@ class Ui_MainWindow(object):
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.pushButton = QPushButton(self.frame_11)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(u"\n"
+        self.btn_carregar_formulario = QPushButton(self.frame_11)
+        self.btn_carregar_formulario.setObjectName(u"btn_carregar_formulario")
+        self.btn_carregar_formulario.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
@@ -279,11 +280,11 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.btn_carregar_formulario)
 
-        self.pushButton_2 = QPushButton(self.frame_11)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setStyleSheet(u"\n"
+        self.btn_carregar_documentos = QPushButton(self.frame_11)
+        self.btn_carregar_documentos.setObjectName(u"btn_carregar_documentos")
+        self.btn_carregar_documentos.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
@@ -295,7 +296,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.btn_carregar_documentos)
 
 
         self.verticalLayout_16.addWidget(self.frame_11)
@@ -410,12 +411,41 @@ class Ui_MainWindow(object):
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setFrameShape(QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame_10)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.label_6 = QLabel(self.frame_10)
-        self.label_6.setObjectName(u"label_6")
+        self.verticalLayout_19 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.label_5 = QLabel(self.frame_10)
+        self.label_5.setObjectName(u"label_5")
 
-        self.horizontalLayout_7.addWidget(self.label_6)
+        self.verticalLayout_19.addWidget(self.label_5)
+
+        self.tabela_historico = QTableWidget(self.frame_10)
+        if (self.tabela_historico.columnCount() < 4):
+            self.tabela_historico.setColumnCount(4)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tabela_historico.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tabela_historico.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tabela_historico.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tabela_historico.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        if (self.tabela_historico.rowCount() < 6):
+            self.tabela_historico.setRowCount(6)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(0, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(1, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(2, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(3, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(4, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tabela_historico.setVerticalHeaderItem(5, __qtablewidgetitem9)
+        self.tabela_historico.setObjectName(u"tabela_historico")
+
+        self.verticalLayout_19.addWidget(self.tabela_historico)
 
 
         self.verticalLayout_7.addWidget(self.frame_10)
@@ -429,12 +459,64 @@ class Ui_MainWindow(object):
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_8 = QHBoxLayout(self.frame_7)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.label_12 = QLabel(self.frame_7)
-        self.label_12.setObjectName(u"label_12")
+        self.gridLayout = QGridLayout(self.frame_7)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.frame_15 = QFrame(self.frame_7)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_15)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_6 = QLabel(self.frame_15)
+        self.label_6.setObjectName(u"label_6")
 
-        self.horizontalLayout_8.addWidget(self.label_12)
+        self.horizontalLayout_7.addWidget(self.label_6)
+
+
+        self.gridLayout.addWidget(self.frame_15, 0, 0, 1, 2)
+
+        self.tipo_documento = QComboBox(self.frame_7)
+        self.tipo_documento.addItem("")
+        self.tipo_documento.addItem("")
+        self.tipo_documento.addItem("")
+        self.tipo_documento.addItem("")
+        self.tipo_documento.addItem("")
+        self.tipo_documento.setObjectName(u"tipo_documento")
+        self.tipo_documento.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.gridLayout.addWidget(self.tipo_documento, 1, 0, 1, 1)
+
+        self.btn_arquivo_documento = QPushButton(self.frame_7)
+        self.btn_arquivo_documento.setObjectName(u"btn_arquivo_documento")
+        self.btn_arquivo_documento.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
+
+        self.gridLayout.addWidget(self.btn_arquivo_documento, 1, 1, 1, 1)
+
+        self.btn_enviar_arquivo = QPushButton(self.frame_7)
+        self.btn_enviar_arquivo.setObjectName(u"btn_enviar_arquivo")
+        self.btn_enviar_arquivo.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"}\n"
+"")
+
+        self.gridLayout.addWidget(self.btn_enviar_arquivo, 2, 1, 1, 1)
 
 
         self.verticalLayout_13.addWidget(self.frame_7)
@@ -460,20 +542,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.label_11)
 
-        self.lineEdit = QLineEdit(self.frame_6)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.txt_perfil_alterar_nome = QLineEdit(self.frame_6)
+        self.txt_perfil_alterar_nome.setObjectName(u"txt_perfil_alterar_nome")
 
-        self.verticalLayout_12.addWidget(self.lineEdit)
+        self.verticalLayout_12.addWidget(self.txt_perfil_alterar_nome)
 
-        self.lineEdit_2 = QLineEdit(self.frame_6)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.txt_perfil_alterar_email = QLineEdit(self.frame_6)
+        self.txt_perfil_alterar_email.setObjectName(u"txt_perfil_alterar_email")
 
-        self.verticalLayout_12.addWidget(self.lineEdit_2)
+        self.verticalLayout_12.addWidget(self.txt_perfil_alterar_email)
 
-        self.lineEdit_3 = QLineEdit(self.frame_6)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
+        self.txt_perfil_alterar_telefone = QLineEdit(self.frame_6)
+        self.txt_perfil_alterar_telefone.setObjectName(u"txt_perfil_alterar_telefone")
 
-        self.verticalLayout_12.addWidget(self.lineEdit_3)
+        self.verticalLayout_12.addWidget(self.txt_perfil_alterar_telefone)
 
         self.btn_salvar_alteracoes = QPushButton(self.frame_6)
         self.btn_salvar_alteracoes.setObjectName(u"btn_salvar_alteracoes")
@@ -616,12 +698,12 @@ class Ui_MainWindow(object):
         self.btn_enviar_menu.setText(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
         self.btn_perfil_menu.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
         self.btn_encerrar_menu.setText(QCoreApplication.translate("MainWindow", u"Encerrar", None))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page), "")
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Menu", None))
         self.btn_toogle.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; color:#ffffff;\">Nome do Sistema</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Seja Bem Vindo!</span></p><p align=\"center\"><img src=\":/icons/icons/cobra.png\"/></p></body></html>", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Formul\u00e1rio", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Documentos", None))
+        self.btn_carregar_formulario.setText(QCoreApplication.translate("MainWindow", u"Formul\u00e1rio", None))
+        self.btn_carregar_documentos.setText(QCoreApplication.translate("MainWindow", u"Documentos", None))
         self.txt_cadastro_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Nome", None))
         self.txt_cadastro_cpf.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  CPF", None))
         self.txt_cadastro_rg.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  RG", None))
@@ -630,12 +712,28 @@ class Ui_MainWindow(object):
         self.txt_cadastro_estado.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Estado", None))
         self.txt_cadastro_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
         self.btn_cadastro_enviar.setText(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Aqui vai o hist\u00f3rico de cadastros do usu\u00e1rio</p></body></html>", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Aqui vai a tela de envio de documentos</p></body></html>", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Hist\u00f3rico de Cadastros</span></p></body></html>", None))
+        ___qtablewidgetitem = self.tabela_historico.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
+        ___qtablewidgetitem1 = self.tabela_historico.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Data do Cadastro", None));
+        ___qtablewidgetitem2 = self.tabela_historico.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
+        ___qtablewidgetitem3 = self.tabela_historico.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">Area desitnada ao envio de documentos </span></p></body></html>", None))
+        self.tipo_documento.setItemText(0, QCoreApplication.translate("MainWindow", u"Escolha o tipo de arquivo", None))
+        self.tipo_documento.setItemText(1, QCoreApplication.translate("MainWindow", u"CPF", None))
+        self.tipo_documento.setItemText(2, QCoreApplication.translate("MainWindow", u"RG", None))
+        self.tipo_documento.setItemText(3, QCoreApplication.translate("MainWindow", u"CNH", None))
+        self.tipo_documento.setItemText(4, QCoreApplication.translate("MainWindow", u"PASSAPORTE", None))
+
+        self.btn_arquivo_documento.setText(QCoreApplication.translate("MainWindow", u"Arquivo", None))
+        self.btn_enviar_arquivo.setText(QCoreApplication.translate("MainWindow", u"Enviar", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Altere seus Dados</span></p></body></html>", None))
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome", None))
-        self.lineEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"email", None))
-        self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"telefone", None))
+        self.txt_perfil_alterar_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome", None))
+        self.txt_perfil_alterar_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"email", None))
+        self.txt_perfil_alterar_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"telefone", None))
         self.btn_salvar_alteracoes.setText(QCoreApplication.translate("MainWindow", u"Salvar Altera\u00e7\u00f5es", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ffffff;\">Perfil</span></p></body></html>", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Nome do Usu\u00e1rio</p></body></html>", None))

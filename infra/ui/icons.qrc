@@ -2,7 +2,7 @@
   <qresource prefix="icons">
     <file>icons/close.png</file>
     <file>icons/cobra.png</file>
-    <file>icons/settings.png</file>
     <file>icons/option.png</file>
+    <file>icons/settings.png</file>
   </qresource>
 </RCC>
