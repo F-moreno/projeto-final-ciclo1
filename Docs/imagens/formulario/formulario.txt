@@ -1,0 +1,96 @@
+Nome : Fernando Santos Moreno
+CPF : 000.000.000-00
+RG : 000.000.000
+Filiacao : Ana Maria da Silva Moreno
+Endereco : Rua travessa do Tranco, 37
+Data_nascimento : 09/04/1992
+Telefone : (00) 0 0000-0000
+Email : fernando.santosm@gmail.com
+
+Nome: João da Silva
+CPF: 111.111.111-11
+RG: 111.111.111
+Filiação: Maria Silva
+Endereço: Rua das Flores, 123
+Cidade: São Paulo
+Estado: São Paulo
+Data de Nascimento: 15/05/1985
+Telefone: (11) 9 8765-4321
+Email: joao.silva@example.com
+
+Nome: Ana Carolina Oliveira
+CPF: 222.222.222-22
+RG: 222.222.222
+Filiação: José Oliveira
+Endereço: Av. Principal, 456
+Cidade: Rio de Janeiro
+Estado: Rio de Janeiro
+Data de Nascimento: 20/07/1990
+Telefone: (21) 98765-4321
+Email: ana.oliveira@example.com
+
+Nome: Pedro Henrique Souza
+CPF: 333.333.333-33
+RG: 333.333.333
+Filiação: Maria Souza
+Endereço: Travessa das Árvores, 789
+Cidade: Belo Horizonte
+Estado: Minas Gerais
+Data de Nascimento: 10/12/1982
+Telefone: (31) 98765-1234
+Email: pedro.souza@example.com
+
+Nome: Laura Santos Lima
+CPF: 444.444.444-44
+RG: 444.444.444
+Filiação: Carlos Lima
+Endereço: Rua das Pedras, 567
+Cidade: Porto Alegre
+Estado: Rio Grande do Sul
+Data de Nascimento: 05/09/1995
+Telefone: (51) 91234-5678
+Email: laura.lima@example.com
+
+Nome: André Luiz Costa
+CPF: 555.555.555-55
+RG: 555.555.555
+Filiação: Ana Costa
+Endereço: Av. dos Pássaros, 890
+Cidade: Brasília
+Estado: Distrito Federal
+Data de Nascimento: 30/03/1988
+Telefone: (61) 98765-4321
+Email: andre.costa@example.com
+
+Nome: Marina Oliveira Santos
+CPF: 666.666.666-66
+RG: 666.666.666
+Filiação: José Santos
+Endereço: Rua dos Coqueiros, 1234
+Cidade: Recife
+Estado: Pernambuco
+Data de Nascimento: 25/11/1993
+Telefone: (81) 91234-5678
+Email: marina.santos@example.com
+
+Nome: Guilherme Almeida
+CPF: 777.777.777-77
+RG: 777.777.777
+Filiação: Maria Almeida
+Endereço: Av. das Rosas, 5678
+Cidade: Salvador
+Estado: Bahia
+Data de Nascimento: 18/07/1980
+Telefone: (71) 98765-4321
+Email: guilherme.almeida@example.com
+
+Nome: Ana Luiza Fernandes
+CPF: 888.888.888-88
+RG: 888.888.888
+Filiação: João Fernandes
+Endereço: Travessa dos Sonhos, 901
+Cidade: Florianópolis
+Estado: Santa Catarina
+Data de Nascimento: 12/04/1987
+Telefone: (48) 91234-5678
+Email: ana.fernandes@example.com
