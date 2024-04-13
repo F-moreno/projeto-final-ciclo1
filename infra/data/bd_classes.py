@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, text, Column, Integer, String, Date, ForeignKey, Time, LargeBinary
+from sqlalchemy import create_engine, text, Column, Integer, String, Date, ForeignKey, Time, LargeBinary, Index, DateTime
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from sqlalchemy.exc import OperationalError
 from datetime import datetime
@@ -49,6 +49,8 @@ class Cliente(Base):
         cpf (str): Número de CPF do cliente.
         rg (str): Número de RG do cliente.
         filiacao (str): pai ou mae do cliente.
+        estado (str): Estado em que o cliente está localizado.
+        municipio (str): Cidade em que o cliente está localizado.
         endereco (str): Endereço do cliente.
         data_nascimento (Date): Data de nascimento do cliente.
         telefone (str, opcional): Número de telefone do cliente.
@@ -59,18 +61,22 @@ class Cliente(Base):
     __tablename__ = "cliente"
     
     id = Column(Integer, primary_key=True)
-    nome = Column(String, nullable=False)
-    cpf = Column(String, nullable=False)
-    rg = Column(String, nullable=False)
-    filiacao = Column(String, nullable=False)
-    endereco = Column(String, nullable=False)
+    nome = Column(String(90), nullable=False)
+    cpf = Column(String(13), nullable=False)
+    rg = Column(String(9), nullable=False)
+    filiacao = Column(String(90), nullable=False)
+    municipio = Column(String(50), nullable=False)
+    estado = Column(String(20), nullable=False)
+    endereco = Column(String(120), nullable=False)
     data_nascimento = Column(Date, nullable=False)
-    telefone = Column(String)
+    telefone = Column(String(15))
     email = Column(String)
     
     documentos = relationship("Documento", back_populates="cliente")
     
-    
+    idx_cliente_id = Index("idx_cliente_id", id)
+    idx_cliente_nome = Index("idx_cliente_nome", nome)
+    idx_cliente_cpf = Index("idx_cliente_cpf", cpf)
     
 class Funcionario(Base):
     """Representa um funcionário autorizado a utilizar o sistema.
@@ -89,13 +95,18 @@ class Funcionario(Base):
     __tablename__ = "funcionario"
     
     id = Column(Integer, primary_key=True)
-    nome = Column(String, nullable=False)
-    cpf = Column(String, nullable=False)
-    telefone = Column(String, nullable=False)
+    nome = Column(String(90), nullable=False)
+    cpf = Column(String(13), nullable=False)
+    telefone = Column(String(15), nullable=False)
     email = Column(String, nullable=False)
     senha = Column(String, nullable=False)
     
     sessoes = relationship("Sessao", back_populates="funcionario")
+    
+    idx_funcionario_id = Index("idx_funcionario_id", id)
+    idx_funcionario_nome = Index("idx_funcionario_nome", nome)
+    idx_funcionario_cpf = Index("idx_funcionario_cpf", cpf)
+    idx_funcionario_email = Index("idx_funcionario_email", email)
     
     
 class Registro(Base):
@@ -104,7 +115,7 @@ class Registro(Base):
     Atributos:
         id (int): Identificador único do registro (chave primária).
         fk_sessao (int): Chave estrangeira que referencia a sessão associada ao registro.
-        horario (Time): Horário em que a atividade foi registrada.
+        horario (DateTime): Timestamp em que a atividade foi registrada.
         titulo_atividade (str): Título da atividade registrada.
         fk_documento (int, opcional): ID do documento associado à atividade.
         
@@ -115,12 +126,15 @@ class Registro(Base):
     
     id = Column(Integer, primary_key=True)
     fk_sessao = Column(Integer, ForeignKey("sessao.id"), nullable=False)
-    horario = Column(Time, nullable=False)
+    horario = Column(DateTime, nullable=False)
     titulo_atividade = Column(String)
     fk_documento = Column(Integer, ForeignKey("documento.id"))
     
     sessao = relationship("Sessao", back_populates="registros")
     documento = relationship("Documento", back_populates="registro")
+    
+    idx_registro_sessao = Index("idx_registro_sessao", fk_sessao)
+    idx_registro_horario = Index("idx_registro_horario", horario)
 
 
 class Documento(Base):
@@ -146,6 +160,10 @@ class Documento(Base):
     
     registro = relationship("Registro", back_populates="documento")
     cliente = relationship("Cliente", back_populates="documentos")
+    
+    
+    idx_documento_id = Index("idx_documento_id", id)
+    idx_documento_tipo = Index("idx_documento_tipo", tipo)
     
 
 class Sessao(Base):
@@ -180,7 +198,7 @@ class Sessao(Base):
             tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
             arquivo_original (LargeBinary): Representação binária do documento original.
             conteudo (str): Conteúdo extraído do arquivo original.
-            id_cliente (int, optional): Chave estrangeira que referencia um cliente (Caso haja um associado).
+            cliente (Cliente, optional): Caso haja um cliente associado.
             
         Raises:
             Exception: Erro ao efetuar o commit do registro e documento.
@@ -193,7 +211,7 @@ class Sessao(Base):
         # Criando Registro.
         registro = Registro(
             fk_sessao=self.id,
-            horario=datetime.time(datetime.now()),
+            horario=datetime.now(),
             titulo_atividade=titulo
         )
         

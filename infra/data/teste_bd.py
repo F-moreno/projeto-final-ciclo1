@@ -1,7 +1,8 @@
-from gestao_usuarios import *
+from gerenciamento import *
 import cv2
 import numpy as np
 import io
+
 """POSSÍVEIS SOLUÇÕES
 
 - Verifique se está na ambiente virtual do projeto poetry (Use "poetry shell" no terminal);
@@ -13,12 +14,14 @@ import io
 
 deletar_registros_teste = True
 
-# Teste gestao_usuarios.cadastro_cliente().
+# Teste gerenciamento.cadastro_cliente().
 try:
     cliente = cadastro_cliente("Cliente Teste",
                         "12345678912",
                         "1234567",
                         "Pai/Mãe Teste",
+                        "Estado Teste",
+                        "Municipio Teste",
                         "Endereço Teste",
                         "30-05-2005",
                         "99999999999",
@@ -26,10 +29,24 @@ try:
                         )
     print("cadastro_cliente(): OK")
 except Exception as e:
-    print(f"ERRO EM 'gestao_usuarios.cadastro_cliente()': {e}")
+    print(f"ERRO EM 'gerenciamento.cadastro_cliente()': {e}")
+
+
+# Teste gerenciamento.get_clientes().
+try:
+    clientes = get_clientes(nome="Cliente Teste")
+    clientes = get_clientes(cpf="12345678912")
+    clientes = get_clientes(id=cliente.id)
+    clientes = get_clientes(nome="Cliente Teste",
+                            cpf="12345678912",
+                            id=cliente.id)
+    
+    print("get_clientes(): OK")
+except Exception as e:
+    print(f"ERRO EM 'gerenciamento.get_clientes()': {e}")
     
     
-# Teste gestao_usuarios.cadastro_funcionario().
+# Teste gerenciamento.cadastro_funcionario().
 try:
     funcionario = cadastro_funcionario("Funcionario Teste",
                         "12345678912",
@@ -39,15 +56,15 @@ try:
                         )
     print("cadastro_funcionario(): OK")
 except Exception as e:
-    print(f"ERRO EM 'gestao_usuarios.cadastro_funcionario()': {e}")
+    print(f"ERRO EM 'gerenciamento.cadastro_funcionario()': {e}")
 
 
-# Teste gestao_usuarios.iniciar_sessao().
+# Teste gerenciamento.iniciar_sessao().
 try:
     sessao = iniciar_sessao("12345678912", "teste123")
     print("iniciar_sessao(): OK")
 except Exception as e:
-    print(f"ERRO EM 'gestao_usuarios.iniciar_sessao()': {e}")
+    print(f"ERRO EM 'gerenciamento.iniciar_sessao()': {e}")
 
 
 # Teste bd_classes.Sessao.salvar_documento()
@@ -95,3 +112,17 @@ if deletar_registros_teste:
     except Exception as e:
         print(f"ERRO AO DELETAR REGISTROS': {e}")
 
+try:
+    # Buscar todos os registros do dia 13 de abril de 2024
+    registros = get_registros(dia="13-04-2024") #OK
+    # Buscar todos os registros da sessão "1"
+    registros = get_registros(fk_sessao=1)
+    # Buscar registro específico (id = 10)
+    registros = get_registros(id=1)
+    # Buscar todos os registros de abril de 2024 (id = 10)
+    registros = get_registros(mes="04-2024")
+    # Buscar todos os registros de 2024
+    registros = get_registros(ano="2024")
+    print("get_registros(): OK")
+except Exception as e:
+    print(f"ERRO EM 'gerenciamento.get_registros': {e}")
