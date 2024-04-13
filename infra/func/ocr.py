@@ -16,7 +16,7 @@ arquivos = [
 
 
 class TesseractOCR:
-    def __init__(self, config):
+    def __init__(self):
         self.config_tesseract = "--tessdata-dir infra/func/tessdata"
 
     def read_text(self, img_path):
@@ -24,7 +24,7 @@ class TesseractOCR:
 
     def __get_text_from_img(self, img_path):
         img = self.__get_rgb_img(img_path)
-        return pytesseract.image_to_string(
+        return img, pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
         )
 
@@ -32,14 +32,36 @@ class TesseractOCR:
         img_bgr = cv2.imread(img_path)
         img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
         self.__show_two_images(img_bgr, img_rgb)
-
         return img_rgb
+
+    def __get_grayscale_img(self, img):
+        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        return img_gray
+
+    def __get_thresholded_img(self, img):
+        img_gray = self.__get_grayscale_img(img)
+        img_threshold = cv2.threshold(
+            img_gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
+        )[1]
+        return img_threshold
+
+    def __get_medianblurred_img(self, img):
+        img_median = cv2.medianBlur(img, 5)
+        return img_median
+
+    def __get_contrasted_img(self, img, alpha=1.5, beta=50):
+        img_contrasted = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
+        return img_contrasted
 
     def __show_two_images(self, img1, img2):
         numpy_horizontal_concat = np.concatenate((img1, img2), axis=1)
         cv2.imshow("BGR -> RGB", numpy_horizontal_concat)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+    def __get_image_data(self, img_path):
+        img = self.__get_rgb_img(img_path)
+        return pytesseract.image_to_data(img, lang="por", config=self.config_tesseract)
 
 
 # Configuração do Tesseract
@@ -114,13 +136,18 @@ def extrai_dados(texto):
 
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
+    tesseract = TesseractOCR()
+
     for arquivo in arquivos:
-        imagem_processada, texto_reconhecido = processar_imagem(
+
+        imagem_processada, texto_reconhecido = tesseract.read_text(arquivo)
+
+        """imagem_processada, texto_reconhecido = processar_imagem(
             arquivo, config_tesseract
         )
         print(texto_reconhecido)
         print()
-
+    """
         json = extrai_dados(texto_reconhecido)
         print(f"json:/n{json}")
         cv2.imshow("Imagem Processada", imagem_processada)
