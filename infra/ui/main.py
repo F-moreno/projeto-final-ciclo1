@@ -4,6 +4,7 @@ from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow, QMessageB
 from ui_login import Ui_Form
 from ui_sistema import Ui_MainWindow
 import sys
+from func.ocr import TesseractOCR
 
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
@@ -40,6 +41,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_enviar_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_enviar_doc))
             self.btn_perfil_menu.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_perfil))
             self.btn_alterar_dados.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_alteracao_perfil))
+            self.btn_carregar_formulario.clicked.connect(self.AbrirArquivo)
+            self.btn_encerrar_menu.clicked.connect(self.close)
             
         def LeftMenu(self):
             width = self.menu.width()
@@ -54,6 +57,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.animation.setEndValue(newWidth)
             self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
             self.animation.start()
+            
+        def AbrirArquivo(self):
+            options = QFileDialog.Option()
+            nomeArquivo, _ = QFileDialog.getOpenFileName(self, "Selecione o Arquivo", "", "All Files(*)", options=options)
+            if nomeArquivo:
+                print("Arquivo selecionado", nomeArquivo)
+                texto = TesseractOCR().read_text(nomeArquivo)
+                image = TesseractOCR().read_image(nomeArquivo)
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
