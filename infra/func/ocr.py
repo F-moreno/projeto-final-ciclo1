@@ -24,7 +24,7 @@ class TesseractOCR:
 
     def __get_text_from_img(self, img_path):
         img = self.__get_rgb_img(img_path)
-        return img, pytesseract.image_to_string(
+        return pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
         )
 
@@ -62,6 +62,18 @@ class TesseractOCR:
     def __get_image_data(self, img_path):
         img = self.__get_rgb_img(img_path)
         return pytesseract.image_to_data(img, lang="por", config=self.config_tesseract)
+
+    def extrair_dados(self, txt):
+        # Exibe a imagem processada
+        texto = txt.split("\n")
+        # texto = dict(texto[1:])
+        json = {}
+        for linha in texto:
+            if ":" in linha:
+                key, value = linha.split(":")
+                json[key.lower().strip()] = value.strip()
+
+        return json
 
 
 # Configuração do Tesseract
@@ -121,19 +133,6 @@ def processar_imagem(img, config_tesseract):
     return img, texto
 
 
-def extrai_dados(texto):
-    # Exibe a imagem processada
-    texto = texto_reconhecido.split("\n")
-    # texto = dict(texto[1:])
-    json = {}
-    for linha in texto:
-        if ":" in linha:
-            key, value = linha.split(":")
-            json[key.lower()] = value.strip()
-
-    return json
-
-
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
@@ -148,7 +147,7 @@ if __name__ == "__main__":
         print(texto_reconhecido)
         print()
     """
-        json = extrai_dados(texto_reconhecido)
+        json = extrair_dados(texto_reconhecido)
         print(f"json:/n{json}")
         cv2.imshow("Imagem Processada", imagem_processada)
         cv2.waitKey(0)

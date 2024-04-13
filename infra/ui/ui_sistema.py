@@ -61,7 +61,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-import icons_rc
+from ui import icons_rc
 
 
 class Ui_MainWindow(object):

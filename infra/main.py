@@ -91,7 +91,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             print("Arquivo selecionado", nomeArquivo)
             texto = TesseractOCR().read_text(nomeArquivo)
-            image = TesseractOCR().read_image(nomeArquivo)
+            # image = TesseractOCR().read_image(nomeArquivo)
+            json = TesseractOCR().extrair_dados(texto)
+            print(json)
+            self.txt_cadastro_nome.setText(json["nome"])
+            self.txt_cadastro_cpf.setText(json["cpf"])
+            self.txt_cadastro_rg.setText(json["rg"])
+            self.txt_cadastro_endereco.setText(json["endereco"])
+            self.txt_cadastro_municipio.setText(json["cidade"])
+            self.txt_cadastro_estado.setText(json["estado"])
+            self.txt_cadastro_email.setText(json["email"])
+            self.txt_cadastro_telefone.setText(json["telefone"])
 
 
 if __name__ == "__main__":
