@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow, QMessageB
 from ui_login import Ui_Form
 from ui_sistema import Ui_MainWindow
 import sys
-from infra.func.ocr import TesseractOCR
+from func.ocr import TesseractOCR
 
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
@@ -63,7 +63,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             nomeArquivo, _ = QFileDialog.getOpenFileName(self, "Selecione o Arquivo", "", "All Files(*)", options=options)
             if nomeArquivo:
                 print("Arquivo selecionado", nomeArquivo)
-                
+                texto = TesseractOCR().read_text(nomeArquivo)
+                image = TesseractOCR().read_image(nomeArquivo)
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
