@@ -1,5 +1,5 @@
 from sqlalchemy import func
-from bd_classes import session, Cliente, Funcionario, Sessao, Registro
+from .bd_classes import session, Cliente, Funcionario, Sessao, Registro
 from datetime import datetime
 from dateutil import relativedelta
 from passlib.hash import argon2

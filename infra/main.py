@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
     QTreeWidgetItem,
     QWidget,
 )
+from data import gerenciamento
 from ui.ui_login import Ui_Form
 from ui.ui_sistema import Ui_MainWindow
 import sys
@@ -31,6 +32,31 @@ class Login(QWidget, Ui_Form):
             self.abrir_main_window()
         else:
             print("Senha inválida")
+
+    def cadastrar_usuario(self):
+        nome = self.txt_cadastro_nome.text()
+        email = self.txt_cadastro_email.text()
+        telefone = self.txt_cadastro_telefone.text()
+        senha = self.txt_cadastro_senha.text()
+
+        gerenciamento.cadastro_funcionario(
+            nome=nome, email=email, telefone=telefone, senha=senha
+        )
+
+        print("Usuário cadastrado com sucesso!")
+        self.limpar_campos_cadastro()
+
+    def limpar_campos_cadastro(self):
+        self.txt_cadastro_nome.clear()
+        self.txt_cadastro_email.clear()
+        self.txt_cadastro_telefone.clear()
+        self.txt_cadastro_senha.clear()
+
+    def mostrar_pag_cadastro(self):
+        self.Pages.setCurrentWidget(self.pg_cadastrar)
+
+        # Conectar o botão de cadastrar ao método cadastrar_usuario
+        self.btn_cadastrar_dados.clicked.connect(self.cadastrar_usuario)
 
     def abrir_main_window(self):
         self.w = MainWindow()
@@ -72,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.animation.setEndValue(newWidth)
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
-        
+
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
 
