@@ -22,24 +22,26 @@ class Login(QWidget, Ui_Form):
         self.setWindowTitle("Login do Sistema")
 
         self.btn_entrar_login.clicked.connect(self.abrir_sistema)
-        self.btn_cadastrar_login.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_cadastrar)
-        )
-        self.btn_config.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_config)
-        )
+        self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
+        self.btn_config.clicked.connect(self.mostrar_pag_config)
         self.btn_closed.clicked.connect(self.close)
 
-    # Parte de teste na fase de criação da tela principal
     def abrir_sistema(self):
-
         if self.txt_senha_login.text() == "1234":
-            self.w = MainWindow()
-            self.w.show()
-            self.close()
-
+            self.abrir_main_window()
         else:
-            print("senha inválida")
+            print("Senha inválida")
+
+    def abrir_main_window(self):
+        self.w = MainWindow()
+        self.w.show()
+        self.close()
+
+    def mostrar_pag_cadastro(self):
+        self.Pages.setCurrentWidget(self.pg_cadastrar)
+
+    def mostrar_pag_config(self):
+        self.Pages.setCurrentWidget(self.pg_config)
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -47,29 +49,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Sistema de Cadastro de Áreas Remotas")
-        self.btn_toogle.clicked.connect(self.LeftMenu)
-        self.btn_home_menu.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_home)
-        )
-        self.btn_cadastrar_menu.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_cadastrar)
-        )
-        self.btn_historico_menu.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_historico)
-        )
-        self.btn_enviar_menu.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_enviar_doc)
-        )
-        self.btn_perfil_menu.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_perfil)
-        )
-        self.btn_alterar_dados.clicked.connect(
-            lambda: self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
-        )
-        self.btn_carregar_formulario.clicked.connect(self.AbrirArquivo)
+        self.btn_toogle.clicked.connect(self.left_menu)
+        self.btn_home_menu.clicked.connect(self.mostrar_pag_home)
+        self.btn_cadastrar_menu.clicked.connect(self.mostrar_pag_cadastro)
+        self.btn_historico_menu.clicked.connect(self.mostrar_pag_historico)
+        self.btn_enviar_menu.clicked.connect(self.mostrar_pag_enviar_doc)
+        self.btn_perfil_menu.clicked.connect(self.mostrar_pag_perfil)
+        self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
+        self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
         self.btn_encerrar_menu.clicked.connect(self.close)
 
-    def LeftMenu(self):
+    def left_menu(self):
         width = self.menu.width()
 
         if width == 9:
@@ -82,8 +72,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.animation.setEndValue(newWidth)
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
+        
+    def mostrar_pag_home(self):
+        self.Pages.setCurrentWidget(self.pg_home)
 
-    def AbrirArquivo(self):
+    def mostrar_pag_cadastro(self):
+        self.Pages.setCurrentWidget(self.pg_cadastrar)
+
+    def mostrar_pag_historico(self):
+        self.Pages.setCurrentWidget(self.pg_historico)
+
+    def mostrar_pag_enviar_doc(self):
+        self.Pages.setCurrentWidget(self.pg_enviar_doc)
+
+    def mostrar_pag_perfil(self):
+        self.Pages.setCurrentWidget(self.pg_perfil)
+
+    def mostrar_pag_alteracao_perfil(self):
+        self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
+
+    def abrir_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
             self, "Selecione o Arquivo", "", "All Files(*)", options=options
