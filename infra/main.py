@@ -34,29 +34,30 @@ class Login(QWidget, Ui_Form):
             print("Senha inválida")
 
     def cadastrar_usuario(self):
-        nome = self.txt_cadastro_nome.text()
-        email = self.txt_cadastro_email.text()
-        telefone = self.txt_cadastro_telefone.text()
-        senha = self.txt_cadastro_senha.text()
+        nome = self.txt_nome_cadastro.text()
+        email = self.txt_email_cadastro.text()
+        telefone = self.txt_telefone_cadastro.text()
+        senha = self.txt_senha_cadastro.text()
 
         gerenciamento.cadastro_funcionario(
             nome=nome, email=email, telefone=telefone, senha=senha
         )
 
-        print("Usuário cadastrado com sucesso!")
+        #print("Usuário cadastrado com sucesso!")
+        QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
         self.limpar_campos_cadastro()
 
     def limpar_campos_cadastro(self):
-        self.txt_cadastro_nome.clear()
-        self.txt_cadastro_email.clear()
-        self.txt_cadastro_telefone.clear()
-        self.txt_cadastro_senha.clear()
+        self.txt_nome_cadastro.clear()
+        self.txt_email_cadastro.clear()
+        self.txt_telefone_cadastro.clear()
+        self.txt_senha_cadastro.clear()
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
         # Conectar o botão de cadastrar ao método cadastrar_usuario
-        self.btn_cadastrar_dados.clicked.connect(self.cadastrar_usuario)
+        self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_main_window(self):
         self.w = MainWindow()
@@ -68,7 +69,10 @@ class Login(QWidget, Ui_Form):
 
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
-
+        #txt_ip
+        #txt_porta
+        #btn_padrao
+        #btn_salvar_config
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -110,13 +114,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
+        
+    def enviar_docs(self):
+        #btn_arquivo_documento
+        #btn_enviar_arquivo
+        #tipo_documento
+        pass
 
     def mostrar_pag_perfil(self):
         self.Pages.setCurrentWidget(self.pg_perfil)
 
     def mostrar_pag_alteracao_perfil(self):
         self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
+        #txt_perfil_alterar_nome
+        #txt_perfil_alterar_email
+        #txt_perfil_alterar_telefone
+        #btn_salvar_alteracoes
 
+    def carregar_docs_cadastro(self):
+        #btn_carregar_documentos
+        #lista_documentos_cadastro
+        #btn_cadastro_enviar
+        pass
+    
     def abrir_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
