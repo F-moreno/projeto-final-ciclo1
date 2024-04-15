@@ -151,10 +151,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txt_cadastro_nome.setText(json["nome"])
             self.txt_cadastro_cpf.setText(json["cpf"])
             self.txt_cadastro_rg.setText(json["rg"])
+            self.txt_cadastro_filiacao.setText(json["filiacao"])
+            self.txt_cadastro_nascimento.setText(json["nascimento"])
             self.txt_cadastro_endereco.setText(json["endereco"])
-            self.txt_cadastro_municipio.setText(json["cidade"])
+            self.txt_cadastro_cidade.setText(json["cidade"])
             self.txt_cadastro_estado.setText(json["estado"])
             self.txt_cadastro_telefone.setText(json["telefone"])
+            self.txt_cadastro_email.setText(json["email"])
 
 
 if __name__ == "__main__":
