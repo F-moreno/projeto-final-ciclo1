@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>462</height>
+    <width>932</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@
                <x>0</x>
                <y>0</y>
                <width>113</width>
-               <height>321</height>
+               <height>448</height>
               </rect>
              </property>
              <attribute name="label">
@@ -471,6 +471,16 @@ QPushButton {
                         </widget>
                        </item>
                        <item>
+                        <widget class="QLineEdit" name="txt_cadastro_filiacao">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Filição</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QLineEdit" name="txt_cadastro_endereco">
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
@@ -481,12 +491,22 @@ QPushButton {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="txt_cadastro_municipio">
+                        <widget class="QLineEdit" name="txt_cadastro_nascimento">
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
                          <property name="placeholderText">
-                          <string>  Municipio</string>
+                          <string>  Data de Nascimento</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_cidade">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Cidade</string>
                          </property>
                         </widget>
                        </item>
@@ -507,6 +527,16 @@ QPushButton {
                          </property>
                          <property name="placeholderText">
                           <string>  Telefone</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="txt_cadastro_email">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Email</string>
                          </property>
                         </widget>
                        </item>
@@ -669,7 +699,7 @@ QPushButton {
                     <item>
                      <widget class="QLabel" name="label_6">
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Area desitnada ao envio de documentos &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Area destinada ao envio de documentos &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                      </widget>
                     </item>
