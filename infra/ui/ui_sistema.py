@@ -627,20 +627,20 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_9 = QVBoxLayout(self.frame_4)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.label_8 = QLabel(self.frame_4)
-        self.label_8.setObjectName(u"label_8")
+        self.txt_nome_perfil = QLabel(self.frame_4)
+        self.txt_nome_perfil.setObjectName(u"txt_nome_perfil")
 
-        self.verticalLayout_9.addWidget(self.label_8)
+        self.verticalLayout_9.addWidget(self.txt_nome_perfil)
 
-        self.label_9 = QLabel(self.frame_4)
-        self.label_9.setObjectName(u"label_9")
+        self.txt_email_perfil = QLabel(self.frame_4)
+        self.txt_email_perfil.setObjectName(u"txt_email_perfil")
 
-        self.verticalLayout_9.addWidget(self.label_9)
+        self.verticalLayout_9.addWidget(self.txt_email_perfil)
 
-        self.label_10 = QLabel(self.frame_4)
-        self.label_10.setObjectName(u"label_10")
+        self.txt_telefone_perfil = QLabel(self.frame_4)
+        self.txt_telefone_perfil.setObjectName(u"txt_telefone_perfil")
 
-        self.verticalLayout_9.addWidget(self.label_10)
+        self.verticalLayout_9.addWidget(self.txt_telefone_perfil)
 
 
         self.verticalLayout_8.addWidget(self.frame_4)
@@ -757,9 +757,9 @@ class Ui_MainWindow(object):
         self.txt_perfil_alterar_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"telefone", None))
         self.btn_salvar_alteracoes.setText(QCoreApplication.translate("MainWindow", u"Salvar Altera\u00e7\u00f5es", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ffffff;\">Perfil</span></p></body></html>", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Nome do Usu\u00e1rio</p></body></html>", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Email do Usu\u00e1rio</p></body></html>", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Telefone do Usu\u00e1rio</p></body></html>", None))
+        self.txt_nome_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Nome do Usu\u00e1rio</p></body></html>", None))
+        self.txt_email_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Email do Usu\u00e1rio</p></body></html>", None))
+        self.txt_telefone_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Telefone do Usu\u00e1rio</p></body></html>", None))
         self.btn_alterar_dados.setText(QCoreApplication.translate("MainWindow", u"Alterar meus dados", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Nome da Empresa", None))
     # retranslateUi

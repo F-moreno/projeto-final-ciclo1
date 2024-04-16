@@ -519,7 +519,7 @@ color: #fff
      <string>Login</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txt_email_login">
+   <widget class="QLineEdit" name="txt_cpf_login">
     <property name="geometry">
      <rect>
       <x>22</x>
@@ -532,7 +532,7 @@ color: #fff
      <string notr="true">background-color: rgba(0, 0, 0, 0.1);</string>
     </property>
     <property name="placeholderText">
-     <string>  Email Corporativo</string>
+     <string>  CPF</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txt_senha_login">
