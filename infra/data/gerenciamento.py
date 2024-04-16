@@ -1,5 +1,5 @@
 from sqlalchemy import func
-from .bd_classes import session, Cliente, Funcionario, Sessao, Registro
+from .bd_classes import session, Cliente, Funcionario, Sessao, Registro, Documento
 from datetime import datetime
 from dateutil import relativedelta
 from passlib.hash import argon2
@@ -55,7 +55,7 @@ def cadastro_cliente(nome:str,
         session.commit()
         return novo_cliente
     except Exception as e:
-        print(f"Erro ao cadastrar cliente: {e}")
+        raise Exception(f"Erro ao cadastrar cliente: {e}")
     
 
 def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) -> Funcionario:
@@ -85,13 +85,13 @@ def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) 
         session.commit()
         return novo_funcionario
     except Exception as e:
-        print(f"Erro ao cadastrar funcionario: {e}")
+        raise Exception(f"Erro ao cadastrar funcionario: {e}")
 
 
 # GERENCIAMENTO DE SESSÃO
 
 def iniciar_sessao(cpf:str, senha:str) -> Sessao:
-    """Seleciona uma Funcionario do Banco de Dados a partir do cpf do funcionário e senha.
+    """Seleciona um Funcionario do Banco de Dados a partir do cpf do funcionário e senha.
     Além disso, cria uma instância de sessão com a data e horário atual.
 
     Args:
@@ -125,7 +125,7 @@ def encerrar_sessao(sessao: Sessao):
     """Atualiza a sessão, registrando o horário de fim no Banco de Dados.
 
     Args:
-        sessao (Sessao): Registro de sessão do funcionario retornado pela função iniciar_sessao().
+        sessao (Sessao): Objeto referente à sessão retornada por iniciar_sessao().
     """
     sessao.fim = datetime.time(datetime.now())
     
@@ -141,7 +141,7 @@ def get_clientes(id:int=None,
                 nome:str=None,
                 cpf:str=None,
                 ) -> List[Cliente]:
-    """Retorna uma lista de Clientes com base nos argumentos.
+    """Retorna uma lista de clientes com base nos argumentos.
     OBS: Se não houver argumentos, retorna todos os clientes.
 
     Args:
@@ -150,7 +150,7 @@ def get_clientes(id:int=None,
         cpf (str, opcional): filtrar por número de CPF do cliente.
 
     Returns:
-        List[Cliente]: Uma lista de Clientes que coincidem com os argumentos.
+        List[Cliente]: lista de clientes filtrados.
     """
     kwargs = {}
     if id:
@@ -166,16 +166,48 @@ def get_clientes(id:int=None,
         clientes = session.query(Cliente).filter_by(**kwargs)
         return clientes.all() 
     except Exception as e:
-        print(f"Erro ao procurar Cliente: {e}")
+        raise Exception(f"Erro ao procurar Clientes: {e}")
 
 
-def get_registros(id: int = None,
-                  fk_sessao: int = None,
-                  dia: str = None,
-                  mes: str = None,
-                  ano: str = None,
+def get_funcionarios(id:int=None,
+                nome:str=None,
+                cpf:str=None,
+                ) -> List[Funcionario]:
+    """Retorna uma lista de funcionários com base nos argumentos.
+    OBS: Se não houver argumentos, retorna todos os funcionários.
+
+    Args:
+        id (int, opcional): filtrar por id único de um funcionário.
+        nome (str, opcional): filtrar por nome completo do funcionário.
+        cpf (str, opcional): filtrar por número de CPF do funcionário.
+
+    Returns:
+        List[Funcionario]: lista de funcionários filtrados.
+    """
+    kwargs = {}
+    if id:
+        kwargs["id"] = id
+        
+    if nome:
+        kwargs["nome"] = nome
+        
+    if cpf:
+        kwargs["cpf"] = cpf
+    
+    try:
+        funcionarios = session.query(Funcionario).filter_by(**kwargs)
+        return funcionarios.all() 
+    except Exception as e:
+        raise Exception(f"Erro ao procurar Funcionários: {e}")
+
+
+def get_registros(id:int=None,
+                  fk_sessao:int=None,
+                  dia:str=None,
+                  mes:str=None,
+                  ano:str=None,
                   ) -> List[Registro]:
-    """Retorna uma lista de Registros com base nos argumentos.
+    """Retorna uma lista de registros com base nos argumentos.
     OBS: Se não houver argumentos, retorna todos os registros.
 
     Args:
@@ -186,7 +218,7 @@ def get_registros(id: int = None,
         ano (str, opcional): filtrar por ano específico (formato aaaa).
 
     Returns:
-        List[Registro]: Lista de registros filtrados.
+        List[Registro]: lista de registros filtrados.
     """
 
     kwargs = {}
@@ -203,7 +235,6 @@ def get_registros(id: int = None,
         filtros.append(func.date(Registro.horario) == datetime.strptime(dia, "%d-%m-%Y").date())
 
     if mes:
-        # Manter a filtragem por mês e ano específicos (se for o caso)
         data_inicio = datetime.strptime("01-"+mes, "%d-%m-%Y").date()
         data_fim = data_inicio + relativedelta.relativedelta(months=+1, day=1) - relativedelta.relativedelta(days=1)
         filtros.append(func.date(Registro.horario) >= data_inicio)
@@ -222,5 +253,91 @@ def get_registros(id: int = None,
             registros = registros.filter(*filtros) 
         return registros.all()
     except Exception as e:
-        print(f"Erro ao procurar Registro: {e}")
+        raise Exception(f"Erro ao procurar Registros: {e}")
+
+
+def get_sessoes(id:int=None,
+                fk_funcionario:int=None,
+                dia:str=None,
+                mes:str=None,
+                ano:str=None,
+                ) -> List[Sessao]:
+    """Retorna uma lista de sessões com base nos argumentos.
+    OBS: Se não houver argumentos, retorna todas as sessões.
+
+    Args:
+        id (int, opcional): filtrar por id único da sessão.
+        fk_funcionario (int, opcional): filtrar por id de um funcionário específico.
+        dia (str, opcional): filtrar por dia específico (formato dd-mm-aaaa).
+        mes (str, opcional): filtrar por mês específico (formato mm-aaaa).
+        ano (str, opcional): filtrar por ano específico (formato aaaa).
         
+    Returns:
+        List[Sessao]: lista de sessões filtradas.
+    """
+
+    kwargs = {}
+    if id:
+        kwargs["id"] = id
+        
+    if fk_funcionario:
+        kwargs["fk_funcionario"] = fk_funcionario
+
+    # Condições de filtro (filtragem vazia se nenhum argumento for válido)
+    filtros = []
+    
+    if dia and datetime.strptime(dia, "%d-%m-%Y").date() is not None:
+        filtros.append(func.date(Sessao.data) == datetime.strptime(dia, "%d-%m-%Y").date())
+
+    if mes:
+        data_inicio = datetime.strptime("01-"+mes, "%d-%m-%Y").date()
+        data_fim = data_inicio + relativedelta.relativedelta(months=+1, day=1) - relativedelta.relativedelta(days=1)
+        filtros.append(func.date(Sessao.data) >= data_inicio)
+        filtros.append(func.date(Sessao.data) < data_fim)
+        
+    if ano:
+        data_inicio = datetime.strptime("01-01-"+ano, "%d-%m-%Y").date()
+        data_fim = datetime.strptime("31-12-"+ano, "%d-%m-%Y").date()
+        filtros.append(func.date(Sessao.data) >= data_inicio)
+        filtros.append(func.date(Sessao.data) <= data_fim)
+
+    # Construir a consulta
+    try:
+        sessoes = session.query(Sessao).filter_by(**kwargs)
+        if filtros:
+            sessoes = sessoes.filter(*filtros) 
+        return sessoes.all()
+    except Exception as e:
+        raise Exception(f"Erro ao procurar Sessões: {e}")
+
+
+def get_documentos(id:int=None,
+                    fk_cliente:int=None,
+                    tipo:str=None,
+                    ) -> List[Documento]:
+    """Retorna uma lista de documentos com base nos argumentos.
+    OBS: Se não houver argumentos, retorna todos os documentos.
+
+    Args:
+        id (int, opcional): filtrar por id único de um documento.
+        fk_cliente (int, opcional): filtrar por id de um cliente específico.
+        tipo (str, opcional): filtrar por tipo de documento.
+
+    Returns:
+        List[Documento]: lista de documentos filtrados.
+    """
+    kwargs = {}
+    if id:
+        kwargs["id"] = id
+        
+    if fk_cliente:
+        kwargs["fk_cliente"] = fk_cliente
+        
+    if tipo:
+        kwargs["tipo"] = tipo
+    
+    try:
+        documentos = session.query(Documento).filter_by(**kwargs)
+        return documentos.all() 
+    except Exception as e:
+        raise Exception(f"Erro ao procurar Documentos: {e}")

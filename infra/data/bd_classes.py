@@ -164,6 +164,7 @@ class Documento(Base):
     
     idx_documento_id = Index("idx_documento_id", id)
     idx_documento_tipo = Index("idx_documento_tipo", tipo)
+    idx_documento_cliente = Index("idx_documento_cliente", fk_cliente)
     
 
 class Sessao(Base):
@@ -189,8 +190,10 @@ class Sessao(Base):
     
     funcionario = relationship("Funcionario", back_populates="sessoes")
     registros = relationship("Registro", back_populates="sessao")
-    
-    
+
+    idx_sessao_funcionario = Index("idx_sessao_funcionario", fk_funcionario)
+    idx_sessao_data = Index("idx_sessao_data", data)
+
     def salvar_documento(self, tipo:str, arquivo_original:bytes, conteudo:str, cliente:Cliente=None) -> Documento:
         """Registra um documento no Banco de Dados a partir dos dados dessa sessão
 

@@ -59,6 +59,20 @@ except Exception as e:
     print(f"ERRO EM 'gerenciamento.cadastro_funcionario()': {e}")
 
 
+# Teste gerenciamento.get_funcionarios().
+try:
+    funcionarios = get_funcionarios(nome="Funcionario Teste")
+    funcionarios = get_funcionarios(cpf="12345678912")
+    funcionarios = get_funcionarios(id=funcionario.id)
+    funcionarios = get_funcionarios(nome="Funcionario Teste",
+                                    cpf="12345678912",
+                                    id=funcionario.id)
+    
+    print("get_funcionarios(): OK")
+except Exception as e:
+    print(f"ERRO EM 'gerenciamento.get_funcionarios()': {e}")
+    
+
 # Teste gerenciamento.iniciar_sessao().
 try:
     sessao = iniciar_sessao("12345678912", "teste123")
@@ -84,21 +98,61 @@ except Exception as e:
     print(f"ERRO EM 'bd_classes.Sessao.salvar_documento()': {e}")
 
 
-# Testando decodificação da imagem do bd
+# Testando get_documentos()
 try:
-    imagem_numpy = np.frombuffer(documento.arquivo_original, np.uint8)
+    documentos = get_documentos(id=documento.id)
+    documentos = get_documentos(fk_cliente=cliente.id)
+    documentos = get_documentos(tipo="Teste")
+    documentos = get_documentos(id=documento.id,
+                                fk_cliente=cliente.id,
+                                tipo="Teste")
+        
+    imagem_numpy = np.frombuffer(documentos[0].arquivo_original, np.uint8)
     imagem_decodificada = cv2.imdecode(imagem_numpy, cv2.IMREAD_COLOR)
 
     cv2.imshow("Minha Imagem", imagem_decodificada)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    print(f"Decodificar Imagem': OK")
+    print(f"get_documentos': OK")
 except Exception as e:
-    print(f"ERRO AO DECODIFICAR IMAGEM': {e}")
+    print(f"ERRO EM 'gerenciamento.get_documentos()': {e}")
 
     
-encerrar_sessao(sessao)
+# Teste gerenciamento.get_registros()
+try:
+    # Buscar todos os registros do dia 13 de abril de 2024
+    registros = get_registros(dia="13-04-2024")
+    # Buscar todos os registros da sessão "1"
+    registros = get_registros(fk_sessao=1)
+    # Buscar registro específico (id = 10)
+    registros = get_registros(id=1)
+    # Buscar todos os registros de abril de 2024 (id = 10)
+    registros = get_registros(mes="04-2024")
+    # Buscar todos os registros de 2024
+    registros = get_registros(ano="2024")
+    print("get_registros(): OK")
+except Exception as e:
+    print(f"ERRO EM 'gerenciamento.get_registros': {e}")
 
+
+# Teste gerenciamento.get_sessoes()
+try:
+    # Buscar todas as sessões do dia 13 de abril de 2024
+    sessoes = get_sessoes(dia="13-04-2024")
+    # Buscar todas as sessões do funcionário "1"
+    sessoes = get_sessoes(fk_funcionario=1)
+    # Buscar sessão específica (id = 10)
+    sessoes = get_sessoes(id=1)
+    # Buscar todas as sessões de abril de 2024 (id = 10)
+    sessoes = get_sessoes(mes="04-2024")
+    # Buscar todas as sessões de 2024
+    sessoes = get_sessoes(ano="2024")
+    print("get_sessoes(): OK")
+except Exception as e:
+    print(f"ERRO EM 'gerenciamento.get_sessoes': {e}")
+    
+    
+encerrar_sessao(sessao)
 if deletar_registros_teste:
     try:
         # Deleção de registros de teste
@@ -111,18 +165,3 @@ if deletar_registros_teste:
         print("Registros Deletados: OK")
     except Exception as e:
         print(f"ERRO AO DELETAR REGISTROS': {e}")
-
-try:
-    # Buscar todos os registros do dia 13 de abril de 2024
-    registros = get_registros(dia="13-04-2024") #OK
-    # Buscar todos os registros da sessão "1"
-    registros = get_registros(fk_sessao=1)
-    # Buscar registro específico (id = 10)
-    registros = get_registros(id=1)
-    # Buscar todos os registros de abril de 2024 (id = 10)
-    registros = get_registros(mes="04-2024")
-    # Buscar todos os registros de 2024
-    registros = get_registros(ano="2024")
-    print("get_registros(): OK")
-except Exception as e:
-    print(f"ERRO EM 'gerenciamento.get_registros': {e}")
