@@ -26,6 +26,7 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_config.clicked.connect(self.mostrar_pag_config)
         self.btn_closed.clicked.connect(self.close)
+        self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_sistema(self):
         if self.txt_senha_login.text() == "1234":
