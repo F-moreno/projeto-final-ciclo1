@@ -59,10 +59,8 @@ class TesseractOCR:
         return img_gray
 
     def __get_thresholded_img(self, img_gray):
-        eq = cv2.equalizeHist(img_gray)
-        img_threshold = cv2.threshold(
-            eq, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
-        )[1]
+        img_threshold = cv2.threshold(img_gray, 150, 255, cv2.THRESH_BINARY_INV)[1]
+        self.__show_img(img_threshold)
         return img_threshold
 
     def __get_medianblurred_img(self, img):
@@ -70,30 +68,10 @@ class TesseractOCR:
         return img_median
 
     def __get_corners_img(self, thresh):
-        # Encontrar os contornos na imagem binarizada
-        # thresh = cv2.bitwise_not(thresh)
-
         contours, _ = cv2.findContours(
             thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
         )
         # Encontrar o maior quadrado externo
-        max_area = 0
-        max_square_corners = None
-        """for contour in contours:
-            # Aproximar o contorno para um polígono com menos vértices
-            approx = cv2.approxPolyDP(
-                contour, 0.04 * cv2.arcLength(contour, True), True
-            )
-
-            # Verificar se o polígono tem 4 vértices (quadrado)
-            if len(approx) == 4:
-                # Calcular a área do quadrado
-                area = cv2.contourArea(approx)
-                if area > max_area:
-                    max_area = area
-                    max_square_corners = approx.reshape(-1, 2)"""
-
-        # novo
         rect = cv2.minAreaRect(np.vstack(contours))
         box = cv2.boxPoints(rect)
         box = np.int0(box)
@@ -101,11 +79,15 @@ class TesseractOCR:
         for point in box:
             min_square_contours.append((point[0], point[1]))
         external_contour = np.vstack(contours)
-        x, y, w, h = cv2.boundingRect(external_contour)
-        max_square_corners = np.float32(
-            [[x, y], [x, y + h], [x + w, y + h], [x + w, y]]
-        )
-        print(min_square_contours)
+
+        # salva imagem marcada
+        img_destacada = thresh.copy()
+        for contour in contours:
+            x, y, w, h = cv2.boundingRect(contour)
+            cv2.rectangle(img_destacada, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        # Salvar a imagem com a área destacada
+        cv2.imwrite("Docs/imagens/formulario/destacada.png", img_destacada)
         return min_square_contours
 
     def __get_fixed_img(self, thresh, img):
@@ -169,7 +151,7 @@ class TesseractOCR:
         json = {}
         for linha in texto:
             if ":" in linha:
-                key, value = linha.split(":")
+                key, value = linha.split(":") or linha.split(";")
                 key = (
                     key.lower()
                     .replace(" ", "")
@@ -188,13 +170,11 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_180g.png"
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
+
     print(texto_reconhecido)
     json = tesseract.read_json(texto_reconhecido)
 
-    # print(f"json:\n{json}")
-    cv2.imshow("Imagem Processada", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    print(f"json:\n{json}")
