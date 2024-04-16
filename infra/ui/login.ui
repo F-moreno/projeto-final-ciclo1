@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>911</width>
+    <width>908</width>
     <height>625</height>
    </rect>
   </property>
@@ -104,7 +104,7 @@ color: #fff</string>
        <string>  Porta</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btn_salvar">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -303,7 +303,7 @@ color: #fff</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>70</y>
+        <y>60</y>
         <width>341</width>
         <height>31</height>
        </rect>
@@ -330,7 +330,7 @@ border-radius: 2px</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>110</y>
+        <y>140</y>
         <width>341</width>
         <height>31</height>
        </rect>
@@ -360,7 +360,7 @@ border-radius: 2px</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>150</y>
+        <y>180</y>
         <width>341</width>
         <height>31</height>
        </rect>
@@ -387,7 +387,7 @@ border-radius: 2px</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>190</y>
+        <y>220</y>
         <width>341</width>
         <height>31</height>
        </rect>
@@ -417,7 +417,7 @@ border-radius: 2px</string>
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>242</y>
+        <y>260</y>
         <width>201</width>
         <height>41</height>
        </rect>
@@ -445,6 +445,33 @@ QPushButton {
       </property>
       <property name="text">
        <string>Cadastrar</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_cpf_cadastro">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
+color: rgb(255, 255, 255);
+border-radius: 2px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>  CPF</string>
       </property>
      </widget>
     </widget>

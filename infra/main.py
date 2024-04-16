@@ -26,29 +26,31 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_config.clicked.connect(self.mostrar_pag_config)
         self.btn_closed.clicked.connect(self.close)
+        self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_sistema(self):
         if self.txt_senha_login.text() == "1234":
             self.abrir_main_window()
         else:
-            print("Senha inválida")
+            QMessageBox.information(self, "Login", "Senha Inválida!")
 
     def cadastrar_usuario(self):
         nome = self.txt_nome_cadastro.text()
+        cpf = self.txt_cpf_cadastro.text()
         email = self.txt_email_cadastro.text()
         telefone = self.txt_telefone_cadastro.text()
         senha = self.txt_senha_cadastro.text()
 
         gerenciamento.cadastro_funcionario(
-            nome=nome, email=email, telefone=telefone, senha=senha
+            nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
         )
 
-        # print("Usuário cadastrado com sucesso!")
         QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
         self.limpar_campos_cadastro()
 
     def limpar_campos_cadastro(self):
         self.txt_nome_cadastro.clear()
+        self.txt_cpf_cadastro.clear()
         self.txt_email_cadastro.clear()
         self.txt_telefone_cadastro.clear()
         self.txt_senha_cadastro.clear()
@@ -89,6 +91,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
         self.btn_encerrar_menu.clicked.connect(self.close)
+        self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
+        self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
 
     def left_menu(self):
         width = self.menu.width()
@@ -113,14 +117,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
 
+    ############################################################
+    #########Página de envio de Documentos Genéricos############
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
 
+    def carregar_arquivo(self):
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+
     def enviar_docs(self):
+        print("Arquivo enviado com sucesso!")
         # btn_arquivo_documento
         # btn_enviar_arquivo
         # tipo_documento
-        pass
+
+    #####################################################################
 
     def mostrar_pag_perfil(self):
         self.Pages.setCurrentWidget(self.pg_perfil)
@@ -149,19 +163,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             image = TesseractOCR().read_image(nomeArquivo)
             json = TesseractOCR().read_json(texto)
             print(json)
-            self.txt_cadastro_nome.setText(json["nome"] if not None else "")
-            self.txt_cadastro_cpf.setText(json["cpf"] if not None else "")
-            self.txt_cadastro_rg.setText(json["rg"] if not None else "")
-            self.txt_cadastro_endereco.setText(json["endereco"] if not None else "")
-            self.txt_cadastro_municipio.setText(json["cidade"] if not None else "")
-            # self.txt_cadastro_cidade.setText(json["cidade"] if not None else "")
-            self.txt_cadastro_estado.setText(json["estado"] if not None else "")
-            self.txt_cadastro_telefone.setText(json["telefone"] if not None else "")
-            # self.txt_cadastro_email.setText(json["email"] if not None else "")
-            # self.txt_cadastro_nascimento.setText(
-            #    json["datadenascimento"] if not None else ""
-            # )
-        # self.txt_cadastro_filiacao.setText(json["filiacao"] if not None else "")
+            self.txt_cadastro_nome.setText(json["nome"])
+            self.txt_cadastro_cpf.setText(json["cpf"])
+            self.txt_cadastro_rg.setText(json["rg"])
+            self.txt_cadastro_filiacao.setText(json["filiacao"])
+            self.txt_cadastro_nascimento.setText(json["nascimento"])
+            self.txt_cadastro_endereco.setText(json["endereco"])
+            self.txt_cadastro_cidade.setText(json["cidade"])
+            self.txt_cadastro_estado.setText(json["estado"])
+            self.txt_cadastro_telefone.setText(json["telefone"])
+            self.txt_cadastro_email.setText(json["email"])
 
 
 if __name__ == "__main__":
