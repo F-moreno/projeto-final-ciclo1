@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QStackedWidget, QWidget)
-from ui import icons_rc
 from PySide6 import QtCore
+from ui import icons_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -221,10 +221,10 @@ class Ui_Form(object):
         self.label_6.setStyleSheet(u"background:transparent;\n"
 "color: #fff\n"
 "")
-        self.txt_email_login = QLineEdit(self.login_v)
-        self.txt_email_login.setObjectName(u"txt_email_login")
-        self.txt_email_login.setGeometry(QRect(22, 159, 221, 31))
-        self.txt_email_login.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);")
+        self.txt_cpf_login = QLineEdit(self.login_v)
+        self.txt_cpf_login.setObjectName(u"txt_cpf_login")
+        self.txt_cpf_login.setGeometry(QRect(22, 159, 221, 31))
+        self.txt_cpf_login.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);")
         self.txt_senha_login = QLineEdit(self.login_v)
         self.txt_senha_login.setObjectName(u"txt_senha_login")
         self.txt_senha_login.setGeometry(QRect(20, 210, 221, 31))
@@ -325,7 +325,7 @@ class Ui_Form(object):
         self.txt_cpf_cadastro.setText("")
         self.txt_cpf_cadastro.setPlaceholderText(QCoreApplication.translate("Form", u"  CPF", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"Login", None))
-        self.txt_email_login.setPlaceholderText(QCoreApplication.translate("Form", u"  Email Corporativo", None))
+        self.txt_cpf_login.setPlaceholderText(QCoreApplication.translate("Form", u"  CPF", None))
         self.txt_senha_login.setPlaceholderText(QCoreApplication.translate("Form", u"  Senha", None))
         self.btn_esqueci_login.setText(QCoreApplication.translate("Form", u"Esqueci a senha", None))
         self.btn_cadastrar_login.setText(QCoreApplication.translate("Form", u"Cadastrar", None))
