@@ -17,7 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QStackedWidget, QWidget)
-import icons_rc
+from ui import icons_rc
+from PySide6 import QtCore
 
 
 class Ui_Form(object):
@@ -25,6 +26,8 @@ class Ui_Form(object):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(908, 625)
+        Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.login_h = QFrame(Form)
         self.login_h.setObjectName(u"login_h")
         self.login_h.setGeometry(QRect(100, 150, 661, 321))

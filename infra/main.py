@@ -88,6 +88,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
         self.btn_encerrar_menu.clicked.connect(self.close)
+        self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
+        self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
 
     def left_menu(self):
         width = self.menu.width()
@@ -111,15 +113,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
-
+        
+############################################################
+#########Página de envio de Documentos Genéricos############
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
         
+    def carregar_arquivo(self):
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+        
     def enviar_docs(self):
+        print("Arquivo enviado com sucesso!")
         #btn_arquivo_documento
         #btn_enviar_arquivo
         #tipo_documento
-        pass
+    
+#####################################################################
 
     def mostrar_pag_perfil(self):
         self.Pages.setCurrentWidget(self.pg_perfil)
