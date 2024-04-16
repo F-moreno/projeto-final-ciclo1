@@ -29,10 +29,15 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_sistema(self):
-        if self.txt_senha_login.text() == "1234":
+        usuario = self.txt_email_login.text()
+        senha = self.txt_senha_login.text()
+
+        sessao = gerenciamento.iniciar_sessao(usuario, senha)
+
+        if sessao:
             self.abrir_main_window()
         else:
-            QMessageBox.information(self, "Login", "Senha Inválida!")
+            QMessageBox.information(self, "Login", "Usuário ou senha inválidos!")
 
     def cadastrar_usuario(self):
         nome = self.txt_nome_cadastro.text()
