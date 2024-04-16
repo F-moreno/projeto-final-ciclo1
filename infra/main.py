@@ -165,10 +165,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def left_menu(self):
         width = self.menu.width()
 
-        if width == 9:
+        if width == 0:
             newWidth = 200
         else:
-            newWidth = 9
+            newWidth = 0
         self.animation = QtCore.QPropertyAnimation(self.menu, b"maximumWidth")
         self.animation.setDuration(500)
         self.animation.setStartValue(width)

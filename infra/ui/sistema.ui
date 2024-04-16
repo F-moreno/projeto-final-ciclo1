@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>932</width>
-    <height>589</height>
+    <width>928</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,11 +18,26 @@
     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QFrame" name="menu">
       <property name="maximumSize">
        <size>
-        <width>9</width>
+        <width>0</width>
         <height>16777215</height>
        </size>
       </property>
@@ -36,8 +51,26 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QFrame" name="frame_2">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(96, 194, 255);</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -57,6 +90,9 @@
        </item>
        <item>
         <widget class="QFrame" name="frame">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(96, 194, 255);</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -64,9 +100,42 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QToolBox" name="toolBox">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
             <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <property name="tabSpacing">
              <number>0</number>
             </property>
             <widget class="QWidget" name="page">
@@ -74,16 +143,31 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>113</width>
-               <height>448</height>
+               <width>115</width>
+               <height>486</height>
               </rect>
              </property>
              <attribute name="label">
               <string>Menu</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QPushButton" name="btn_home_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -97,16 +181,31 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
 </string>
                 </property>
                 <property name="text">
                  <string>Home</string>
                 </property>
+                <property name="autoDefault">
+                 <bool>false</bool>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_cadastrar_menu">
+               <widget class="QPushButton" name="btn_perfil_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -120,6 +219,41 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Perfil</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_cadastrar_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(0, 170, 255);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
 </string>
                 </property>
@@ -129,30 +263,13 @@ QPushButton {
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_historico_menu">
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">
-QPushButton:hover{
-	color: rgb(255, 255, 255);
-	
-	background-color: rgb(0, 170, 255);
-}
-QPushButton {
-	
-	background-color: rgb(96, 194, 255);
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Histórico</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="btn_enviar_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -166,6 +283,9 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
 </string>
                 </property>
@@ -175,7 +295,13 @@ QPushButton {
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_perfil_menu">
+               <widget class="QPushButton" name="btn_historico_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -189,11 +315,14 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
 </string>
                 </property>
                 <property name="text">
-                 <string>Perfil</string>
+                 <string>Histórico</string>
                 </property>
                </widget>
               </item>
@@ -256,6 +385,21 @@ QPushButton {
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QFrame" name="hand_frame">
          <property name="styleSheet">
@@ -268,6 +412,21 @@ QPushButton {
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item alignment="Qt::AlignLeft">
            <widget class="QPushButton" name="btn_toogle">
             <property name="cursor">
@@ -288,8 +447,14 @@ QPushButton {
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
            <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Nome do Sistema&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -314,6 +479,9 @@ QPushButton {
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_14">
           <item>
@@ -600,78 +768,216 @@ QPushButton {
              </layout>
             </widget>
             <widget class="QWidget" name="pg_historico">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
-               <widget class="QFrame" name="frame_10">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+               <widget class="QTabWidget" name="tabWidget">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
                 </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_19">
-                 <item>
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Histórico de Cadastros&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QTableWidget" name="tabela_historico">
-                   <row>
-                    <property name="text">
-                     <string/>
+                <property name="currentIndex">
+                 <number>1</number>
+                </property>
+                <property name="elideMode">
+                 <enum>Qt::ElideNone</enum>
+                </property>
+                <property name="tabBarAutoHide">
+                 <bool>false</bool>
+                </property>
+                <widget class="QWidget" name="tab_historico_cadastro">
+                 <attribute name="title">
+                  <string>Histórico de Cadastros</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_19">
+                  <item>
+                   <widget class="QFrame" name="frame_10">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string/>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string/>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string/>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QTableWidget" name="tabela_historico_cadastros">
+                       <property name="styleSheet">
+                        <string notr="true">QHeaderView::section {
+	background-color: rgb(148, 148, 148);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QTableWidget{
+	background-color: rgb(252, 252, 252);
+}</string>
+                       </property>
+                       <property name="rowCount">
+                        <number>10</number>
+                       </property>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <column>
+                        <property name="text">
+                         <string>Cliente</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Telefone</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Data Cadastro</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="tab_2">
+                 <attribute name="title">
+                  <string>Histórico de Envio de Documentos</string>
+                 </attribute>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <item>
+                   <widget class="QFrame" name="frame_16">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string/>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string/>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
                     </property>
-                   </row>
-                   <column>
-                    <property name="text">
-                     <string>Cliente</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Data do Cadastro</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Telefone</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Status</string>
-                    </property>
-                   </column>
-                  </widget>
-                 </item>
-                </layout>
+                    <layout class="QHBoxLayout" name="horizontalLayout_11">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QTableWidget" name="tabela_historico_documentos">
+                       <property name="styleSheet">
+                        <string notr="true">QHeaderView::section {
+	background-color: rgb(148, 148, 148);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QTableWidget{
+	background-color: rgb(252, 252, 252);
+}</string>
+                       </property>
+                       <property name="rowCount">
+                        <number>10</number>
+                       </property>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <row/>
+                       <column>
+                        <property name="text">
+                         <string>Cliente</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Tipo</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Telefone</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Data Envio</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -918,6 +1224,12 @@ QPushButton {
                 <layout class="QVBoxLayout" name="verticalLayout_9">
                  <item>
                   <widget class="QLabel" name="txt_nome_perfil">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nome do Usuário&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -925,6 +1237,12 @@ QPushButton {
                  </item>
                  <item>
                   <widget class="QLabel" name="txt_email_perfil">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Email do Usuário&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -932,6 +1250,12 @@ QPushButton {
                  </item>
                  <item>
                   <widget class="QLabel" name="txt_telefone_perfil">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Telefone do Usuário&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -942,6 +1266,12 @@ QPushButton {
               </item>
               <item>
                <widget class="QFrame" name="frame_3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
