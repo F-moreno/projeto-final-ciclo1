@@ -1,4 +1,5 @@
 from sqlalchemy import func
+# Caso queira rodar o teste_bd.py, elimine esse "." abaixo
 from .bd_classes import session, Cliente, Funcionario, Sessao, Registro, Documento
 from datetime import datetime
 from dateutil import relativedelta

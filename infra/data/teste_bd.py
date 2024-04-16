@@ -1,4 +1,6 @@
-from gerenciamento import *
+import importlib
+import gerenciamento
+from bd_classes import get_config, set_config
 import cv2
 import numpy as np
 import io
@@ -13,10 +15,13 @@ import io
 """
 
 deletar_registros_teste = True
+print(get_config())
+set_config(db_name="bd_projeto")
+importlib.reload(gerenciamento)
 
 # Teste gerenciamento.cadastro_cliente().
 try:
-    cliente = cadastro_cliente("Cliente Teste",
+    cliente = gerenciamento.cadastro_cliente("Cliente Teste",
                         "12345678912",
                         "1234567",
                         "Pai/Mãe Teste",
@@ -34,10 +39,10 @@ except Exception as e:
 
 # Teste gerenciamento.get_clientes().
 try:
-    clientes = get_clientes(nome="Cliente Teste")
-    clientes = get_clientes(cpf="12345678912")
-    clientes = get_clientes(id=cliente.id)
-    clientes = get_clientes(nome="Cliente Teste",
+    clientes = gerenciamento.get_clientes(nome="Cliente Teste")
+    clientes = gerenciamento.get_clientes(cpf="12345678912")
+    clientes = gerenciamento.get_clientes(id=cliente.id)
+    clientes = gerenciamento.get_clientes(nome="Cliente Teste",
                             cpf="12345678912",
                             id=cliente.id)
     
@@ -48,7 +53,7 @@ except Exception as e:
     
 # Teste gerenciamento.cadastro_funcionario().
 try:
-    funcionario = cadastro_funcionario("Funcionario Teste",
+    funcionario = gerenciamento.cadastro_funcionario("Funcionario Teste",
                         "12345678912",
                         "93988149930",
                         "funcionarioteste@gmail.com",
@@ -61,12 +66,14 @@ except Exception as e:
 
 # Teste gerenciamento.get_funcionarios().
 try:
-    funcionarios = get_funcionarios(nome="Funcionario Teste")
-    funcionarios = get_funcionarios(cpf="12345678912")
-    funcionarios = get_funcionarios(id=funcionario.id)
-    funcionarios = get_funcionarios(nome="Funcionario Teste",
-                                    cpf="12345678912",
-                                    id=funcionario.id)
+    funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste")
+    funcionarios = gerenciamento.get_funcionarios(cpf="12345678912")
+    funcionarios = gerenciamento.get_funcionarios(id=funcionario.id)
+    funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste",
+                                                    cpf="12345678912",
+                                                    id=funcionario.id)
+    
+    funcionarios[0].atualizar(nome="RAFAEL") # Teste Funcionario.atualizar
     
     print("get_funcionarios(): OK")
 except Exception as e:
@@ -75,7 +82,7 @@ except Exception as e:
 
 # Teste gerenciamento.iniciar_sessao().
 try:
-    sessao = iniciar_sessao("12345678912", "teste123")
+    sessao = gerenciamento.iniciar_sessao("12345678912", "teste123")
     print("iniciar_sessao(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.iniciar_sessao()': {e}")
@@ -100,12 +107,12 @@ except Exception as e:
 
 # Testando get_documentos()
 try:
-    documentos = get_documentos(id=documento.id)
-    documentos = get_documentos(fk_cliente=cliente.id)
-    documentos = get_documentos(tipo="Teste")
-    documentos = get_documentos(id=documento.id,
-                                fk_cliente=cliente.id,
-                                tipo="Teste")
+    documentos = gerenciamento.get_documentos(id=documento.id)
+    documentos = gerenciamento.get_documentos(fk_cliente=cliente.id)
+    documentos = gerenciamento.get_documentos(tipo="Teste")
+    documentos = gerenciamento.get_documentos(id=documento.id,
+                                                fk_cliente=cliente.id,
+                                                tipo="Teste")
         
     imagem_numpy = np.frombuffer(documentos[0].arquivo_original, np.uint8)
     imagem_decodificada = cv2.imdecode(imagem_numpy, cv2.IMREAD_COLOR)
@@ -121,15 +128,15 @@ except Exception as e:
 # Teste gerenciamento.get_registros()
 try:
     # Buscar todos os registros do dia 13 de abril de 2024
-    registros = get_registros(dia="13-04-2024")
+    registros = gerenciamento.get_registros(dia="13-04-2024")
     # Buscar todos os registros da sessão "1"
-    registros = get_registros(fk_sessao=1)
+    registros = gerenciamento.get_registros(fk_sessao=1)
     # Buscar registro específico (id = 10)
-    registros = get_registros(id=1)
+    registros = gerenciamento.get_registros(id=1)
     # Buscar todos os registros de abril de 2024 (id = 10)
-    registros = get_registros(mes="04-2024")
+    registros = gerenciamento.get_registros(mes="04-2024")
     # Buscar todos os registros de 2024
-    registros = get_registros(ano="2024")
+    registros = gerenciamento.get_registros(ano="2024")
     print("get_registros(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_registros': {e}")
@@ -138,30 +145,30 @@ except Exception as e:
 # Teste gerenciamento.get_sessoes()
 try:
     # Buscar todas as sessões do dia 13 de abril de 2024
-    sessoes = get_sessoes(dia="13-04-2024")
+    sessoes = gerenciamento.get_sessoes(dia="13-04-2024")
     # Buscar todas as sessões do funcionário "1"
-    sessoes = get_sessoes(fk_funcionario=1)
+    sessoes = gerenciamento.get_sessoes(fk_funcionario=1)
     # Buscar sessão específica (id = 10)
-    sessoes = get_sessoes(id=1)
+    sessoes = gerenciamento.get_sessoes(id=1)
     # Buscar todas as sessões de abril de 2024 (id = 10)
-    sessoes = get_sessoes(mes="04-2024")
+    sessoes = gerenciamento.get_sessoes(mes="04-2024")
     # Buscar todas as sessões de 2024
-    sessoes = get_sessoes(ano="2024")
+    sessoes = gerenciamento.get_sessoes(ano="2024")
     print("get_sessoes(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_sessoes': {e}")
     
     
-encerrar_sessao(sessao)
+gerenciamento.encerrar_sessao(sessao)
 if deletar_registros_teste:
     try:
         # Deleção de registros de teste
-        session.delete(documento.registro[0])
-        session.delete(sessao)
-        session.delete(funcionario)
-        session.delete(documento)
-        session.delete(cliente)
-        session.commit()
+        gerenciamento.session.delete(documento.registro[0])
+        gerenciamento.session.delete(sessao)
+        gerenciamento.session.delete(funcionario)
+        gerenciamento.session.delete(documento)
+        gerenciamento.session.delete(cliente)
+        gerenciamento.session.commit()
         print("Registros Deletados: OK")
     except Exception as e:
         print(f"ERRO AO DELETAR REGISTROS': {e}")
