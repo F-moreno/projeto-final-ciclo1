@@ -43,7 +43,7 @@ class Login(QWidget, Ui_Form):
             nome=nome, email=email, telefone=telefone, senha=senha
         )
 
-        #print("Usuário cadastrado com sucesso!")
+        # print("Usuário cadastrado com sucesso!")
         QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
         self.limpar_campos_cadastro()
 
@@ -69,10 +69,11 @@ class Login(QWidget, Ui_Form):
 
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
-        #txt_ip
-        #txt_porta
-        #btn_padrao
-        #btn_salvar_config
+        # txt_ip
+        # txt_porta
+        # btn_padrao
+        # btn_salvar_config
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -114,11 +115,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
-        
+
     def enviar_docs(self):
-        #btn_arquivo_documento
-        #btn_enviar_arquivo
-        #tipo_documento
+        # btn_arquivo_documento
+        # btn_enviar_arquivo
+        # tipo_documento
         pass
 
     def mostrar_pag_perfil(self):
@@ -126,17 +127,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_alteracao_perfil(self):
         self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
-        #txt_perfil_alterar_nome
-        #txt_perfil_alterar_email
-        #txt_perfil_alterar_telefone
-        #btn_salvar_alteracoes
+        # txt_perfil_alterar_nome
+        # txt_perfil_alterar_email
+        # txt_perfil_alterar_telefone
+        # btn_salvar_alteracoes
 
     def carregar_docs_cadastro(self):
-        #btn_carregar_documentos
-        #lista_documentos_cadastro
-        #btn_cadastro_enviar
+        # btn_carregar_documentos
+        # lista_documentos_cadastro
+        # btn_cadastro_enviar
         pass
-    
+
     def abrir_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
@@ -146,15 +147,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("Arquivo selecionado", nomeArquivo)
             texto = TesseractOCR().read_text(nomeArquivo)
             image = TesseractOCR().read_image(nomeArquivo)
-            json = TesseractOCR().extrair_dados(texto)
+            json = TesseractOCR().read_json(texto)
             print(json)
-            self.txt_cadastro_nome.setText(json["nome"])
-            self.txt_cadastro_cpf.setText(json["cpf"])
-            self.txt_cadastro_rg.setText(json["rg"])
-            self.txt_cadastro_endereco.setText(json["endereco"])
-            self.txt_cadastro_municipio.setText(json["cidade"])
-            self.txt_cadastro_estado.setText(json["estado"])
-            self.txt_cadastro_telefone.setText(json["telefone"])
+            self.txt_cadastro_nome.setText(json["nome"] if not None else "")
+            self.txt_cadastro_cpf.setText(json["cpf"] if not None else "")
+            self.txt_cadastro_rg.setText(json["rg"] if not None else "")
+            self.txt_cadastro_endereco.setText(json["endereco"] if not None else "")
+            self.txt_cadastro_municipio.setText(json["cidade"] if not None else "")
+            # self.txt_cadastro_cidade.setText(json["cidade"] if not None else "")
+            self.txt_cadastro_estado.setText(json["estado"] if not None else "")
+            self.txt_cadastro_telefone.setText(json["telefone"] if not None else "")
+            # self.txt_cadastro_email.setText(json["email"] if not None else "")
+            # self.txt_cadastro_nascimento.setText(
+            #    json["datadenascimento"] if not None else ""
+            # )
+        # self.txt_cadastro_filiacao.setText(json["filiacao"] if not None else "")
 
 
 if __name__ == "__main__":
