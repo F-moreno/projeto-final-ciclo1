@@ -71,10 +71,11 @@ class Login(QWidget, Ui_Form):
 
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
-        #txt_ip
-        #txt_porta
-        #btn_padrao
-        #btn_salvar_config
+        # txt_ip
+        # txt_porta
+        # btn_padrao
+        # btn_salvar_config
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -118,13 +119,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
-        
+
     def carregar_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
             self, "Selecione o Arquivo", "", "All Files(*)", options=options
         )
-        
+
     def enviar_docs(self):
         print("Arquivo enviado com sucesso!")
         #btn_arquivo_documento
@@ -167,11 +168,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         
     def carregar_docs_cadastro(self):
-        #btn_carregar_documentos
-        #lista_documentos_cadastro
-        #btn_cadastro_enviar
+        # btn_carregar_documentos
+        # lista_documentos_cadastro
+        # btn_cadastro_enviar
         pass
-    
+
     def abrir_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
@@ -181,7 +182,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("Arquivo selecionado", nomeArquivo)
             texto = TesseractOCR().read_text(nomeArquivo)
             image = TesseractOCR().read_image(nomeArquivo)
-            json = TesseractOCR().extrair_dados(texto)
+            json = TesseractOCR().read_json(texto)
             print(json)
             self.txt_cadastro_nome.setText(json["nome"])
             self.txt_cadastro_cpf.setText(json["cpf"])
