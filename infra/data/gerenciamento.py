@@ -57,7 +57,7 @@ def cadastro_cliente(nome:str,
         return novo_cliente
     except Exception as e:
         raise Exception(f"Erro ao cadastrar cliente: {e}")
-    
+
 
 def cadastro_funcionario(nome:str, cpf:str, telefone:str, email:str, senha:str) -> Funcionario:
     """Adiciona um Funcionario ao Banco de Dados.
@@ -134,7 +134,7 @@ def encerrar_sessao(sessao: Sessao):
         session.commit()
     except Exception as e:
         raise Exception(f"Erro ao registrar fim de sessão: {e}")
-    
+
 
 # CONSULTAS
 
@@ -330,13 +330,13 @@ def get_documentos(id:int=None,
     kwargs = {}
     if id:
         kwargs["id"] = id
-        
+
     if fk_cliente:
         kwargs["fk_cliente"] = fk_cliente
-        
+
     if tipo:
         kwargs["tipo"] = tipo
-    
+
     try:
         documentos = session.query(Documento).filter_by(**kwargs)
         return documentos.all() 
