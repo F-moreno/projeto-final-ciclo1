@@ -156,6 +156,13 @@ class Ui_Form(object):
         self.txt_nome_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 2px")
+        self.txt_cpf_cadastro = QLineEdit(self.pg_cadastrar)
+        self.txt_cpf_cadastro.setObjectName(u"txt_cpf_cadastro")
+        self.txt_cpf_cadastro.setGeometry(QRect(0, 100, 341, 31))
+        self.txt_cpf_cadastro.setFont(font4)
+        self.txt_cpf_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 2px")
         self.txt_email_cadastro = QLineEdit(self.pg_cadastrar)
         self.txt_email_cadastro.setObjectName(u"txt_email_cadastro")
         self.txt_email_cadastro.setGeometry(QRect(0, 140, 341, 31))
@@ -197,13 +204,7 @@ class Ui_Form(object):
 "	background-color: rgb(96, 194, 255);\n"
 "}\n"
 "")
-        self.txt_cpf_cadastro = QLineEdit(self.pg_cadastrar)
-        self.txt_cpf_cadastro.setObjectName(u"txt_cpf_cadastro")
-        self.txt_cpf_cadastro.setGeometry(QRect(0, 100, 341, 31))
-        self.txt_cpf_cadastro.setFont(font4)
-        self.txt_cpf_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 2px")
+        
         self.Pages.addWidget(self.pg_cadastrar)
         self.login_v = QFrame(Form)
         self.login_v.setObjectName(u"login_v")

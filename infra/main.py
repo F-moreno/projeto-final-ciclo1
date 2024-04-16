@@ -29,7 +29,7 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_sistema(self):
-        usuario = self.txt_email_login.text()
+        usuario = self.txt_cpf_login.text()
         senha = self.txt_senha_login.text()
 
         sessao = gerenciamento.iniciar_sessao(usuario, senha)
