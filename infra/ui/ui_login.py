@@ -20,7 +20,6 @@ from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
 from ui import icons_rc
 from PySide6 import QtCore
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
@@ -149,7 +148,7 @@ class Ui_Form(object):
 "color: #fff")
         self.txt_nome_cadastro = QLineEdit(self.pg_cadastrar)
         self.txt_nome_cadastro.setObjectName(u"txt_nome_cadastro")
-        self.txt_nome_cadastro.setGeometry(QRect(0, 70, 341, 31))
+        self.txt_nome_cadastro.setGeometry(QRect(0, 60, 341, 31))
         font4 = QFont()
         font4.setPointSize(9)
         font4.setStrikeOut(False)
@@ -159,7 +158,7 @@ class Ui_Form(object):
 "border-radius: 2px")
         self.txt_email_cadastro = QLineEdit(self.pg_cadastrar)
         self.txt_email_cadastro.setObjectName(u"txt_email_cadastro")
-        self.txt_email_cadastro.setGeometry(QRect(0, 110, 341, 31))
+        self.txt_email_cadastro.setGeometry(QRect(0, 140, 341, 31))
         self.txt_email_cadastro.setFont(font4)
         self.txt_email_cadastro.setCursor(QCursor(Qt.IBeamCursor))
         self.txt_email_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
@@ -167,14 +166,14 @@ class Ui_Form(object):
 "border-radius: 2px")
         self.txt_telefone_cadastro = QLineEdit(self.pg_cadastrar)
         self.txt_telefone_cadastro.setObjectName(u"txt_telefone_cadastro")
-        self.txt_telefone_cadastro.setGeometry(QRect(0, 150, 341, 31))
+        self.txt_telefone_cadastro.setGeometry(QRect(0, 180, 341, 31))
         self.txt_telefone_cadastro.setFont(font4)
         self.txt_telefone_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 2px")
         self.txt_senha_cadastro = QLineEdit(self.pg_cadastrar)
         self.txt_senha_cadastro.setObjectName(u"txt_senha_cadastro")
-        self.txt_senha_cadastro.setGeometry(QRect(0, 190, 341, 31))
+        self.txt_senha_cadastro.setGeometry(QRect(0, 220, 341, 31))
         self.txt_senha_cadastro.setFont(font4)
         self.txt_senha_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
 "color: rgb(255, 255, 255);\n"
@@ -182,7 +181,7 @@ class Ui_Form(object):
         self.txt_senha_cadastro.setEchoMode(QLineEdit.Password)
         self.btn_cadastrar = QPushButton(self.pg_cadastrar)
         self.btn_cadastrar.setObjectName(u"btn_cadastrar")
-        self.btn_cadastrar.setGeometry(QRect(80, 242, 201, 41))
+        self.btn_cadastrar.setGeometry(QRect(80, 260, 201, 41))
         font5 = QFont()
         font5.setPointSize(12)
         self.btn_cadastrar.setFont(font5)
@@ -198,6 +197,13 @@ class Ui_Form(object):
 "	background-color: rgb(96, 194, 255);\n"
 "}\n"
 "")
+        self.txt_cpf_cadastro = QLineEdit(self.pg_cadastrar)
+        self.txt_cpf_cadastro.setObjectName(u"txt_cpf_cadastro")
+        self.txt_cpf_cadastro.setGeometry(QRect(0, 100, 341, 31))
+        self.txt_cpf_cadastro.setFont(font4)
+        self.txt_cpf_cadastro.setStyleSheet(u"background-color: rgba(0, 0, 0, 0.1);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 2px")
         self.Pages.addWidget(self.pg_cadastrar)
         self.login_v = QFrame(Form)
         self.login_v.setObjectName(u"login_v")
@@ -289,7 +295,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.Pages.setCurrentIndex(2)
+        self.Pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -316,6 +322,8 @@ class Ui_Form(object):
         self.txt_senha_cadastro.setText("")
         self.txt_senha_cadastro.setPlaceholderText(QCoreApplication.translate("Form", u"  Senha", None))
         self.btn_cadastrar.setText(QCoreApplication.translate("Form", u"Cadastrar", None))
+        self.txt_cpf_cadastro.setText("")
+        self.txt_cpf_cadastro.setPlaceholderText(QCoreApplication.translate("Form", u"  CPF", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"Login", None))
         self.txt_email_login.setPlaceholderText(QCoreApplication.translate("Form", u"  Email Corporativo", None))
         self.txt_senha_login.setPlaceholderText(QCoreApplication.translate("Form", u"  Senha", None))
