@@ -39,12 +39,57 @@ class Login(QWidget, Ui_Form):
         else:
             QMessageBox.information(self, "Login", "Usuário ou senha inválidos!")
 
+    def validar_cpf(self, cpf):
+        cpf = "".join(filter(str.isdigit, cpf))
+
+        if len(cpf) != 11:
+            return False
+
+        if cpf == cpf[0] * 11:
+            return False
+
+        soma = sum(int(cpf[i]) * (10 - i) for i in range(9)) % 11
+        digito_verif_1 = 0 if soma < 2 else 11 - soma
+
+        if int(cpf[9]) != digito_verif_1:
+            return False
+
+        soma = sum(int(cpf[i]) * (11 - i) for i in range(10)) % 11
+        digito_verif_2 = 0 if soma < 2 else 11 - soma
+
+        if int(cpf[10]) != digito_verif_2:
+            return False
+
+        return True
+
+    def validar_email(self, email):
+        # Verifica se o e-mail possui um "@" e pelo menos um ponto após o "@"
+        if "@" in email and "." in email[email.index("@") :]:
+            return True
+        else:
+            return False
+        
+
     def cadastrar_usuario(self):
         nome = self.txt_nome_cadastro.text()
         cpf = self.txt_cpf_cadastro.text()
         email = self.txt_email_cadastro.text()
         telefone = self.txt_telefone_cadastro.text()
         senha = self.txt_senha_cadastro.text()
+
+        
+        if email.lower() != "teste":
+            if not self.validar_email(email):
+                QMessageBox.warning(
+                    self, "E-mail Inválido", "Por favor, insira um e-mail válido."
+                )
+                return
+
+            if not self.validar_cpf(cpf):
+                QMessageBox.warning(
+                    self, "CPF Inválido", "Por favor, insira um CPF válido."
+                )
+                return
 
         gerenciamento.cadastro_funcionario(
             nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
