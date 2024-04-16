@@ -110,15 +110,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
+        
+############################################################
+#########Página de envio de Documentos Genéricos############
+#Essas funções terão que permitir ao usuário escolher o tipo 
+# do arquivo que vai enviar e ao clicar no botão de envio 
+# esse documento subir para o banco.
 
-    def mostrar_pag_cadastro(self):
-        self.Pages.setCurrentWidget(self.pg_cadastrar)
-
-    def mostrar_pag_historico(self):
-        self.Pages.setCurrentWidget(self.pg_historico)
-
-    ############################################################
-    #########Página de envio de Documentos Genéricos############
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
 
@@ -130,22 +128,45 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def enviar_docs(self):
         print("Arquivo enviado com sucesso!")
-        # btn_arquivo_documento
-        # btn_enviar_arquivo
-        # tipo_documento
-
-    #####################################################################
-
+        #btn_arquivo_documento
+        #btn_enviar_arquivo
+        #tipo_documento
+    
+##############################################################################
+#########Página de exibição de Perfil e alteração de Dados básicos############
+#Essas funções deverão permitir que ao usuário visualizar seus dados básico de 
+# Perfil, que ele ao clicar no botão de alterar perfil a página de alteração 
+# seja aberta e o usuário possa adicionar novos valores para os dados que quer 
+# alterar. Ao clicar em salvar os dados serão atualizados no Banco de Dados. 
+# Um ponto importante é que para exibir esses dados iniciais precisamos ter 
+# um retorno do Banco com esses dados do usuário no momento que ele fizer login.
     def mostrar_pag_perfil(self):
         self.Pages.setCurrentWidget(self.pg_perfil)
 
     def mostrar_pag_alteracao_perfil(self):
         self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
-        # txt_perfil_alterar_nome
-        # txt_perfil_alterar_email
-        # txt_perfil_alterar_telefone
-        # btn_salvar_alteracoes
+        #txt_perfil_alterar_nome
+        #txt_perfil_alterar_email
+        #txt_perfil_alterar_telefone
+        #btn_salvar_alteracoes
 
+#############################################################################
+############ Página de Cadastro de Cliente ##################################
+# Essas funções devem permitir que o usuário carregue o arquivo digitalizado
+# e que esse arquivo extraia as informações para preenchimento do formulário 
+# e mostre na tela. Os campos são editávei pois quando o usuário verificar 
+# que precisa melhorar alguma informação ele terá essa facilidade. Outra 
+# função importante é a parte de selecionar documentos que serão anexados ao 
+# cadastro como CNH, RG, etc. Os documentos vão aparecer na lista que fica na 
+# tela para que ao final o usuário possa visualizar tanto o formulário 
+# preenchido quanto os arquivo selecionados. Ao clicar em enviar cadastro o 
+# sistema enviará para o banco a criação daquele cadastro e vinculação dos 
+# documentos àquele cliente.
+
+    def mostrar_pag_cadastro(self):
+        self.Pages.setCurrentWidget(self.pg_cadastrar)
+        
+        
     def carregar_docs_cadastro(self):
         # btn_carregar_documentos
         # lista_documentos_cadastro
@@ -173,7 +194,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txt_cadastro_estado.setText(json["estado"])
             self.txt_cadastro_telefone.setText(json["telefone"])
             self.txt_cadastro_email.setText(json["email"])
+            
+#################################################################################
+################## Página de Exibição do Histórico ##############################
+# Essas funções tratarão da exibição do histórico de cadastros realizados por 
+# aquele usuário. Portanto teremos a necessidade de funções que busquem um SELECT
+# no BD com os cadastros daquele usuário. 
 
+    def mostrar_pag_historico(self):
+        self.Pages.setCurrentWidget(self.pg_historico)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
