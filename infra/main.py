@@ -29,7 +29,7 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
     def abrir_sistema(self):
-        usuario = self.txt_email_login.text()
+        usuario = self.txt_cpf_login.text()
         senha = self.txt_senha_login.text()
 
         sessao = gerenciamento.iniciar_sessao(usuario, senha)
@@ -170,9 +170,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sessao:
             informacoes = sessao.funcionario
             if informacoes:
-                self.txt_nome_perfil.setText(funcionario.nome)
-                self.txt_email_perfil.setText(funcionario.email)
-                self.txt_telefone_perfil.setText(funcionario.telefone)
+                self.txt_nome_perfil.setText(informacoes.nome)
+                self.txt_email_perfil.setText(informacoes.email)
+                self.txt_telefone_perfil.setText(informacoes.telefone)
                 self.Pages.setCurrentWidget(self.pg_perfil)
             else:
                 QMessageBox.information(
