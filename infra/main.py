@@ -170,9 +170,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sessao:
             informacoes = sessao.funcionario
             if informacoes:
-                self.txt_nome_perfil.setText(funcionario.nome)
-                self.txt_email_perfil.setText(funcionario.email)
-                self.txt_telefone_perfil.setText(funcionario.telefone)
+                self.txt_nome_perfil.setText(informacoes.nome)
+                self.txt_email_perfil.setText(informacoes.email)
+                self.txt_telefone_perfil.setText(informacoes.telefone)
                 self.Pages.setCurrentWidget(self.pg_perfil)
             else:
                 QMessageBox.information(
