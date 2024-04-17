@@ -1,5 +1,5 @@
 import importlib
-import gerenciamento
+from infra.data import gerenciamento
 from infra.data.bd_classes import get_config, set_config
 import cv2
 import numpy as np
@@ -96,6 +96,7 @@ try:
         bytes_imagem = f.read()
 
     documento = sessao.salvar_documento(
+        titulo="AAA",
         tipo="Teste",
         arquivo_original=bytes_imagem,
         conteudo="Teste teste teste",
