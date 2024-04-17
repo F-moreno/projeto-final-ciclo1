@@ -17,6 +17,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from sqlalchemy.exc import OperationalError
 from datetime import datetime
 from typing import Dict
+from copy import deepcopy
 
 Base = declarative_base()
 config_backup = None
@@ -50,10 +51,16 @@ def set_config(
         db_host (str): ip do servidor ("localhost" para rodar localmente).
         db_port (str): porta do servidor (None quando rodando localmente).
         db_name (str): nome do banco de dados.
+    
+    Returns:
+        bool:
+            True: se a configuração for efetuada corretamente e o banco se conectar com sucesso.
+            False: se houver erro ao salvar a configuração ou ao se conectar com o banco.
     """
     global config
     global config_backup
-    config_backup = get_config()
+    config_backup = deepcopy(get_config())
+
     session.close()
 
     try:
@@ -75,16 +82,21 @@ def set_config(
             set_key(dotenv_path, "DB_NAME", db_name)
             config["db_name"] = db_name
 
-        connect_bd()
+        return connect_bd()
+    
     except Exception as e:
         set_key(dotenv_path, "DB_USER", config_backup["db_user"])
         set_key(dotenv_path, "DB_PASS", config_backup["db_pass"])
         set_key(dotenv_path, "DB_HOST", config_backup["db_host"])
         set_key(dotenv_path, "DB_PORT", config_backup["db_port"])
         set_key(dotenv_path, "DB_NAME", config_backup["db_name"])
-
+        config["db_user"] = config_backup["db_user"]
+        config["db_pass"] = config_backup["db_pass"]
+        config["db_host"] = config_backup["db_host"]
+        config["db_port"] = config_backup["db_port"]
+        config["db_name"] = config_backup["db_name"]
         print(f"Erro ao alterar configurações. Backup das configurações realizado: {e}")
-
+        return False
 
 def get_config() -> Dict[str, str]:
     """Retorna as configurações atuais do servidor e banco de dados escritas no arquivo '.env'
@@ -97,20 +109,30 @@ def get_config() -> Dict[str, str]:
             db_port (str): porta do servidor (None quando rodando localmente).
             db_name (str): nome do banco de dados.
     """
-    return config
+    config_dict_str = deepcopy(config)
+    config_dict_str["db_port"] = config_dict_str["db_port"]
+    return config_dict_str
 
 
-def connect_bd() -> None:
+def connect_bd() -> bool:
     """Verifica a existência do banco de dados no servidor configurado no
     arquivo '.env'. Se existir, tenta conectar no mesmo, senão, cria e tenta
     conectar novamente.
+
+    Returns:
+        bool:
+            True: se conectar com sucesso.
+            False: se houver erro ao conectar.
+            
+    raises:
+        Exception: Erro ao conectar Banco de Dados.
     """
-    config = get_config()
-    db_user = config["db_user"]
-    db_pass = config["db_pass"]
-    db_host = config["db_host"]
-    db_port = config["db_port"]
-    db_name = config["db_name"]
+    config_atual = get_config()
+    db_user = config_atual["db_user"]
+    db_pass = config_atual["db_pass"]
+    db_host = config_atual["db_host"]
+    db_port = int(config_atual["db_port"]) if config_atual["db_port"] else ""
+    db_name = config_atual["db_name"]
 
     try:
         global Session
@@ -151,21 +173,10 @@ def connect_bd() -> None:
         session = Session()
         Base.metadata.create_all(engine)
         print(f"Conectado ao Banco de Dados '{db_name}' com sucesso.")
-
+        return True
+    
     except Exception as e:
-        print(f"Erro ao conectar Banco de Dados '{db_name}': {e}")
-
-        if config_backup:
-            # Restaurando configurações caso haja algum backup
-            print(f"Restaurando configuração anterior...")
-            set_config(
-                db_user=config_backup["db_user"],
-                db_pass=config_backup["db_pass"],
-                db_host=config_backup["db_host"],
-                db_port=config_backup["db_port"],
-                db_name=config_backup["db_name"],
-            )
-
+        raise Exception(f"Erro ao conectar Banco de Dados '{db_name}': {e}")
 
 connect_bd()
 
@@ -302,6 +313,7 @@ class Documento(Base):
     Atributos:
         id (int): Identificador único do documento (chave primária).
         fk_cliente (int, opcional): Chave estrangeira que referencia um cliente (Caso haja um associado).
+        titulo (str): Campo que representa o titulo específico para identificação do documento.
         tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
         conteudo (str): Conteúdo extraído do arquivo original.
         arquivo_original (LargeBinary): Representação binária do documento original.
@@ -314,14 +326,16 @@ class Documento(Base):
 
     id = Column(Integer, primary_key=True)
     fk_cliente = Column(Integer, ForeignKey("cliente.id"))
+    titulo = Column(String, nullable=False)
     tipo = Column(String, nullable=False)
     conteudo = Column(String, nullable=False)
     arquivo_original = Column(LargeBinary, nullable=False)
 
     registro = relationship("Registro", back_populates="documento")
     cliente = relationship("Cliente", back_populates="documentos")
-
+    
     idx_documento_id = Index("idx_documento_id", id)
+    idx_documento_titulo = Index("idx_documento_titulo", titulo)
     idx_documento_tipo = Index("idx_documento_tipo", tipo)
     idx_documento_cliente = Index("idx_documento_cliente", fk_cliente)
 
@@ -355,32 +369,34 @@ class Sessao(Base):
     idx_sessao_data = Index("idx_sessao_data", data)
 
     def salvar_documento(
-        self, tipo: str, arquivo_original: bytes, conteudo: str, cliente: Cliente = None
-    ) -> Documento:
+        self, titulo: str, tipo: str, arquivo_original: bytes, conteudo: str, cliente: Cliente = None
+        ) -> Documento:
         """Registra um documento no Banco de Dados a partir dos dados dessa sessão
 
         Args:
+            titulo (str): Campo que representa o titulo específico para identificação do documento.
             tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
             arquivo_original (LargeBinary): Representação binária do documento original.
             conteudo (str): Conteúdo extraído do arquivo original.
-            cliente (Cliente, optional): Caso haja um cliente associado.
+            cliente (Cliente, opcional): Caso haja um cliente associado.
 
         Raises:
             Exception: Erro ao efetuar o commit do registro e documento.
         """
 
-        titulo = f"Salvou um documento."
+        titulo_registro = f"Salvou um documento."
         if cliente:
-            titulo = f"Salvou um documento de {cliente.nome}."
+            titulo_registro = f"Salvou o documento {titulo} de {cliente.nome}."
 
         # Criando Registro.
         registro = Registro(
-            fk_sessao=self.id, horario=datetime.now(), titulo_atividade=titulo
+            fk_sessao=self.id, horario=datetime.now(), titulo_atividade=titulo_registro
         )
 
         # Criando Documento.
         documento = Documento(
             fk_cliente=cliente.id,
+            titulo=titulo,
             tipo=tipo,
             conteudo=conteudo,
             arquivo_original=arquivo_original,

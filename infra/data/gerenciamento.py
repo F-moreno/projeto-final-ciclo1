@@ -344,6 +344,7 @@ def get_sessoes(
 def get_documentos(
     id: int = None,
     fk_cliente: int = None,
+    titulo: str = None,
     tipo: str = None,
 ) -> List[Documento]:
     """Retorna uma lista de documentos com base nos argumentos.
@@ -352,6 +353,7 @@ def get_documentos(
     Args:
         id (int, opcional): filtrar por id único de um documento.
         fk_cliente (int, opcional): filtrar por id de um cliente específico.
+        titulo (str, opcional): Campo que representa o titulo específico para identificação do documento.
         tipo (str, opcional): filtrar por tipo de documento.
 
     Returns:
@@ -366,6 +368,9 @@ def get_documentos(
 
     if tipo:
         kwargs["tipo"] = tipo
+    
+    if titulo:
+        kwargs["titulo"] = titulo
 
     try:
         documentos = session.query(Documento).filter_by(**kwargs)
