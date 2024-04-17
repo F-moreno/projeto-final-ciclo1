@@ -1,6 +1,14 @@
 from sqlalchemy import func
+
 # Caso queira rodar o teste_bd.py, elimine esse "." abaixo
-from .bd_classes import session, Cliente, Funcionario, Sessao, Registro, Documento
+from infra.data.bd_classes import (
+    session,
+    Cliente,
+    Funcionario,
+    Sessao,
+    Registro,
+    Documento,
+)
 from datetime import datetime
 from dateutil import relativedelta
 from passlib.hash import argon2

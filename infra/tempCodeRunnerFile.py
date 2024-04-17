@@ -7,3 +7,4 @@ def cadastrar_usuario(self):
     #     gerenciamento.cadastro_funcionario(
     #         nome=nome, email=email, telefone=telefone, senha=senha
     #     )
+    pass
