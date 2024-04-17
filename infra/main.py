@@ -8,9 +8,9 @@ from PySide6.QtWidgets import (
     QTreeWidgetItem,
     QWidget,
 )
-from data import gerenciamento
-from ui.ui_login import Ui_Form
-from ui.ui_sistema import Ui_MainWindow
+from infra.data import (bd_classes, gerenciamento)
+from infra.ui.ui_login import Ui_Form
+from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
 
@@ -27,6 +27,8 @@ class Login(QWidget, Ui_Form):
         self.btn_config.clicked.connect(self.mostrar_pag_config)
         self.btn_closed.clicked.connect(self.close)
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
+        self.btn_padrao.clicked.connect(self.padrao_configuracao)
+        self.btn_salvar.clicked.connect(self.salvar_configuracao)
 
     def abrir_sistema(self):
         usuario = self.txt_cpf_login.text()
@@ -134,14 +136,16 @@ class Login(QWidget, Ui_Form):
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
-
-        bd_classes.set_config(ip, porta)
+        bd_classes.set_config(db_host=ip, db_port=porta)
         QMessageBox.information(
             self,
             "Configuração",
             "Configuração do banco de dados atualizada com sucesso!",
         )
 
+    def padrao_configuracao(self):
+        self.txt_ip.setText("localhost")
+        self.txt_porta.setText("5432")
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
