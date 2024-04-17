@@ -164,6 +164,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_encerrar_menu.clicked.connect(self.close)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
+        self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
 
     def left_menu(self):
         width = self.menu.width()
@@ -259,10 +260,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
     def carregar_docs_cadastro(self):
-        # btn_carregar_documentos
-        # lista_documentos_cadastro
-        # btn_cadastro_enviar
-        pass
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+        if nomeArquivo:
+            self.lista_documentos_cadastro.addItem(nomeArquivo)
+        
 
     def abrir_arquivo(self):
         options = QFileDialog.Option()
@@ -294,7 +298,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
-
+        #Precisa avaliar se é melhor fazer dentro de apenas uma função ou se faz outra para essa finalidade.
+        #Lógica para buscar acesso do BD
+        #conn = sqlite3.connect('exemplo.db')
+        #cursor = conn.cursor()
+        
+        #Lógica para chamar a função do BD que busca os dados desejados
+        #cursor.execute("SELECT nome, idade FROM pessoas")
+        #rows = cursor.fetchall()
+        #self.tabela_historico_cadastros.setRowCount(rows)
+        #self.tabela_historico_cadastros.setColumnCount(2) -> o valor entre parenteses indica o número de colunas
+        #for i, row in enumerate(rows):
+        #    for j, col in enumerate(row):
+        #        item = QTableWidgetItem(str(col))
+        #        self.tabela_historico_cadastros.setItem(i, j, item)
+        #cursor.close()
+        #conn.close()
 
 def main():
     app = QApplication(sys.argv)

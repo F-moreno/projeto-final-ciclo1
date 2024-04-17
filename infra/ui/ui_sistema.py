@@ -17,16 +17,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QListView, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTabWidget, QTableWidget,
-    QTableWidgetItem, QToolBox, QVBoxLayout, QWidget)
+    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
+    QTableWidget, QTableWidgetItem, QToolBox, QVBoxLayout,
+    QWidget)
 from infra.ui import icons_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(928, 561)
+        MainWindow.resize(940, 585)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
@@ -36,6 +37,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.menu = QFrame(self.centralwidget)
         self.menu.setObjectName(u"menu")
+        self.menu.setMinimumSize(QSize(0, 0))
         self.menu.setMaximumSize(QSize(0, 16777215))
         self.menu.setStyleSheet(u"background: transparent;")
         self.menu.setFrameShape(QFrame.StyledPanel)
@@ -77,7 +79,7 @@ class Ui_MainWindow(object):
         self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 115, 486))
+        self.page.setGeometry(QRect(0, 0, 115, 507))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -436,9 +438,12 @@ class Ui_MainWindow(object):
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_14)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.lista_documentos_cadastro = QListView(self.frame_14)
+        self.lista_documentos_cadastro = QListWidget(self.frame_14)
         self.lista_documentos_cadastro.setObjectName(u"lista_documentos_cadastro")
-        self.lista_documentos_cadastro.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lista_documentos_cadastro.setStyleSheet(u"QListWidget{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0,0,0);\n"
+"}")
 
         self.verticalLayout_17.addWidget(self.lista_documentos_cadastro)
 
@@ -540,8 +545,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.tabela_historico_documentos = QTableWidget(self.frame_16)
-        if (self.tabela_historico_documentos.columnCount() < 4):
-            self.tabela_historico_documentos.setColumnCount(4)
+        if (self.tabela_historico_documentos.columnCount() < 5):
+            self.tabela_historico_documentos.setColumnCount(5)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tabela_historico_documentos.setHorizontalHeaderItem(0, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
@@ -550,6 +555,8 @@ class Ui_MainWindow(object):
         self.tabela_historico_documentos.setHorizontalHeaderItem(2, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tabela_historico_documentos.setHorizontalHeaderItem(3, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tabela_historico_documentos.setHorizontalHeaderItem(4, __qtablewidgetitem7)
         if (self.tabela_historico_documentos.rowCount() < 10):
             self.tabela_historico_documentos.setRowCount(10)
         self.tabela_historico_documentos.setObjectName(u"tabela_historico_documentos")
@@ -821,7 +828,7 @@ class Ui_MainWindow(object):
         self.toolBox.setCurrentIndex(0)
         self.toolBox.layout().setSpacing(0)
         self.Pages.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -829,7 +836,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Nome da Empresa", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#ffffff;\">RuralConnect</span></p></body></html>", None))
         self.btn_home_menu.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_perfil_menu.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
         self.btn_cadastrar_menu.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
@@ -838,7 +845,7 @@ class Ui_MainWindow(object):
         self.btn_encerrar_menu.setText(QCoreApplication.translate("MainWindow", u"Encerrar", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Menu", None))
         self.btn_toogle.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; color:#ffffff;\">Nome do Sistema</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; color:#ffffff;\">Cadastro de Clientes em \u00c1reas Remotas</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Seja Bem Vindo!</span></p><p align=\"center\"><img src=\":/icons/icons/cobra.png\"/></p></body></html>", None))
         self.btn_carregar_formulario.setText(QCoreApplication.translate("MainWindow", u"Formul\u00e1rio", None))
         self.btn_carregar_documentos.setText(QCoreApplication.translate("MainWindow", u"Documentos", None))
@@ -863,11 +870,13 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3 = self.tabela_historico_documentos.horizontalHeaderItem(0)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
         ___qtablewidgetitem4 = self.tabela_historico_documentos.horizontalHeaderItem(1)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Tipo", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Titulo", None));
         ___qtablewidgetitem5 = self.tabela_historico_documentos.horizontalHeaderItem(2)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Tipo", None));
         ___qtablewidgetitem6 = self.tabela_historico_documentos.horizontalHeaderItem(3)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Data Envio", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
+        ___qtablewidgetitem7 = self.tabela_historico_documentos.horizontalHeaderItem(4)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Data Envio", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Hist\u00f3rico de Envio de Documentos", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">Area destinada ao envio de documentos </span></p></body></html>", None))
         self.tipo_documento.setItemText(0, QCoreApplication.translate("MainWindow", u"Escolha o tipo de arquivo", None))
@@ -888,6 +897,6 @@ class Ui_MainWindow(object):
         self.txt_email_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Email do Usu\u00e1rio</p></body></html>", None))
         self.txt_telefone_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Telefone do Usu\u00e1rio</p></body></html>", None))
         self.btn_alterar_dados.setText(QCoreApplication.translate("MainWindow", u"Alterar meus dados", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Nome da Empresa", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>RuralConnect</p></body></html>", None))
     # retranslateUi
 
