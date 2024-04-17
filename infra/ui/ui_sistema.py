@@ -18,30 +18,35 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
     QListView, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QToolBox, QVBoxLayout, QWidget)
+    QSpacerItem, QStackedWidget, QTabWidget, QTableWidget,
+    QTableWidgetItem, QToolBox, QVBoxLayout, QWidget)
 from ui import icons_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(932, 589)
+        MainWindow.resize(928, 561)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.menu = QFrame(self.centralwidget)
         self.menu.setObjectName(u"menu")
-        self.menu.setMaximumSize(QSize(9, 16777215))
+        self.menu.setMaximumSize(QSize(0, 16777215))
         self.menu.setStyleSheet(u"background: transparent;")
         self.menu.setFrameShape(QFrame.StyledPanel)
         self.menu.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.menu)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_2 = QFrame(self.menu)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setStyleSheet(u"background-color: rgb(96, 194, 255);")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_2)
@@ -56,19 +61,30 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.menu)
         self.frame.setObjectName(u"frame")
+        self.frame.setStyleSheet(u"background-color: rgb(96, 194, 255);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.toolBox = QToolBox(self.frame)
         self.toolBox.setObjectName(u"toolBox")
+        self.toolBox.setStyleSheet(u"")
+        self.toolBox.setFrameShape(QFrame.NoFrame)
+        self.toolBox.setFrameShadow(QFrame.Plain)
+        self.toolBox.setLineWidth(1)
+        self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 113, 448))
+        self.page.setGeometry(QRect(0, 0, 115, 486))
         self.verticalLayout_4 = QVBoxLayout(self.page)
+        self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.btn_home_menu = QPushButton(self.page)
         self.btn_home_menu.setObjectName(u"btn_home_menu")
+        self.btn_home_menu.setMinimumSize(QSize(0, 30))
+        self.btn_home_menu.setSizeIncrement(QSize(0, 0))
         self.btn_home_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_home_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -79,64 +95,19 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	text-align: left;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "")
+        self.btn_home_menu.setAutoDefault(False)
+        self.btn_home_menu.setFlat(False)
 
         self.verticalLayout_4.addWidget(self.btn_home_menu)
 
-        self.btn_cadastrar_menu = QPushButton(self.page)
-        self.btn_cadastrar_menu.setObjectName(u"btn_cadastrar_menu")
-        self.btn_cadastrar_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_cadastrar_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
-"	color: rgb(255, 255, 255);\n"
-"	\n"
-"	background-color: rgb(0, 170, 255);\n"
-"}\n"
-"QPushButton {\n"
-"	\n"
-"	background-color: rgb(96, 194, 255);\n"
-"}\n"
-"")
-
-        self.verticalLayout_4.addWidget(self.btn_cadastrar_menu)
-
-        self.btn_historico_menu = QPushButton(self.page)
-        self.btn_historico_menu.setObjectName(u"btn_historico_menu")
-        self.btn_historico_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_historico_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
-"	color: rgb(255, 255, 255);\n"
-"	\n"
-"	background-color: rgb(0, 170, 255);\n"
-"}\n"
-"QPushButton {\n"
-"	\n"
-"	background-color: rgb(96, 194, 255);\n"
-"}\n"
-"")
-
-        self.verticalLayout_4.addWidget(self.btn_historico_menu)
-
-        self.btn_enviar_menu = QPushButton(self.page)
-        self.btn_enviar_menu.setObjectName(u"btn_enviar_menu")
-        self.btn_enviar_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_enviar_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
-"	color: rgb(255, 255, 255);\n"
-"	\n"
-"	background-color: rgb(0, 170, 255);\n"
-"}\n"
-"QPushButton {\n"
-"	\n"
-"	background-color: rgb(96, 194, 255);\n"
-"}\n"
-"")
-
-        self.verticalLayout_4.addWidget(self.btn_enviar_menu)
-
         self.btn_perfil_menu = QPushButton(self.page)
         self.btn_perfil_menu.setObjectName(u"btn_perfil_menu")
+        self.btn_perfil_menu.setMinimumSize(QSize(0, 30))
         self.btn_perfil_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_perfil_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -147,10 +118,76 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	text-align: left;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "")
 
         self.verticalLayout_4.addWidget(self.btn_perfil_menu)
+
+        self.btn_cadastrar_menu = QPushButton(self.page)
+        self.btn_cadastrar_menu.setObjectName(u"btn_cadastrar_menu")
+        self.btn_cadastrar_menu.setMinimumSize(QSize(0, 30))
+        self.btn_cadastrar_menu.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_cadastrar_menu.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	text-align: left;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"")
+
+        self.verticalLayout_4.addWidget(self.btn_cadastrar_menu)
+
+        self.btn_enviar_menu = QPushButton(self.page)
+        self.btn_enviar_menu.setObjectName(u"btn_enviar_menu")
+        self.btn_enviar_menu.setMinimumSize(QSize(0, 30))
+        self.btn_enviar_menu.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_enviar_menu.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	text-align: left;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"")
+
+        self.verticalLayout_4.addWidget(self.btn_enviar_menu)
+
+        self.btn_historico_menu = QPushButton(self.page)
+        self.btn_historico_menu.setObjectName(u"btn_historico_menu")
+        self.btn_historico_menu.setMinimumSize(QSize(0, 30))
+        self.btn_historico_menu.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_historico_menu.setStyleSheet(u"\n"
+"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	background-color: rgb(0, 170, 255);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	text-align: left;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"")
+
+        self.verticalLayout_4.addWidget(self.btn_historico_menu)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -190,14 +227,18 @@ class Ui_MainWindow(object):
         self.main_container.setFrameShape(QFrame.StyledPanel)
         self.main_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.main_container)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.hand_frame = QFrame(self.main_container)
         self.hand_frame.setObjectName(u"hand_frame")
         self.hand_frame.setStyleSheet(u"background:transparent;")
         self.hand_frame.setFrameShape(QFrame.StyledPanel)
         self.hand_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.hand_frame)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.btn_toogle = QPushButton(self.hand_frame)
         self.btn_toogle.setObjectName(u"btn_toogle")
         self.btn_toogle.setCursor(QCursor(Qt.PointingHandCursor))
@@ -210,22 +251,28 @@ class Ui_MainWindow(object):
 
         self.label = QLabel(self.hand_frame)
         self.label.setObjectName(u"label")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_2.addWidget(self.label)
+        self.horizontalLayout_2.addWidget(self.label, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
 
         self.verticalLayout.addWidget(self.hand_frame)
 
         self.main_frame = QFrame(self.main_container)
         self.main_frame.setObjectName(u"main_frame")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_frame.sizePolicy().hasHeightForWidth())
-        self.main_frame.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.main_frame.sizePolicy().hasHeightForWidth())
+        self.main_frame.setSizePolicy(sizePolicy1)
         self.main_frame.setStyleSheet(u"background: transparent;")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
+        self.main_frame.setMidLineWidth(0)
         self.verticalLayout_14 = QVBoxLayout(self.main_frame)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.Pages = QStackedWidget(self.main_frame)
@@ -303,8 +350,8 @@ class Ui_MainWindow(object):
 
         self.frame_12 = QFrame(self.frame_9)
         self.frame_12.setObjectName(u"frame_12")
-        sizePolicy.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
-        self.frame_12.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
+        self.frame_12.setSizePolicy(sizePolicy1)
         self.frame_12.setStyleSheet(u"background:transparent;")
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
@@ -382,8 +429,8 @@ class Ui_MainWindow(object):
 
         self.frame_14 = QFrame(self.frame_12)
         self.frame_14.setObjectName(u"frame_14")
-        sizePolicy.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
-        self.frame_14.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
+        self.frame_14.setSizePolicy(sizePolicy1)
         self.frame_14.setStyleSheet(u"background:transparent;")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
@@ -423,50 +470,110 @@ class Ui_MainWindow(object):
         self.Pages.addWidget(self.pg_cadastrar)
         self.pg_historico = QWidget()
         self.pg_historico.setObjectName(u"pg_historico")
+        sizePolicy.setHeightForWidth(self.pg_historico.sizePolicy().hasHeightForWidth())
+        self.pg_historico.setSizePolicy(sizePolicy)
         self.verticalLayout_7 = QVBoxLayout(self.pg_historico)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.frame_10 = QFrame(self.pg_historico)
+        self.tabWidget = QTabWidget(self.pg_historico)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setMinimumSize(QSize(0, 0))
+        self.tabWidget.setCursor(QCursor(Qt.PointingHandCursor))
+        self.tabWidget.setElideMode(Qt.ElideNone)
+        self.tabWidget.setTabBarAutoHide(False)
+        self.tab_historico_cadastro = QWidget()
+        self.tab_historico_cadastro.setObjectName(u"tab_historico_cadastro")
+        self.verticalLayout_19 = QVBoxLayout(self.tab_historico_cadastro)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.frame_10 = QFrame(self.tab_historico_cadastro)
         self.frame_10.setObjectName(u"frame_10")
+        sizePolicy.setHeightForWidth(self.frame_10.sizePolicy().hasHeightForWidth())
+        self.frame_10.setSizePolicy(sizePolicy)
         self.frame_10.setFrameShape(QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_19 = QVBoxLayout(self.frame_10)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.label_5 = QLabel(self.frame_10)
-        self.label_5.setObjectName(u"label_5")
-
-        self.verticalLayout_19.addWidget(self.label_5)
-
-        self.tabela_historico = QTableWidget(self.frame_10)
-        if (self.tabela_historico.columnCount() < 4):
-            self.tabela_historico.setColumnCount(4)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame_10)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.tabela_historico_cadastros = QTableWidget(self.frame_10)
+        if (self.tabela_historico_cadastros.columnCount() < 3):
+            self.tabela_historico_cadastros.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
-        self.tabela_historico.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.tabela_historico_cadastros.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.tabela_historico.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tabela_historico_cadastros.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        self.tabela_historico.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tabela_historico_cadastros.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        if (self.tabela_historico_cadastros.rowCount() < 10):
+            self.tabela_historico_cadastros.setRowCount(10)
+        self.tabela_historico_cadastros.setObjectName(u"tabela_historico_cadastros")
+        self.tabela_historico_cadastros.setStyleSheet(u"QHeaderView::section {\n"
+"	background-color: rgb(148, 148, 148);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"}\n"
+"\n"
+"QTableWidget{\n"
+"	background-color: rgb(252, 252, 252);\n"
+"}")
+        self.tabela_historico_cadastros.setRowCount(10)
+        self.tabela_historico_cadastros.horizontalHeader().setStretchLastSection(True)
+        self.tabela_historico_cadastros.verticalHeader().setStretchLastSection(True)
+
+        self.horizontalLayout_8.addWidget(self.tabela_historico_cadastros)
+
+
+        self.verticalLayout_19.addWidget(self.frame_10)
+
+        self.tabWidget.addTab(self.tab_historico_cadastro, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.horizontalLayout_10 = QHBoxLayout(self.tab_2)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.frame_16 = QFrame(self.tab_2)
+        self.frame_16.setObjectName(u"frame_16")
+        sizePolicy.setHeightForWidth(self.frame_16.sizePolicy().hasHeightForWidth())
+        self.frame_16.setSizePolicy(sizePolicy)
+        self.frame_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_16)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.tabela_historico_documentos = QTableWidget(self.frame_16)
+        if (self.tabela_historico_documentos.columnCount() < 4):
+            self.tabela_historico_documentos.setColumnCount(4)
         __qtablewidgetitem3 = QTableWidgetItem()
-        self.tabela_historico.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        if (self.tabela_historico.rowCount() < 6):
-            self.tabela_historico.setRowCount(6)
+        self.tabela_historico_documentos.setHorizontalHeaderItem(0, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(0, __qtablewidgetitem4)
+        self.tabela_historico_documentos.setHorizontalHeaderItem(1, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(1, __qtablewidgetitem5)
+        self.tabela_historico_documentos.setHorizontalHeaderItem(2, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(2, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(3, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(4, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.tabela_historico.setVerticalHeaderItem(5, __qtablewidgetitem9)
-        self.tabela_historico.setObjectName(u"tabela_historico")
+        self.tabela_historico_documentos.setHorizontalHeaderItem(3, __qtablewidgetitem6)
+        if (self.tabela_historico_documentos.rowCount() < 10):
+            self.tabela_historico_documentos.setRowCount(10)
+        self.tabela_historico_documentos.setObjectName(u"tabela_historico_documentos")
+        self.tabela_historico_documentos.setStyleSheet(u"QHeaderView::section {\n"
+"	background-color: rgb(148, 148, 148);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"MS Shell Dlg 2\";\n"
+"}\n"
+"\n"
+"QTableWidget{\n"
+"	background-color: rgb(252, 252, 252);\n"
+"}")
+        self.tabela_historico_documentos.setRowCount(10)
+        self.tabela_historico_documentos.horizontalHeader().setStretchLastSection(True)
+        self.tabela_historico_documentos.verticalHeader().setStretchLastSection(True)
 
-        self.verticalLayout_19.addWidget(self.tabela_historico)
+        self.horizontalLayout_11.addWidget(self.tabela_historico_documentos)
 
 
-        self.verticalLayout_7.addWidget(self.frame_10)
+        self.horizontalLayout_10.addWidget(self.frame_16)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.verticalLayout_7.addWidget(self.tabWidget)
 
         self.Pages.addWidget(self.pg_historico)
         self.pg_enviar_doc = QWidget()
@@ -621,24 +728,30 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.pg_perfil)
         self.frame_4.setObjectName(u"frame_4")
-        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy1)
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_9 = QVBoxLayout(self.frame_4)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.txt_nome_perfil = QLabel(self.frame_4)
         self.txt_nome_perfil.setObjectName(u"txt_nome_perfil")
+        sizePolicy.setHeightForWidth(self.txt_nome_perfil.sizePolicy().hasHeightForWidth())
+        self.txt_nome_perfil.setSizePolicy(sizePolicy)
 
         self.verticalLayout_9.addWidget(self.txt_nome_perfil)
 
         self.txt_email_perfil = QLabel(self.frame_4)
         self.txt_email_perfil.setObjectName(u"txt_email_perfil")
+        sizePolicy.setHeightForWidth(self.txt_email_perfil.sizePolicy().hasHeightForWidth())
+        self.txt_email_perfil.setSizePolicy(sizePolicy)
 
         self.verticalLayout_9.addWidget(self.txt_email_perfil)
 
         self.txt_telefone_perfil = QLabel(self.frame_4)
         self.txt_telefone_perfil.setObjectName(u"txt_telefone_perfil")
+        sizePolicy.setHeightForWidth(self.txt_telefone_perfil.sizePolicy().hasHeightForWidth())
+        self.txt_telefone_perfil.setSizePolicy(sizePolicy)
 
         self.verticalLayout_9.addWidget(self.txt_telefone_perfil)
 
@@ -647,6 +760,11 @@ class Ui_MainWindow(object):
 
         self.frame_3 = QFrame(self.pg_perfil)
         self.frame_3.setObjectName(u"frame_3")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
+        self.frame_3.setSizePolicy(sizePolicy2)
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.frame_3)
@@ -701,7 +819,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toolBox.setCurrentIndex(0)
+        self.toolBox.layout().setSpacing(0)
         self.Pages.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -711,10 +831,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Nome da Empresa", None))
         self.btn_home_menu.setText(QCoreApplication.translate("MainWindow", u"Home", None))
-        self.btn_cadastrar_menu.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
-        self.btn_historico_menu.setText(QCoreApplication.translate("MainWindow", u"Hist\u00f3rico", None))
-        self.btn_enviar_menu.setText(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
         self.btn_perfil_menu.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
+        self.btn_cadastrar_menu.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.btn_enviar_menu.setText(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
+        self.btn_historico_menu.setText(QCoreApplication.translate("MainWindow", u"Hist\u00f3rico", None))
         self.btn_encerrar_menu.setText(QCoreApplication.translate("MainWindow", u"Encerrar", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Menu", None))
         self.btn_toogle.setText("")
@@ -733,15 +853,22 @@ class Ui_MainWindow(object):
         self.txt_cadastro_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
         self.txt_cadastro_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Email", None))
         self.btn_cadastro_enviar.setText(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Hist\u00f3rico de Cadastros</span></p></body></html>", None))
-        ___qtablewidgetitem = self.tabela_historico.horizontalHeaderItem(0)
+        ___qtablewidgetitem = self.tabela_historico_cadastros.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
-        ___qtablewidgetitem1 = self.tabela_historico.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Data do Cadastro", None));
-        ___qtablewidgetitem2 = self.tabela_historico.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
-        ___qtablewidgetitem3 = self.tabela_historico.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        ___qtablewidgetitem1 = self.tabela_historico_cadastros.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
+        ___qtablewidgetitem2 = self.tabela_historico_cadastros.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Data Cadastro", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_historico_cadastro), QCoreApplication.translate("MainWindow", u"Hist\u00f3rico de Cadastros", None))
+        ___qtablewidgetitem3 = self.tabela_historico_documentos.horizontalHeaderItem(0)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
+        ___qtablewidgetitem4 = self.tabela_historico_documentos.horizontalHeaderItem(1)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Tipo", None));
+        ___qtablewidgetitem5 = self.tabela_historico_documentos.horizontalHeaderItem(2)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
+        ___qtablewidgetitem6 = self.tabela_historico_documentos.horizontalHeaderItem(3)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Data Envio", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Hist\u00f3rico de Envio de Documentos", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">Area destinada ao envio de documentos </span></p></body></html>", None))
         self.tipo_documento.setItemText(0, QCoreApplication.translate("MainWindow", u"Escolha o tipo de arquivo", None))
         self.tipo_documento.setItemText(1, QCoreApplication.translate("MainWindow", u"CPF", None))
