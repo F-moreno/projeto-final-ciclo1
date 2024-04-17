@@ -1,6 +1,6 @@
 import importlib
 import gerenciamento
-from bd_classes import get_config, set_config
+from infra.data.bd_classes import get_config, set_config
 import cv2
 import numpy as np
 import io
@@ -21,17 +21,18 @@ importlib.reload(gerenciamento)
 
 # Teste gerenciamento.cadastro_cliente().
 try:
-    cliente = gerenciamento.cadastro_cliente("Cliente Teste",
-                        "12345678912",
-                        "1234567",
-                        "Pai/Mãe Teste",
-                        "Estado Teste",
-                        "Municipio Teste",
-                        "Endereço Teste",
-                        "30-05-2005",
-                        "99999999999",
-                        "clienteteste@gmail.com"
-                        )
+    cliente = gerenciamento.cadastro_cliente(
+        "Cliente Teste",
+        "12345678912",
+        "1234567",
+        "Pai/Mãe Teste",
+        "Estado Teste",
+        "Municipio Teste",
+        "Endereço Teste",
+        "30-05-2005",
+        "99999999999",
+        "clienteteste@gmail.com",
+    )
     print("cadastro_cliente(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.cadastro_cliente()': {e}")
@@ -42,23 +43,24 @@ try:
     clientes = gerenciamento.get_clientes(nome="Cliente Teste")
     clientes = gerenciamento.get_clientes(cpf="12345678912")
     clientes = gerenciamento.get_clientes(id=cliente.id)
-    clientes = gerenciamento.get_clientes(nome="Cliente Teste",
-                            cpf="12345678912",
-                            id=cliente.id)
-    
+    clientes = gerenciamento.get_clientes(
+        nome="Cliente Teste", cpf="12345678912", id=cliente.id
+    )
+
     print("get_clientes(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_clientes()': {e}")
-    
-    
+
+
 # Teste gerenciamento.cadastro_funcionario().
 try:
-    funcionario = gerenciamento.cadastro_funcionario("Funcionario Teste",
-                        "12345678912",
-                        "93988149930",
-                        "funcionarioteste@gmail.com",
-                        "teste123"
-                        )
+    funcionario = gerenciamento.cadastro_funcionario(
+        "Funcionario Teste",
+        "12345678912",
+        "93988149930",
+        "funcionarioteste@gmail.com",
+        "teste123",
+    )
     print("cadastro_funcionario(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.cadastro_funcionario()': {e}")
@@ -69,16 +71,16 @@ try:
     funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste")
     funcionarios = gerenciamento.get_funcionarios(cpf="12345678912")
     funcionarios = gerenciamento.get_funcionarios(id=funcionario.id)
-    funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste",
-                                                    cpf="12345678912",
-                                                    id=funcionario.id)
-    
-    funcionarios[0].atualizar(nome="RAFAEL") # Teste Funcionario.atualizar
-    
+    funcionarios = gerenciamento.get_funcionarios(
+        nome="Funcionario Teste", cpf="12345678912", id=funcionario.id
+    )
+
+    funcionarios[0].atualizar(nome="RAFAEL")  # Teste Funcionario.atualizar
+
     print("get_funcionarios(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_funcionarios()': {e}")
-    
+
 
 # Teste gerenciamento.iniciar_sessao().
 try:
@@ -92,14 +94,14 @@ except Exception as e:
 try:
     with io.open("img/imagem_teste.jpeg", "rb") as f:
         bytes_imagem = f.read()
-    
+
     documento = sessao.salvar_documento(
         tipo="Teste",
         arquivo_original=bytes_imagem,
         conteudo="Teste teste teste",
-        cliente=cliente
-        )
-    
+        cliente=cliente,
+    )
+
     print("salvar_documento(): OK")
 except Exception as e:
     print(f"ERRO EM 'bd_classes.Sessao.salvar_documento()': {e}")
@@ -110,10 +112,10 @@ try:
     documentos = gerenciamento.get_documentos(id=documento.id)
     documentos = gerenciamento.get_documentos(fk_cliente=cliente.id)
     documentos = gerenciamento.get_documentos(tipo="Teste")
-    documentos = gerenciamento.get_documentos(id=documento.id,
-                                                fk_cliente=cliente.id,
-                                                tipo="Teste")
-        
+    documentos = gerenciamento.get_documentos(
+        id=documento.id, fk_cliente=cliente.id, tipo="Teste"
+    )
+
     imagem_numpy = np.frombuffer(documentos[0].arquivo_original, np.uint8)
     imagem_decodificada = cv2.imdecode(imagem_numpy, cv2.IMREAD_COLOR)
 
@@ -124,7 +126,7 @@ try:
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_documentos()': {e}")
 
-    
+
 # Teste gerenciamento.get_registros()
 try:
     # Buscar todos os registros do dia 13 de abril de 2024
@@ -157,8 +159,8 @@ try:
     print("get_sessoes(): OK")
 except Exception as e:
     print(f"ERRO EM 'gerenciamento.get_sessoes': {e}")
-    
-    
+
+
 gerenciamento.encerrar_sessao(sessao)
 if deletar_registros_teste:
     try:
