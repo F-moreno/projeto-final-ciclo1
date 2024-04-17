@@ -8,9 +8,9 @@ from PySide6.QtWidgets import (
     QTreeWidgetItem,
     QWidget,
 )
-from data import gerenciamento
-from ui.ui_login import Ui_Form
-from ui.ui_sistema import Ui_MainWindow
+from infra.data import (bd_classes, gerenciamento)
+from infra.ui.ui_login import Ui_Form
+from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
 
