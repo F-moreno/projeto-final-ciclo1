@@ -8,11 +8,11 @@ from PySide6.QtWidgets import (
     QTreeWidgetItem,
     QWidget,
 )
-from data import gerenciamento
-from ui.ui_login import Ui_Form
-from ui.ui_sistema import Ui_MainWindow
+from infra.data import gerenciamento
+from infra.ui.ui_login import Ui_Form
+from infra.ui.ui_sistema import Ui_MainWindow
 import sys
-from func.ocr import TesseractOCR
+from infra.func.ocr import TesseractOCR
 
 
 class Login(QWidget, Ui_Form):
@@ -68,7 +68,6 @@ class Login(QWidget, Ui_Form):
             return True
         else:
             return False
-        
 
     def cadastrar_usuario(self):
         nome = self.txt_nome_cadastro.text()
@@ -77,7 +76,6 @@ class Login(QWidget, Ui_Form):
         telefone = self.txt_telefone_cadastro.text()
         senha = self.txt_senha_cadastro.text()
 
-        
         if email.lower() != "teste":
             if not self.validar_email(email):
                 QMessageBox.warning(
@@ -268,16 +266,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             image = TesseractOCR().read_image(nomeArquivo)
             json = TesseractOCR().read_json(texto)
             print(json)
-            self.txt_cadastro_nome.setText(json["nome"])
-            self.txt_cadastro_cpf.setText(json["cpf"])
-            self.txt_cadastro_rg.setText(json["rg"])
-            self.txt_cadastro_filiacao.setText(json["filiacao"])
-            self.txt_cadastro_nascimento.setText(json["nascimento"])
-            self.txt_cadastro_endereco.setText(json["endereco"])
-            self.txt_cadastro_cidade.setText(json["cidade"])
-            self.txt_cadastro_estado.setText(json["estado"])
-            self.txt_cadastro_telefone.setText(json["telefone"])
-            self.txt_cadastro_email.setText(json["email"])
+            self.txt_cadastro_nome.setText(json.get("nome", ""))
+            self.txt_cadastro_cpf.setText(json.get("cpf", ""))
+            self.txt_cadastro_rg.setText(json.get("rg", ""))
+            self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
+            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
+            self.txt_cadastro_endereco.setText(json.get("endereco", ""))
+            self.txt_cadastro_cidade.setText(json.get("cidade", ""))
+            self.txt_cadastro_estado.setText(json.get("estado", ""))
+            self.txt_cadastro_telefone.setText(json.get("telefone", ""))
+            self.txt_cadastro_email.setText(json.get("email", ""))
 
     #################################################################################
     ################## Página de Exibição do Histórico ##############################
@@ -289,8 +287,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_historico)
 
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     window = Login()
     window.show()
     app.exec_()
+
+
+if __name__ == "__main__":
+    main()

@@ -12,24 +12,11 @@ Este é um sistema de Gerenciamento Eletrônico de Documentos (GED) desenvolvido
 
 ## Pré-requisitos
 
-- Python 3.x instalado
-- Bibliotecas necessárias (serão listadas no arquivo `requirements.txt`)
+- Python >= 3.10 instalado
+- Poetry >= 1.4.0
+- Bibliotecas necessárias (serão listadas no arquivo `.toml`)
 
 ## Instalação
-
-### Com pip
-
-1. Clone este repositório em sua máquina local:
-
-```
-git clone https://github.com/F-moreno/projeto-final-ciclo1.git
-```
-
-2. Instale as dependências usando o pip:
-
-```
-pip install -r requirements.txt
-```
 
 ### Com poetry
 
@@ -53,7 +40,7 @@ poetry install
 
 ## Como Usar
 
-1. Execute o arquivo `main.py` para iniciar o sistema:
+1. Execute o arquivo `api.py` para iniciar o sistema:
 
 ```
 python main.py
