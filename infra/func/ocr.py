@@ -34,15 +34,16 @@ class TesseractOCR:
         self.__show_img(img)
         gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
-        img = self.__get_fixed_img(thresh, img)
-        self.__show_img(img)
+        img = self.__get_fixed_img(thresh, gray)
 
-        # rotaciona caso o texto possua angulo diferente de 0
-        angle = self.__get_angle_img(img)
-        print(angle)
-        img = self.__get_rotated_img(img, angle)
-        self.__show_img(img)
-        # self.__show_img(gray)
+        # tratamento da imagem
+        # img = self.__get_grayscale_img(img)
+        img = self.__get_contrasted_img(img)
+
+        # img = self.__get_laplacian_img(img)
+
+        self.__show_img(cv2.bitwise_not(img))
+
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
         )
@@ -67,7 +68,7 @@ class TesseractOCR:
         img_median = cv2.medianBlur(img, 5)
         return img_median
 
-    def __get_corners_img(self, thresh):
+    def __get_corners_img(self, thresh, img):
         contours, _ = cv2.findContours(
             thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
         )
@@ -78,21 +79,20 @@ class TesseractOCR:
         min_square_contours = []
         for point in box:
             min_square_contours.append((point[0], point[1]))
-        external_contour = np.vstack(contours)
 
         # salva imagem marcada
-        img_destacada = thresh.copy()
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            cv2.rectangle(img_destacada, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        img_destacada = img.copy()
+
+        cv2.drawContours(img_destacada, [box], 0, (0, 255, 0), 2)
 
         # Salvar a imagem com a área destacada
         cv2.imwrite("Docs/imagens/formulario/destacada.png", img_destacada)
+        self.__show_img(img_destacada)
         return min_square_contours
 
     def __get_fixed_img(self, thresh, img):
 
-        external_points = self.__get_corners_img(thresh)
+        external_points = self.__get_corners_img(thresh, img)
 
         h, w = img.shape[:2]
         destined_points = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]])
@@ -121,9 +121,11 @@ class TesseractOCR:
         img_gau = cv2.GaussianBlur(img, (5, 5), 0)
         return img_gau
 
-    def __get_contrasted_img(self, img, alpha=1.5, beta=-50):
-        img_contrasted = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
-        return img_contrasted
+    def __get_contrasted_img(self, img, alpha=1.5, beta=0):
+        img_contrasted = cv2.convertScaleAbs(
+            cv2.bitwise_not(img), alpha=alpha, beta=beta
+        )
+        return cv2.bitwise_not(img_contrasted)
 
     def __get_laplacian_img(self, img):
         img_lpc = cv2.Laplacian(img, cv2.CV_8UC1)
@@ -170,7 +172,7 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_180g.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
 
