@@ -1,5 +1,6 @@
 from infra import main as initialize_sys
 import infra.data.bd_classes as initialize_db
+import infra.data.teste_bd as test
 
 
 if __name__ == "__main__":
@@ -8,3 +9,5 @@ if __name__ == "__main__":
 
     # inicializa o sistema
     initialize_sys.main()
+    
+    # test.main()

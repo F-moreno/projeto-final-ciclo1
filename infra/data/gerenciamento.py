@@ -16,59 +16,6 @@ from typing import List
 
 # GESTÃO DE USUARIOS
 
-
-def cadastro_cliente(
-    nome: str,
-    cpf: str,
-    rg: str,
-    filiacao: str,
-    estado: str,
-    municipio: str,
-    endereco: str,
-    data_nascimento: str,
-    telefone: str = None,
-    email: str = None,
-) -> Cliente:
-    """Adiciona um Cliente ao Banco de Dados.
-
-    Args:
-        nome (str): Nome completo do cliente.
-        cpf (str): Número de CPF do cliente.
-        rg (str): Número de RG do cliente.
-        filiacao (str): Nome do pai ou mãe do cliente.
-        estado (str): Estado em que o cliente está localizado.
-        municipio (str): Cidade em que o cliente está localizado.
-        endereco (str): Endereço do cliente.
-        data_nascimento (str): Data de nascimento do cliente (formato dd-mm-aaaa).
-        telefone (str, opcional): Número de telefone do cliente.
-        email (str, opcional): Endereço de e-mail do cliente.
-
-    Returns:
-        Cliente: Objeto referente ao cliente criado.
-    """
-
-    novo_cliente = Cliente(
-        nome=nome,
-        cpf=cpf,
-        rg=rg,
-        filiacao=filiacao,
-        estado=estado,
-        municipio=municipio,
-        endereco=endereco,
-        data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
-        telefone=telefone,
-        email=email,
-    )
-
-    session.add(novo_cliente)
-
-    try:
-        session.commit()
-        return novo_cliente
-    except Exception as e:
-        raise Exception(f"Erro ao cadastrar cliente: {e}")
-
-
 def cadastro_funcionario(
     nome: str, cpf: str, telefone: str, email: str, senha: str
 ) -> Funcionario:
@@ -96,9 +43,7 @@ def cadastro_funcionario(
     except Exception as e:
         raise Exception(f"Erro ao cadastrar funcionario: {e}")
 
-
 # GERENCIAMENTO DE SESSÃO
-
 
 def iniciar_sessao(cpf: str, senha: str) -> Sessao:
     """Seleciona um Funcionario do Banco de Dados a partir do cpf do funcionário e senha.
@@ -147,9 +92,7 @@ def encerrar_sessao(sessao: Sessao):
     except Exception as e:
         raise Exception(f"Erro ao registrar fim de sessão: {e}")
 
-
 # CONSULTAS
-
 
 def get_clientes(
     id: int = None,
@@ -343,16 +286,18 @@ def get_sessoes(
 
 def get_documentos(
     id: int = None,
+    fk_funcionario: int = None,
     fk_cliente: int = None,
     titulo: str = None,
     tipo: str = None,
-) -> List[Documento]:
+    ) -> List[Documento]:
     """Retorna uma lista de documentos com base nos argumentos.
     OBS: Se não houver argumentos, retorna todos os documentos.
 
     Args:
         id (int, opcional): filtrar por id único de um documento.
         fk_cliente (int, opcional): filtrar por id de um cliente específico.
+        fk_funcionario (int, opcional): filtrar por id do funcionário que enviou o documento.
         titulo (str, opcional): Campo que representa o titulo específico para identificação do documento.
         tipo (str, opcional): filtrar por tipo de documento.
 
@@ -360,6 +305,7 @@ def get_documentos(
         List[Documento]: lista de documentos filtrados.
     """
     kwargs = {}
+            
     if id:
         kwargs["id"] = id
 
@@ -374,6 +320,13 @@ def get_documentos(
 
     try:
         documentos = session.query(Documento).filter_by(**kwargs)
+        
+        if fk_funcionario:
+            documentos = documentos.join(Registro) \
+            .join(Sessao) \
+            .join(Funcionario) \
+            .filter(Funcionario.id == fk_funcionario)
+            
         return documentos.all()
     except Exception as e:
         raise Exception(f"Erro ao procurar Documentos: {e}")
