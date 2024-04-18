@@ -32,12 +32,13 @@ class TesseractOCR:
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         img = self.__get_rgb_img(img_path)
         self.__show_img(img)
+        # img = cv2.medianBlur(img, 3)
         gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
         img = self.__get_fixed_img(thresh, gray)
 
         # corrige o angulo do texto para 0º
-        img = self.__get_contrasted_img(img)
+        img = self.__get_contrasted_img(img, beta=0)
         self.__show_img(img)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
@@ -173,7 +174,7 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Amassado_N0.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
 
