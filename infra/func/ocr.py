@@ -155,7 +155,7 @@ class TesseractOCR:
         json = {}
         for linha in texto:
             if ":" in linha:
-                key, value = linha.split(":") or linha.split(";")
+                key, value = linha.split(":", 1) or linha.split(";", 1)
                 key = (
                     key.lower()
                     .replace(" ", "")
