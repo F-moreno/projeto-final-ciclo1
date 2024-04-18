@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QTreeWidgetItem,
     QWidget,
 )
-from infra.data import gerenciamento
+from infra.data import (bd_classes, gerenciamento)
 from infra.ui.ui_login import Ui_Form
 from infra.ui.ui_sistema import Ui_MainWindow
 import sys
@@ -27,6 +27,8 @@ class Login(QWidget, Ui_Form):
         self.btn_config.clicked.connect(self.mostrar_pag_config)
         self.btn_closed.clicked.connect(self.close)
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
+        self.btn_padrao.clicked.connect(self.padrao_configuracao)
+        self.btn_salvar.clicked.connect(self.salvar_configuracao)
 
     def abrir_sistema(self):
         usuario = self.txt_cpf_login.text()
@@ -120,9 +122,10 @@ class Login(QWidget, Ui_Form):
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
 
-        configuracao = gerenciamento.obter_configuracao_banco()
+        configuracao = bd_classes.get_config()
         if configuracao:
-            ip, porta = configuracao
+            ip = configuracao["db_host"]
+            porta = configuracao["db_port"]
             self.txt_ip.setText(ip)
             self.txt_porta.setText(porta)
         else:
@@ -133,14 +136,16 @@ class Login(QWidget, Ui_Form):
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
-
-        gerenciamento.atualizar_configuracao_banco(ip, porta)
+        bd_classes.set_config(db_host=ip, db_port=porta)
         QMessageBox.information(
             self,
             "Configuração",
             "Configuração do banco de dados atualizada com sucesso!",
         )
 
+    def padrao_configuracao(self):
+        self.txt_ip.setText("localhost")
+        self.txt_porta.setText("5432")
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
@@ -159,6 +164,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_encerrar_menu.clicked.connect(self.close)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
+        self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
 
     def left_menu(self):
         width = self.menu.width()
@@ -178,7 +184,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_home)
 
     ############################################################
-    #########Página de envio de Documentos Genéricos############
+    ######## Página de envio de Documentos Genéricos ###########
     # Essas funções terão que permitir ao usuário escolher o tipo
     # do arquivo que vai enviar e ao clicar no botão de envio
     # esse documento subir para o banco.
@@ -226,34 +232,41 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self, "Perfil", "Sessão inválida! Faça login novamente."
             )
 
+    def limpar_campos_alteracao(self):
+        self.txt_perfil_alterar_nome.clear()
+        self.txt_perfil_alterar_email.clear()
+        self.txt_perfil_alterar_telefone.clear()
+
     def mostrar_pag_alteracao_perfil(self):
         self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
-        # txt_perfil_alterar_nome
-        # txt_perfil_alterar_email
-        # txt_perfil_alterar_telefone
-        # btn_salvar_alteracoes
+        self.btn_salvar_alteracoes.clicked.connect(self.salvar_alteracoes_perfil)
 
-    #############################################################################
-    ############ Página de Cadastro de Cliente ##################################
-    # Essas funções devem permitir que o usuário carregue o arquivo digitalizado
-    # e que esse arquivo extraia as informações para preenchimento do formulário
-    # e mostre na tela. Os campos são editávei pois quando o usuário verificar
-    # que precisa melhorar alguma informação ele terá essa facilidade. Outra
-    # função importante é a parte de selecionar documentos que serão anexados ao
-    # cadastro como CNH, RG, etc. Os documentos vão aparecer na lista que fica na
-    # tela para que ao final o usuário possa visualizar tanto o formulário
-    # preenchido quanto os arquivo selecionados. Ao clicar em enviar cadastro o
-    # sistema enviará para o banco a criação daquele cadastro e vinculação dos
-    # documentos àquele cliente.
+    def salvar_alteracoes_perfil(self):
+        novo_nome = self.txt_perfil_alterar_nome.text()
+        novo_email = self.txt_perfil_alterar_email.text()
+        novo_telefone = self.txt_perfil_alterar_telefone.text()
+
+        if novo_nome or novo_email or novo_telefone:
+            self.sessao.funcionario.atualizar(
+                nome=novo_nome, email=novo_email, telefone=novo_telefone
+            )
+            QMessageBox.information(self, "Sucesso", "Perfil atualizado com sucesso!")
+            self.limpar_campos_alteracao()
+
+        else:
+            QMessageBox.warning(self, "Aviso", "Nenhuma alteração foi feita.")
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
     def carregar_docs_cadastro(self):
-        # btn_carregar_documentos
-        # lista_documentos_cadastro
-        # btn_cadastro_enviar
-        pass
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+        if nomeArquivo:
+            self.lista_documentos_cadastro.addItem(nomeArquivo)
+        
 
     def abrir_arquivo(self):
         options = QFileDialog.Option()
@@ -285,7 +298,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
-
+        #Precisa avaliar se é melhor fazer dentro de apenas uma função ou se faz outra para essa finalidade.
+        #Lógica para buscar acesso do BD
+        #conn = sqlite3.connect('exemplo.db')
+        #cursor = conn.cursor()
+        
+        #Lógica para chamar a função do BD que busca os dados desejados
+        #cursor.execute("SELECT nome, idade FROM pessoas")
+        #rows = cursor.fetchall()
+        #self.tabela_historico_cadastros.setRowCount(rows)
+        #self.tabela_historico_cadastros.setColumnCount(2) -> o valor entre parenteses indica o número de colunas
+        #for i, row in enumerate(rows):
+        #    for j, col in enumerate(row):
+        #        item = QTableWidgetItem(str(col))
+        #        self.tabela_historico_cadastros.setItem(i, j, item)
+        #cursor.close()
+        #conn.close()
 
 def main():
     app = QApplication(sys.argv)
