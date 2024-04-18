@@ -36,12 +36,12 @@ class Login(QWidget, Ui_Form):
         usuario = self.txt_cpf_login.text()
         senha = self.txt_senha_login.text()
 
-        sessao = gerenciamento.iniciar_sessao(usuario, senha)
-
-        if sessao:
+        try:
+            sessao = gerenciamento.iniciar_sessao(usuario, senha)
             self.abrir_main_window(sessao)
-        else:
-            QMessageBox.information(self, "Login", "Usuário ou senha inválidos!")
+        except:
+             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
+           
 
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
@@ -269,7 +269,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         )
         if nomeArquivo:
             self.lista_documentos_cadastro.addItem(nomeArquivo)
-            
 
     def abrir_arquivo(self):
         options = QFileDialog.Option()
@@ -299,26 +298,49 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # aquele usuário. Portanto teremos a necessidade de funções que busquem um SELECT
     # no BD com os cadastros daquele usuário.
 
- 
-
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
 
         # Chama a função do módulo de gerenciamento para buscar os clientes
         clientes = gerenciamento.get_clientes()
+        documentos = gerenciamento.get_documentos()
 
         # Configurando o número de linhas e colunas na tabela
         self.tabela_historico_cadastros.setRowCount(len(clientes))
         self.tabela_historico_cadastros.setColumnCount(3)  # Exemplo: 3 colunas
+        self.tabela_historico_documentos.setRowCount(len(clientes))
+        self.tabela_historico_documentos.setColumnCount(5)
 
         # Preenchendo a tabela com os dados dos clientes
         for i, cliente in enumerate(clientes):
             self.tabela_historico_cadastros.setItem(
-                i, 0, QTableWidgetItem(cliente.nome)
-            )
-            self.tabela_historico_cadastros.setItem(i, 1, QTableWidgetItem(cliente.cpf))
+                    i, 0, QTableWidgetItem(cliente.nome)
+                )
+
             self.tabela_historico_cadastros.setItem(
-                i, 2, QTableWidgetItem(cliente.data_nascimento.strftime("%d-%m-%Y"))
+                i, 1, QTableWidgetItem(cliente.telefone)
+                )
+            self.tabela_historico_cadastros.setItem(
+                i, 2, QTableWidgetItem(cliente.data_nascimento.strftime("%d/%m/%Y"))
+            )
+
+        for i, documento in enumerate(documentos):
+            if documento.cliente:
+                self.tabela_historico_documentos.setItem(
+                    i, 0, QTableWidgetItem(documento.cliente.nome)
+                )
+                self.tabela_historico_documentos.setItem(
+                    i, 3, QTableWidgetItem(documento.cliente.telefone)
+                )
+
+            self.tabela_historico_documentos.setItem(
+                i, 1, QTableWidgetItem(documento.titulo)
+            )
+            self.tabela_historico_documentos.setItem(
+                i, 2, QTableWidgetItem(documento.tipo)
+            )
+            self.tabela_historico_documentos.setItem(
+                i, 4, QTableWidgetItem(documento.registro[0].horario.strftime("%d/%m/%Y %H:%M:%S"))
             )
 
 
