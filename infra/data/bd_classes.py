@@ -286,7 +286,6 @@ class Registro(Base):
         fk_sessao (int): Chave estrangeira que referencia a sessão associada ao registro.
         horario (DateTime): Timestamp em que a atividade foi registrada.
         titulo_atividade (str): Título da atividade registrada.
-        fk_documento (int, opcional): ID do documento associado à atividade.
 
         sessao (relationship): Relacionamento com a sessão associada ao registro.
         documento (relationship): Relacionamento com o documento associado ao registro.
@@ -298,7 +297,6 @@ class Registro(Base):
     fk_sessao = Column(Integer, ForeignKey("sessao.id"), nullable=False)
     horario = Column(DateTime, nullable=False)
     titulo_atividade = Column(String)
-    fk_documento = Column(Integer, ForeignKey("documento.id"))
 
     sessao = relationship("Sessao", back_populates="registros")
     documento = relationship("Documento", back_populates="registro")
@@ -313,6 +311,7 @@ class Documento(Base):
     Atributos:
         id (int): Identificador único do documento (chave primária).
         fk_cliente (int, opcional): Chave estrangeira que referencia um cliente (Caso haja um associado).
+        fk_registro (int, opcional): Chave estrangeira que referencia o registro associado ao documento.
         titulo (str): Campo que representa o titulo específico para identificação do documento.
         tipo (str): Campo que representa o tipo específico do documento (ex: rg, cpf)
         conteudo (str): Conteúdo extraído do arquivo original.
@@ -325,6 +324,7 @@ class Documento(Base):
     __tablename__ = "documento"
 
     id = Column(Integer, primary_key=True)
+    fk_registro = Column(Integer, ForeignKey("registro.id"))
     fk_cliente = Column(Integer, ForeignKey("cliente.id"))
     titulo = Column(String, nullable=False)
     tipo = Column(String, nullable=False)
@@ -368,6 +368,60 @@ class Sessao(Base):
     idx_sessao_funcionario = Index("idx_sessao_funcionario", fk_funcionario)
     idx_sessao_data = Index("idx_sessao_data", data)
 
+
+    def cadastrar_cliente(
+        self,
+        nome: str,
+        cpf: str,
+        rg: str,
+        filiacao: str,
+        estado: str,
+        municipio: str,
+        endereco: str,
+        data_nascimento: str,
+        telefone: str = None,
+        email: str = None,
+        ) -> Cliente:
+        """Adiciona um Cliente ao Banco de Dados e cria um registro do mesmo.
+
+        Args:
+            nome (str): Nome completo do cliente.
+            cpf (str): Número de CPF do cliente.
+            rg (str): Número de RG do cliente.
+            filiacao (str): Nome do pai ou mãe do cliente.
+            estado (str): Estado em que o cliente está localizado.
+            municipio (str): Cidade em que o cliente está localizado.
+            endereco (str): Endereço do cliente.
+            data_nascimento (str): Data de nascimento do cliente (formato dd-mm-aaaa).
+            telefone (str, opcional): Número de telefone do cliente.
+            email (str, opcional): Endereço de e-mail do cliente.
+
+        Returns:
+            Cliente: Objeto referente ao cliente criado.
+        """
+
+        novo_cliente = Cliente(
+            nome=nome,
+            cpf=cpf,
+            rg=rg,
+            filiacao=filiacao,
+            estado=estado,
+            municipio=municipio,
+            endereco=endereco,
+            data_nascimento=datetime.strptime(data_nascimento, "%d-%m-%Y"),
+            telefone=telefone,
+            email=email,
+        )
+        
+        session.add(novo_cliente)
+
+        try:
+            session.commit()
+            return novo_cliente
+        except Exception as e:
+            raise Exception(f"Erro ao cadastrar cliente: {e}")
+    
+    
     def salvar_documento(
         self, titulo: str, tipo: str, arquivo_original: bytes, conteudo: str, cliente: Cliente = None
         ) -> Documento:
@@ -384,9 +438,9 @@ class Sessao(Base):
             Exception: Erro ao efetuar o commit do registro e documento.
         """
 
-        titulo_registro = f"Salvou um documento."
+        titulo_registro = f"Salvou o documento '{titulo}'"
         if cliente:
-            titulo_registro = f"Salvou o documento {titulo} de {cliente.nome}."
+            titulo_registro += f" de {cliente.nome}"
 
         # Criando Registro.
         registro = Registro(
@@ -402,9 +456,9 @@ class Sessao(Base):
             arquivo_original=arquivo_original,
         )
 
-        registro.documento = documento
+        documento.registro = registro
 
-        session.add(registro)
+        session.add(documento)
         try:
             session.commit()
             return documento
