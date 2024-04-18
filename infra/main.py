@@ -1,5 +1,5 @@
 from PySide6 import QtCore
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
@@ -7,8 +7,10 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QTreeWidgetItem,
     QWidget,
+    QLabel,
+    QTableWidgetItem,
 )
-from infra.data import (bd_classes, gerenciamento)
+from infra.data import bd_classes, gerenciamento
 from infra.ui.ui_login import Ui_Form
 from infra.ui.ui_sistema import Ui_MainWindow
 import sys
@@ -147,6 +149,7 @@ class Login(QWidget, Ui_Form):
         self.txt_ip.setText("localhost")
         self.txt_porta.setText("5432")
 
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
         super(MainWindow, self).__init__()
@@ -164,6 +167,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_encerrar_menu.clicked.connect(self.close)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
+        self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
 
     def left_menu(self):
         width = self.menu.width()
@@ -259,10 +263,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
     def carregar_docs_cadastro(self):
-        # btn_carregar_documentos
-        # lista_documentos_cadastro
-        # btn_cadastro_enviar
-        pass
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+        if nomeArquivo:
+            self.lista_documentos_cadastro.addItem(nomeArquivo)
+            
 
     def abrir_arquivo(self):
         options = QFileDialog.Option()
@@ -292,8 +299,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # aquele usuário. Portanto teremos a necessidade de funções que busquem um SELECT
     # no BD com os cadastros daquele usuário.
 
+ 
+
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
+
+        # Chama a função do módulo de gerenciamento para buscar os clientes
+        clientes = gerenciamento.get_clientes()
+
+        # Configurando o número de linhas e colunas na tabela
+        self.tabela_historico_cadastros.setRowCount(len(clientes))
+        self.tabela_historico_cadastros.setColumnCount(3)  # Exemplo: 3 colunas
+
+        # Preenchendo a tabela com os dados dos clientes
+        for i, cliente in enumerate(clientes):
+            self.tabela_historico_cadastros.setItem(
+                i, 0, QTableWidgetItem(cliente.nome)
+            )
+            self.tabela_historico_cadastros.setItem(i, 1, QTableWidgetItem(cliente.cpf))
+            self.tabela_historico_cadastros.setItem(
+                i, 2, QTableWidgetItem(cliente.data_nascimento.strftime("%d-%m-%Y"))
+            )
 
 
 def main():

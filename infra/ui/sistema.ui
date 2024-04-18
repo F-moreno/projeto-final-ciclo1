@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>561</height>
+    <width>940</width>
+    <height>585</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,12 @@
     </property>
     <item>
      <widget class="QFrame" name="menu">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>0</width>
@@ -81,7 +87,7 @@
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Nome da Empresa</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#ffffff;&quot;&gt;RuralConnect&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -144,7 +150,7 @@
                <x>0</x>
                <y>0</y>
                <width>115</width>
-               <height>486</height>
+               <height>507</height>
               </rect>
              </property>
              <attribute name="label">
@@ -456,7 +462,7 @@ QPushButton {
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Nome do Sistema&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Cadastro de Clientes em Áreas Remotas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -730,9 +736,12 @@ QPushButton {
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_17">
                        <item>
-                        <widget class="QListView" name="lista_documentos_cadastro">
+                        <widget class="QListWidget" name="lista_documentos_cadastro">
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgb(255, 255, 255);</string>
+                          <string notr="true">QListWidget{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0,0,0);
+}</string>
                          </property>
                         </widget>
                        </item>
@@ -787,7 +796,7 @@ QPushButton {
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <property name="elideMode">
                  <enum>Qt::ElideNone</enum>
@@ -954,6 +963,11 @@ QTableWidget{
                        <column>
                         <property name="text">
                          <string>Cliente</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Titulo</string>
                         </property>
                        </column>
                        <column>
@@ -1327,7 +1341,7 @@ QPushButton {
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Nome da Empresa</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RuralConnect&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
