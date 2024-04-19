@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>585</height>
+    <width>1026</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -150,7 +150,7 @@
                <x>0</x>
                <y>0</y>
                <width>115</width>
-               <height>507</height>
+               <height>511</height>
               </rect>
              </property>
              <attribute name="label">
@@ -604,6 +604,18 @@ QPushButton {
                    <layout class="QHBoxLayout" name="horizontalLayout_9">
                     <item>
                      <widget class="QFrame" name="frame_13">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">background:transparent;</string>
                       </property>
@@ -720,13 +732,10 @@ QPushButton {
                     <item>
                      <widget class="QFrame" name="frame_14">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background:transparent;</string>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -737,11 +746,63 @@ QPushButton {
                       <layout class="QVBoxLayout" name="verticalLayout_17">
                        <item>
                         <widget class="QListWidget" name="lista_documentos_cadastro">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>400</width>
+                           <height>400</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QListWidget{
-	background-color: rgb(255, 255, 255);
-	color: rgb(0,0,0);
+	background-color: white;
+	color: black;
 }</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="miniatura_documento">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>400</width>
+                           <height>400</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+	 width: 50px;
+   	 height: 50px;
+
+    /* Adicione margens */
+    margin: 5px;
+
+    /* Adicione borda (opcional) */
+    border: 1px solid #ccc;
+
+    /* Alinhe a imagem no centro */
+    text-align: center;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Amostra da Imagem&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
                          </property>
                         </widget>
                        </item>
