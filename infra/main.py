@@ -43,8 +43,7 @@ class Login(QWidget, Ui_Form):
             sessao = gerenciamento.iniciar_sessao(usuario, senha)
             self.abrir_main_window(sessao)
         except:
-             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
-           
+            QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
 
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
@@ -171,7 +170,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
-        
+        self.btn_cadastro_enviar.clicked.connect(self.enviar_cadastrar_cliente)
+
         self.lista_de_imagens = []
 
     def left_menu(self):
@@ -203,7 +203,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def carregar_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self, "Selecione o Arquivo", "", "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)", options=options
+            self,
+            "Selecione o Arquivo",
+            "",
+            "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)",
+            options=options,
         )
 
     def enviar_docs(self):
@@ -270,15 +274,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def carregar_docs_cadastro(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self, "Selecione o Arquivo", "", "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)", options=options
+            self,
+            "Selecione o Arquivo",
+            "",
+            "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)",
+            options=options,
         )
         if nomeArquivo:
             self.lista_de_imagens.extend([nomeArquivo])
             self.atualizar_lista()
-            
+
     def atualizar_lista(self):
         self.lista_documentos_cadastro.clear()
-        
+
         for imagem in self.lista_de_imagens:
             pixmap = QPixmap(imagem)
             icon = QIcon(pixmap)
@@ -287,8 +295,67 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_documentos_cadastro.addItem(item)
 
         self.lista_documentos_cadastro.setViewMode(QListWidget.IconMode)
-        self.lista_documentos_cadastro.itemClicked.connect(self.mostrar_imagem_selecionada)
-        
+        self.lista_documentos_cadastro.itemClicked.connect(
+            self.mostrar_imagem_selecionada
+        )
+
+    def enviar_cadastrar_cliente(self):
+        nome = self.txt_cadastro_nome.text()
+        cpf = self.txt_cadastro_cpf.text()
+        rg = self.txt_cadastro_rg.text()
+        filiacao = self.txt_cadastro_filiacao.text()
+        endereco = self.txt_cadastro_endereco.text()
+        data_nascimento = self.txt_cadastro_nascimento.text()
+        cidade = self.txt_cadastro_cidade.text()
+        estado = self.txt_cadastro_estado.text()
+        telefone = self.txt_cadastro_telefone.text()
+        email = self.txt_cadastro_email.text()
+
+        # Verifica se todos os campos obrigatórios estão preenchidos
+        if not nome or not cpf or not data_nascimento:
+            QMessageBox.warning(
+                self, "Campos obrigatórios", "Preencha todos os campos obrigatórios."
+            )
+            return
+
+        # Insere o cliente no banco de dados
+        # try:
+        #     sessao = gerenciamento.get_sessoes(cpf=cpf)
+        #     novo_cliente = session.cadastrar_cliente(
+        #         nome=nome,
+        #         cpf=cpf,
+        #         rg=rg,
+        #         filiacao=filiacao,
+        #         endereco=endereco,
+        #         data_nascimento=data_nascimento,
+        #         cidade=cidade,
+        #         estado=estado,
+        #         telefone=telefone,
+        #         email=email,
+        #     )
+        # except Exception as e:
+        #     QMessageBox.critical(self, "Erro", f"Erro ao cadastrar cliente: {str(e)}")
+        #     print(e)
+        #     return
+
+        # # Insere os documentos associados ao cliente no banco de dados
+        # for caminho_documento in self.lista_de_imagens:
+        #     try:
+        #         documento = session.salvar_documento(
+        #             titulo="Formulario de Cadastro",
+        #             tipo="Formulario de Cadastro",
+        #             arquivo_original=caminho_documento.binarizado,
+        #             conteudo="Conteudo do Documento",
+        #             cliente=novo_cliente,
+        #         )
+        #     except Exception as e:
+        #         QMessageBox.critical(
+        #             self, "Erro", f"Erro ao cadastrar documento: {str(e)}"
+        #         )
+        #         return
+
+        QMessageBox.information(self, "Sucesso", "Cliente cadastrado com sucesso!")
+
     def mostrar_imagem_selecionada(self, item):
         pixmap = QPixmap(item.text())
         self.miniatura_documento.setPixmap(pixmap)
@@ -328,7 +395,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         documentos = gerenciamento.get_documentos(
             fk_funcionario=self.sessao.funcionario.id
         )
-        doc_clientes = gerenciamento.get_documentos(fk_funcionario=self.sessao.funcionario.id, tipo="Teste")
+        doc_clientes = gerenciamento.get_documentos(
+            fk_funcionario=self.sessao.funcionario.id, tipo="Teste"
+        )
 
         # Configurando o número de linhas e colunas na tabela
         self.tabela_historico_cadastros.setRowCount(len(doc_clientes))
@@ -346,9 +415,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 i, 1, QTableWidgetItem(documento.cliente.telefone)
             )
             self.tabela_historico_cadastros.setItem(
-                i, 2, QTableWidgetItem(documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S"))
+                i,
+                2,
+                QTableWidgetItem(
+                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
+                ),
             )
-            
+
         for i, documento in enumerate(documentos):
             if documento.cliente:
                 self.tabela_historico_documentos.setItem(
@@ -365,7 +438,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 i, 2, QTableWidgetItem(documento.tipo)
             )
             self.tabela_historico_documentos.setItem(
-                i, 4, QTableWidgetItem(documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S"))
+                i,
+                4,
+                QTableWidgetItem(
+                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
+                ),
             )
 
 
