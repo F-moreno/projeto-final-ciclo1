@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(940, 585)
+        MainWindow.resize(1026, 589)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 115, 507))
+        self.page.setGeometry(QRect(0, 0, 115, 511))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -361,6 +361,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.frame_13 = QFrame(self.frame_12)
         self.frame_13.setObjectName(u"frame_13")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_13.sizePolicy().hasHeightForWidth())
+        self.frame_13.setSizePolicy(sizePolicy2)
+        self.frame_13.setMaximumSize(QSize(16777215, 16777215))
         self.frame_13.setStyleSheet(u"background:transparent;")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Raised)
@@ -431,21 +437,49 @@ class Ui_MainWindow(object):
 
         self.frame_14 = QFrame(self.frame_12)
         self.frame_14.setObjectName(u"frame_14")
-        sizePolicy1.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
-        self.frame_14.setSizePolicy(sizePolicy1)
-        self.frame_14.setStyleSheet(u"background:transparent;")
+        sizePolicy2.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
+        self.frame_14.setSizePolicy(sizePolicy2)
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_14)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.lista_documentos_cadastro = QListWidget(self.frame_14)
         self.lista_documentos_cadastro.setObjectName(u"lista_documentos_cadastro")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.lista_documentos_cadastro.sizePolicy().hasHeightForWidth())
+        self.lista_documentos_cadastro.setSizePolicy(sizePolicy3)
+        self.lista_documentos_cadastro.setMaximumSize(QSize(400, 400))
         self.lista_documentos_cadastro.setStyleSheet(u"QListWidget{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	color: rgb(0,0,0);\n"
+"	background-color: white;\n"
+"	color: black;\n"
 "}")
 
         self.verticalLayout_17.addWidget(self.lista_documentos_cadastro)
+
+        self.miniatura_documento = QLabel(self.frame_14)
+        self.miniatura_documento.setObjectName(u"miniatura_documento")
+        sizePolicy3.setHeightForWidth(self.miniatura_documento.sizePolicy().hasHeightForWidth())
+        self.miniatura_documento.setSizePolicy(sizePolicy3)
+        self.miniatura_documento.setMaximumSize(QSize(400, 400))
+        self.miniatura_documento.setStyleSheet(u"QLabel{\n"
+"	 width: 50px;\n"
+"   	 height: 50px;\n"
+"\n"
+"    /* Adicione margens */\n"
+"    margin: 5px;\n"
+"\n"
+"    /* Adicione borda (opcional) */\n"
+"    border: 1px solid #ccc;\n"
+"\n"
+"    /* Alinhe a imagem no centro */\n"
+"    text-align: center;\n"
+"}")
+        self.miniatura_documento.setScaledContents(True)
+        self.miniatura_documento.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_17.addWidget(self.miniatura_documento)
 
         self.btn_cadastro_enviar = QPushButton(self.frame_14)
         self.btn_cadastro_enviar.setObjectName(u"btn_cadastro_enviar")
@@ -767,9 +801,6 @@ class Ui_MainWindow(object):
 
         self.frame_3 = QFrame(self.pg_perfil)
         self.frame_3.setObjectName(u"frame_3")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
         self.frame_3.setSizePolicy(sizePolicy2)
         self.frame_3.setFrameShape(QFrame.StyledPanel)
@@ -859,6 +890,7 @@ class Ui_MainWindow(object):
         self.txt_cadastro_estado.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Estado", None))
         self.txt_cadastro_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
         self.txt_cadastro_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Email", None))
+        self.miniatura_documento.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Amostra da Imagem</p></body></html>", None))
         self.btn_cadastro_enviar.setText(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
         ___qtablewidgetitem = self.tabela_historico_cadastros.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));

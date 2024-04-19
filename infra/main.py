@@ -1,4 +1,5 @@
 from PySide6 import QtCore
+from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
@@ -9,6 +10,8 @@ from PySide6.QtWidgets import (
     QWidget,
     QLabel,
     QTableWidgetItem,
+    QListWidgetItem,
+    QListWidget,
 )
 from infra.data import bd_classes, gerenciamento
 from infra.ui.ui_login import Ui_Form
@@ -168,6 +171,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
+        
+        self.lista_de_imagens = []
 
     def left_menu(self):
         width = self.menu.width()
@@ -198,7 +203,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def carregar_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+            self, "Selecione o Arquivo", "", "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)", options=options
         )
 
     def enviar_docs(self):
@@ -265,10 +270,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def carregar_docs_cadastro(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+            self, "Selecione o Arquivo", "", "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)", options=options
         )
         if nomeArquivo:
-            self.lista_documentos_cadastro.addItem(nomeArquivo)
+            self.lista_de_imagens.extend([nomeArquivo])
+            self.atualizar_lista()
+            
+    def atualizar_lista(self):
+        self.lista_documentos_cadastro.clear()
+        
+        for imagem in self.lista_de_imagens:
+            pixmap = QPixmap(imagem)
+            icon = QIcon(pixmap)
+            item = QListWidgetItem(icon, imagem)
+            item.setSizeHint(QSize(50, 50))
+            self.lista_documentos_cadastro.addItem(item)
+
+        self.lista_documentos_cadastro.setViewMode(QListWidget.IconMode)
+        self.lista_documentos_cadastro.itemClicked.connect(self.mostrar_imagem_selecionada)
+        
+    def mostrar_imagem_selecionada(self, item):
+        pixmap = QPixmap(item.text())
+        self.miniatura_documento.setPixmap(pixmap)
 
     def abrir_arquivo(self):
         options = QFileDialog.Option()
