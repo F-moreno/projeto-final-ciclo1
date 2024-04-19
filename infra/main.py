@@ -118,6 +118,7 @@ class Login(QWidget, Ui_Form):
     def abrir_main_window(self, sessao):
         self.w = MainWindow(sessao)
         self.w.show()
+        self.w.showMaximized()
         self.close()
 
     def mostrar_pag_cadastro(self):
@@ -171,8 +172,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
         self.btn_cadastro_enviar.clicked.connect(self.enviar_cadastrar_cliente)
-
+        self.btn_limpar_formulario.clicked.connect(self.limpar_formulario)
+        self.btn_remover_doc.clicked.connect(self.remover_documento)
+        self.btn_remover_lista_cadastro.clicked.connect(self.remover_doc_cadastro)
+        self.btn_limpar_lista_cadastro.clicked.connect(self.limpar_docs_cadastro)
         self.lista_de_imagens = []
+        self.documento_selecionado = None
 
     def left_menu(self):
         width = self.menu.width()
@@ -209,7 +214,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)",
             options=options,
         )
-
+        if nomeArquivo:
+            self.documento_selecionado = nomeArquivo
+            self.atualizar_documento_selecionado()
+            
+    def atualizar_documento_selecionado(self):
+        if self.documento_selecionado:
+            pixmap = QPixmap(self.documento_selecionado)
+            self.amostra_imagem.setPixmap(pixmap)
+            self.btn_remover_doc.setEnabled(True)
+            self.lista_envio_documento.clear()
+            self.lista_envio_documento.addItem(self.documento_selecionado)
+        else:
+            self.amostra_imagem.clear()
+            self.btn_remover_doc.setEnabled(False)   
+            
+    def remover_documento(self):
+        self.documento_selecionado = ""
+        self.lista_envio_documento.clear()
+        self.atualizar_documento_selecionado()    
+        
+    def mostrar_documento_selecionado(self, item):
+        pixmap = QPixmap(item.text())
+        self.amostra_imagem.setPixmap(pixmap)  
+        
+               
     def enviar_docs(self):
         print("Arquivo enviado com sucesso!")
         # btn_arquivo_documento
@@ -283,21 +312,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.lista_de_imagens.extend([nomeArquivo])
             self.atualizar_lista()
-
+            
+    def limpar_formulario(self):
+        self.txt_cadastro_nome.clear()
+        self.txt_cadastro_cpf.clear()
+        self.txt_cadastro_rg.clear()
+        self.txt_cadastro_filiacao.clear()
+        self.txt_cadastro_endereco.clear()
+        self.txt_cadastro_nascimento.clear()
+        self.txt_cadastro_cidade.clear()
+        self.txt_cadastro_estado.clear()
+        self.txt_cadastro_telefone.clear()
+        self.txt_cadastro_email.clear()
+        
+    def remover_doc_cadastro(self):
+        if self.lista_documentos_cadastro.currentItem():
+            item = self.lista_documentos_cadastro.currentRow()
+            del self.lista_de_imagens[item]
+            self.lista_documentos_cadastro.takeItem(item)
+    def limpar_docs_cadastro(self):
+        self.lista_documentos_cadastro.clear()
+        self.lista_de_imagens.clear()
+        self.limpar_imagem_selecionada()
+        self.miniatura_documento.setText("Amostra de Imagem")
+        
     def atualizar_lista(self):
         self.lista_documentos_cadastro.clear()
 
-        for imagem in self.lista_de_imagens:
-            pixmap = QPixmap(imagem)
-            icon = QIcon(pixmap)
-            item = QListWidgetItem(icon, imagem)
-            item.setSizeHint(QSize(50, 50))
-            self.lista_documentos_cadastro.addItem(item)
+        if self.lista_de_imagens: 
+            for imagem in self.lista_de_imagens:
+                pixmap = QPixmap(imagem)
+                icon = QIcon(pixmap)
+                item = QListWidgetItem(icon, imagem)
+                item.setSizeHint(QSize(50, 50))
+                self.lista_documentos_cadastro.addItem(item)
 
         self.lista_documentos_cadastro.setViewMode(QListWidget.IconMode)
         self.lista_documentos_cadastro.itemClicked.connect(
             self.mostrar_imagem_selecionada
         )
+        
+    def limpar_imagem_selecionada(self):
+        self.miniatura_documento.clear()
 
     def enviar_cadastrar_cliente(self):
         nome = self.txt_cadastro_nome.text()
