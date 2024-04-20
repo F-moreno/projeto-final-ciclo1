@@ -231,6 +231,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_envio_documento.addItem(self.documento_selecionado)
         else:
             self.amostra_imagem.clear()
+            self.amostra_imagem.setText("Amostra de Imagem")
             self.btn_remover_doc.setEnabled(False)
 
     def remover_documento(self):
