@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>861</width>
-    <height>653</height>
+    <width>1029</width>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
+    <string notr="true">background-color: rgb(255,255,255);</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -51,7 +51,7 @@
        <string>Menu</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -59,7 +59,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -78,7 +78,7 @@
        <item>
         <widget class="QFrame" name="frame_2">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(96, 194, 255);</string>
+          <string notr="true">background-color: transparent;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -97,6 +97,9 @@
             <property name="toolTip">
              <string>Nome da Empresa</string>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: transparent;</string>
+            </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;RuralConnect&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -108,7 +111,7 @@
        <item>
         <widget class="QFrame" name="frame">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(96, 194, 255);</string>
+          <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -134,6 +137,12 @@
           </property>
           <item>
            <widget class="QToolBox" name="toolBox">
+            <property name="minimumSize">
+             <size>
+              <width>220</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
@@ -141,7 +150,14 @@
              <bool>false</bool>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">QToolBox::tab {
+	background-color: transparent;
+	margin-right:-1px;
+ 	border: none; 
+}
+QToolBox{
+background-color: transparent;
+}</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
@@ -166,12 +182,12 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>139</width>
-               <height>572</height>
+               <width>220</width>
+               <height>631</height>
               </rect>
              </property>
              <attribute name="label">
-              <string>Menu</string>
+              <string/>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <property name="spacing">
@@ -210,9 +226,11 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	margin-right: 0px;
 }
 </string>
                 </property>
@@ -264,7 +282,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -312,7 +331,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -360,7 +380,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -408,7 +429,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -444,6 +466,12 @@ QPushButton {
               </item>
               <item>
                <widget class="QPushButton" name="btn_encerrar_menu">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -464,6 +492,9 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	margim-right: 0px;
 }
 </string>
                 </property>
@@ -495,7 +526,7 @@ QPushButton {
     <item>
      <widget class="QFrame" name="main_container">
       <property name="styleSheet">
-       <string notr="true">background: transparent;</string>
+       <string notr="true">background-color: rgb(255,255,255);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -522,7 +553,8 @@ QPushButton {
        <item>
         <widget class="QFrame" name="hand_frame">
          <property name="styleSheet">
-          <string notr="true">background:transparent;</string>
+          <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
+margin-left: 0px;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -557,6 +589,9 @@ QPushButton {
             <property name="accessibleDescription">
              <string>Botão do Menu</string>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: transparent;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -579,6 +614,9 @@ QPushButton {
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: transparent;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Cadastro de Clientes em Áreas Remotas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -630,6 +668,12 @@ QPushButton {
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                <widget class="QFrame" name="frame_8">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -639,6 +683,12 @@ QPushButton {
                 <layout class="QHBoxLayout" name="horizontalLayout_15">
                  <item>
                   <widget class="QFrame" name="frame_21">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -658,14 +708,21 @@ QPushButton {
                        <item>
                         <widget class="QLabel" name="label_12">
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Seja Bem Vindo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;Seja Bem Vindo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="txt_nome_perfil_2">
+                        <widget class="QLabel" name="txt_nome_perfil_home">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+	background-color: transparent;
+	fonte-size: 14px;
+	color: black;
+}</string>
+                         </property>
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                         </widget>
                        </item>
@@ -674,6 +731,12 @@ QPushButton {
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_23">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -683,8 +746,17 @@ QPushButton {
                       <layout class="QHBoxLayout" name="horizontalLayout_14">
                        <item>
                         <widget class="QLabel" name="label_4">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/icons/cobra.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="icons.qrc">:/icons/icons/cobra.png</pixmap>
                          </property>
                         </widget>
                        </item>
@@ -748,19 +820,6 @@ QPushButton {
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_9">
                     <item>
-                     <spacer name="horizontalSpacer_4">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
                      <widget class="QFrame" name="frame_13">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -779,13 +838,10 @@ QPushButton {
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QFrame{
-	background-color: rgba(0,0,0,0.1);
-	border-radius: 20px;
+	background-color: rgba(0, 164, 218, 0.2);
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
-
-##background-color:rgba(0,0,0,0.1);
-##border-top-left-radius: 10px;
-##border-bottom-right-radius: 10px;
 
 </string>
                       </property>
@@ -818,8 +874,8 @@ QPushButton {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
-                           <height>25</height>
+                           <width>250</width>
+                           <height>30</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -865,8 +921,8 @@ QPushButton {
                         <widget class="QPushButton" name="btn_limpar_formulario">
                          <property name="minimumSize">
                           <size>
-                           <width>200</width>
-                           <height>25</height>
+                           <width>250</width>
+                           <height>30</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -1233,6 +1289,13 @@ QPushButton {
                            <verstretch>0</verstretch>
                           </sizepolicy>
                          </property>
+                         <property name="styleSheet">
+                          <string notr="true">QFrame{
+	background-color: rgba(0, 164, 218, 0.2);
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -1245,7 +1308,7 @@ QPushButton {
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
-                              <height>25</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="cursor">
@@ -1286,7 +1349,7 @@ QPushButton {
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
-                              <height>25</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="cursor">
@@ -1333,7 +1396,7 @@ QPushButton {
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
-                              <height>25</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="cursor">
@@ -1386,6 +1449,12 @@ QPushButton {
                               <height>0</height>
                              </size>
                             </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>250</width>
+                              <height>250</height>
+                             </size>
+                            </property>
                             <property name="toolTip">
                              <string>Aqui irão aparecer os documentos selecionados</string>
                             </property>
@@ -1396,6 +1465,7 @@ QPushButton {
                              <string notr="true">QListWidget{
 	background-color: white;
 	color: black;
+	border-radius: 0px;
 }</string>
                             </property>
                             <property name="dragEnabled">
@@ -1417,6 +1487,12 @@ QPushButton {
                               <verstretch>0</verstretch>
                              </sizepolicy>
                             </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>250</width>
+                              <height>250</height>
+                             </size>
+                            </property>
                             <property name="maximumSize">
                              <size>
                               <width>250</width>
@@ -1429,18 +1505,14 @@ QPushButton {
                             <property name="accessibleDescription">
                              <string>Campo de exibição de Miniatura de Documento</string>
                             </property>
+                            <property name="layoutDirection">
+                             <enum>Qt::LeftToRight</enum>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QLabel{
-	 width: 50px;
-   	 height: 50px;
-
-    /* Adicione margens */
-    margin: 5px;
-
-    /* Adicione borda (opcional) */
-    border: 1px solid #ccc;
-
-    /* Alinhe a imagem no centro */
+    border-radius: 2px;
+	background-color: transparent;
+	border: 1px solid black;
     text-align: center;
 }</string>
                             </property>
@@ -1449,6 +1521,9 @@ QPushButton {
                             </property>
                             <property name="scaledContents">
                              <bool>true</bool>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
                             </property>
                            </widget>
                           </item>
@@ -1459,6 +1534,9 @@ QPushButton {
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: transparent;</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
@@ -1513,19 +1591,6 @@ QPushButton {
                           </item>
                          </layout>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_3">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                       </layout>
                      </widget>
@@ -1828,7 +1893,7 @@ QTableWidget{
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout">
-                 <item row="0" column="1" colspan="2">
+                 <item row="0" column="0" colspan="2">
                   <widget class="QFrame" name="frame_15">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1847,9 +1912,11 @@ QTableWidget{
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QFrame{
-	background-color: rgba(0,0,0,0.1);
-	border-radius: 20px;
-}</string>
+	background-color: rgba(0, 164, 218, 0.2);
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+</string>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -1858,6 +1925,132 @@ QTableWidget{
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_20">
+                       <item>
+                        <widget class="QComboBox" name="tipo_documento">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Escolha o tipo de arquivo</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Opções de tipos de documentos</string>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QComboBox{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0,0,0);
+}</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Escolha o tipo de arquivo</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>CPF</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>RG</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>CNH</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>PASSAPORTE</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_arquivo_documento">
+                         <property name="minimumSize">
+                          <size>
+                           <width>250</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Escolher um Arquivo</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão para escolher o documento</string>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(0, 170, 255);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+</string>
+                         </property>
+                         <property name="text">
+                          <string>Escolher um Arquivo</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_remover_doc">
+                         <property name="minimumSize">
+                          <size>
+                           <width>250</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Limpar</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão para limpar</string>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	background-color: rgb(255, 75, 75);
+	
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Limpar</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
                        <item>
                         <spacer name="verticalSpacer_6">
                          <property name="orientation">
@@ -1920,8 +2113,8 @@ QTableWidget{
                         <widget class="QLabel" name="amostra_imagem">
                          <property name="minimumSize">
                           <size>
-                           <width>100</width>
-                           <height>100</height>
+                           <width>250</width>
+                           <height>250</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -1936,193 +2129,30 @@ QTableWidget{
                          <property name="accessibleDescription">
                           <string>Espaço onde aparecerá uma miniatura da imagem do documento selecionado</string>
                          </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QLabel{
-	border-radius: 0px;
-    
-	
+    border-radius: 2px;
+	background-color: transparent;
+	border: 1px solid black;
+    text-align: center;
 }</string>
                          </property>
                          <property name="text">
-                          <string>Amostra da Imagem</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Amostra da Imagem&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                          <property name="scaledContents">
                           <bool>true</bool>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
                          </property>
                         </widget>
                        </item>
                        <item>
                         <spacer name="verticalSpacer_9">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_20">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_22">
-                       <property name="spacing">
-                        <number>4</number>
-                       </property>
-                       <item>
-                        <spacer name="verticalSpacer_4">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="tipo_documento">
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Escolha o tipo de arquivo</string>
-                         </property>
-                         <property name="accessibleDescription">
-                          <string>Opções de tipos de documentos</string>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: rgb(255, 255, 255);</string>
-                         </property>
-                         <item>
-                          <property name="text">
-                           <string>Escolha o tipo de arquivo</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>CPF</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>RG</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>CNH</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>PASSAPORTE</string>
-                          </property>
-                         </item>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="btn_arquivo_documento">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Escolher um Arquivo</string>
-                         </property>
-                         <property name="accessibleDescription">
-                          <string>Botão para escolher o documento</string>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
-	color: rgb(255, 255, 255);
-	
-	background-color: rgb(0, 170, 255);
-}
-QPushButton {
-	
-	background-color: rgb(96, 194, 255);
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-</string>
-                         </property>
-                         <property name="text">
-                          <string>Escolher um Arquivo</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="btn_remover_doc">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Limpar</string>
-                         </property>
-                         <property name="accessibleDescription">
-                          <string>Botão para limpar</string>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
-	color: rgb(255, 255, 255);
-	
-	background-color: rgb(255, 75, 75);
-	
-}
-QPushButton {
-	
-	background-color: rgb(96, 194, 255);
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Limpar</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="verticalSpacer_5">
                          <property name="orientation">
                           <enum>Qt::Vertical</enum>
                          </property>
@@ -2146,19 +2176,6 @@ QPushButton {
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_17">
-                       <item>
-                        <spacer name="verticalSpacer_7">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
                        <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="label_8">
                          <property name="text">
@@ -2175,17 +2192,31 @@ QPushButton {
                           <string>Campo de texto para exibição de dados extraídos do documento</string>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+                          <string notr="true">QTextEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}</string>
                          </property>
                         </widget>
                        </item>
-                       <item>
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QPushButton" name="btn_enviar_arquivo">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
-                           <width>0</width>
+                           <width>250</width>
                            <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>250</width>
+                           <height>16777215</height>
                           </size>
                          </property>
                          <property name="cursor">
@@ -2196,6 +2227,9 @@ color: rgb(0, 0, 0);</string>
                          </property>
                          <property name="accessibleDescription">
                           <string>Botão de enviar documento</string>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -2221,19 +2255,6 @@ QPushButton {
                          </property>
                         </widget>
                        </item>
-                       <item>
-                        <spacer name="verticalSpacer_8">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -2241,6 +2262,9 @@ QPushButton {
                      <spacer name="horizontalSpacer_2">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
@@ -2252,19 +2276,6 @@ QPushButton {
                     </item>
                    </layout>
                   </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <spacer name="horizontalSpacer">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
                  </item>
                 </layout>
                </widget>
@@ -2295,10 +2306,10 @@ QPushButton {
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QFrame{
-	background-color: rgba(0,0,0,0.1);
-	border-radius: 10px;
-}
-</string>
+	background-color: rgba(0, 164, 218, 0.2);
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -2329,17 +2340,30 @@ QPushButton {
                     <string notr="true">background-color:transparent;</string>
                    </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Altere seus Dados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;Altere seus Dados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_nome">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="toolTip">
                     <string>Nome</string>
                    </property>
                    <property name="accessibleDescription">
                     <string>Campo para alteração de Nome</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                    </property>
                    <property name="placeholderText">
                     <string>  Nome</string>
@@ -2348,11 +2372,24 @@ QPushButton {
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_email">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="toolTip">
                     <string>Email</string>
                    </property>
                    <property name="accessibleDescription">
                     <string>Campo para alteração de Email</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                    </property>
                    <property name="placeholderText">
                     <string>  Email</string>
@@ -2361,11 +2398,24 @@ QPushButton {
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_telefone">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="toolTip">
                     <string>Telefone</string>
                    </property>
                    <property name="accessibleDescription">
                     <string>Campo para alteração de telefone</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                    </property>
                    <property name="placeholderText">
                     <string>  Telefone</string>
@@ -2376,7 +2426,7 @@ QPushButton {
                   <widget class="QPushButton" name="btn_salvar_alteracoes">
                    <property name="minimumSize">
                     <size>
-                     <width>120</width>
+                     <width>250</width>
                      <height>30</height>
                     </size>
                    </property>
@@ -2451,7 +2501,7 @@ QPushButton {
                     <string>Texto que diz: Perfil</string>
                    </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Perfil&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#000000;&quot;&gt;Perfil&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
@@ -2461,15 +2511,22 @@ QPushButton {
               <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                <widget class="QFrame" name="frame_4">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>200</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QFrame{
-	background-color:rgba(0,0,0,0.1);
-	border-radius: 15px;
+	background-color: rgba(0, 164, 218, 0.2);
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }</string>
                 </property>
                 <property name="frameShape">
@@ -2479,6 +2536,19 @@ QPushButton {
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <item>
+                  <spacer name="verticalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
                  <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                   <widget class="QLabel" name="txt_nome_perfil">
                    <property name="sizePolicy">
@@ -2494,10 +2564,18 @@ QPushButton {
                     <string>Campo de texto que aparecerá o nome do Usuário</string>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: transparent;</string>
+                    <string notr="true">QLabel{
+	background-color:transparent;
+	font-size: 16px;
+	color: black;
+	text-align: center;
+}</string>
                    </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Nome do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nome do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
                    </property>
                   </widget>
                  </item>
@@ -2516,10 +2594,18 @@ QPushButton {
                     <string>Campo de Texto que terá o email do Usuário</string>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: transparent;</string>
+                    <string notr="true">QLabel{
+	background-color:transparent;
+	font-size: 12px;
+	color: black;
+	text-align: center;
+}</string>
                    </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Email do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Email do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignHCenter|Qt::AlignTop</set>
                    </property>
                   </widget>
                  </item>
@@ -2538,12 +2624,33 @@ QPushButton {
                     <string>Campo de texto que aparecerá o telefone do usuário</string>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: transparent;</string>
+                    <string notr="true">QLabel{
+	background-color:transparent;
+	font-size: 12px;
+	color: black;
+	text-align: center;
+}</string>
                    </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Telefone do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Telefone do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignHCenter|Qt::AlignTop</set>
                    </property>
                   </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </widget>
@@ -2567,7 +2674,7 @@ QPushButton {
                   <widget class="QPushButton" name="btn_alterar_dados">
                    <property name="minimumSize">
                     <size>
-                     <width>150</width>
+                     <width>250</width>
                      <height>30</height>
                     </size>
                    </property>
@@ -2628,7 +2735,7 @@ QPushButton {
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RuralConnect&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;copy; RuralConnect&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
