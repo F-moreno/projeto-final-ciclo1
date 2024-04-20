@@ -219,6 +219,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
+            conteudo = (TesseractOCR().read_text(caminho_arquivo),)
+            print(conteudo)
 
     def atualizar_documento_selecionado(self):
         if self.documento_selecionado:
@@ -244,7 +246,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         documento = self.lista_envio_documento.item(0)
         caminho_arquivo = documento.text()
         tipo = self.tipo_documento.currentText()
-
+        
         try:
             with io.open(caminho_arquivo, "rb") as f:
                 bytes_imagem = f.read()
@@ -253,7 +255,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 titulo=caminho_arquivo.split("/")[-1],
                 tipo=tipo,
                 arquivo_original=bytes_imagem,
-                conteudo="Conteudo do Documento",
+                conteudo=conteudo,
             )
 
         except Exception as e:
@@ -375,14 +377,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def enviar_cadastrar_cliente(self):
         nome = self.txt_cadastro_nome.text()
-        cpf = self.txt_cadastro_cpf.text()
-        rg = self.txt_cadastro_rg.text()
+        cpf = self.txt_cadastro_cpf.text().replace(".", "").replace("-", "")
+        rg = self.txt_cadastro_rg.text().replace(".", "").replace("-", "")
         filiacao = self.txt_cadastro_filiacao.text()
         endereco = self.txt_cadastro_endereco.text()
-        data_nascimento = self.txt_cadastro_nascimento.text()
+        data_nascimento = self.txt_cadastro_nascimento.text().replace("/", "-")
         municipio = self.txt_cadastro_cidade.text()
         estado = self.txt_cadastro_estado.text()
-        telefone = self.txt_cadastro_telefone.text()
+        telefone = self.txt_cadastro_telefone.text().replace("(", "").replace(")", "").replace(" ", "").replace("-", "")
         email = self.txt_cadastro_email.text()
 
         # Verifica se todos os campos obrigatórios estão preenchidos
