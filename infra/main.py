@@ -219,8 +219,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
-            conteudo = (TesseractOCR().read_text(caminho_arquivo),)
-            print(conteudo)
+            conteudo = (TesseractOCR().read_text(nomeArquivo),)
+            self.txt_dados_documento.setText(conteudo[0])
 
     def atualizar_documento_selecionado(self):
         if self.documento_selecionado:
@@ -237,6 +237,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def remover_documento(self):
         self.documento_selecionado = ""
         self.lista_envio_documento.clear()
+        self.txt_dados_documento.clear()
         self.atualizar_documento_selecionado()
 
     def mostrar_documento_selecionado(self, item):
@@ -247,7 +248,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         documento = self.lista_envio_documento.item(0)
         caminho_arquivo = documento.text()
         tipo = self.tipo_documento.currentText()
-        
+        conteudo = self.txt_dados_documento.toPlainText()
+
         try:
             with io.open(caminho_arquivo, "rb") as f:
                 bytes_imagem = f.read()
@@ -313,6 +315,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             )
             QMessageBox.information(self, "Sucesso", "Perfil atualizado com sucesso!")
             self.limpar_campos_alteracao()
+            self.mostrar_pag_perfil()
 
         else:
             QMessageBox.warning(self, "Aviso", "Nenhuma alteração foi feita.")
