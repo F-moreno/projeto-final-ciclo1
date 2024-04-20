@@ -179,6 +179,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_limpar_lista_cadastro.clicked.connect(self.limpar_docs_cadastro)
         self.lista_de_imagens = []
         self.documento_selecionado = None
+        self.mostrar_pag_home()
 
     def left_menu(self):
         width = self.menu.width()
@@ -196,6 +197,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
+        sessao = self.sessao
+        if sessao:
+            informacoes = sessao.funcionario
+            if informacoes:
+                self.txt_nome_perfil_home.setText(informacoes.nome)
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
