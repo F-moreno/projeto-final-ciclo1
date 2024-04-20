@@ -6,6 +6,7 @@ import pytesseract
 import matplotlib.pyplot as plt
 from pytesseract import Output
 import os
+import datetime
 
 diretorio = "tests/forms"
 
@@ -16,6 +17,8 @@ arquivos = [
 
 
 class TesseractOCR:
+    nome_arquivo = None
+
     def __init__(self):
         self.config_tesseract = "--tessdata-dir infra/func/tessdata"
 
@@ -29,21 +32,17 @@ class TesseractOCR:
         return self.__get_json(text)
 
     def __get_text_from_img(self, img_path):
-        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
+        TesseractOCR.nome_arquivo = img_path.split("/")[-1]
         img = self.__get_rgb_img(img_path)
-        self.__show_img(img)
-        # img = cv2.medianBlur(img, 3)
+        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
         img = self.__get_fixed_img(thresh, gray)
 
         # corrige o angulo do texto para 0º
         img = self.__get_contrasted_img(img, beta=0)
-        self.__show_img(img)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
-
-        self.__show_img(cv2.bitwise_not(img))
 
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
@@ -87,7 +86,10 @@ class TesseractOCR:
         cv2.drawContours(img_destacada, [box], 0, (0, 255, 0), 2)
 
         # Salvar a imagem com a área destacada
-        cv2.imwrite("Docs/imagens/formulario/destacada.png", img_destacada)
+        cv2.imwrite(
+            f"Docs/imagens/destacada/{TesseractOCR.nome_arquivo}",
+            img_destacada,
+        )
         self.__show_img(img_destacada)
         return min_square_contours
 
@@ -103,12 +105,25 @@ class TesseractOCR:
         img_fixed = cv2.warpPerspective(img, M, (w, h))
         img_fixed = cv2.flip(img_fixed, 1)
 
+        cv2.imwrite(
+            f"Docs/imagens/rotacionada/{TesseractOCR.nome_arquivo}",
+            img_fixed,
+        )
+
         return img_fixed
 
     def __get_angle_img(self, img_gray):
-
-        osd = pytesseract.image_to_osd(img_gray)
-        angulo = float(osd.split("\n")[2].split(":")[-1])
+        try:
+            osd = pytesseract.image_to_osd(img_gray)
+            print(osd)
+            self.__show_img(cv2.resize(img_gray, (500, 500)))
+            if float(osd.split("\n")[3].split(":")[-1]) > 10:
+                angulo = float(osd.split("\n")[1].split(":")[-1])
+            else:
+                angulo = float(osd.split("\n")[2].split(":")[-1])
+        except Exception as e:
+            print(e)
+            angulo = 0
         return angulo
 
     # corrige angulo
@@ -117,17 +132,40 @@ class TesseractOCR:
         rows = cols = max(img.shape[:2])
         M = cv2.getRotationMatrix2D((cols / 2, rows / 2), angle, 1)
         img_rotated = cv2.warpAffine(img, M, (cols, rows))
+
+        cv2.imwrite(
+            f"Docs/imagens/alinhada/{TesseractOCR.nome_arquivo}",
+            img_rotated,
+        )
+
         return img_rotated
 
     def __get_medianblurred_img(self, img):
         img_gau = cv2.GaussianBlur(img, (5, 5), 0)
         return img_gau
 
+    def __get_enhanced_edges_img(self, gray):
+        # Aplicar o filtro de mediana para suavizar a imagem
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        enhanced_gray = clahe.apply(gray)
+
+        # Apply bilateral filter to smooth the image while preserving edges
+        filtered_image = cv2.bilateralFilter(enhanced_gray, 9, 75, 75)
+
+        binary_image = np.ones_like(filtered_image) * 255
+        binary_image[(filtered_image < 90) or (filtered_image > 200)] = 0
+
+        """filtered_image = cv2.threshold(
+            filtered_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
+        )[1]"""
+
+        return binary_image
+
     def __get_contrasted_img(self, img, alpha=1.5, beta=0):
         img_contrasted = cv2.convertScaleAbs(
             cv2.bitwise_not(img), alpha=alpha, beta=beta
         )
-        return cv2.bitwise_not(img_contrasted)
+        return img_contrasted
 
     def __get_laplacian_img(self, img):
         img_lpc = cv2.Laplacian(img, cv2.CV_8UC1)
@@ -174,11 +212,15 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
-    img = tesseract.read_image(arquivo)
-    texto_reconhecido = tesseract.read_text(arquivo)
+    arquivo_path = (
+        "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario"
+    )
+    for img in os.listdir(arquivo_path):
+        arquivo = f"{arquivo_path}/{img}"
 
-    print(texto_reconhecido)
-    json = tesseract.read_json(texto_reconhecido)
+        texto_reconhecido = tesseract.read_text(arquivo)
 
-    print(f"json:\n{json}")
+        print(texto_reconhecido)
+        json = tesseract.read_json(texto_reconhecido)
+
+        print(f"json:\n{json}")

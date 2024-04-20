@@ -1,5 +1,17 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/out.png</file>
+    <file>icons/historical.png</file>
+    <file>icons/homepage.png</file>
+    <file>icons/user.png</file>
+    <file>icons/verify.png</file>
+    <file>icons/save.png</file>
+    <file>icons/refresh.png</file>
+    <file>icons/remove.png</file>
+    <file>icons/add.png</file>
+    <file>icons/delete.png</file>
+    <file>icons/upload.png</file>
+    <file>icons/import.png</file>
     <file>icons/close.png</file>
     <file>icons/cobra.png</file>
     <file>icons/option.png</file>
