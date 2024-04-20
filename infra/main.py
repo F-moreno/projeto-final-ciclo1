@@ -403,6 +403,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             .replace(" ", "")
             .replace("-", "")
         )
+        telefone = (
+            self.txt_cadastro_telefone.text()
+            .replace("(", "")
+            .replace(")", "")
+            .replace(" ", "")
+            .replace("-", "")
+        )
         email = self.txt_cadastro_email.text()
 
         # Verifica se todos os campos obrigatórios estão preenchidos
