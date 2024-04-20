@@ -31,16 +31,8 @@ class TesseractOCR:
 
     def __get_text_from_img(self, img_path):
         img = self.__get_rgb_img(img_path)
-        gray = self.__get_grayscale_img(cv2.bitwise_not(img))
-
-        # aplica o filtro de mediana
-        img = self.__get_enhanced_edges_img(gray)
-        self.__show_img(img)
-
-        # aplica o filtro de ruido
-        img = self.__get_eroded_img(img)
-
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
+        gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
         img = self.__get_fixed_img(thresh, gray)
 
@@ -203,7 +195,7 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
     nome_arquivo = arquivo.split("/")[-1]
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
