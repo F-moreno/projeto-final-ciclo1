@@ -6,6 +6,7 @@ import pytesseract
 import matplotlib.pyplot as plt
 from pytesseract import Output
 import os
+import datetime
 
 diretorio = "tests/forms"
 
@@ -87,7 +88,10 @@ class TesseractOCR:
         cv2.drawContours(img_destacada, [box], 0, (0, 255, 0), 2)
 
         # Salvar a imagem com a área destacada
-        cv2.imwrite("Docs/imagens/formulario/destacada.png", img_destacada)
+        cv2.imwrite(
+            f"Docs/imagens/formulario/destacada{datetime.datetime.now()}.png",
+            img_destacada,
+        )
         self.__show_img(img_destacada)
         return min_square_contours
 

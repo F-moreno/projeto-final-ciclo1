@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>986</width>
-    <height>568</height>
+    <width>861</width>
+    <height>653</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -149,8 +149,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>115</width>
-               <height>490</height>
+               <width>135</width>
+               <height>575</height>
               </rect>
              </property>
              <attribute name="label">
@@ -196,6 +196,10 @@ QPushButton {
                 <property name="text">
                  <string>Home</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/homepage.png</normaloff>:/icons/icons/homepage.png</iconset>
+                </property>
                 <property name="autoDefault">
                  <bool>false</bool>
                 </property>
@@ -234,6 +238,10 @@ QPushButton {
                 <property name="text">
                  <string>Perfil</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/user.png</normaloff>:/icons/icons/user.png</iconset>
+                </property>
                </widget>
               </item>
               <item>
@@ -265,6 +273,10 @@ QPushButton {
                 </property>
                 <property name="text">
                  <string>Cadastrar</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/verify.png</normaloff>:/icons/icons/verify.png</iconset>
                 </property>
                </widget>
               </item>
@@ -298,6 +310,10 @@ QPushButton {
                 <property name="text">
                  <string>Enviar Documento</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/upload.png</normaloff>:/icons/icons/upload.png</iconset>
+                </property>
                </widget>
               </item>
               <item>
@@ -329,6 +345,10 @@ QPushButton {
                 </property>
                 <property name="text">
                  <string>Histórico</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/historical.png</normaloff>:/icons/icons/historical.png</iconset>
                 </property>
                </widget>
               </item>
@@ -366,6 +386,10 @@ QPushButton {
                 </property>
                 <property name="text">
                  <string>Encerrar</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/icons/out.png</normaloff>:/icons/icons/out.png</iconset>
                 </property>
                </widget>
               </item>
@@ -492,6 +516,12 @@ QPushButton {
          <layout class="QVBoxLayout" name="verticalLayout_14">
           <item>
            <widget class="QStackedWidget" name="Pages">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -564,6 +594,19 @@ QPushButton {
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_9">
                     <item>
+                     <spacer name="horizontalSpacer_4">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QFrame" name="frame_13">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -578,7 +621,10 @@ QPushButton {
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:transparent;</string>
+                       <string notr="true">background-color:rgba(0,0,0,0.1);
+border-top-left-radius: 10px;
+border-bottom-right-radius: 10px;
+</string>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -587,8 +633,41 @@ QPushButton {
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_18">
-                       <item>
+                       <property name="leftMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>15</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>15</number>
+                       </property>
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QPushButton" name="btn_carregar_formulario">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -605,10 +684,29 @@ QPushButton {
                          <property name="text">
                           <string>Importar Formulário</string>
                          </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/import.png</normaloff>:/icons/icons/import.png</iconset>
+                         </property>
                         </widget>
                        </item>
-                       <item>
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QPushButton" name="btn_limpar_formulario">
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -625,10 +723,30 @@ QPushButton {
                          <property name="text">
                           <string>Limpar Formulário</string>
                          </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
+                         </property>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_11">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                        <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
                         <widget class="QLabel" name="label_6">
+                         <property name="styleSheet">
+                          <string notr="true">background-color:transparent;</string>
+                         </property>
                          <property name="text">
                           <string>Confira os dados importados do formulário</string>
                          </property>
@@ -636,6 +754,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_nome">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -646,6 +770,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_cpf">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -656,6 +786,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_rg">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -666,6 +802,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_filiacao">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -676,6 +818,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_endereco">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -686,6 +834,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_nascimento">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -696,6 +850,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_cidade">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -706,6 +866,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_estado">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -716,6 +882,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_telefone">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -726,6 +898,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QLineEdit" name="txt_cadastro_email">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
                          </property>
@@ -733,6 +911,19 @@ QPushButton {
                           <string>  Email</string>
                          </property>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_10">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                       </layout>
                      </widget>
@@ -769,6 +960,15 @@ QPushButton {
                          <layout class="QVBoxLayout" name="verticalLayout_21">
                           <item>
                            <widget class="QPushButton" name="btn_carregar_documentos">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -779,16 +979,31 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 </string>
                             </property>
                             <property name="text">
                              <string>Selecionar Documento</string>
                             </property>
+                            <property name="icon">
+                             <iconset resource="icons.qrc">
+                              <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
+                            </property>
                            </widget>
                           </item>
                           <item>
                            <widget class="QPushButton" name="btn_remover_lista_cadastro">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -800,15 +1015,30 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }</string>
                             </property>
                             <property name="text">
                              <string>Remover da Lista</string>
                             </property>
+                            <property name="icon">
+                             <iconset resource="icons.qrc">
+                              <normaloff>:/icons/icons/remove.png</normaloff>:/icons/icons/remove.png</iconset>
+                            </property>
                            </widget>
                           </item>
                           <item>
                            <widget class="QPushButton" name="btn_limpar_lista_cadastro">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -820,10 +1050,16 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
 }</string>
                             </property>
                             <property name="text">
                              <string>Limpar Lista</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="icons.qrc">
+                              <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
                             </property>
                            </widget>
                           </item>
@@ -849,6 +1085,15 @@ QPushButton {
 	background-color: white;
 	color: black;
 }</string>
+                            </property>
+                            <property name="dragEnabled">
+                             <bool>false</bool>
+                            </property>
+                            <property name="dragDropMode">
+                             <enum>QAbstractItemView::NoDragDrop</enum>
+                            </property>
+                            <property name="viewMode">
+                             <enum>QListView::ListMode</enum>
                             </property>
                            </widget>
                           </item>
@@ -906,6 +1151,15 @@ QPushButton {
                             <layout class="QHBoxLayout" name="horizontalLayout_13">
                              <item>
                               <widget class="QPushButton" name="btn_cadastro_enviar">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
                                <property name="styleSheet">
                                 <string notr="true">
 QPushButton:hover{
@@ -916,12 +1170,17 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-radius: 10px;
 }
 
 </string>
                                </property>
                                <property name="text">
                                 <string>Enviar Cadastro</string>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="icons.qrc">
+                                 <normaloff>:/icons/icons/upload.png</normaloff>:/icons/icons/upload.png</iconset>
                                </property>
                               </widget>
                              </item>
@@ -930,6 +1189,19 @@ QPushButton {
                           </item>
                          </layout>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_3">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                       </layout>
                      </widget>
@@ -952,11 +1224,11 @@ QPushButton {
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QTabWidget" name="tabWidget">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -1007,6 +1279,12 @@ QPushButton {
                      </property>
                      <item>
                       <widget class="QTableWidget" name="tabela_historico_cadastros">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">QHeaderView::section {
 	background-color: rgb(148, 148, 148);
@@ -1021,11 +1299,26 @@ QTableWidget{
                        <property name="rowCount">
                         <number>10</number>
                        </property>
+                       <attribute name="horizontalHeaderCascadingSectionResizes">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderHighlightSections">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                        <bool>false</bool>
+                       </attribute>
                        <attribute name="horizontalHeaderStretchLastSection">
                         <bool>true</bool>
                        </attribute>
+                       <attribute name="verticalHeaderVisible">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                        <bool>false</bool>
+                       </attribute>
                        <attribute name="verticalHeaderStretchLastSection">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </attribute>
                        <row/>
                        <row/>
@@ -1107,6 +1400,12 @@ QTableWidget{
 	background-color: rgb(252, 252, 252);
 }</string>
                        </property>
+                       <property name="showGrid">
+                        <bool>true</bool>
+                       </property>
+                       <property name="gridStyle">
+                        <enum>Qt::SolidLine</enum>
+                       </property>
                        <property name="rowCount">
                         <number>10</number>
                        </property>
@@ -1114,7 +1413,7 @@ QTableWidget{
                         <bool>true</bool>
                        </attribute>
                        <attribute name="verticalHeaderStretchLastSection">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </attribute>
                        <row/>
                        <row/>
@@ -1198,6 +1497,124 @@ QTableWidget{
                     <item>
                      <widget class="QFrame" name="frame_17">
                       <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame{
+	background-color: rgba(0,0,0,0.2);
+	border-radius: 20px;
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_20">
+                       <item>
+                        <spacer name="verticalSpacer_6">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item alignment="Qt::AlignHCenter">
+                        <widget class="QLabel" name="label_9">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: transparent;</string>
+                         </property>
+                         <property name="text">
+                          <string>Arquivo Selecionado</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QListWidget" name="lista_envio_documento">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>100</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QListWidget{
+	background-color: white;
+	color: black;
+	border-radius:0px;
+}</string>
+                         </property>
+                         <property name="dragEnabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="dragDropMode">
+                          <enum>QAbstractItemView::NoDragDrop</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                        <widget class="QLabel" name="amostra_imagem">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>100</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>250</width>
+                           <height>250</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+	border-radius: 0px;
+    
+	
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Amostra da Imagem</string>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_9">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_20">
+                      <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
@@ -1209,67 +1626,28 @@ QTableWidget{
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_20">
+                      <layout class="QVBoxLayout" name="verticalLayout_22">
+                       <property name="spacing">
+                        <number>4</number>
+                       </property>
                        <item>
-                        <widget class="QListWidget" name="lista_envio_documento">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
+                        <spacer name="verticalSpacer_4">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">QListWidget{
-	background-color: white;
-	color: black;
-}</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                        <widget class="QLabel" name="amostra_imagem">
-                         <property name="maximumSize">
+                         <property name="sizeHint" stdset="0">
                           <size>
-                           <width>250</width>
-                           <height>250</height>
+                           <width>20</width>
+                           <height>40</height>
                           </size>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-	
-
-    /* Adicione margens */
-    margin: 5px;
-
-    /* Adicione borda (opcional) */
-    border: 1px solid #ccc;
-
-    /* Alinhe a imagem no centro */
-    text-align: center;
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Amostra da Imagem</string>
-                         </property>
-                         <property name="scaledContents">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
+                        </spacer>
                        </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-                     <widget class="QFrame" name="frame_11">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_17">
                        <item>
                         <widget class="QComboBox" name="tipo_documento">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);</string>
                          </property>
@@ -1302,6 +1680,15 @@ QTableWidget{
                        </item>
                        <item>
                         <widget class="QPushButton" name="btn_arquivo_documento">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -1312,16 +1699,31 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 </string>
                          </property>
                          <property name="text">
                           <string>Escolher um Arquivo</string>
                          </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
+                         </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="btn_remover_doc">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -1333,15 +1735,83 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>Limpar</string>
                          </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_5">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_11">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_17">
+                       <item>
+                        <spacer name="verticalSpacer_7">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item alignment="Qt::AlignHCenter">
+                        <widget class="QLabel" name="label_8">
+                         <property name="text">
+                          <string>Confira os dados extraídos antes de enviar</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="txt_dados_documento">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+                         </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="btn_enviar_arquivo">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -1352,6 +1822,7 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-radius: 10px;
 }
 
 </string>
@@ -1359,7 +1830,24 @@ QPushButton {
                          <property name="text">
                           <string>Enviar</string>
                          </property>
+                         <property name="icon">
+                          <iconset resource="icons.qrc">
+                           <normaloff>:/icons/icons/upload.png</normaloff>:/icons/icons/upload.png</iconset>
+                         </property>
                         </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_8">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                       </layout>
                      </widget>
@@ -1404,6 +1892,11 @@ QPushButton {
                   <height>0</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(0,0,0,0.1);
+border-radius: 10px;
+</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -1426,6 +1919,9 @@ QPushButton {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_11">
+                   <property name="styleSheet">
+                    <string notr="true">background-color:transparent;</string>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Altere seus Dados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -1454,6 +1950,12 @@ QPushButton {
                  </item>
                  <item alignment="Qt::AlignHCenter">
                   <widget class="QPushButton" name="btn_salvar_alteracoes">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
@@ -1467,12 +1969,17 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-radius: 10px;
 }
 
 </string>
                    </property>
                    <property name="text">
                     <string>Salvar Alterações</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/icons/icons/save.png</normaloff>:/icons/icons/save.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -1523,6 +2030,10 @@ QPushButton {
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgba(0,0,0,0.1);
+border-radius: 15px;</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -1538,6 +2049,9 @@ QPushButton {
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: transparent;</string>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Nome do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -1551,6 +2065,9 @@ QPushButton {
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: transparent;</string>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Email do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -1563,6 +2080,9 @@ QPushButton {
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: transparent;</string>
                    </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Telefone do Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1589,6 +2109,12 @@ QPushButton {
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <item alignment="Qt::AlignHCenter|Qt::AlignTop">
                   <widget class="QPushButton" name="btn_alterar_dados">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
@@ -1602,11 +2128,16 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-radius: 10px;
 }
 </string>
                    </property>
                    <property name="text">
                     <string>Alterar meus dados</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/icons/icons/refresh.png</normaloff>:/icons/icons/refresh.png</iconset>
                    </property>
                   </widget>
                  </item>
