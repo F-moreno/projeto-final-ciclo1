@@ -87,7 +87,7 @@ class TesseractOCR:
 
         # Salvar a imagem com a área destacada
         cv2.imwrite(
-            f"Docs/imagens/formulario/destacada/{TesseractOCR.nome_arquivo}",
+            f"Docs/imagens/destacada/{TesseractOCR.nome_arquivo}",
             img_destacada,
         )
         self.__show_img(img_destacada)
@@ -105,17 +105,25 @@ class TesseractOCR:
         img_fixed = cv2.warpPerspective(img, M, (w, h))
         img_fixed = cv2.flip(img_fixed, 1)
 
+        cv2.imwrite(
+            f"Docs/imagens/rotacionada/{TesseractOCR.nome_arquivo}",
+            img_fixed,
+        )
+
         return img_fixed
 
     def __get_angle_img(self, img_gray):
-
-        osd = pytesseract.image_to_osd(img_gray)
-        print(osd)
-        self.__show_img(cv2.resize(img_gray, (500, 500)))
-        if float(osd.split("\n")[3].split(":")[-1]) > 10:
-            angulo = float(osd.split("\n")[1].split(":")[-1])
-        else:
-            angulo = float(osd.split("\n")[2].split(":")[-1])
+        try:
+            osd = pytesseract.image_to_osd(img_gray)
+            print(osd)
+            self.__show_img(cv2.resize(img_gray, (500, 500)))
+            if float(osd.split("\n")[3].split(":")[-1]) > 10:
+                angulo = float(osd.split("\n")[1].split(":")[-1])
+            else:
+                angulo = float(osd.split("\n")[2].split(":")[-1])
+        except Exception as e:
+            print(e)
+            angulo = 0
         return angulo
 
     # corrige angulo
@@ -124,6 +132,12 @@ class TesseractOCR:
         rows = cols = max(img.shape[:2])
         M = cv2.getRotationMatrix2D((cols / 2, rows / 2), angle, 1)
         img_rotated = cv2.warpAffine(img, M, (cols, rows))
+
+        cv2.imwrite(
+            f"Docs/imagens/alinhada/{TesseractOCR.nome_arquivo}",
+            img_rotated,
+        )
+
         return img_rotated
 
     def __get_medianblurred_img(self, img):
@@ -198,12 +212,15 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
-    nome_arquivo = arquivo.split("/")[-1]
-    img = tesseract.read_image(arquivo)
-    texto_reconhecido = tesseract.read_text(arquivo)
+    arquivo_path = (
+        "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario"
+    )
+    for img in os.listdir(arquivo_path):
+        arquivo = f"{arquivo_path}/{img}"
 
-    print(texto_reconhecido)
-    json = tesseract.read_json(texto_reconhecido)
+        texto_reconhecido = tesseract.read_text(arquivo)
 
-    print(f"json:\n{json}")
+        print(texto_reconhecido)
+        json = tesseract.read_json(texto_reconhecido)
+
+        print(f"json:\n{json}")

@@ -349,8 +349,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
-            conteudo = (TesseractOCR().read_text(nomeArquivo))
-            self.txt_dados_documento.setText(conteudo[0])
 
     def enviar_docs(self):
         documento = self.lista_envio_documento.item(0)
