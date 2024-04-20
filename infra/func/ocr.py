@@ -112,6 +112,7 @@ class TesseractOCR:
     def __get_angle_img(self, img_gray):
 
         osd = pytesseract.image_to_osd(img_gray)
+        print(osd)
         angulo = float(osd.split("\n")[2].split(":")[-1])
         return angulo
 
@@ -178,7 +179,7 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
 

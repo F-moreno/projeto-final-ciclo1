@@ -219,7 +219,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
-            conteudo = (TesseractOCR().read_text(caminho_arquivo),)
+            conteudo = (TesseractOCR().read_text(nomeArquivo),)
             print(conteudo)
 
     def atualizar_documento_selecionado(self):
@@ -247,7 +247,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         documento = self.lista_envio_documento.item(0)
         caminho_arquivo = documento.text()
         tipo = self.tipo_documento.currentText()
-        
+
         try:
             with io.open(caminho_arquivo, "rb") as f:
                 bytes_imagem = f.read()
@@ -385,7 +385,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         data_nascimento = self.txt_cadastro_nascimento.text().replace("/", "-")
         municipio = self.txt_cadastro_cidade.text()
         estado = self.txt_cadastro_estado.text()
-        telefone = self.txt_cadastro_telefone.text().replace("(", "").replace(")", "").replace(" ", "").replace("-", "")
+        telefone = (
+            self.txt_cadastro_telefone.text()
+            .replace("(", "")
+            .replace(")", "")
+            .replace(" ", "")
+            .replace("-", "")
+        )
         email = self.txt_cadastro_email.text()
 
         # Verifica se todos os campos obrigatórios estão preenchidos
@@ -507,7 +513,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
                 ),
             )
-
+        # Preenchendo a tabela com os dados dos documentos
         for i, documento in enumerate(documentos):
             print(documento.titulo)
             if documento.cliente:
