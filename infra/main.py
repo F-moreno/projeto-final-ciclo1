@@ -199,10 +199,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
         sessao = self.sessao
-        # if sessao:
-        #     informacoes = sessao.funcionario
-        #     if informacoes:
-        #         # self.txt_nome_perfil_home.setText(informacoes.nome)
+        if sessao:
+            informacoes = sessao.funcionario
+            if informacoes:
+                self.txt_nome_perfil_home.setText(informacoes.nome)
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
