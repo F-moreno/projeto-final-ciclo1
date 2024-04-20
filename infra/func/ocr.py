@@ -31,9 +31,16 @@ class TesseractOCR:
 
     def __get_text_from_img(self, img_path):
         img = self.__get_rgb_img(img_path)
+        gray = self.__get_grayscale_img(cv2.bitwise_not(img))
+
+        # aplica o filtro de mediana
+        img = self.__get_enhanced_edges_img(gray)
+        self.__show_img(img)
+
+        # aplica o filtro de ruido
         img = self.__get_eroded_img(img)
+
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
-        gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
         img = self.__get_fixed_img(thresh, gray)
 
@@ -107,7 +114,7 @@ class TesseractOCR:
 
     def __get_angle_img(self, img_gray):
 
-        osd = pytesseract.image_to_osd(img_gray, config="--dpi 300")
+        osd = pytesseract.image_to_osd(img_gray)
         print(osd)
         self.__show_img(cv2.resize(img_gray, (500, 500)))
         if float(osd.split("\n")[3].split(":")[-1]) > 10:
@@ -128,12 +135,22 @@ class TesseractOCR:
         img_gau = cv2.GaussianBlur(img, (5, 5), 0)
         return img_gau
 
-    def __get_eroded_img(self, img):
-        kernel = np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]], np.uint8)
+    def __get_enhanced_edges_img(self, gray):
+        # Aplicar o filtro de mediana para suavizar a imagem
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        enhanced_gray = clahe.apply(gray)
 
-        img_erode = cv2.erode(img, kernel, iterations=1)
-        img_dilate = cv2.dilate(img_erode, kernel, iterations=1)
-        return img_dilate
+        # Apply bilateral filter to smooth the image while preserving edges
+        filtered_image = cv2.bilateralFilter(enhanced_gray, 9, 75, 75)
+
+        binary_image = np.ones_like(filtered_image) * 255
+        binary_image[(filtered_image < 90) or (filtered_image > 200)] = 0
+
+        """filtered_image = cv2.threshold(
+            filtered_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
+        )[1]"""
+
+        return binary_image
 
     def __get_contrasted_img(self, img, alpha=1.5, beta=0):
         img_contrasted = cv2.convertScaleAbs(
