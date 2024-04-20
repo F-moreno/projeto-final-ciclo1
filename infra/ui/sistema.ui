@@ -47,6 +47,9 @@
         <height>16777215</height>
        </size>
       </property>
+      <property name="accessibleDescription">
+       <string>Menu</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">background: transparent;</string>
       </property>
@@ -86,8 +89,16 @@
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>Nome da Empresa</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#ffffff;&quot;&gt;RuralConnect&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;RuralConnect&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -123,6 +134,12 @@
           </property>
           <item>
            <widget class="QToolBox" name="toolBox">
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
@@ -149,8 +166,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>135</width>
-               <height>575</height>
+               <width>139</width>
+               <height>572</height>
               </rect>
              </property>
              <attribute name="label">
@@ -165,7 +182,7 @@
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>30</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="sizeIncrement">
@@ -176,6 +193,12 @@
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Home</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão da Página Principal</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -200,6 +223,12 @@ QPushButton {
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/homepage.png</normaloff>:/icons/icons/homepage.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
                 <property name="autoDefault">
                  <bool>false</bool>
                 </property>
@@ -213,11 +242,17 @@ QPushButton {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>30</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Perfil</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão da Página de Perfil</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -242,6 +277,12 @@ QPushButton {
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/user.png</normaloff>:/icons/icons/user.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -249,11 +290,17 @@ QPushButton {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>30</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Cadastrar</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão da Página de Cadastro</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -278,6 +325,12 @@ QPushButton {
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/verify.png</normaloff>:/icons/icons/verify.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -285,11 +338,17 @@ QPushButton {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>30</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Enviar Documentos</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão da Página de Envio de Documentos</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -314,6 +373,12 @@ QPushButton {
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/upload.png</normaloff>:/icons/icons/upload.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -321,11 +386,17 @@ QPushButton {
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>30</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Histórico</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão da Página de Histórico</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -350,6 +421,12 @@ QPushButton {
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/historical.png</normaloff>:/icons/icons/historical.png</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item>
@@ -369,6 +446,12 @@ QPushButton {
                <widget class="QPushButton" name="btn_encerrar_menu">
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Encerrar Sessão</string>
+                </property>
+                <property name="accessibleDescription">
+                 <string>Botão de Logout</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -390,6 +473,12 @@ QPushButton {
                 <property name="icon">
                  <iconset resource="icons.qrc">
                   <normaloff>:/icons/icons/out.png</normaloff>:/icons/icons/out.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -462,6 +551,12 @@ QPushButton {
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>Menu</string>
+            </property>
+            <property name="accessibleDescription">
+             <string>Botão do Menu</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -522,12 +617,18 @@ QPushButton {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="accessibleDescription">
+             <string>Tabela de Histórico de Cadastros</string>
+            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
             <widget class="QWidget" name="pg_home">
+             <property name="accessibleDescription">
+              <string>Página Principal</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">
-              <item>
+              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                <widget class="QFrame" name="frame_8">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -535,12 +636,62 @@ QPushButton {
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_15">
+                <layout class="QHBoxLayout" name="horizontalLayout_15">
                  <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Seja Bem Vindo!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/icons/cobra.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <widget class="QFrame" name="frame_21">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
                    </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <item>
+                     <widget class="QFrame" name="frame_22">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_5">
+                       <item>
+                        <widget class="QLabel" name="label_12">
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Seja Bem Vindo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="txt_nome_perfil_2">
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Usuário&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_23">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_14">
+                       <item>
+                        <widget class="QLabel" name="label_4">
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/icons/cobra.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -549,6 +700,9 @@ QPushButton {
              </layout>
             </widget>
             <widget class="QWidget" name="pg_cadastrar">
+             <property name="accessibleDescription">
+              <string>Página de Cadastro de Cliente</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QFrame" name="frame_9">
@@ -620,10 +774,19 @@ QPushButton {
                         <height>16777215</height>
                        </size>
                       </property>
+                      <property name="accessibleDescription">
+                       <string>Campo de Importação e extração de Dados de Formulário</string>
+                      </property>
                       <property name="styleSheet">
-                       <string notr="true">background-color:rgba(0,0,0,0.1);
-border-top-left-radius: 10px;
-border-bottom-right-radius: 10px;
+                       <string notr="true">QFrame{
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 20px;
+}
+
+##background-color:rgba(0,0,0,0.1);
+##border-top-left-radius: 10px;
+##border-bottom-right-radius: 10px;
+
 </string>
                       </property>
                       <property name="frameShape">
@@ -668,6 +831,12 @@ border-bottom-right-radius: 10px;
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
+                         <property name="toolTip">
+                          <string>Importar Formulário</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão de Importar Formulário</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -678,6 +847,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 </string>
                          </property>
@@ -707,6 +878,12 @@ QPushButton {
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
+                         <property name="toolTip">
+                          <string>Limpar Formulário</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão de limpar campos do formulário</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -718,6 +895,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }</string>
                          </property>
                          <property name="text">
@@ -744,6 +923,9 @@ QPushButton {
                        </item>
                        <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
                         <widget class="QLabel" name="label_6">
+                         <property name="accessibleDescription">
+                          <string>Texto informativo que diz: Confira os dados importados do formulário</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color:transparent;</string>
                          </property>
@@ -760,8 +942,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Nome</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do Nome Completo do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Nome</string>
@@ -776,8 +968,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>CPF</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do CPF do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  CPF</string>
@@ -792,8 +994,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>RG</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do RG do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  RG</string>
@@ -808,11 +1020,21 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Filiação</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento da Filiação do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
-                          <string>  Filição</string>
+                          <string>  Filiação</string>
                          </property>
                         </widget>
                        </item>
@@ -824,8 +1046,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Endereço</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do Endereço do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Endereço</string>
@@ -840,8 +1072,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Data de Nascimento</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento da Data de Nascimento do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Data de Nascimento</string>
@@ -856,8 +1098,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Cidade</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento da Cidade do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Cidade</string>
@@ -872,8 +1124,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Estado</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do Estado do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Estado</string>
@@ -888,8 +1150,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Telefone</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do Telefone do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Telefone</string>
@@ -904,8 +1176,18 @@ QPushButton {
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Email</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo para preenchimento do Email do Cliente</string>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgba(0, 0, 0, 20);</string>
+                          <string notr="true">QLineEdit{
+	background-color: rgba(0, 0, 0, 20);
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}</string>
                          </property>
                          <property name="placeholderText">
                           <string>  Email</string>
@@ -969,6 +1251,12 @@ QPushButton {
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
                             </property>
+                            <property name="toolTip">
+                             <string>Selecionar Documento</string>
+                            </property>
+                            <property name="accessibleDescription">
+                             <string>Botão de Selecionar Arquivo de Documento</string>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -1004,6 +1292,12 @@ QPushButton {
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
                             </property>
+                            <property name="toolTip">
+                             <string>Remover Documento da Lista</string>
+                            </property>
+                            <property name="accessibleDescription">
+                             <string>Botão de Remover documento da lista</string>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -1026,6 +1320,12 @@ QPushButton {
                              <iconset resource="icons.qrc">
                               <normaloff>:/icons/icons/remove.png</normaloff>:/icons/icons/remove.png</iconset>
                             </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>13</width>
+                              <height>13</height>
+                             </size>
+                            </property>
                            </widget>
                           </item>
                           <item>
@@ -1038,6 +1338,12 @@ QPushButton {
                             </property>
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="toolTip">
+                             <string>Limpar lista de Documentos</string>
+                            </property>
+                            <property name="accessibleDescription">
+                             <string>Botão de limpar a lista de documentos</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">
@@ -1080,6 +1386,12 @@ QPushButton {
                               <height>0</height>
                              </size>
                             </property>
+                            <property name="toolTip">
+                             <string>Aqui irão aparecer os documentos selecionados</string>
+                            </property>
+                            <property name="accessibleDescription">
+                             <string>Campo de Exibição da Lista de Documentos Selecionados</string>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QListWidget{
 	background-color: white;
@@ -1110,6 +1422,12 @@ QPushButton {
                               <width>250</width>
                               <height>250</height>
                              </size>
+                            </property>
+                            <property name="toolTip">
+                             <string>Aqui irá aparecer a miniatura do documento selecionado na lista</string>
+                            </property>
+                            <property name="accessibleDescription">
+                             <string>Campo de exibição de Miniatura de Documento</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QLabel{
@@ -1159,6 +1477,12 @@ QPushButton {
                                </property>
                                <property name="cursor">
                                 <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="toolTip">
+                                <string>Enviar Cadastro</string>
+                               </property>
+                               <property name="accessibleDescription">
+                                <string>Botão de Enviar Cadastro</string>
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">
@@ -1221,6 +1545,9 @@ QPushButton {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="accessibleDescription">
+              <string>Página de Históricos</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QTabWidget" name="tabWidget">
@@ -1233,6 +1560,9 @@ QPushButton {
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
+                <property name="accessibleDescription">
+                 <string>Tabelas de HIstórico de Envio de Cadastros e Documentos do Usuário da Sessão</string>
+                </property>
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
@@ -1243,6 +1573,12 @@ QPushButton {
                  <bool>false</bool>
                 </property>
                 <widget class="QWidget" name="tab_historico_cadastro">
+                 <property name="toolTip">
+                  <string>Meu histórico de Cadastros</string>
+                 </property>
+                 <property name="accessibleDescription">
+                  <string>Tabela de Histórico de Cadastro feito pelo Usuário</string>
+                 </property>
                  <attribute name="title">
                   <string>Histórico de Cadastros</string>
                  </attribute>
@@ -1285,6 +1621,9 @@ QPushButton {
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
+                       <property name="accessibleDescription">
+                        <string>Tabela de Histórico de Cadastro feito pelo Usuário</string>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">QHeaderView::section {
 	background-color: rgb(148, 148, 148);
@@ -1294,6 +1633,7 @@ QPushButton {
 
 QTableWidget{
 	background-color: rgb(252, 252, 252);
+	color: rgb(0,0,0);
 }</string>
                        </property>
                        <property name="rowCount">
@@ -1353,6 +1693,12 @@ QTableWidget{
                  </layout>
                 </widget>
                 <widget class="QWidget" name="tab_2">
+                 <property name="toolTip">
+                  <string>Meu histórico de Documentos Enviados</string>
+                 </property>
+                 <property name="accessibleDescription">
+                  <string>Tabela de Histórico de Envio de Documentos feito pelo Usuário</string>
+                 </property>
                  <attribute name="title">
                   <string>Histórico de Envio de Documentos</string>
                  </attribute>
@@ -1364,6 +1710,9 @@ QTableWidget{
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
+                    </property>
+                    <property name="accessibleDescription">
+                     <string>Tabela de Histórico de Envio de Documentos feito pelo Usuário</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1389,6 +1738,9 @@ QTableWidget{
                      </property>
                      <item>
                       <widget class="QTableWidget" name="tabela_historico_documentos">
+                       <property name="accessibleDescription">
+                        <string>Tabela de Histórico de Envio de Documentos feito pelo Usuário</string>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">QHeaderView::section {
 	background-color: rgb(148, 148, 148);
@@ -1398,6 +1750,7 @@ QTableWidget{
 
 QTableWidget{
 	background-color: rgb(252, 252, 252);
+	color: rgb(0,0,0);
 }</string>
                        </property>
                        <property name="showGrid">
@@ -1462,6 +1815,9 @@ QTableWidget{
              </layout>
             </widget>
             <widget class="QWidget" name="pg_enviar_doc">
+             <property name="accessibleDescription">
+              <string>Página para envio de documentos</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_13">
               <item>
                <widget class="QFrame" name="frame_7">
@@ -1472,7 +1828,7 @@ QTableWidget{
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout">
-                 <item row="0" column="0" colspan="2">
+                 <item row="0" column="1" colspan="2">
                   <widget class="QFrame" name="frame_15">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1481,19 +1837,6 @@ QTableWidget{
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_7">
-                    <item>
-                     <spacer name="horizontalSpacer">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
                     <item>
                      <widget class="QFrame" name="frame_17">
                       <property name="sizePolicy">
@@ -1504,7 +1847,7 @@ QTableWidget{
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QFrame{
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.1);
 	border-radius: 20px;
 }</string>
                       </property>
@@ -1552,6 +1895,12 @@ QTableWidget{
                            <height>100</height>
                           </size>
                          </property>
+                         <property name="toolTip">
+                          <string>Aqui aparecerá o caminho do documento selecionado</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo onde será visível o caminho do documento selecionado</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QListWidget{
 	background-color: white;
@@ -1580,6 +1929,12 @@ QTableWidget{
                            <width>250</width>
                            <height>250</height>
                           </size>
+                         </property>
+                         <property name="toolTip">
+                          <string>Aqui aparecerá uma miniatura da imagem do documento selecionado</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Espaço onde aparecerá uma miniatura da imagem do documento selecionado</string>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QLabel{
@@ -1648,6 +2003,12 @@ QTableWidget{
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
+                         <property name="toolTip">
+                          <string>Escolha o tipo de arquivo</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Opções de tipos de documentos</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);</string>
                          </property>
@@ -1689,6 +2050,12 @@ QTableWidget{
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
+                         <property name="toolTip">
+                          <string>Escolher um Arquivo</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão para escolher o documento</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -1723,6 +2090,12 @@ QPushButton {
                          </property>
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Limpar</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão para limpar</string>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -1795,6 +2168,12 @@ QPushButton {
                        </item>
                        <item>
                         <widget class="QTextEdit" name="txt_dados_documento">
+                         <property name="toolTip">
+                          <string>Aqui irá aparecer os dados extraídos do documento selecionado</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Campo de texto para exibição de dados extraídos do documento</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
@@ -1811,6 +2190,12 @@ color: rgb(0, 0, 0);</string>
                          </property>
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Enviar Documento</string>
+                         </property>
+                         <property name="accessibleDescription">
+                          <string>Botão de enviar documento</string>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -1868,12 +2253,28 @@ QPushButton {
                    </layout>
                   </widget>
                  </item>
+                 <item row="0" column="0">
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
                 </layout>
                </widget>
               </item>
              </layout>
             </widget>
             <widget class="QWidget" name="pg_alteracao_perfil">
+             <property name="accessibleDescription">
+              <string>Página de Alteração de Perfil</string>
+             </property>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -1893,8 +2294,10 @@ QPushButton {
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgba(0,0,0,0.1);
-border-radius: 10px;
+                 <string notr="true">QFrame{
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 10px;
+}
 </string>
                 </property>
                 <property name="frameShape">
@@ -1919,6 +2322,9 @@ border-radius: 10px;
                  </item>
                  <item>
                   <widget class="QLabel" name="label_11">
+                   <property name="accessibleDescription">
+                    <string>Texto que diz: Altere seus Dados</string>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">background-color:transparent;</string>
                    </property>
@@ -1929,6 +2335,12 @@ border-radius: 10px;
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_nome">
+                   <property name="toolTip">
+                    <string>Nome</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo para alteração de Nome</string>
+                   </property>
                    <property name="placeholderText">
                     <string>  Nome</string>
                    </property>
@@ -1936,6 +2348,12 @@ border-radius: 10px;
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_email">
+                   <property name="toolTip">
+                    <string>Email</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo para alteração de Email</string>
+                   </property>
                    <property name="placeholderText">
                     <string>  Email</string>
                    </property>
@@ -1943,6 +2361,12 @@ border-radius: 10px;
                  </item>
                  <item>
                   <widget class="QLineEdit" name="txt_perfil_alterar_telefone">
+                   <property name="toolTip">
+                    <string>Telefone</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo para alteração de telefone</string>
+                   </property>
                    <property name="placeholderText">
                     <string>  Telefone</string>
                    </property>
@@ -1958,6 +2382,12 @@ border-radius: 10px;
                    </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="toolTip">
+                    <string>Salvar Alterações</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Botão que salva as alterações feita pelo usuário nos dados do seu perfil</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">
@@ -2002,6 +2432,9 @@ QPushButton {
              </layout>
             </widget>
             <widget class="QWidget" name="pg_perfil">
+             <property name="accessibleDescription">
+              <string>Página de Perfil do Usuário</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
                <widget class="QFrame" name="frame_5">
@@ -2014,6 +2447,9 @@ QPushButton {
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
                   <widget class="QLabel" name="label_7">
+                   <property name="accessibleDescription">
+                    <string>Texto que diz: Perfil</string>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Perfil&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -2031,8 +2467,10 @@ QPushButton {
                  </sizepolicy>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color:rgba(0,0,0,0.1);
-border-radius: 15px;</string>
+                 <string notr="true">QFrame{
+	background-color:rgba(0,0,0,0.1);
+	border-radius: 15px;
+}</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -2048,6 +2486,12 @@ border-radius: 15px;</string>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="toolTip">
+                    <string>Meu Nome</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo de texto que aparecerá o nome do Usuário</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: transparent;</string>
@@ -2065,6 +2509,12 @@ border-radius: 15px;</string>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="toolTip">
+                    <string>Meu Email</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo de Texto que terá o email do Usuário</string>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: transparent;</string>
                    </property>
@@ -2080,6 +2530,12 @@ border-radius: 15px;</string>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="toolTip">
+                    <string>Meu Telefone</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Campo de texto que aparecerá o telefone do usuário</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: transparent;</string>
@@ -2117,6 +2573,12 @@ border-radius: 15px;</string>
                    </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="toolTip">
+                    <string>Alterar meus Dados</string>
+                   </property>
+                   <property name="accessibleDescription">
+                    <string>Botão para alterar dados do Usuário</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">

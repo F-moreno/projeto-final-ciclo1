@@ -55,6 +55,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.label_3 = QLabel(self.frame_2)
         self.label_3.setObjectName(u"label_3")
+        font = QFont()
+        font.setPointSize(8)
+        self.label_3.setFont(font)
 
         self.horizontalLayout_4.addWidget(self.label_3)
 
@@ -72,6 +75,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.toolBox = QToolBox(self.frame)
         self.toolBox.setObjectName(u"toolBox")
+        self.toolBox.setLayoutDirection(Qt.LeftToRight)
+        self.toolBox.setAutoFillBackground(False)
         self.toolBox.setStyleSheet(u"")
         self.toolBox.setFrameShape(QFrame.NoFrame)
         self.toolBox.setFrameShadow(QFrame.Plain)
@@ -79,13 +84,13 @@ class Ui_MainWindow(object):
         self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 135, 575))
+        self.page.setGeometry(QRect(0, 0, 139, 572))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.btn_home_menu = QPushButton(self.page)
         self.btn_home_menu.setObjectName(u"btn_home_menu")
-        self.btn_home_menu.setMinimumSize(QSize(0, 30))
+        self.btn_home_menu.setMinimumSize(QSize(0, 40))
         self.btn_home_menu.setSizeIncrement(QSize(0, 0))
         self.btn_home_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_home_menu.setStyleSheet(u"\n"
@@ -105,6 +110,7 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/icons/icons/homepage.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_home_menu.setIcon(icon)
+        self.btn_home_menu.setIconSize(QSize(22, 22))
         self.btn_home_menu.setAutoDefault(False)
         self.btn_home_menu.setFlat(False)
 
@@ -112,7 +118,7 @@ class Ui_MainWindow(object):
 
         self.btn_perfil_menu = QPushButton(self.page)
         self.btn_perfil_menu.setObjectName(u"btn_perfil_menu")
-        self.btn_perfil_menu.setMinimumSize(QSize(0, 30))
+        self.btn_perfil_menu.setMinimumSize(QSize(0, 40))
         self.btn_perfil_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_perfil_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -131,12 +137,13 @@ class Ui_MainWindow(object):
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/user.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_perfil_menu.setIcon(icon1)
+        self.btn_perfil_menu.setIconSize(QSize(20, 20))
 
         self.verticalLayout_4.addWidget(self.btn_perfil_menu)
 
         self.btn_cadastrar_menu = QPushButton(self.page)
         self.btn_cadastrar_menu.setObjectName(u"btn_cadastrar_menu")
-        self.btn_cadastrar_menu.setMinimumSize(QSize(0, 30))
+        self.btn_cadastrar_menu.setMinimumSize(QSize(0, 40))
         self.btn_cadastrar_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cadastrar_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -155,12 +162,13 @@ class Ui_MainWindow(object):
         icon2 = QIcon()
         icon2.addFile(u":/icons/icons/verify.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_cadastrar_menu.setIcon(icon2)
+        self.btn_cadastrar_menu.setIconSize(QSize(20, 20))
 
         self.verticalLayout_4.addWidget(self.btn_cadastrar_menu)
 
         self.btn_enviar_menu = QPushButton(self.page)
         self.btn_enviar_menu.setObjectName(u"btn_enviar_menu")
-        self.btn_enviar_menu.setMinimumSize(QSize(0, 30))
+        self.btn_enviar_menu.setMinimumSize(QSize(0, 40))
         self.btn_enviar_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_enviar_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -179,12 +187,13 @@ class Ui_MainWindow(object):
         icon3 = QIcon()
         icon3.addFile(u":/icons/icons/upload.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_enviar_menu.setIcon(icon3)
+        self.btn_enviar_menu.setIconSize(QSize(20, 20))
 
         self.verticalLayout_4.addWidget(self.btn_enviar_menu)
 
         self.btn_historico_menu = QPushButton(self.page)
         self.btn_historico_menu.setObjectName(u"btn_historico_menu")
-        self.btn_historico_menu.setMinimumSize(QSize(0, 30))
+        self.btn_historico_menu.setMinimumSize(QSize(0, 40))
         self.btn_historico_menu.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_historico_menu.setStyleSheet(u"\n"
 "QPushButton:hover{\n"
@@ -203,6 +212,7 @@ class Ui_MainWindow(object):
         icon4 = QIcon()
         icon4.addFile(u":/icons/icons/historical.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_historico_menu.setIcon(icon4)
+        self.btn_historico_menu.setIconSize(QSize(20, 20))
 
         self.verticalLayout_4.addWidget(self.btn_historico_menu)
 
@@ -228,6 +238,7 @@ class Ui_MainWindow(object):
         icon5 = QIcon()
         icon5.addFile(u":/icons/icons/out.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_encerrar_menu.setIcon(icon5)
+        self.btn_encerrar_menu.setIconSize(QSize(20, 20))
 
         self.verticalLayout_4.addWidget(self.btn_encerrar_menu)
 
@@ -307,15 +318,52 @@ class Ui_MainWindow(object):
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_15 = QVBoxLayout(self.frame_8)
+        self.horizontalLayout_15 = QHBoxLayout(self.frame_8)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.frame_21 = QFrame(self.frame_8)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.frame_21)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.label_4 = QLabel(self.frame_8)
+        self.frame_22 = QFrame(self.frame_21)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_22)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_12 = QLabel(self.frame_22)
+        self.label_12.setObjectName(u"label_12")
+
+        self.horizontalLayout_5.addWidget(self.label_12)
+
+        self.txt_nome_perfil_2 = QLabel(self.frame_22)
+        self.txt_nome_perfil_2.setObjectName(u"txt_nome_perfil_2")
+
+        self.horizontalLayout_5.addWidget(self.txt_nome_perfil_2)
+
+
+        self.verticalLayout_15.addWidget(self.frame_22)
+
+        self.frame_23 = QFrame(self.frame_21)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setFrameShape(QFrame.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_14 = QHBoxLayout(self.frame_23)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.label_4 = QLabel(self.frame_23)
         self.label_4.setObjectName(u"label_4")
 
-        self.verticalLayout_15.addWidget(self.label_4)
+        self.horizontalLayout_14.addWidget(self.label_4)
 
 
-        self.verticalLayout_5.addWidget(self.frame_8)
+        self.verticalLayout_15.addWidget(self.frame_23)
+
+
+        self.horizontalLayout_15.addWidget(self.frame_21)
+
+
+        self.verticalLayout_5.addWidget(self.frame_8, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
         self.Pages.addWidget(self.pg_home)
         self.pg_cadastrar = QWidget()
@@ -357,9 +405,15 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.frame_13.sizePolicy().hasHeightForWidth())
         self.frame_13.setSizePolicy(sizePolicy1)
         self.frame_13.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_13.setStyleSheet(u"background-color:rgba(0,0,0,0.1);\n"
-"border-top-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
+        self.frame_13.setStyleSheet(u"QFrame{\n"
+"	background-color: rgba(0,0,0,0.1);\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"##background-color:rgba(0,0,0,0.1);\n"
+"##border-top-left-radius: 10px;\n"
+"##border-bottom-right-radius: 10px;\n"
+"\n"
 "")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Raised)
@@ -385,6 +439,8 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
 "}\n"
 "")
         icon7 = QIcon()
@@ -408,6 +464,8 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
 "}")
         icon8 = QIcon()
         icon8.addFile(u":/icons/icons/delete.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -428,70 +486,110 @@ class Ui_MainWindow(object):
         self.txt_cadastro_nome = QLineEdit(self.frame_13)
         self.txt_cadastro_nome.setObjectName(u"txt_cadastro_nome")
         self.txt_cadastro_nome.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_nome.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_nome.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nome)
 
         self.txt_cadastro_cpf = QLineEdit(self.frame_13)
         self.txt_cadastro_cpf.setObjectName(u"txt_cadastro_cpf")
         self.txt_cadastro_cpf.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_cpf.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_cpf.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cpf)
 
         self.txt_cadastro_rg = QLineEdit(self.frame_13)
         self.txt_cadastro_rg.setObjectName(u"txt_cadastro_rg")
         self.txt_cadastro_rg.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_rg.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_rg.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_rg)
 
         self.txt_cadastro_filiacao = QLineEdit(self.frame_13)
         self.txt_cadastro_filiacao.setObjectName(u"txt_cadastro_filiacao")
         self.txt_cadastro_filiacao.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_filiacao.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_filiacao.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_filiacao)
 
         self.txt_cadastro_endereco = QLineEdit(self.frame_13)
         self.txt_cadastro_endereco.setObjectName(u"txt_cadastro_endereco")
         self.txt_cadastro_endereco.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_endereco.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_endereco.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_endereco)
 
         self.txt_cadastro_nascimento = QLineEdit(self.frame_13)
         self.txt_cadastro_nascimento.setObjectName(u"txt_cadastro_nascimento")
         self.txt_cadastro_nascimento.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_nascimento.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_nascimento.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nascimento)
 
         self.txt_cadastro_cidade = QLineEdit(self.frame_13)
         self.txt_cadastro_cidade.setObjectName(u"txt_cadastro_cidade")
         self.txt_cadastro_cidade.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_cidade.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_cidade.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cidade)
 
         self.txt_cadastro_estado = QLineEdit(self.frame_13)
         self.txt_cadastro_estado.setObjectName(u"txt_cadastro_estado")
         self.txt_cadastro_estado.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_estado.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_estado.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_estado)
 
         self.txt_cadastro_telefone = QLineEdit(self.frame_13)
         self.txt_cadastro_telefone.setObjectName(u"txt_cadastro_telefone")
         self.txt_cadastro_telefone.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_telefone.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_telefone.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_telefone)
 
         self.txt_cadastro_email = QLineEdit(self.frame_13)
         self.txt_cadastro_email.setObjectName(u"txt_cadastro_email")
         self.txt_cadastro_email.setMinimumSize(QSize(0, 30))
-        self.txt_cadastro_email.setStyleSheet(u"background-color: rgba(0, 0, 0, 20);")
+        self.txt_cadastro_email.setStyleSheet(u"QLineEdit{\n"
+"	background-color: rgba(0, 0, 0, 20);\n"
+"	border-top-left-radius: 10px;\n"
+"	border-bottom-right-radius: 10px;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_email)
 
@@ -561,6 +659,7 @@ class Ui_MainWindow(object):
         icon10 = QIcon()
         icon10.addFile(u":/icons/icons/remove.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_remover_lista_cadastro.setIcon(icon10)
+        self.btn_remover_lista_cadastro.setIconSize(QSize(13, 13))
 
         self.verticalLayout_21.addWidget(self.btn_remover_lista_cadastro)
 
@@ -724,6 +823,7 @@ class Ui_MainWindow(object):
 "\n"
 "QTableWidget{\n"
 "	background-color: rgb(252, 252, 252);\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.tabela_historico_cadastros.setRowCount(10)
         self.tabela_historico_cadastros.horizontalHeader().setCascadingSectionResizes(False)
@@ -778,6 +878,7 @@ class Ui_MainWindow(object):
 "\n"
 "QTableWidget{\n"
 "	background-color: rgb(252, 252, 252);\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.tabela_historico_documentos.setShowGrid(True)
         self.tabela_historico_documentos.setGridStyle(Qt.SolidLine)
@@ -811,16 +912,12 @@ class Ui_MainWindow(object):
         self.frame_15.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_15)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_7.addItem(self.horizontalSpacer)
-
         self.frame_17 = QFrame(self.frame_15)
         self.frame_17.setObjectName(u"frame_17")
         sizePolicy1.setHeightForWidth(self.frame_17.sizePolicy().hasHeightForWidth())
         self.frame_17.setSizePolicy(sizePolicy1)
         self.frame_17.setStyleSheet(u"QFrame{\n"
-"	background-color: rgba(0,0,0,0.2);\n"
+"	background-color: rgba(0,0,0,0.1);\n"
 "	border-radius: 20px;\n"
 "}")
         self.frame_17.setFrameShape(QFrame.StyledPanel)
@@ -1001,7 +1098,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
 
 
-        self.gridLayout.addWidget(self.frame_15, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.frame_15, 0, 1, 1, 2)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 0, 0, 1, 1)
 
 
         self.verticalLayout_13.addWidget(self.frame_7)
@@ -1017,8 +1118,10 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
         self.frame_6.setSizePolicy(sizePolicy1)
         self.frame_6.setMinimumSize(QSize(500, 0))
-        self.frame_6.setStyleSheet(u"background-color: rgba(0,0,0,0.1);\n"
-"border-radius: 10px;\n"
+        self.frame_6.setStyleSheet(u"QFrame{\n"
+"	background-color: rgba(0,0,0,0.1);\n"
+"	border-radius: 10px;\n"
+"}\n"
 "")
         self.frame_6.setFrameShape(QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QFrame.Raised)
@@ -1102,8 +1205,10 @@ class Ui_MainWindow(object):
         self.frame_4.setObjectName(u"frame_4")
         sizePolicy2.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
         self.frame_4.setSizePolicy(sizePolicy2)
-        self.frame_4.setStyleSheet(u"background-color:rgba(0,0,0,0.1);\n"
-"border-radius: 15px;")
+        self.frame_4.setStyleSheet(u"QFrame{\n"
+"	background-color:rgba(0,0,0,0.1);\n"
+"	border-radius: 15px;\n"
+"}")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_9 = QVBoxLayout(self.frame_4)
@@ -1208,43 +1313,240 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#ffffff;\">RuralConnect</span></p></body></html>", None))
+#if QT_CONFIG(accessibility)
+        self.menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Menu", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.label_3.setToolTip(QCoreApplication.translate("MainWindow", u"Nome da Empresa", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">RuralConnect</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.btn_home_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Home", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_home_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o da P\u00e1gina Principal", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_home_menu.setText(QCoreApplication.translate("MainWindow", u"Home", None))
+#if QT_CONFIG(tooltip)
+        self.btn_perfil_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Perfil", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_perfil_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o da P\u00e1gina de Perfil", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_perfil_menu.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
+#if QT_CONFIG(tooltip)
+        self.btn_cadastrar_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_cadastrar_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o da P\u00e1gina de Cadastro", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_cadastrar_menu.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+#if QT_CONFIG(tooltip)
+        self.btn_enviar_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Enviar Documentos", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_enviar_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o da P\u00e1gina de Envio de Documentos", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_enviar_menu.setText(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
+#if QT_CONFIG(tooltip)
+        self.btn_historico_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Hist\u00f3rico", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_historico_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o da P\u00e1gina de Hist\u00f3rico", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_historico_menu.setText(QCoreApplication.translate("MainWindow", u"Hist\u00f3rico", None))
+#if QT_CONFIG(tooltip)
+        self.btn_encerrar_menu.setToolTip(QCoreApplication.translate("MainWindow", u"Encerrar Sess\u00e3o", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_encerrar_menu.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de Logout", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_encerrar_menu.setText(QCoreApplication.translate("MainWindow", u"Encerrar", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Menu", None))
+#if QT_CONFIG(tooltip)
+        self.btn_toogle.setToolTip(QCoreApplication.translate("MainWindow", u"Menu", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_toogle.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o do Menu", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_toogle.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; color:#ffffff;\">Cadastro de Clientes em \u00c1reas Remotas</span></p></body></html>", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Seja Bem Vindo!</span></p><p align=\"center\"><img src=\":/icons/icons/cobra.png\"/></p></body></html>", None))
+#if QT_CONFIG(accessibility)
+        self.Pages.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Cadastros", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.pg_home.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina Principal", None))
+#endif // QT_CONFIG(accessibility)
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; color:#ffffff;\">Seja Bem Vindo</span></p></body></html>", None))
+        self.txt_nome_perfil_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; color:#ffffff;\">Usu\u00e1rio</span></p></body></html>", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><img src=\":/icons/icons/cobra.png\"/></p></body></html>", None))
+#if QT_CONFIG(accessibility)
+        self.pg_cadastrar.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina de Cadastro de Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">P\u00e1gina de Cadastro de Cliente</span></p></body></html>", None))
+#if QT_CONFIG(accessibility)
+        self.frame_13.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de Importa\u00e7\u00e3o e extra\u00e7\u00e3o de Dados de Formul\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.btn_carregar_formulario.setToolTip(QCoreApplication.translate("MainWindow", u"Importar Formul\u00e1rio", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_carregar_formulario.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de Importar Formul\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_carregar_formulario.setText(QCoreApplication.translate("MainWindow", u"Importar Formul\u00e1rio", None))
+#if QT_CONFIG(tooltip)
+        self.btn_limpar_formulario.setToolTip(QCoreApplication.translate("MainWindow", u"Limpar Formul\u00e1rio", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_limpar_formulario.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de limpar campos do formul\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_limpar_formulario.setText(QCoreApplication.translate("MainWindow", u"Limpar Formul\u00e1rio", None))
+#if QT_CONFIG(accessibility)
+        self.label_6.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Texto informativo que diz: Confira os dados importados do formul\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Confira os dados importados do formul\u00e1rio", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_nome.setToolTip(QCoreApplication.translate("MainWindow", u"Nome", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_nome.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do Nome Completo do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Nome", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_cpf.setToolTip(QCoreApplication.translate("MainWindow", u"CPF", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_cpf.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do CPF do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_cpf.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  CPF", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_rg.setToolTip(QCoreApplication.translate("MainWindow", u"RG", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_rg.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do RG do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_rg.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  RG", None))
-        self.txt_cadastro_filiacao.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Fili\u00e7\u00e3o", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_filiacao.setToolTip(QCoreApplication.translate("MainWindow", u"Filia\u00e7\u00e3o", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_filiacao.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento da Filia\u00e7\u00e3o do Cliente", None))
+#endif // QT_CONFIG(accessibility)
+        self.txt_cadastro_filiacao.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Filia\u00e7\u00e3o", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_endereco.setToolTip(QCoreApplication.translate("MainWindow", u"Endere\u00e7o", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_endereco.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do Endere\u00e7o do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_endereco.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Endere\u00e7o", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_nascimento.setToolTip(QCoreApplication.translate("MainWindow", u"Data de Nascimento", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_nascimento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento da Data de Nascimento do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_nascimento.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Data de Nascimento", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_cidade.setToolTip(QCoreApplication.translate("MainWindow", u"Cidade", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_cidade.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento da Cidade do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_cidade.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Cidade", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_estado.setToolTip(QCoreApplication.translate("MainWindow", u"Estado", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_estado.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do Estado do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_estado.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Estado", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_telefone.setToolTip(QCoreApplication.translate("MainWindow", u"Telefone", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_telefone.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do Telefone do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
+#if QT_CONFIG(tooltip)
+        self.txt_cadastro_email.setToolTip(QCoreApplication.translate("MainWindow", u"Email", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_cadastro_email.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para preenchimento do Email do Cliente", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_cadastro_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Email", None))
+#if QT_CONFIG(tooltip)
+        self.btn_carregar_documentos.setToolTip(QCoreApplication.translate("MainWindow", u"Selecionar Documento", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_carregar_documentos.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de Selecionar Arquivo de Documento", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_carregar_documentos.setText(QCoreApplication.translate("MainWindow", u"Selecionar Documento", None))
+#if QT_CONFIG(tooltip)
+        self.btn_remover_lista_cadastro.setToolTip(QCoreApplication.translate("MainWindow", u"Remover Documento da Lista", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_remover_lista_cadastro.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de Remover documento da lista", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_remover_lista_cadastro.setText(QCoreApplication.translate("MainWindow", u"Remover da Lista", None))
+#if QT_CONFIG(tooltip)
+        self.btn_limpar_lista_cadastro.setToolTip(QCoreApplication.translate("MainWindow", u"Limpar lista de Documentos", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_limpar_lista_cadastro.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de limpar a lista de documentos", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_limpar_lista_cadastro.setText(QCoreApplication.translate("MainWindow", u"Limpar Lista", None))
+#if QT_CONFIG(tooltip)
+        self.lista_documentos_cadastro.setToolTip(QCoreApplication.translate("MainWindow", u"Aqui ir\u00e3o aparecer os documentos selecionados", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.lista_documentos_cadastro.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de Exibi\u00e7\u00e3o da Lista de Documentos Selecionados", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.miniatura_documento.setToolTip(QCoreApplication.translate("MainWindow", u"Aqui ir\u00e1 aparecer a miniatura do documento selecionado na lista", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.miniatura_documento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de exibi\u00e7\u00e3o de Miniatura de Documento", None))
+#endif // QT_CONFIG(accessibility)
         self.miniatura_documento.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Amostra de imagem</p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.btn_cadastro_enviar.setToolTip(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_cadastro_enviar.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de Enviar Cadastro", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_cadastro_enviar.setText(QCoreApplication.translate("MainWindow", u"Enviar Cadastro", None))
+#if QT_CONFIG(accessibility)
+        self.pg_historico.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina de Hist\u00f3ricos", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.tabWidget.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabelas de HIst\u00f3rico de Envio de Cadastros e Documentos do Usu\u00e1rio da Sess\u00e3o", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.tab_historico_cadastro.setToolTip(QCoreApplication.translate("MainWindow", u"Meu hist\u00f3rico de Cadastros", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.tab_historico_cadastro.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Cadastro feito pelo Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         ___qtablewidgetitem = self.tabela_historico_cadastros.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
         ___qtablewidgetitem1 = self.tabela_historico_cadastros.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
         ___qtablewidgetitem2 = self.tabela_historico_cadastros.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Data Cadastro", None));
+#if QT_CONFIG(accessibility)
+        self.tabela_historico_cadastros.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Cadastro feito pelo Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_historico_cadastro), QCoreApplication.translate("MainWindow", u"Hist\u00f3rico de Cadastros", None))
+#if QT_CONFIG(tooltip)
+        self.tab_2.setToolTip(QCoreApplication.translate("MainWindow", u"Meu hist\u00f3rico de Documentos Enviados", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.tab_2.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Envio de Documentos feito pelo Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.frame_16.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Envio de Documentos feito pelo Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         ___qtablewidgetitem3 = self.tabela_historico_documentos.horizontalHeaderItem(0)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Cliente", None));
         ___qtablewidgetitem4 = self.tabela_historico_documentos.horizontalHeaderItem(1)
@@ -1255,8 +1557,26 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Telefone", None));
         ___qtablewidgetitem7 = self.tabela_historico_documentos.horizontalHeaderItem(4)
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Data Envio", None));
+#if QT_CONFIG(accessibility)
+        self.tabela_historico_documentos.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Tabela de Hist\u00f3rico de Envio de Documentos feito pelo Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Hist\u00f3rico de Envio de Documentos", None))
+#if QT_CONFIG(accessibility)
+        self.pg_enviar_doc.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina para envio de documentos", None))
+#endif // QT_CONFIG(accessibility)
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Arquivo Selecionado", None))
+#if QT_CONFIG(tooltip)
+        self.lista_envio_documento.setToolTip(QCoreApplication.translate("MainWindow", u"Aqui aparecer\u00e1 o caminho do documento selecionado", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.lista_envio_documento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo onde ser\u00e1 vis\u00edvel o caminho do documento selecionado", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.amostra_imagem.setToolTip(QCoreApplication.translate("MainWindow", u"Aqui aparecer\u00e1 uma miniatura da imagem do documento selecionado", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.amostra_imagem.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Espa\u00e7o onde aparecer\u00e1 uma miniatura da imagem do documento selecionado", None))
+#endif // QT_CONFIG(accessibility)
         self.amostra_imagem.setText(QCoreApplication.translate("MainWindow", u"Amostra da Imagem", None))
         self.tipo_documento.setItemText(0, QCoreApplication.translate("MainWindow", u"Escolha o tipo de arquivo", None))
         self.tipo_documento.setItemText(1, QCoreApplication.translate("MainWindow", u"CPF", None))
@@ -1264,19 +1584,109 @@ class Ui_MainWindow(object):
         self.tipo_documento.setItemText(3, QCoreApplication.translate("MainWindow", u"CNH", None))
         self.tipo_documento.setItemText(4, QCoreApplication.translate("MainWindow", u"PASSAPORTE", None))
 
+#if QT_CONFIG(tooltip)
+        self.tipo_documento.setToolTip(QCoreApplication.translate("MainWindow", u"Escolha o tipo de arquivo", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.tipo_documento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Op\u00e7\u00f5es de tipos de documentos", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.btn_arquivo_documento.setToolTip(QCoreApplication.translate("MainWindow", u"Escolher um Arquivo", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_arquivo_documento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o para escolher o documento", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_arquivo_documento.setText(QCoreApplication.translate("MainWindow", u"Escolher um Arquivo", None))
+#if QT_CONFIG(tooltip)
+        self.btn_remover_doc.setToolTip(QCoreApplication.translate("MainWindow", u"Limpar", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_remover_doc.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o para limpar", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_remover_doc.setText(QCoreApplication.translate("MainWindow", u"Limpar", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Confira os dados extra\u00eddos antes de enviar", None))
+#if QT_CONFIG(tooltip)
+        self.txt_dados_documento.setToolTip(QCoreApplication.translate("MainWindow", u"Aqui ir\u00e1 aparecer os dados extra\u00eddos do documento selecionado", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_dados_documento.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de texto para exibi\u00e7\u00e3o de dados extra\u00eddos do documento", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(tooltip)
+        self.btn_enviar_arquivo.setToolTip(QCoreApplication.translate("MainWindow", u"Enviar Documento", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_enviar_arquivo.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o de enviar documento", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_enviar_arquivo.setText(QCoreApplication.translate("MainWindow", u"Enviar", None))
+#if QT_CONFIG(accessibility)
+        self.pg_alteracao_perfil.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina de Altera\u00e7\u00e3o de Perfil", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.label_11.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Texto que diz: Altere seus Dados", None))
+#endif // QT_CONFIG(accessibility)
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">Altere seus Dados</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.txt_perfil_alterar_nome.setToolTip(QCoreApplication.translate("MainWindow", u"Nome", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_perfil_alterar_nome.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para altera\u00e7\u00e3o de Nome", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_perfil_alterar_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Nome", None))
+#if QT_CONFIG(tooltip)
+        self.txt_perfil_alterar_email.setToolTip(QCoreApplication.translate("MainWindow", u"Email", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_perfil_alterar_email.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para altera\u00e7\u00e3o de Email", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_perfil_alterar_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Email", None))
+#if QT_CONFIG(tooltip)
+        self.txt_perfil_alterar_telefone.setToolTip(QCoreApplication.translate("MainWindow", u"Telefone", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_perfil_alterar_telefone.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo para altera\u00e7\u00e3o de telefone", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_perfil_alterar_telefone.setPlaceholderText(QCoreApplication.translate("MainWindow", u"  Telefone", None))
+#if QT_CONFIG(tooltip)
+        self.btn_salvar_alteracoes.setToolTip(QCoreApplication.translate("MainWindow", u"Salvar Altera\u00e7\u00f5es", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_salvar_alteracoes.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o que salva as altera\u00e7\u00f5es feita pelo usu\u00e1rio nos dados do seu perfil", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_salvar_alteracoes.setText(QCoreApplication.translate("MainWindow", u"Salvar Altera\u00e7\u00f5es", None))
+#if QT_CONFIG(accessibility)
+        self.pg_perfil.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina de Perfil do Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.label_7.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Texto que diz: Perfil", None))
+#endif // QT_CONFIG(accessibility)
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ffffff;\">Perfil</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.txt_nome_perfil.setToolTip(QCoreApplication.translate("MainWindow", u"Meu Nome", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_nome_perfil.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de texto que aparecer\u00e1 o nome do Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_nome_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Nome do Usu\u00e1rio</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.txt_email_perfil.setToolTip(QCoreApplication.translate("MainWindow", u"Meu Email", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_email_perfil.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de Texto que ter\u00e1 o email do Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_email_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Email do Usu\u00e1rio</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.txt_telefone_perfil.setToolTip(QCoreApplication.translate("MainWindow", u"Meu Telefone", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.txt_telefone_perfil.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Campo de texto que aparecer\u00e1 o telefone do usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.txt_telefone_perfil.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Telefone do Usu\u00e1rio</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.btn_alterar_dados.setToolTip(QCoreApplication.translate("MainWindow", u"Alterar meus Dados", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(accessibility)
+        self.btn_alterar_dados.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"Bot\u00e3o para alterar dados do Usu\u00e1rio", None))
+#endif // QT_CONFIG(accessibility)
         self.btn_alterar_dados.setText(QCoreApplication.translate("MainWindow", u"Alterar meus dados", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>RuralConnect</p></body></html>", None))
     # retranslateUi
