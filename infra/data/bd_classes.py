@@ -449,7 +449,7 @@ class Sessao(Base):
 
         # Criando Documento.
         documento = Documento(
-            fk_cliente=cliente.id,
+            fk_cliente=cliente.id if cliente else None,
             titulo=titulo,
             tipo=tipo,
             conteudo=conteudo,
