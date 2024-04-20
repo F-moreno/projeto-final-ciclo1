@@ -30,21 +30,17 @@ class TesseractOCR:
         return self.__get_json(text)
 
     def __get_text_from_img(self, img_path):
-        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         img = self.__get_rgb_img(img_path)
-        self.__show_img(img)
-        # img = cv2.medianBlur(img, 3)
+        img = self.__get_eroded_img(img)
+        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
         img = self.__get_fixed_img(thresh, gray)
 
         # corrige o angulo do texto para 0º
         img = self.__get_contrasted_img(img, beta=0)
-        self.__show_img(img)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
-
-        self.__show_img(cv2.bitwise_not(img))
 
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
@@ -89,7 +85,7 @@ class TesseractOCR:
 
         # Salvar a imagem com a área destacada
         cv2.imwrite(
-            f"Docs/imagens/formulario/destacada{datetime.datetime.now()}.png",
+            f"Docs/imagens/formulario/destacada/{nome_arquivo}",
             img_destacada,
         )
         self.__show_img(img_destacada)
@@ -111,10 +107,13 @@ class TesseractOCR:
 
     def __get_angle_img(self, img_gray):
 
-        osd = pytesseract.image_to_osd(img_gray)
+        osd = pytesseract.image_to_osd(img_gray, config="--dpi 300")
         print(osd)
         self.__show_img(cv2.resize(img_gray, (500, 500)))
-        angulo = float(osd.split("\n")[1].split(":")[-1])
+        if float(osd.split("\n")[3].split(":")[-1]) > 10:
+            angulo = float(osd.split("\n")[1].split(":")[-1])
+        else:
+            angulo = float(osd.split("\n")[2].split(":")[-1])
         return angulo
 
     # corrige angulo
@@ -128,6 +127,13 @@ class TesseractOCR:
     def __get_medianblurred_img(self, img):
         img_gau = cv2.GaussianBlur(img, (5, 5), 0)
         return img_gau
+
+    def __get_eroded_img(self, img):
+        kernel = np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]], np.uint8)
+
+        img_erode = cv2.erode(img, kernel, iterations=1)
+        img_dilate = cv2.dilate(img_erode, kernel, iterations=1)
+        return img_dilate
 
     def __get_contrasted_img(self, img, alpha=1.5, beta=0):
         img_contrasted = cv2.convertScaleAbs(
@@ -180,7 +186,8 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
+    arquivo = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
+    nome_arquivo = arquivo.split("/")[-1]
     img = tesseract.read_image(arquivo)
     texto_reconhecido = tesseract.read_text(arquivo)
 
