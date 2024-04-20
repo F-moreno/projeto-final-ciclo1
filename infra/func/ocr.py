@@ -17,6 +17,8 @@ arquivos = [
 
 
 class TesseractOCR:
+    nome_arquivo = None
+
     def __init__(self):
         self.config_tesseract = "--tessdata-dir infra/func/tessdata"
 
@@ -30,6 +32,7 @@ class TesseractOCR:
         return self.__get_json(text)
 
     def __get_text_from_img(self, img_path):
+        TesseractOCR.nome_arquivo = img_path.split("/")[-1]
         img = self.__get_rgb_img(img_path)
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         gray = self.__get_grayscale_img(img)
@@ -84,7 +87,7 @@ class TesseractOCR:
 
         # Salvar a imagem com a área destacada
         cv2.imwrite(
-            f"Docs/imagens/formulario/destacada/{nome_arquivo}",
+            f"Docs/imagens/formulario/destacada/{TesseractOCR.nome_arquivo}",
             img_destacada,
         )
         self.__show_img(img_destacada)
