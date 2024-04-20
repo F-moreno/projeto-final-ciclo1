@@ -43,8 +43,9 @@ class Login(QWidget, Ui_Form):
         try:
             sessao = gerenciamento.iniciar_sessao(usuario, senha)
             self.abrir_main_window(sessao)
-        except:
+        except Exception as e:
             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
+            print(e)
 
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
@@ -198,10 +199,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
         sessao = self.sessao
-        if sessao:
-            informacoes = sessao.funcionario
-            if informacoes:
-                self.txt_nome_perfil_home.setText(informacoes.nome)
+        # if sessao:
+        #     informacoes = sessao.funcionario
+        #     if informacoes:
+        #         # self.txt_nome_perfil_home.setText(informacoes.nome)
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
@@ -348,7 +349,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
-            conteudo = (TesseractOCR().read_text(nomeArquivo),)
+            conteudo = (TesseractOCR().read_text(nomeArquivo))
             self.txt_dados_documento.setText(conteudo[0])
 
     def enviar_docs(self):
@@ -396,13 +397,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         data_nascimento = self.txt_cadastro_nascimento.text().replace("/", "-")
         municipio = self.txt_cadastro_cidade.text()
         estado = self.txt_cadastro_estado.text()
-        telefone = (
-            self.txt_cadastro_telefone.text()
-            .replace("(", "")
-            .replace(")", "")
-            .replace(" ", "")
-            .replace("-", "")
-        )
         telefone = (
             self.txt_cadastro_telefone.text()
             .replace("(", "")
@@ -517,6 +511,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_remover_doc.setEnabled(True)
             self.lista_envio_documento.clear()
             self.lista_envio_documento.addItem(self.documento_selecionado)
+            self.txt_dados_documento.setText(
+                TesseractOCR().read_text(self.documento_selecionado)
+            )
         else:
             self.amostra_imagem.clear()
             self.amostra_imagem.setText("Amostra de Imagem")
@@ -525,8 +522,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def remover_documento(self):
         self.documento_selecionado = ""
         self.lista_envio_documento.clear()
-        self.txt_dados_documento.clear()
         self.atualizar_documento_selecionado()
+        self.txt_dados_documento.clear()
 
     def mostrar_documento_selecionado(self, item):
         pixmap = QPixmap(item.text())
