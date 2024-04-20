@@ -113,7 +113,8 @@ class TesseractOCR:
 
         osd = pytesseract.image_to_osd(img_gray)
         print(osd)
-        angulo = float(osd.split("\n")[2].split(":")[-1])
+        self.__show_img(cv2.resize(img_gray, (500, 500)))
+        angulo = float(osd.split("\n")[1].split(":")[-1])
         return angulo
 
     # corrige angulo

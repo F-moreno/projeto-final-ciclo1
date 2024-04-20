@@ -219,8 +219,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if nomeArquivo:
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
-            conteudo = (TesseractOCR().read_text(nomeArquivo),)
-            print(conteudo)
 
     def atualizar_documento_selecionado(self):
         if self.documento_selecionado:
@@ -229,6 +227,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_remover_doc.setEnabled(True)
             self.lista_envio_documento.clear()
             self.lista_envio_documento.addItem(self.documento_selecionado)
+            self.txt_dados_documento.setText(
+                TesseractOCR().read_text(self.documento_selecionado)
+            )
         else:
             self.amostra_imagem.clear()
             self.amostra_imagem.setText("Amostra de Imagem")
@@ -238,6 +239,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.documento_selecionado = ""
         self.lista_envio_documento.clear()
         self.atualizar_documento_selecionado()
+        self.txt_dados_documento.clear()
 
     def mostrar_documento_selecionado(self, item):
         pixmap = QPixmap(item.text())
@@ -247,6 +249,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         documento = self.lista_envio_documento.item(0)
         caminho_arquivo = documento.text()
         tipo = self.tipo_documento.currentText()
+        conteudo = self.txt_dados_documento.toPlainText()
 
         try:
             with io.open(caminho_arquivo, "rb") as f:
