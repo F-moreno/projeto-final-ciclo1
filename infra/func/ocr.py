@@ -127,7 +127,7 @@ class TesseractOCR:
         img_contrasted = cv2.convertScaleAbs(
             cv2.bitwise_not(img), alpha=alpha, beta=beta
         )
-        return cv2.bitwise_not(img_contrasted)
+        return img_contrasted
 
     def __get_laplacian_img(self, img):
         img_lpc = cv2.Laplacian(img, cv2.CV_8UC1)
