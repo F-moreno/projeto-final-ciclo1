@@ -25,7 +25,6 @@ import io
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
         super(Login, self).__init__()
-        self.tentativas = 0
         self.setupUi(self)
         self.setWindowTitle("Login do Sistema")
 
@@ -180,6 +179,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_limpar_lista_cadastro.clicked.connect(self.limpar_docs_cadastro)
         self.lista_de_imagens = []
         self.documento_selecionado = None
+        self.mostrar_pag_home()
 
     def left_menu(self):
         width = self.menu.width()
@@ -197,85 +197,76 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
+        sessao = self.sessao
+        if sessao:
+            informacoes = sessao.funcionario
+            if informacoes:
+                self.txt_nome_perfil_home.setText(informacoes.nome)
 
-    ############################################################
-    ######## Página de envio de Documentos Genéricos ###########
-    # Essas funções terão que permitir ao usuário escolher o tipo
-    # do arquivo que vai enviar e ao clicar no botão de envio
-    # esse documento subir para o banco.
+    def mostrar_pag_cadastro(self):
+        self.Pages.setCurrentWidget(self.pg_cadastrar)
+
+    def mostrar_pag_historico(self):
+        self.Pages.setCurrentWidget(self.pg_historico)
+
+        # Chama a função do módulo de gerenciamento para buscar os clientes
+        documentos = gerenciamento.get_documentos(
+            fk_funcionario=self.sessao.funcionario.id
+        )
+        print(documentos)
+        doc_clientes = gerenciamento.get_documentos(
+            fk_funcionario=self.sessao.funcionario.id, tipo="Formulario de Cadastro"
+        )
+
+        # Configurando o número de linhas e colunas na tabela
+        self.tabela_historico_cadastros.setRowCount(len(doc_clientes))
+        self.tabela_historico_cadastros.setColumnCount(3)  # Exemplo: 3 colunas
+        self.tabela_historico_documentos.setRowCount(len(documentos))
+        self.tabela_historico_documentos.setColumnCount(5)
+
+        # Preenchendo a tabela com os dados dos clientes
+        for i, documento in enumerate(doc_clientes):
+            self.tabela_historico_cadastros.setItem(
+                i, 0, QTableWidgetItem(documento.cliente.nome)
+            )
+
+            self.tabela_historico_cadastros.setItem(
+                i, 1, QTableWidgetItem(documento.cliente.telefone)
+            )
+            self.tabela_historico_cadastros.setItem(
+                i,
+                2,
+                QTableWidgetItem(
+                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
+                ),
+            )
+
+        for i, documento in enumerate(documentos):
+            print(documento.titulo)
+            if documento.cliente:
+                self.tabela_historico_documentos.setItem(
+                    i, 0, QTableWidgetItem(documento.cliente.nome)
+                )
+                self.tabela_historico_documentos.setItem(
+                    i, 3, QTableWidgetItem(documento.cliente.telefone)
+                )
+
+            self.tabela_historico_documentos.setItem(
+                i, 1, QTableWidgetItem(documento.titulo)
+            )
+            self.tabela_historico_documentos.setItem(
+                i, 2, QTableWidgetItem(documento.tipo)
+            )
+            self.tabela_historico_documentos.setItem(
+                i,
+                4,
+                QTableWidgetItem(
+                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
+                ),
+            )
 
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
-
-    def carregar_arquivo(self):
-        options = QFileDialog.Option()
-        nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self,
-            "Selecione o Arquivo",
-            "",
-            "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)",
-            options=options,
-        )
-        if nomeArquivo:
-            self.documento_selecionado = nomeArquivo
-            self.atualizar_documento_selecionado()
-
-    def atualizar_documento_selecionado(self):
-        if self.documento_selecionado:
-            pixmap = QPixmap(self.documento_selecionado)
-            self.amostra_imagem.setPixmap(pixmap)
-            self.btn_remover_doc.setEnabled(True)
-            self.lista_envio_documento.clear()
-            self.lista_envio_documento.addItem(self.documento_selecionado)
-            self.txt_dados_documento.setText(
-                TesseractOCR().read_text(self.documento_selecionado)
-            )
-        else:
-            self.amostra_imagem.clear()
-            self.amostra_imagem.setText("Amostra de Imagem")
-            self.btn_remover_doc.setEnabled(False)
-
-    def remover_documento(self):
-        self.documento_selecionado = ""
-        self.lista_envio_documento.clear()
-        self.atualizar_documento_selecionado()
-        self.txt_dados_documento.clear()
-
-    def mostrar_documento_selecionado(self, item):
-        pixmap = QPixmap(item.text())
-        self.amostra_imagem.setPixmap(pixmap)
-
-    def enviar_docs(self):
-        documento = self.lista_envio_documento.item(0)
-        caminho_arquivo = documento.text()
-        tipo = self.tipo_documento.currentText()
-        conteudo = self.txt_dados_documento.toPlainText()
-
-        try:
-            with io.open(caminho_arquivo, "rb") as f:
-                bytes_imagem = f.read()
-
-            self.sessao.salvar_documento(
-                titulo=caminho_arquivo.split("/")[-1],
-                tipo=tipo,
-                arquivo_original=bytes_imagem,
-                conteudo=conteudo,
-            )
-
-        except Exception as e:
-            QMessageBox.critical(self, "Erro", f"Erro ao cadastrar documento: {str(e)}")
-
-        QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
-        self.remover_documento()
-
-    ##############################################################################
-    #########Página de exibição de Perfil e alteração de Dados básicos############
-    # Essas funções deverão permitir que ao usuário visualizar seus dados básico de
-    # Perfil, que ele ao clicar no botão de alterar perfil a página de alteração
-    # seja aberta e o usuário possa adicionar novos valores para os dados que quer
-    # alterar. Ao clicar em salvar os dados serão atualizados no Banco de Dados.
-    # Um ponto importante é que para exibir esses dados iniciais precisamos ter
-    # um retorno do Banco com esses dados do usuário no momento que ele fizer login.
 
     def mostrar_pag_perfil(self):
         sessao = self.sessao
@@ -316,12 +307,72 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             )
             QMessageBox.information(self, "Sucesso", "Perfil atualizado com sucesso!")
             self.limpar_campos_alteracao()
+            self.mostrar_pag_perfil()
 
         else:
             QMessageBox.warning(self, "Aviso", "Nenhuma alteração foi feita.")
 
-    def mostrar_pag_cadastro(self):
-        self.Pages.setCurrentWidget(self.pg_cadastrar)
+    def abrir_arquivo(self):
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self, "Selecione o Arquivo", "", "All Files(*)", options=options
+        )
+        if nomeArquivo:
+            print("Arquivo selecionado", nomeArquivo)
+            texto = TesseractOCR().read_text(nomeArquivo)
+            image = TesseractOCR().read_image(nomeArquivo)
+            json = TesseractOCR().read_json(texto)
+            print(json)
+            self.txt_cadastro_nome.setText(json.get("nome", ""))
+            self.txt_cadastro_cpf.setText(json.get("cpf", ""))
+            self.txt_cadastro_rg.setText(json.get("rg", ""))
+            self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
+            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
+            self.txt_cadastro_endereco.setText(json.get("endereco", ""))
+            self.txt_cadastro_cidade.setText(json.get("cidade", ""))
+            self.txt_cadastro_estado.setText(json.get("estado", ""))
+            self.txt_cadastro_telefone.setText(json.get("telefone", ""))
+            self.txt_cadastro_email.setText(json.get("email", ""))
+            self.lista_de_imagens.extend([(nomeArquivo, "formulario")])
+            self.atualizar_lista()
+
+    def carregar_arquivo(self):
+        options = QFileDialog.Option()
+        nomeArquivo, _ = QFileDialog.getOpenFileName(
+            self,
+            "Selecione o Arquivo",
+            "",
+            "Imagens (*.png *.jpg *.jpeg *.bmp *.gif)",
+            options=options,
+        )
+        if nomeArquivo:
+            self.documento_selecionado = nomeArquivo
+            self.atualizar_documento_selecionado()
+            conteudo = (TesseractOCR().read_text(nomeArquivo),)
+            self.txt_dados_documento.setText(conteudo[0])
+
+    def enviar_docs(self):
+        documento = self.lista_envio_documento.item(0)
+        caminho_arquivo = documento.text()
+        tipo = self.tipo_documento.currentText()
+        conteudo = self.txt_dados_documento.toPlainText()
+
+        try:
+            with io.open(caminho_arquivo, "rb") as f:
+                bytes_imagem = f.read()
+
+            self.sessao.salvar_documento(
+                titulo=caminho_arquivo.split("/")[-1],
+                tipo=tipo,
+                arquivo_original=bytes_imagem,
+                conteudo=conteudo,
+            )
+
+        except Exception as e:
+            QMessageBox.critical(self, "Erro", f"Erro ao cadastrar documento: {str(e)}")
+
+        QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
+        self.remover_documento()
 
     def carregar_docs_cadastro(self):
         options = QFileDialog.Option()
@@ -336,49 +387,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_de_imagens.extend([(nomeArquivo, "documento")])
             self.atualizar_lista()
 
-    def limpar_formulario(self):
-        self.txt_cadastro_nome.clear()
-        self.txt_cadastro_cpf.clear()
-        self.txt_cadastro_rg.clear()
-        self.txt_cadastro_filiacao.clear()
-        self.txt_cadastro_endereco.clear()
-        self.txt_cadastro_nascimento.clear()
-        self.txt_cadastro_cidade.clear()
-        self.txt_cadastro_estado.clear()
-        self.txt_cadastro_telefone.clear()
-        self.txt_cadastro_email.clear()
-
-    def remover_doc_cadastro(self):
-        if self.lista_documentos_cadastro.currentItem():
-            item = self.lista_documentos_cadastro.currentRow()
-            del self.lista_de_imagens[item]
-            self.lista_documentos_cadastro.takeItem(item)
-
-    def limpar_docs_cadastro(self):
-        self.lista_documentos_cadastro.clear()
-        self.lista_de_imagens.clear()
-        self.limpar_imagem_selecionada()
-        self.miniatura_documento.setText("Amostra de Imagem")
-
-    def atualizar_lista(self):
-        self.lista_documentos_cadastro.clear()
-
-        if self.lista_de_imagens:
-            for imagem in self.lista_de_imagens:
-                pixmap = QPixmap(imagem[0])
-                icon = QIcon(pixmap)
-                item = QListWidgetItem(icon, imagem[0])
-                item.setSizeHint(QSize(50, 50))
-                self.lista_documentos_cadastro.addItem(item)
-
-        self.lista_documentos_cadastro.setViewMode(QListWidget.IconMode)
-        self.lista_documentos_cadastro.itemClicked.connect(
-            self.mostrar_imagem_selecionada
-        )
-
-    def limpar_imagem_selecionada(self):
-        self.miniatura_documento.clear()
-
     def enviar_cadastrar_cliente(self):
         nome = self.txt_cadastro_nome.text()
         cpf = self.txt_cadastro_cpf.text().replace(".", "").replace("-", "")
@@ -388,6 +396,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         data_nascimento = self.txt_cadastro_nascimento.text().replace("/", "-")
         municipio = self.txt_cadastro_cidade.text()
         estado = self.txt_cadastro_estado.text()
+        telefone = (
+            self.txt_cadastro_telefone.text()
+            .replace("(", "")
+            .replace(")", "")
+            .replace(" ", "")
+            .replace("-", "")
+        )
         telefone = (
             self.txt_cadastro_telefone.text()
             .replace("(", "")
@@ -448,98 +463,74 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.limpar_docs_cadastro()
         QMessageBox.information(self, "Sucesso", "Cliente cadastrado com sucesso!")
 
+    def limpar_formulario(self):
+        self.txt_cadastro_nome.clear()
+        self.txt_cadastro_cpf.clear()
+        self.txt_cadastro_rg.clear()
+        self.txt_cadastro_filiacao.clear()
+        self.txt_cadastro_endereco.clear()
+        self.txt_cadastro_nascimento.clear()
+        self.txt_cadastro_cidade.clear()
+        self.txt_cadastro_estado.clear()
+        self.txt_cadastro_telefone.clear()
+        self.txt_cadastro_email.clear()
+
+    def remover_doc_cadastro(self):
+        if self.lista_documentos_cadastro.currentItem():
+            item = self.lista_documentos_cadastro.currentRow()
+            del self.lista_de_imagens[item]
+            self.lista_documentos_cadastro.takeItem(item)
+
+    def limpar_docs_cadastro(self):
+        self.lista_documentos_cadastro.clear()
+        self.lista_de_imagens.clear()
+        self.limpar_imagem_selecionada()
+        self.miniatura_documento.setText("Amostra de Imagem")
+
+    def atualizar_lista(self):
+        self.lista_documentos_cadastro.clear()
+
+        if self.lista_de_imagens:
+            for imagem in self.lista_de_imagens:
+                pixmap = QPixmap(imagem[0])
+                icon = QIcon(pixmap)
+                item = QListWidgetItem(icon, imagem[0])
+                item.setSizeHint(QSize(50, 50))
+                self.lista_documentos_cadastro.addItem(item)
+
+        self.lista_documentos_cadastro.setViewMode(QListWidget.IconMode)
+        self.lista_documentos_cadastro.itemClicked.connect(
+            self.mostrar_imagem_selecionada
+        )
+
+    def limpar_imagem_selecionada(self):
+        self.miniatura_documento.clear()
+
     def mostrar_imagem_selecionada(self, item):
         pixmap = QPixmap(item.text())
         self.miniatura_documento.setPixmap(pixmap)
 
-    def abrir_arquivo(self):
-        options = QFileDialog.Option()
-        nomeArquivo, _ = QFileDialog.getOpenFileName(
-            self, "Selecione o Arquivo", "", "All Files(*)", options=options
-        )
-        if nomeArquivo:
-            print("Arquivo selecionado", nomeArquivo)
-            texto = TesseractOCR().read_text(nomeArquivo)
-            image = TesseractOCR().read_image(nomeArquivo)
-            json = TesseractOCR().read_json(texto)
-            print(json)
-            self.txt_cadastro_nome.setText(json.get("nome", ""))
-            self.txt_cadastro_cpf.setText(json.get("cpf", ""))
-            self.txt_cadastro_rg.setText(json.get("rg", ""))
-            self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
-            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
-            self.txt_cadastro_endereco.setText(json.get("endereco", ""))
-            self.txt_cadastro_cidade.setText(json.get("cidade", ""))
-            self.txt_cadastro_estado.setText(json.get("estado", ""))
-            self.txt_cadastro_telefone.setText(json.get("telefone", ""))
-            self.txt_cadastro_email.setText(json.get("email", ""))
-            self.lista_de_imagens.extend([(nomeArquivo, "formulario")])
-            self.atualizar_lista()
+    def atualizar_documento_selecionado(self):
+        if self.documento_selecionado:
+            pixmap = QPixmap(self.documento_selecionado)
+            self.amostra_imagem.setPixmap(pixmap)
+            self.btn_remover_doc.setEnabled(True)
+            self.lista_envio_documento.clear()
+            self.lista_envio_documento.addItem(self.documento_selecionado)
+        else:
+            self.amostra_imagem.clear()
+            self.amostra_imagem.setText("Amostra de Imagem")
+            self.btn_remover_doc.setEnabled(False)
 
-    #################################################################################
-    ################## Página de Exibição do Histórico ##############################
-    # Essas funções tratarão da exibição do histórico de cadastros realizados por
-    # aquele usuário. Portanto teremos a necessidade de funções que busquem um SELECT
-    # no BD com os cadastros daquele usuário.
+    def remover_documento(self):
+        self.documento_selecionado = ""
+        self.lista_envio_documento.clear()
+        self.txt_dados_documento.clear()
+        self.atualizar_documento_selecionado()
 
-    def mostrar_pag_historico(self):
-        self.Pages.setCurrentWidget(self.pg_historico)
-
-        # Chama a função do módulo de gerenciamento para buscar os clientes
-        documentos = gerenciamento.get_documentos(
-            fk_funcionario=self.sessao.funcionario.id
-        )
-        print(documentos)
-        doc_clientes = gerenciamento.get_documentos(
-            fk_funcionario=self.sessao.funcionario.id, tipo="Formulario de Cadastro"
-        )
-
-        # Configurando o número de linhas e colunas na tabela
-        self.tabela_historico_cadastros.setRowCount(len(doc_clientes))
-        self.tabela_historico_cadastros.setColumnCount(3)  # Exemplo: 3 colunas
-        self.tabela_historico_documentos.setRowCount(len(documentos))
-        self.tabela_historico_documentos.setColumnCount(5)
-
-        # Preenchendo a tabela com os dados dos clientes
-        for i, documento in enumerate(doc_clientes):
-            self.tabela_historico_cadastros.setItem(
-                i, 0, QTableWidgetItem(documento.cliente.nome)
-            )
-
-            self.tabela_historico_cadastros.setItem(
-                i, 1, QTableWidgetItem(documento.cliente.telefone)
-            )
-            self.tabela_historico_cadastros.setItem(
-                i,
-                2,
-                QTableWidgetItem(
-                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
-                ),
-            )
-        # Preenchendo a tabela com os dados dos documentos
-        for i, documento in enumerate(documentos):
-            print(documento.titulo)
-            if documento.cliente:
-                self.tabela_historico_documentos.setItem(
-                    i, 0, QTableWidgetItem(documento.cliente.nome)
-                )
-                self.tabela_historico_documentos.setItem(
-                    i, 3, QTableWidgetItem(documento.cliente.telefone)
-                )
-
-            self.tabela_historico_documentos.setItem(
-                i, 1, QTableWidgetItem(documento.titulo)
-            )
-            self.tabela_historico_documentos.setItem(
-                i, 2, QTableWidgetItem(documento.tipo)
-            )
-            self.tabela_historico_documentos.setItem(
-                i,
-                4,
-                QTableWidgetItem(
-                    documento.registro.horario.strftime("%d/%m/%Y %H:%M:%S")
-                ),
-            )
+    def mostrar_documento_selecionado(self, item):
+        pixmap = QPixmap(item.text())
+        self.amostra_imagem.setPixmap(pixmap)
 
 
 def main():
