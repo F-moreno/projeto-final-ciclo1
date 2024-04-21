@@ -338,7 +338,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txt_cadastro_cpf.setText(json.get("cpf", ""))
             self.txt_cadastro_rg.setText(json.get("rg", ""))
             self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
-            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
+            self.txt_cadastro_nascimento.setText(json.get("datadenascimento", ""))
             self.txt_cadastro_endereco.setText(json.get("endereco", ""))
             self.txt_cadastro_cidade.setText(json.get("cidade", ""))
             self.txt_cadastro_estado.setText(json.get("estado", ""))
