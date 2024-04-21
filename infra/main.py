@@ -29,6 +29,8 @@ class Login(QWidget, Ui_Form):
         super(Login, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Login do Sistema")
+        self.codigo_recuperacao = None
+        self.email_usuario_recuperacao = None
 
         self.btn_entrar_login.clicked.connect(self.abrir_sistema)
         self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
@@ -37,6 +39,9 @@ class Login(QWidget, Ui_Form):
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
         self.btn_padrao.clicked.connect(self.padrao_configuracao)
         self.btn_salvar.clicked.connect(self.salvar_configuracao)
+        self.btn_esqueci_login.clicked.connect(self.esqueci_senha)
+        self.btn_enviar_codigo.clicked.connect(self.enviar_codigo)
+        self.btn_esqueci_confirmar.clicked.connect(self.recuperar_senha)
 
     def abrir_sistema(self):
         usuario = self.txt_cpf_login.text()
@@ -155,15 +160,52 @@ class Login(QWidget, Ui_Form):
     def padrao_configuracao(self):
         self.txt_ip.setText("localhost")
         self.txt_porta.setText("5432")
-    
-    def gerar_codigo(length=6):
-        return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+
+    def gerar_codigo(self, length=6):
+        caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return "".join(random.choices(caracteres, k=length))
+
+    def enviar_codigo(self):
+        cpf = self.txt_esqueci_cpf.text()
+        try:
+            user = gerenciamento.get_funcionarios(cpf=cpf)[0]
+
+            if user:
+                self.email_usuario_recuperacao = user.email
+                QMessageBox.information(
+                    self, "Envio de e-mail", "Foi enviado o código para o seu e-mail!"
+                )
+
+        except Exception as e:
+            QMessageBox.information(
+                self, "CPF Inexistente", "CPF não cadastrado no sistema."
+            )
+
+        email = self.email_usuario_recuperacao
+        self.codigo_recuperacao = self.gerar_codigo()
+        enviar_email.enviar(destinatario=email, codigo=self.codigo_recuperacao)
 
     def recuperar_senha(self):
-        email = "buscar no banco de dados"
-        codigo = self.gerar_codigo()
-        enviar.enviar_email(email, codigo)
+        email = self.email_usuario_recuperacao
+        codigo = self.txt_esqueci_codigo.text()
+        if self.codigo_recuperacao == codigo:
+            funcionario = gerenciamento.get_funcionarios(email=email)[0]
+            funcionario.atualizar_senha(self.txt_nova_senha.text())
+            QMessageBox.information(
+                self, "Recuperação de senha", "Senha alterada com sucesso!"
+            )
+            self.txt_nova_senha.clear()
+            self.txt_codigo_recuperacao.clear()
+            self.codigo_recuperacao = None
+            self.email_usuario_recuperacao = None
 
+        else:
+            QMessageBox.information(
+                self, "Recuperação de senha", "Código inválido!"
+            )
+
+    def esqueci_senha(self):
+        self.Pages.setCurrentWidget(self.pg_esqueci_senha)
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
