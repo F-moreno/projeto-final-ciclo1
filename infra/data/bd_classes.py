@@ -1,4 +1,5 @@
 import os
+from passlib.hash import argon2
 from dotenv import load_dotenv, set_key
 from sqlalchemy import (
     create_engine,
@@ -169,7 +170,7 @@ def connect_bd() -> bool:
         engine = create_engine(
             f'postgresql://{db_user}:{db_pass}@{db_host}{f":{db_port}" if db_port else ""}/{db_name}'
         )
-        Session = sessionmaker(bind=engine)
+        Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
         session = Session()
         Base.metadata.create_all(engine)
         print(f"Conectado ao Banco de Dados '{db_name}' com sucesso.")
@@ -255,7 +256,7 @@ class Funcionario(Base):
     def atualizar(
         self, nome: str = None, cpf: str = None, telefone: str = None, email: str = None
     ) -> None:
-        """Atualiza os atributos do Funcionario
+        """Atualiza os atributos do Funcionario.
 
         Args:
             nome (str, opcional): novo nome completo do funcionário.
@@ -283,9 +284,11 @@ class Funcionario(Base):
         Args:
             nova_senha (str): nova senha de login do funcionário.
         """
-        self.senha = nova_senha
+        self.senha = argon2.hash(nova_senha)
+        print(nova_senha)
         try:
             session.commit()
+            print(f"Senha atualizada.")
         except Exception as e:
             session.rollback()
             print(f"Erro ao atualizar senha: {e}")
