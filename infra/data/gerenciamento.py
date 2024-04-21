@@ -8,10 +8,10 @@ from infra.data.bd_classes import (
     Sessao,
     Registro,
     Documento,
+    argon2
 )
 from datetime import datetime
 from dateutil import relativedelta
-from passlib.hash import argon2
 from typing import List
 
 # GESTÃO DE USUARIOS
