@@ -20,6 +20,7 @@ from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
 from infra.email import enviar_email
+
 import io
 import random
 
@@ -221,7 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_perfil_menu.clicked.connect(self.mostrar_pag_perfil)
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
-        self.btn_encerrar_menu.clicked.connect(self.close)
+        self.btn_encerrar_menu.clicked.connect(self.encerrar_sessao)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
@@ -578,6 +579,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def mostrar_documento_selecionado(self, item):
         pixmap = QPixmap(item.text())
         self.amostra_imagem.setPixmap(pixmap)
+
+    def encerrar_sessao(self):
+        gerenciamento.encerrar_sessao(self.sessao)
+        login_window = Login()
+        login_window.show()
 
 
 def main():
