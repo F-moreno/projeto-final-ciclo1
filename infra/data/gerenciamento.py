@@ -131,6 +131,7 @@ def get_funcionarios(
     id: int = None,
     nome: str = None,
     cpf: str = None,
+    email: str = None,
 ) -> List[Funcionario]:
     """Retorna uma lista de funcionários com base nos argumentos.
     OBS: Se não houver argumentos, retorna todos os funcionários.
@@ -139,6 +140,7 @@ def get_funcionarios(
         id (int, opcional): filtrar por id único de um funcionário.
         nome (str, opcional): filtrar por nome completo do funcionário.
         cpf (str, opcional): filtrar por número de CPF do funcionário.
+        email (str, opcional): filtrar por email do funcionário.
 
     Returns:
         List[Funcionario]: lista de funcionários filtrados.
@@ -152,6 +154,9 @@ def get_funcionarios(
 
     if cpf:
         kwargs["cpf"] = cpf
+    
+    if email:
+        kwargs["email"] = email
 
     try:
         funcionarios = session.query(Funcionario).filter_by(**kwargs)
