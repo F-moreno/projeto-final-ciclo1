@@ -127,7 +127,7 @@ class Ui_Form(object):
 "}")
         self.txt_esqueci_cpf = QLineEdit(self.pg_esqueci_senha)
         self.txt_esqueci_cpf.setObjectName(u"txt_esqueci_cpf")
-        self.txt_esqueci_cpf.setGeometry(QRect(20, 90, 261, 31))
+        self.txt_esqueci_cpf.setGeometry(QRect(20, 80, 301, 31))
         self.txt_esqueci_cpf.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgba(0,0,0,25);\n"
 "	color: white;\n"
@@ -137,7 +137,7 @@ class Ui_Form(object):
 "}")
         self.txt_esqueci_nova_senha = QLineEdit(self.pg_esqueci_senha)
         self.txt_esqueci_nova_senha.setObjectName(u"txt_esqueci_nova_senha")
-        self.txt_esqueci_nova_senha.setGeometry(QRect(20, 130, 261, 31))
+        self.txt_esqueci_nova_senha.setGeometry(QRect(20, 120, 301, 31))
         self.txt_esqueci_nova_senha.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgba(0,0,0,25);\n"
 "	color: white;\n"
@@ -148,7 +148,7 @@ class Ui_Form(object):
         self.txt_esqueci_nova_senha.setEchoMode(QLineEdit.Password)
         self.txt_esqueci_codigo = QLineEdit(self.pg_esqueci_senha)
         self.txt_esqueci_codigo.setObjectName(u"txt_esqueci_codigo")
-        self.txt_esqueci_codigo.setGeometry(QRect(20, 170, 261, 31))
+        self.txt_esqueci_codigo.setGeometry(QRect(20, 160, 191, 31))
         self.txt_esqueci_codigo.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgba(0,0,0,25);\n"
 "	color: white;\n"
@@ -158,9 +158,26 @@ class Ui_Form(object):
 "}")
         self.btn_esqueci_confirmar = QPushButton(self.pg_esqueci_senha)
         self.btn_esqueci_confirmar.setObjectName(u"btn_esqueci_confirmar")
-        self.btn_esqueci_confirmar.setGeometry(QRect(90, 210, 111, 23))
+        self.btn_esqueci_confirmar.setGeometry(QRect(120, 240, 101, 31))
         self.btn_esqueci_confirmar.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_esqueci_confirmar.setStyleSheet(u"QPushButton:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	\n"
+"	\n"
+"	background-color: rgb(93, 186, 0);\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
+"	border-radius: 10px\n"
+"}")
+        self.btn_enviar_codigo = QPushButton(self.pg_esqueci_senha)
+        self.btn_enviar_codigo.setObjectName(u"btn_enviar_codigo")
+        self.btn_enviar_codigo.setGeometry(QRect(230, 160, 91, 31))
+        self.btn_enviar_codigo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_enviar_codigo.setStyleSheet(u"QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
 "	\n"
@@ -481,7 +498,11 @@ class Ui_Form(object):
 #if QT_CONFIG(tooltip)
         self.btn_esqueci_confirmar.setToolTip(QCoreApplication.translate("Form", u"Confirmar", None))
 #endif // QT_CONFIG(tooltip)
-        self.btn_esqueci_confirmar.setText(QCoreApplication.translate("Form", u"Confirmar", None))
+        self.btn_esqueci_confirmar.setText(QCoreApplication.translate("Form", u"Trocar Senha", None))
+#if QT_CONFIG(tooltip)
+        self.btn_enviar_codigo.setToolTip(QCoreApplication.translate("Form", u"Receber C\u00f3digo", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn_enviar_codigo.setText(QCoreApplication.translate("Form", u"Receber", None))
         self.label.setText(QCoreApplication.translate("Form", u"Bem Vindo", None))
         self.label_2.setText("")
         self.label_5.setText(QCoreApplication.translate("Form", u"Vers\u00e3o 1.1", None))
