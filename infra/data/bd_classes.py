@@ -214,7 +214,7 @@ class Cliente(Base):
     telefone = Column(String(15))
     email = Column(String)
 
-    documentos = relationship("Documento", back_populates="cliente")
+    documentos = relationship("Documento", back_populates="cliente", cascade="all, delete")
 
     idx_cliente_id = Index("idx_cliente_id", id)
     idx_cliente_nome = Index("idx_cliente_nome", nome)
@@ -245,7 +245,7 @@ class Funcionario(Base):
     email = Column(String, nullable=False)
     senha = Column(String, nullable=False)
 
-    sessoes = relationship("Sessao", back_populates="funcionario")
+    sessoes = relationship("Sessao", back_populates="funcionario", cascade="all, delete")
 
     idx_funcionario_id = Index("idx_funcionario_id", id)
     idx_funcionario_nome = Index("idx_funcionario_nome", nome)
@@ -299,7 +299,7 @@ class Registro(Base):
     titulo_atividade = Column(String)
 
     sessao = relationship("Sessao", back_populates="registros")
-    documento = relationship("Documento", back_populates="registro")
+    documento = relationship("Documento", back_populates="registro", cascade="all, delete")
 
     idx_registro_sessao = Index("idx_registro_sessao", fk_sessao)
     idx_registro_horario = Index("idx_registro_horario", horario)
