@@ -20,10 +20,9 @@ from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
 from infra.email import enviar_email
-
 import io
 import random
-
+app = None
 
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
@@ -36,7 +35,7 @@ class Login(QWidget, Ui_Form):
         self.btn_entrar_login.clicked.connect(self.abrir_sistema)
         self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_config.clicked.connect(self.mostrar_pag_config)
-        self.btn_closed.clicked.connect(self.close)
+        self.btn_closed.clicked.connect(self.fechar_sistema)
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
         self.btn_padrao.clicked.connect(self.padrao_configuracao)
         self.btn_salvar.clicked.connect(self.salvar_configuracao)
@@ -54,6 +53,9 @@ class Login(QWidget, Ui_Form):
         except Exception as e:
             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
             print(e)
+
+    def fechar_sistema(self):
+        sys.exit()
 
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
@@ -129,7 +131,8 @@ class Login(QWidget, Ui_Form):
         self.w = MainWindow(sessao)
         self.w.show()
         self.w.showMaximized()
-        self.close()
+        self.hide()
+        return self.w.showMaximized()      
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
@@ -189,14 +192,16 @@ class Login(QWidget, Ui_Form):
     def recuperar_senha(self):
         email = self.email_usuario_recuperacao
         codigo = self.txt_esqueci_codigo.text()
+        nova_senha = self.txt_esqueci_nova_senha.text()
         if self.codigo_recuperacao == codigo:
             funcionario = gerenciamento.get_funcionarios(email=email)[0]
-            funcionario.atualizar_senha(self.txt_nova_senha.text())
+            funcionario.atualizar_senha(nova_senha)
             QMessageBox.information(
                 self, "Recuperação de senha", "Senha alterada com sucesso!"
             )
-            self.txt_nova_senha.clear()
-            self.txt_codigo_recuperacao.clear()
+            self.txt_esqueci_nova_senha.clear()
+            self.txt_esqueci_codigo.clear()
+            self.txt_esqueci_cpf.clear()
             self.codigo_recuperacao = None
             self.email_usuario_recuperacao = None
 
@@ -582,15 +587,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def encerrar_sessao(self):
         gerenciamento.encerrar_sessao(self.sessao)
-        login_window = Login()
-        login_window.show()
+        self.window = Login()
+        self.window.show()
+        self.close()
 
 
 def main():
+    global app
     app = QApplication(sys.argv)
     window = Login()
     window.show()
     app.exec_()
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
