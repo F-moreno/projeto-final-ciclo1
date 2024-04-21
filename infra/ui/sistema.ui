@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1029</width>
+    <width>1145</width>
     <height>695</height>
    </rect>
   </property>
@@ -15,7 +15,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255,255,255);</string>
+    <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -51,7 +54,9 @@
        <string>Menu</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
+       <string notr="true">QFrame {
+background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
+}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -78,7 +83,10 @@
        <item>
         <widget class="QFrame" name="frame_2">
          <property name="styleSheet">
-          <string notr="true">background-color: transparent;</string>
+          <string notr="true">QFrame {
+	background-color: transparent;
+	border: 0px;
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -91,14 +99,24 @@
            <widget class="QLabel" name="label_3">
             <property name="font">
              <font>
-              <pointsize>8</pointsize>
+              <family>Arial,sans-serif</family>
+              <pointsize>15</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="toolTip">
              <string>Nome da Empresa</string>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: transparent;</string>
+             <string notr="true">QLabel {
+	background-color: transparent;
+	border: 0px;
+	color: rgb(255, 255, 255);
+	font-family: Arial, sans-serif;
+	font-size: 15pt;
+	font-weight:600;
+}</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;RuralConnect&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -111,7 +129,9 @@
        <item>
         <widget class="QFrame" name="frame">
          <property name="styleSheet">
-          <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));</string>
+          <string notr="true">QFrame {
+	background-color: transparent;
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -152,7 +172,6 @@
             <property name="styleSheet">
              <string notr="true">QToolBox::tab {
 	background-color: transparent;
-	margin-right:-1px;
  	border: none; 
 }
 QToolBox{
@@ -183,8 +202,13 @@ background-color: transparent;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>631</height>
+               <height>636</height>
               </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+	background-color:transparent;
+}</string>
              </property>
              <attribute name="label">
               <string/>
@@ -226,11 +250,12 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
-	margin-right: 0px;
 }
 </string>
                 </property>
@@ -273,8 +298,7 @@ QPushButton {
                  <string>Botão da Página de Perfil</string>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QPushButton:hover{
+                 <string notr="true">QPushButton:hover{
 	color: rgb(255, 255, 255);
 	
 	background-color: rgb(0, 170, 255);
@@ -282,6 +306,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	text-align: left;
@@ -322,8 +348,7 @@ QPushButton {
                  <string>Botão da Página de Cadastro</string>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QPushButton:hover{
+                 <string notr="true">QPushButton:hover{
 	color: rgb(255, 255, 255);
 	
 	background-color: rgb(0, 170, 255);
@@ -331,12 +356,14 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
-}
-</string>
+	
+}</string>
                 </property>
                 <property name="text">
                  <string>Cadastrar</string>
@@ -371,8 +398,7 @@ QPushButton {
                  <string>Botão da Página de Envio de Documentos</string>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QPushButton:hover{
+                 <string notr="true">QPushButton:hover{
 	color: rgb(255, 255, 255);
 	
 	background-color: rgb(0, 170, 255);
@@ -380,6 +406,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	text-align: left;
@@ -420,8 +448,7 @@ QPushButton {
                  <string>Botão da Página de Histórico</string>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QPushButton:hover{
+                 <string notr="true">QPushButton:hover{
 	color: rgb(255, 255, 255);
 	
 	background-color: rgb(0, 170, 255);
@@ -429,6 +456,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	text-align: left;
@@ -492,9 +521,10 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
-	margim-right: 0px;
 }
 </string>
                 </property>
@@ -526,7 +556,10 @@ QPushButton {
     <item>
      <widget class="QFrame" name="main_container">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255,255,255);</string>
+       <string notr="true">QFrame{
+	background-color: rgb(255,255,255);
+	border: 0px;
+}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -553,8 +586,11 @@ QPushButton {
        <item>
         <widget class="QFrame" name="hand_frame">
          <property name="styleSheet">
-          <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
-margin-left: 0px;</string>
+          <string notr="true">QFrame {
+	background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
+margin-left: 0px;
+
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -590,7 +626,9 @@ margin-left: 0px;</string>
              <string>Botão do Menu</string>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: transparent;</string>
+             <string notr="true">QPushButton {
+	background-color: transparent;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -616,7 +654,14 @@ margin-left: 0px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: transparent;</string>
+             <string notr="true">QLabel {
+	background-color: transparent;
+	border: 0px;
+	color: rgb(255, 255, 255);
+	font-family: Arial, sans-serif;
+	font-size: 15pt;
+	font-weight:600;
+}</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Cadastro de Clientes em Áreas Remotas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -635,7 +680,10 @@ margin-left: 0px;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background: transparent;</string>
+          <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -658,6 +706,12 @@ margin-left: 0px;</string>
             <property name="accessibleDescription">
              <string>Tabela de Histórico de Cadastros</string>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -674,6 +728,12 @@ margin-left: 0px;</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -689,6 +749,12 @@ margin-left: 0px;</string>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -698,27 +764,46 @@ margin-left: 0px;</string>
                    <layout class="QVBoxLayout" name="verticalLayout_15">
                     <item>
                      <widget class="QFrame" name="frame_22">
+                      <property name="styleSheet">
+                       <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_5">
-                       <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_22">
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="label_12">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: black;
+	border: 0px;
+	font-weight:600;
+}</string>
+                         </property>
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;Seja Bem Vindo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Seja Bem Vindo(a)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                         </widget>
                        </item>
-                       <item>
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="txt_nome_perfil_home">
                          <property name="styleSheet">
-                          <string notr="true">QLabel{
+                          <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
 	background-color: transparent;
-	fonte-size: 14px;
+	font-size: 14pt;
 	color: black;
+	border: 0px;
+	font-weight:600;
 }</string>
                          </property>
                          <property name="text">
@@ -737,6 +822,12 @@ margin-left: 0px;</string>
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -744,13 +835,19 @@ margin-left: 0px;</string>
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_14">
-                       <item>
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="label_4">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+	background-color: transparent;
+	border: 0px;
+}</string>
                          </property>
                          <property name="text">
                           <string/>
@@ -775,6 +872,12 @@ margin-left: 0px;</string>
              <property name="accessibleDescription">
               <string>Página de Cadastro de Cliente</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QFrame" name="frame_9">
@@ -785,7 +888,10 @@ margin-left: 0px;</string>
                  </sizepolicy>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background:transparent;</string>
+                 <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -794,8 +900,17 @@ margin-left: 0px;</string>
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_16">
-                 <item>
+                 <item alignment="Qt::AlignLeft">
                   <widget class="QLabel" name="label_5">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: black;
+	font-weight:600;
+}</string>
+                   </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Página de Cadastro de Cliente&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -810,7 +925,10 @@ margin-left: 0px;</string>
                     </sizepolicy>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background:transparent;</string>
+                    <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
                    </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -905,6 +1023,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 </string>
                          </property>
@@ -953,6 +1073,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                          </property>
                          <property name="text">
@@ -983,7 +1105,12 @@ QPushButton {
                           <string>Texto informativo que diz: Confira os dados importados do formulário</string>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color:transparent;</string>
+                          <string notr="true">QLabel{
+	background-color: transparent;
+	border: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
                          </property>
                          <property name="text">
                           <string>Confira os dados importados do formulário</string>
@@ -1009,6 +1136,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1035,6 +1164,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1061,6 +1192,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1087,6 +1220,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1113,6 +1248,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1139,6 +1276,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1165,6 +1304,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1191,6 +1332,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1217,6 +1360,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1243,6 +1388,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1273,6 +1420,12 @@ QPushButton {
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -1332,6 +1485,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 </string>
                             </property>
@@ -1374,6 +1529,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                             </property>
                             <property name="text">
@@ -1421,6 +1578,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-bottom-right-radius: 10px;
 	border-top-left-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                             </property>
                             <property name="text">
@@ -1466,6 +1625,7 @@ QPushButton {
 	background-color: white;
 	color: black;
 	border-radius: 0px;
+	border: 1px solid black;
 }</string>
                             </property>
                             <property name="dragEnabled">
@@ -1514,6 +1674,8 @@ QPushButton {
 	background-color: transparent;
 	border: 1px solid black;
     text-align: center;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                             </property>
                             <property name="text">
@@ -1536,7 +1698,9 @@ QPushButton {
                              </sizepolicy>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">background-color: transparent;</string>
+                             <string notr="true">QFrame {
+	background-color: transparent;
+}</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
@@ -1573,6 +1737,8 @@ QPushButton {
 	
 	background-color: rgb(96, 194, 255);
 	border-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 
 </string>
@@ -1613,6 +1779,12 @@ QPushButton {
              <property name="accessibleDescription">
               <string>Página de Históricos</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QTabWidget" name="tabWidget">
@@ -1627,6 +1799,12 @@ QPushButton {
                 </property>
                 <property name="accessibleDescription">
                  <string>Tabelas de HIstórico de Envio de Cadastros e Documentos do Usuário da Sessão</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QTabWidget {
+	background-color: transparent;
+	border: 0px;
+}</string>
                 </property>
                 <property name="currentIndex">
                  <number>0</number>
@@ -1644,6 +1822,12 @@ QPushButton {
                  <property name="accessibleDescription">
                   <string>Tabela de Histórico de Cadastro feito pelo Usuário</string>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">QWidget {
+	background-color: transparent;
+	border: 0px;
+}</string>
+                 </property>
                  <attribute name="title">
                   <string>Histórico de Cadastros</string>
                  </attribute>
@@ -1655,6 +1839,12 @@ QPushButton {
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1693,7 +1883,8 @@ QPushButton {
                         <string notr="true">QHeaderView::section {
 	background-color: rgb(148, 148, 148);
 	color: rgb(255, 255, 255);
-	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 
 QTableWidget{
@@ -1764,6 +1955,12 @@ QTableWidget{
                  <property name="accessibleDescription">
                   <string>Tabela de Histórico de Envio de Documentos feito pelo Usuário</string>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">QWidget {
+	background-color: transparent;
+	border: 0px;
+}</string>
+                 </property>
                  <attribute name="title">
                   <string>Histórico de Envio de Documentos</string>
                  </attribute>
@@ -1778,6 +1975,12 @@ QTableWidget{
                     </property>
                     <property name="accessibleDescription">
                      <string>Tabela de Histórico de Envio de Documentos feito pelo Usuário</string>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1810,7 +2013,8 @@ QTableWidget{
                         <string notr="true">QHeaderView::section {
 	background-color: rgb(148, 148, 148);
 	color: rgb(255, 255, 255);
-	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 
 QTableWidget{
@@ -1883,9 +2087,21 @@ QTableWidget{
              <property name="accessibleDescription">
               <string>Página para envio de documentos</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_13">
               <item>
                <widget class="QFrame" name="frame_7">
+                <property name="styleSheet">
+                 <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -1895,6 +2111,12 @@ QTableWidget{
                 <layout class="QGridLayout" name="gridLayout">
                  <item row="0" column="0" colspan="2">
                   <widget class="QFrame" name="frame_15">
+                   <property name="styleSheet">
+                    <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -1940,6 +2162,12 @@ QTableWidget{
                           <string notr="true">QComboBox{
 	background-color: rgb(255, 255, 255);
 	color: rgb(0,0,0);
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
+}
+
+QComboBox QAbstractItemView {
+	background-color: rgb(255, 255, 255);
 }</string>
                          </property>
                          <item>
@@ -1998,6 +2226,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 </string>
                          </property>
@@ -2040,6 +2270,8 @@ QPushButton {
 	background-color: rgb(96, 194, 255);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                          </property>
                          <property name="text">
@@ -2067,7 +2299,12 @@ QPushButton {
                        <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="label_9">
                          <property name="styleSheet">
-                          <string notr="true">background-color: transparent;</string>
+                          <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
                          </property>
                          <property name="text">
                           <string>Arquivo Selecionado</string>
@@ -2098,7 +2335,8 @@ QPushButton {
                           <string notr="true">QListWidget{
 	background-color: white;
 	color: black;
-	border-radius:0px;
+	border-radius: 0px;
+	border: 1px solid black;
 }</string>
                          </property>
                          <property name="dragEnabled">
@@ -2138,6 +2376,8 @@ QPushButton {
 	background-color: transparent;
 	border: 1px solid black;
     text-align: center;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }</string>
                          </property>
                          <property name="text">
@@ -2169,6 +2409,12 @@ QPushButton {
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_11">
+                      <property name="styleSheet">
+                       <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -2178,6 +2424,14 @@ QPushButton {
                       <layout class="QVBoxLayout" name="verticalLayout_17">
                        <item alignment="Qt::AlignHCenter">
                         <widget class="QLabel" name="label_8">
+                         <property name="styleSheet">
+                          <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
+                         </property>
                          <property name="text">
                           <string>Confira os dados extraídos antes de enviar</string>
                          </property>
@@ -2195,7 +2449,10 @@ QPushButton {
                           <string notr="true">QTextEdit{
 	background-color: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
-}</string>
+	border: 1px solid black;
+	border-radius: 0px;
+}
+</string>
                          </property>
                         </widget>
                        </item>
@@ -2242,6 +2499,8 @@ QPushButton {
 	
 	background-color: rgb(96, 194, 255);
 	border-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 
 </string>
@@ -2287,7 +2546,10 @@ QPushButton {
               <string>Página de Alteração de Perfil</string>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -2337,7 +2599,12 @@ QPushButton {
                     <string>Texto que diz: Altere seus Dados</string>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color:transparent;</string>
+                    <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: black;
+}</string>
                    </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;Altere seus Dados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -2363,6 +2630,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2389,6 +2658,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2415,6 +2686,8 @@ QPushButton {
 	background-color: rgba(0, 0, 0, 20);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2450,6 +2723,8 @@ QPushButton {
 	
 	background-color: rgb(96, 194, 255);
 	border-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 
 </string>
@@ -2485,9 +2760,21 @@ QPushButton {
              <property name="accessibleDescription">
               <string>Página de Perfil do Usuário</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{
+	background-color: transparent;
+	border: 0px;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
                <widget class="QFrame" name="frame_5">
+                <property name="styleSheet">
+                 <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -2499,6 +2786,14 @@ QPushButton {
                   <widget class="QLabel" name="label_7">
                    <property name="accessibleDescription">
                     <string>Texto que diz: Perfil</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	background-color: transparent;
+	border: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 14pt;
+}</string>
                    </property>
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#000000;&quot;&gt;Perfil&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -2566,6 +2861,7 @@ QPushButton {
                    <property name="styleSheet">
                     <string notr="true">QLabel{
 	background-color:transparent;
+	font-family: Arial, sans-serif;
 	font-size: 16px;
 	color: black;
 	text-align: center;
@@ -2596,6 +2892,7 @@ QPushButton {
                    <property name="styleSheet">
                     <string notr="true">QLabel{
 	background-color:transparent;
+	font-family: Arial, sans-serif;
 	font-size: 12px;
 	color: black;
 	text-align: center;
@@ -2626,6 +2923,7 @@ QPushButton {
                    <property name="styleSheet">
                     <string notr="true">QLabel{
 	background-color:transparent;
+	font-family: Arial, sans-serif;
 	font-size: 12px;
 	color: black;
 	text-align: center;
@@ -2663,6 +2961,12 @@ QPushButton {
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QFrame{
+	background-color: transparent;
+	border: 0px;
+}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -2698,6 +3002,8 @@ QPushButton {
 	
 	background-color: rgb(96, 194, 255);
 	border-radius: 10px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
 }
 </string>
                    </property>
@@ -2723,7 +3029,11 @@ QPushButton {
        <item>
         <widget class="QFrame" name="footer_frame">
          <property name="styleSheet">
-          <string notr="true">background: transparent;</string>
+          <string notr="true">QFrame {
+	background-color: transparent;
+	border: 0px;
+
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -2734,6 +3044,13 @@ QPushButton {
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	background-color: transparent;
+	font-family: Arial, sans-serif;
+	font-size: 8pt;
+}</string>
+            </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;copy; RuralConnect&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>

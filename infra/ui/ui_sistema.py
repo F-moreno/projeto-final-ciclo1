@@ -27,10 +27,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1029, 695)
+        MainWindow.resize(1145, 695)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setStyleSheet(u"background-color: rgb(255,255,255);")
+        self.centralwidget.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -39,7 +42,9 @@ class Ui_MainWindow(object):
         self.menu.setObjectName(u"menu")
         self.menu.setMinimumSize(QSize(0, 0))
         self.menu.setMaximumSize(QSize(0, 16777215))
-        self.menu.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
+        self.menu.setStyleSheet(u"QFrame {\n"
+"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));\n"
+"}")
         self.menu.setFrameShape(QFrame.StyledPanel)
         self.menu.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.menu)
@@ -48,7 +53,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_2 = QFrame(self.menu)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setStyleSheet(u"background-color: transparent;")
+        self.frame_2.setStyleSheet(u"QFrame {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_2)
@@ -56,9 +64,18 @@ class Ui_MainWindow(object):
         self.label_3 = QLabel(self.frame_2)
         self.label_3.setObjectName(u"label_3")
         font = QFont()
-        font.setPointSize(8)
+        font.setFamilies([u"Arial,sans-serif"])
+        font.setPointSize(15)
+        font.setBold(True)
         self.label_3.setFont(font)
-        self.label_3.setStyleSheet(u"background-color: transparent;")
+        self.label_3.setStyleSheet(u"QLabel {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 15pt;\n"
+"	font-weight:600;\n"
+"}")
 
         self.horizontalLayout_4.addWidget(self.label_3)
 
@@ -67,7 +84,9 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.menu)
         self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));")
+        self.frame.setStyleSheet(u"QFrame {\n"
+"	background-color: transparent;\n"
+"}")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame)
@@ -81,7 +100,6 @@ class Ui_MainWindow(object):
         self.toolBox.setAutoFillBackground(False)
         self.toolBox.setStyleSheet(u"QToolBox::tab {\n"
 "	background-color: transparent;\n"
-"	margin-right:-1px;\n"
 " 	border: none; \n"
 "}\n"
 "QToolBox{\n"
@@ -93,7 +111,10 @@ class Ui_MainWindow(object):
         self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 220, 631))
+        self.page.setGeometry(QRect(0, 0, 220, 636))
+        self.page.setStyleSheet(u"QWidget {\n"
+"	background-color:transparent;\n"
+"}")
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -111,11 +132,12 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
-"	margin-right: 0px;\n"
 "}\n"
 "")
         icon = QIcon()
@@ -131,8 +153,7 @@ class Ui_MainWindow(object):
         self.btn_perfil_menu.setObjectName(u"btn_perfil_menu")
         self.btn_perfil_menu.setMinimumSize(QSize(0, 40))
         self.btn_perfil_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_perfil_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
+        self.btn_perfil_menu.setStyleSheet(u"QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
 "	background-color: rgb(0, 170, 255);\n"
@@ -140,6 +161,8 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
@@ -157,8 +180,7 @@ class Ui_MainWindow(object):
         self.btn_cadastrar_menu.setObjectName(u"btn_cadastrar_menu")
         self.btn_cadastrar_menu.setMinimumSize(QSize(0, 40))
         self.btn_cadastrar_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_cadastrar_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
+        self.btn_cadastrar_menu.setStyleSheet(u"QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
 "	background-color: rgb(0, 170, 255);\n"
@@ -166,12 +188,14 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
-"}\n"
-"")
+"	\n"
+"}")
         icon2 = QIcon()
         icon2.addFile(u":/icons/icons/verify.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_cadastrar_menu.setIcon(icon2)
@@ -183,8 +207,7 @@ class Ui_MainWindow(object):
         self.btn_enviar_menu.setObjectName(u"btn_enviar_menu")
         self.btn_enviar_menu.setMinimumSize(QSize(0, 40))
         self.btn_enviar_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_enviar_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
+        self.btn_enviar_menu.setStyleSheet(u"QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
 "	background-color: rgb(0, 170, 255);\n"
@@ -192,6 +215,8 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
@@ -209,8 +234,7 @@ class Ui_MainWindow(object):
         self.btn_historico_menu.setObjectName(u"btn_historico_menu")
         self.btn_historico_menu.setMinimumSize(QSize(0, 40))
         self.btn_historico_menu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_historico_menu.setStyleSheet(u"\n"
-"QPushButton:hover{\n"
+        self.btn_historico_menu.setStyleSheet(u"QPushButton:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	\n"
 "	background-color: rgb(0, 170, 255);\n"
@@ -218,6 +242,8 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
@@ -249,9 +275,10 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
-"	margim-right: 0px;\n"
 "}\n"
 "")
         icon5 = QIcon()
@@ -273,7 +300,10 @@ class Ui_MainWindow(object):
 
         self.main_container = QFrame(self.centralwidget)
         self.main_container.setObjectName(u"main_container")
-        self.main_container.setStyleSheet(u"background-color: rgb(255,255,255);")
+        self.main_container.setStyleSheet(u"QFrame{\n"
+"	background-color: rgb(255,255,255);\n"
+"	border: 0px;\n"
+"}")
         self.main_container.setFrameShape(QFrame.StyledPanel)
         self.main_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.main_container)
@@ -282,8 +312,11 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.hand_frame = QFrame(self.main_container)
         self.hand_frame.setObjectName(u"hand_frame")
-        self.hand_frame.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));\n"
-"margin-left: 0px;")
+        self.hand_frame.setStyleSheet(u"QFrame {\n"
+"	background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));\n"
+"margin-left: 0px;\n"
+"\n"
+"}")
         self.hand_frame.setFrameShape(QFrame.StyledPanel)
         self.hand_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.hand_frame)
@@ -293,7 +326,9 @@ class Ui_MainWindow(object):
         self.btn_toogle = QPushButton(self.hand_frame)
         self.btn_toogle.setObjectName(u"btn_toogle")
         self.btn_toogle.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_toogle.setStyleSheet(u"background-color: transparent;")
+        self.btn_toogle.setStyleSheet(u"QPushButton {\n"
+"	background-color: transparent;\n"
+"}")
         icon6 = QIcon()
         icon6.addFile(u":/icons/icons/option.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_toogle.setIcon(icon6)
@@ -308,7 +343,14 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
         self.label.setSizePolicy(sizePolicy)
-        self.label.setStyleSheet(u"background-color: transparent;")
+        self.label.setStyleSheet(u"QLabel {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 15pt;\n"
+"	font-weight:600;\n"
+"}")
 
         self.horizontalLayout_2.addWidget(self.label, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
@@ -322,7 +364,10 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.main_frame.sizePolicy().hasHeightForWidth())
         self.main_frame.setSizePolicy(sizePolicy1)
-        self.main_frame.setStyleSheet(u"background: transparent;")
+        self.main_frame.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
         self.main_frame.setMidLineWidth(0)
@@ -332,6 +377,10 @@ class Ui_MainWindow(object):
         self.Pages.setObjectName(u"Pages")
         sizePolicy.setHeightForWidth(self.Pages.sizePolicy().hasHeightForWidth())
         self.Pages.setSizePolicy(sizePolicy)
+        self.Pages.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.pg_home = QWidget()
         self.pg_home.setObjectName(u"pg_home")
         self.verticalLayout_5 = QVBoxLayout(self.pg_home)
@@ -340,6 +389,10 @@ class Ui_MainWindow(object):
         self.frame_8.setObjectName(u"frame_8")
         sizePolicy.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
         self.frame_8.setSizePolicy(sizePolicy)
+        self.frame_8.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.frame_8)
@@ -348,30 +401,49 @@ class Ui_MainWindow(object):
         self.frame_21.setObjectName(u"frame_21")
         sizePolicy.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
         self.frame_21.setSizePolicy(sizePolicy)
+        self.frame_21.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_21.setFrameShape(QFrame.StyledPanel)
         self.frame_21.setFrameShadow(QFrame.Raised)
         self.verticalLayout_15 = QVBoxLayout(self.frame_21)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.frame_22 = QFrame(self.frame_21)
         self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_22.setFrameShape(QFrame.StyledPanel)
         self.frame_22.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.frame_22)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.verticalLayout_22 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.label_12 = QLabel(self.frame_22)
         self.label_12.setObjectName(u"label_12")
+        self.label_12.setStyleSheet(u"QLabel {\n"
+"	font-family: Arial, sans-serif;\n"
+"	background-color: transparent;\n"
+"	font-size: 14pt;\n"
+"	color: black;\n"
+"	border: 0px;\n"
+"	font-weight:600;\n"
+"}")
 
-        self.horizontalLayout_5.addWidget(self.label_12)
+        self.verticalLayout_22.addWidget(self.label_12, 0, Qt.AlignHCenter)
 
         self.txt_nome_perfil_home = QLabel(self.frame_22)
         self.txt_nome_perfil_home.setObjectName(u"txt_nome_perfil_home")
-        self.txt_nome_perfil_home.setStyleSheet(u"QLabel{\n"
+        self.txt_nome_perfil_home.setStyleSheet(u"QLabel {\n"
+"	font-family: Arial, sans-serif;\n"
 "	background-color: transparent;\n"
-"	fonte-size: 14px;\n"
+"	font-size: 14pt;\n"
 "	color: black;\n"
+"	border: 0px;\n"
+"	font-weight:600;\n"
 "}")
 
-        self.horizontalLayout_5.addWidget(self.txt_nome_perfil_home)
+        self.verticalLayout_22.addWidget(self.txt_nome_perfil_home, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout_15.addWidget(self.frame_22)
@@ -380,6 +452,10 @@ class Ui_MainWindow(object):
         self.frame_23.setObjectName(u"frame_23")
         sizePolicy.setHeightForWidth(self.frame_23.sizePolicy().hasHeightForWidth())
         self.frame_23.setSizePolicy(sizePolicy)
+        self.frame_23.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_23.setFrameShape(QFrame.StyledPanel)
         self.frame_23.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.frame_23)
@@ -388,9 +464,13 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName(u"label_4")
         sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
         self.label_4.setSizePolicy(sizePolicy)
+        self.label_4.setStyleSheet(u"QLabel{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.label_4.setPixmap(QPixmap(u":/icons/icons/cobra.png"))
 
-        self.horizontalLayout_14.addWidget(self.label_4)
+        self.horizontalLayout_14.addWidget(self.label_4, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout_15.addWidget(self.frame_23)
@@ -404,21 +484,35 @@ class Ui_MainWindow(object):
         self.Pages.addWidget(self.pg_home)
         self.pg_cadastrar = QWidget()
         self.pg_cadastrar.setObjectName(u"pg_cadastrar")
+        self.pg_cadastrar.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_6 = QVBoxLayout(self.pg_cadastrar)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.frame_9 = QFrame(self.pg_cadastrar)
         self.frame_9.setObjectName(u"frame_9")
         sizePolicy1.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
         self.frame_9.setSizePolicy(sizePolicy1)
-        self.frame_9.setStyleSheet(u"background:transparent;")
+        self.frame_9.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.frame_9)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_5 = QLabel(self.frame_9)
         self.label_5.setObjectName(u"label_5")
+        self.label_5.setStyleSheet(u"QLabel {\n"
+"	font-family: Arial, sans-serif;\n"
+"	background-color: transparent;\n"
+"	font-size: 14pt;\n"
+"	color: black;\n"
+"	font-weight:600;\n"
+"}")
 
-        self.verticalLayout_16.addWidget(self.label_5)
+        self.verticalLayout_16.addWidget(self.label_5, 0, Qt.AlignLeft)
 
         self.frame_12 = QFrame(self.frame_9)
         self.frame_12.setObjectName(u"frame_12")
@@ -427,7 +521,10 @@ class Ui_MainWindow(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
         self.frame_12.setSizePolicy(sizePolicy2)
-        self.frame_12.setStyleSheet(u"background:transparent;")
+        self.frame_12.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_12)
@@ -470,6 +567,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "")
         icon7 = QIcon()
@@ -495,6 +594,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         icon8 = QIcon()
         icon8.addFile(u":/icons/icons/delete.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -508,7 +609,12 @@ class Ui_MainWindow(object):
 
         self.label_6 = QLabel(self.frame_13)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setStyleSheet(u"background-color:transparent;")
+        self.label_6.setStyleSheet(u"QLabel{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.label_6, 0, Qt.AlignHCenter|Qt.AlignBottom)
 
@@ -519,6 +625,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nome)
@@ -530,6 +638,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cpf)
@@ -541,6 +651,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_rg)
@@ -552,6 +664,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_filiacao)
@@ -563,6 +677,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_endereco)
@@ -574,6 +690,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nascimento)
@@ -585,6 +703,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cidade)
@@ -596,6 +716,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_estado)
@@ -607,6 +729,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_telefone)
@@ -618,6 +742,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_email)
@@ -633,6 +759,10 @@ class Ui_MainWindow(object):
         self.frame_14.setObjectName(u"frame_14")
         sizePolicy1.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
         self.frame_14.setSizePolicy(sizePolicy1)
+        self.frame_14.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_12 = QHBoxLayout(self.frame_14)
@@ -665,6 +795,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "")
         icon9 = QIcon()
@@ -689,6 +821,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         icon10 = QIcon()
         icon10.addFile(u":/icons/icons/remove.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -713,6 +847,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-bottom-right-radius: 10px;\n"
 "	border-top-left-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         self.btn_limpar_lista_cadastro.setIcon(icon8)
 
@@ -729,6 +865,7 @@ class Ui_MainWindow(object):
 "	background-color: white;\n"
 "	color: black;\n"
 "	border-radius: 0px;\n"
+"	border: 1px solid black;\n"
 "}")
         self.lista_documentos_cadastro.setDragEnabled(False)
         self.lista_documentos_cadastro.setDragDropMode(QAbstractItemView.NoDragDrop)
@@ -748,6 +885,8 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	border: 1px solid black;\n"
 "    text-align: center;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         self.miniatura_documento.setScaledContents(True)
         self.miniatura_documento.setAlignment(Qt.AlignCenter)
@@ -758,7 +897,9 @@ class Ui_MainWindow(object):
         self.frame_19.setObjectName(u"frame_19")
         sizePolicy1.setHeightForWidth(self.frame_19.sizePolicy().hasHeightForWidth())
         self.frame_19.setSizePolicy(sizePolicy1)
-        self.frame_19.setStyleSheet(u"background-color: transparent;")
+        self.frame_19.setStyleSheet(u"QFrame {\n"
+"	background-color: transparent;\n"
+"}")
         self.frame_19.setFrameShape(QFrame.StyledPanel)
         self.frame_19.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_13 = QHBoxLayout(self.frame_19)
@@ -777,6 +918,8 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
 "	border-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "\n"
 "")
@@ -804,6 +947,10 @@ class Ui_MainWindow(object):
         self.pg_historico.setObjectName(u"pg_historico")
         sizePolicy.setHeightForWidth(self.pg_historico.sizePolicy().hasHeightForWidth())
         self.pg_historico.setSizePolicy(sizePolicy)
+        self.pg_historico.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_7 = QVBoxLayout(self.pg_historico)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.tabWidget = QTabWidget(self.pg_historico)
@@ -814,16 +961,28 @@ class Ui_MainWindow(object):
         sizePolicy4.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy4)
         self.tabWidget.setCursor(QCursor(Qt.PointingHandCursor))
+        self.tabWidget.setStyleSheet(u"QTabWidget {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.tabWidget.setElideMode(Qt.ElideNone)
         self.tabWidget.setTabBarAutoHide(False)
         self.tab_historico_cadastro = QWidget()
         self.tab_historico_cadastro.setObjectName(u"tab_historico_cadastro")
+        self.tab_historico_cadastro.setStyleSheet(u"QWidget {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_19 = QVBoxLayout(self.tab_historico_cadastro)
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.frame_10 = QFrame(self.tab_historico_cadastro)
         self.frame_10.setObjectName(u"frame_10")
         sizePolicy.setHeightForWidth(self.frame_10.sizePolicy().hasHeightForWidth())
         self.frame_10.setSizePolicy(sizePolicy)
+        self.frame_10.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_10.setFrameShape(QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_10)
@@ -847,7 +1006,8 @@ class Ui_MainWindow(object):
         self.tabela_historico_cadastros.setStyleSheet(u"QHeaderView::section {\n"
 "	background-color: rgb(148, 148, 148);\n"
 "	color: rgb(255, 255, 255);\n"
-"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "\n"
 "QTableWidget{\n"
@@ -859,7 +1019,7 @@ class Ui_MainWindow(object):
         self.tabela_historico_cadastros.horizontalHeader().setHighlightSections(True)
         self.tabela_historico_cadastros.horizontalHeader().setProperty("showSortIndicator", False)
         self.tabela_historico_cadastros.horizontalHeader().setStretchLastSection(True)
-        self.tabela_historico_cadastros.verticalHeader().setVisible(False)
+        self.tabela_historico_cadastros.verticalHeader().setVisible(True)
         self.tabela_historico_cadastros.verticalHeader().setProperty("showSortIndicator", False)
         self.tabela_historico_cadastros.verticalHeader().setStretchLastSection(False)
 
@@ -871,12 +1031,20 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_historico_cadastro, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
+        self.tab_2.setStyleSheet(u"QWidget {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.horizontalLayout_10 = QHBoxLayout(self.tab_2)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.frame_16 = QFrame(self.tab_2)
         self.frame_16.setObjectName(u"frame_16")
         sizePolicy.setHeightForWidth(self.frame_16.sizePolicy().hasHeightForWidth())
         self.frame_16.setSizePolicy(sizePolicy)
+        self.frame_16.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_16.setFrameShape(QFrame.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.frame_16)
@@ -902,7 +1070,8 @@ class Ui_MainWindow(object):
         self.tabela_historico_documentos.setStyleSheet(u"QHeaderView::section {\n"
 "	background-color: rgb(148, 148, 148);\n"
 "	color: rgb(255, 255, 255);\n"
-"	font: 10pt \"MS Shell Dlg 2\";\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "\n"
 "QTableWidget{\n"
@@ -927,16 +1096,28 @@ class Ui_MainWindow(object):
         self.Pages.addWidget(self.pg_historico)
         self.pg_enviar_doc = QWidget()
         self.pg_enviar_doc.setObjectName(u"pg_enviar_doc")
+        self.pg_enviar_doc.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_13 = QVBoxLayout(self.pg_enviar_doc)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.frame_7 = QFrame(self.pg_enviar_doc)
         self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(self.frame_7)
         self.gridLayout.setObjectName(u"gridLayout")
         self.frame_15 = QFrame(self.frame_7)
         self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_15.setFrameShape(QFrame.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_15)
@@ -966,6 +1147,12 @@ class Ui_MainWindow(object):
         self.tipo_documento.setStyleSheet(u"QComboBox{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	color: rgb(0,0,0);\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"	background-color: rgb(255, 255, 255);\n"
 "}")
 
         self.verticalLayout_20.addWidget(self.tipo_documento)
@@ -985,6 +1172,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "")
         self.btn_arquivo_documento.setIcon(icon9)
@@ -1007,6 +1196,8 @@ class Ui_MainWindow(object):
 "	background-color: rgb(96, 194, 255);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         self.btn_remover_doc.setIcon(icon8)
 
@@ -1018,7 +1209,12 @@ class Ui_MainWindow(object):
 
         self.label_9 = QLabel(self.frame_17)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setStyleSheet(u"background-color: transparent;")
+        self.label_9.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
+"}")
 
         self.verticalLayout_20.addWidget(self.label_9, 0, Qt.AlignHCenter)
 
@@ -1030,7 +1226,8 @@ class Ui_MainWindow(object):
         self.lista_envio_documento.setStyleSheet(u"QListWidget{\n"
 "	background-color: white;\n"
 "	color: black;\n"
-"	border-radius:0px;\n"
+"	border-radius: 0px;\n"
+"	border: 1px solid black;\n"
 "}")
         self.lista_envio_documento.setDragEnabled(False)
         self.lista_envio_documento.setDragDropMode(QAbstractItemView.NoDragDrop)
@@ -1047,6 +1244,8 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	border: 1px solid black;\n"
 "    text-align: center;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}")
         self.amostra_imagem.setScaledContents(True)
         self.amostra_imagem.setAlignment(Qt.AlignCenter)
@@ -1062,12 +1261,22 @@ class Ui_MainWindow(object):
 
         self.frame_11 = QFrame(self.frame_15)
         self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_11.setFrameShape(QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_11)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.label_8 = QLabel(self.frame_11)
         self.label_8.setObjectName(u"label_8")
+        self.label_8.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
+"}")
 
         self.verticalLayout_17.addWidget(self.label_8, 0, Qt.AlignHCenter)
 
@@ -1076,7 +1285,10 @@ class Ui_MainWindow(object):
         self.txt_dados_documento.setStyleSheet(u"QTextEdit{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	color: rgb(0, 0, 0);\n"
-"}")
+"	border: 1px solid black;\n"
+"	border-radius: 0px;\n"
+"}\n"
+"")
 
         self.verticalLayout_17.addWidget(self.txt_dados_documento)
 
@@ -1101,6 +1313,8 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
 "	border-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "\n"
 "")
@@ -1124,7 +1338,10 @@ class Ui_MainWindow(object):
         self.Pages.addWidget(self.pg_enviar_doc)
         self.pg_alteracao_perfil = QWidget()
         self.pg_alteracao_perfil.setObjectName(u"pg_alteracao_perfil")
-        self.pg_alteracao_perfil.setStyleSheet(u"")
+        self.pg_alteracao_perfil.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_11 = QVBoxLayout(self.pg_alteracao_perfil)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.frame_6 = QFrame(self.pg_alteracao_perfil)
@@ -1147,7 +1364,12 @@ class Ui_MainWindow(object):
 
         self.label_11 = QLabel(self.frame_6)
         self.label_11.setObjectName(u"label_11")
-        self.label_11.setStyleSheet(u"background-color:transparent;")
+        self.label_11.setStyleSheet(u"QLabel {\n"
+"	font-family: Arial, sans-serif;\n"
+"	background-color: transparent;\n"
+"	font-size: 14pt;\n"
+"	color: black;\n"
+"}")
 
         self.verticalLayout_12.addWidget(self.label_11)
 
@@ -1158,6 +1380,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_nome)
@@ -1169,6 +1393,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_email)
@@ -1180,6 +1406,8 @@ class Ui_MainWindow(object):
 "	background-color: rgba(0, 0, 0, 20);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 10pt;\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_telefone)
@@ -1198,6 +1426,8 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
 "	border-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "\n"
 "")
@@ -1217,16 +1447,30 @@ class Ui_MainWindow(object):
         self.Pages.addWidget(self.pg_alteracao_perfil)
         self.pg_perfil = QWidget()
         self.pg_perfil.setObjectName(u"pg_perfil")
+        self.pg_perfil.setStyleSheet(u"QWidget{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.verticalLayout_8 = QVBoxLayout(self.pg_perfil)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.frame_5 = QFrame(self.pg_perfil)
         self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.label_7 = QLabel(self.frame_5)
         self.label_7.setObjectName(u"label_7")
+        self.label_7.setStyleSheet(u"QLabel{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 14pt;\n"
+"}")
 
         self.horizontalLayout_6.addWidget(self.label_7)
 
@@ -1257,6 +1501,7 @@ class Ui_MainWindow(object):
         self.txt_nome_perfil.setSizePolicy(sizePolicy)
         self.txt_nome_perfil.setStyleSheet(u"QLabel{\n"
 "	background-color:transparent;\n"
+"	font-family: Arial, sans-serif;\n"
 "	font-size: 16px;\n"
 "	color: black;\n"
 "	text-align: center;\n"
@@ -1271,6 +1516,7 @@ class Ui_MainWindow(object):
         self.txt_email_perfil.setSizePolicy(sizePolicy)
         self.txt_email_perfil.setStyleSheet(u"QLabel{\n"
 "	background-color:transparent;\n"
+"	font-family: Arial, sans-serif;\n"
 "	font-size: 12px;\n"
 "	color: black;\n"
 "	text-align: center;\n"
@@ -1285,6 +1531,7 @@ class Ui_MainWindow(object):
         self.txt_telefone_perfil.setSizePolicy(sizePolicy)
         self.txt_telefone_perfil.setStyleSheet(u"QLabel{\n"
 "	background-color:transparent;\n"
+"	font-family: Arial, sans-serif;\n"
 "	font-size: 12px;\n"
 "	color: black;\n"
 "	text-align: center;\n"
@@ -1304,6 +1551,10 @@ class Ui_MainWindow(object):
         self.frame_3.setObjectName(u"frame_3")
         sizePolicy1.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
         self.frame_3.setSizePolicy(sizePolicy1)
+        self.frame_3.setStyleSheet(u"QFrame{\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"}")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.frame_3)
@@ -1322,6 +1573,8 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
 "	border-radius: 10px;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 11pt;\n"
 "}\n"
 "")
         icon12 = QIcon()
@@ -1342,13 +1595,22 @@ class Ui_MainWindow(object):
 
         self.footer_frame = QFrame(self.main_container)
         self.footer_frame.setObjectName(u"footer_frame")
-        self.footer_frame.setStyleSheet(u"background: transparent;")
+        self.footer_frame.setStyleSheet(u"QFrame {\n"
+"	background-color: transparent;\n"
+"	border: 0px;\n"
+"\n"
+"}")
         self.footer_frame.setFrameShape(QFrame.StyledPanel)
         self.footer_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.footer_frame)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.label_2 = QLabel(self.footer_frame)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"QLabel {\n"
+"	background-color: transparent;\n"
+"	font-family: Arial, sans-serif;\n"
+"	font-size: 8pt;\n"
+"}")
 
         self.horizontalLayout_3.addWidget(self.label_2)
 
@@ -1437,7 +1699,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(accessibility)
         self.pg_home.setAccessibleDescription(QCoreApplication.translate("MainWindow", u"P\u00e1gina Principal", None))
 #endif // QT_CONFIG(accessibility)
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; color:#000000;\">Seja Bem Vindo</span></p></body></html>", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#000000;\">Seja Bem Vindo(a)</span></p></body></html>", None))
         self.txt_nome_perfil_home.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; color:#000000;\">Usu\u00e1rio</span></p></body></html>", None))
         self.label_4.setText("")
 #if QT_CONFIG(accessibility)
