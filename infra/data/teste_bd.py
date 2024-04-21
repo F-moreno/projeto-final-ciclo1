@@ -82,6 +82,8 @@ def main():
     try:
         funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste")
         funcionarios = gerenciamento.get_funcionarios(cpf="12345678912")
+        funcionarios = gerenciamento.get_funcionarios(email="funcionarioteste@gmail.com")
+        print(funcionarios[0].email)
         funcionarios = gerenciamento.get_funcionarios(id=funcionario.id)
         funcionarios = gerenciamento.get_funcionarios(
             nome="Funcionario Teste", cpf="12345678912", id=funcionario.id
