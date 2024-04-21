@@ -255,7 +255,7 @@ class Funcionario(Base):
     def atualizar(
         self, nome: str = None, cpf: str = None, telefone: str = None, email: str = None
     ) -> None:
-        """Atualiza os atributos de um Funcionario
+        """Atualiza os atributos do Funcionario
 
         Args:
             nome (str, opcional): novo nome completo do funcionário.
@@ -276,6 +276,19 @@ class Funcionario(Base):
         except Exception as e:
             session.rollback()
             print(f"Erro ao atualizar funcionário: {e}")
+        
+    def atualizar_senha(self, nova_senha: str) -> None:
+        """Atualiza somente a senha do Funcionário.
+
+        Args:
+            nova_senha (str): nova senha de login do funcionário.
+        """
+        self.senha = nova_senha
+        try:
+            session.commit()
+        except Exception as e:
+            session.rollback()
+            print(f"Erro ao atualizar senha: {e}")
 
 
 class Registro(Base):
