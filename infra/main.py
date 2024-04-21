@@ -19,7 +19,9 @@ from infra.ui.ui_login import Ui_Form
 from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
+from infra.email import enviar_email
 import io
+import random
 
 
 class Login(QWidget, Ui_Form):
@@ -153,6 +155,14 @@ class Login(QWidget, Ui_Form):
     def padrao_configuracao(self):
         self.txt_ip.setText("localhost")
         self.txt_porta.setText("5432")
+    
+    def gerar_codigo(length=6):
+        return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+
+    def recuperar_senha(self):
+        email = "buscar no banco de dados"
+        codigo = self.gerar_codigo()
+        enviar.enviar_email(email, codigo)
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -328,7 +338,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txt_cadastro_cpf.setText(json.get("cpf", ""))
             self.txt_cadastro_rg.setText(json.get("rg", ""))
             self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
-            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
+            self.txt_cadastro_nascimento.setText(json.get("datadenascimento", ""))
             self.txt_cadastro_endereco.setText(json.get("endereco", ""))
             self.txt_cadastro_cidade.setText(json.get("cidade", ""))
             self.txt_cadastro_estado.setText(json.get("estado", ""))
