@@ -224,8 +224,8 @@ QPushButton {
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>90</y>
-        <width>261</width>
+        <y>80</y>
+        <width>301</width>
         <height>31</height>
        </rect>
       </property>
@@ -249,8 +249,8 @@ QPushButton {
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>130</y>
-        <width>261</width>
+        <y>120</y>
+        <width>301</width>
         <height>31</height>
        </rect>
       </property>
@@ -277,8 +277,8 @@ QPushButton {
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>170</y>
-        <width>261</width>
+        <y>160</y>
+        <width>191</width>
         <height>31</height>
        </rect>
       </property>
@@ -301,10 +301,10 @@ QPushButton {
      <widget class="QPushButton" name="btn_esqueci_confirmar">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>210</y>
-        <width>111</width>
-        <height>23</height>
+        <x>120</x>
+        <y>240</y>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -329,7 +329,41 @@ QPushButton {
 }</string>
       </property>
       <property name="text">
-       <string>Confirmar</string>
+       <string>Trocar Senha</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_enviar_codigo">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>160</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>Receber Código</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	
+	background-color: rgb(93, 186, 0);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px
+}</string>
+      </property>
+      <property name="text">
+       <string>Receber</string>
       </property>
      </widget>
     </widget>
