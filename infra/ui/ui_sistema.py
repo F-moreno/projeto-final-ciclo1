@@ -138,6 +138,7 @@ class Ui_MainWindow(object):
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon = QIcon()
@@ -167,6 +168,7 @@ class Ui_MainWindow(object):
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon1 = QIcon()
@@ -194,6 +196,7 @@ class Ui_MainWindow(object):
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
+"	color: rgb(0,0,0);\n"
 "	\n"
 "}")
         icon2 = QIcon()
@@ -221,6 +224,7 @@ class Ui_MainWindow(object):
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon3 = QIcon()
@@ -248,6 +252,7 @@ class Ui_MainWindow(object):
 "	border-bottom-left-radius: 12px;\n"
 "	text-align: left;\n"
 "	padding-left: 10px;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon4 = QIcon()
@@ -279,6 +284,7 @@ class Ui_MainWindow(object):
 "	font-size: 11pt;\n"
 "	border-top-left-radius: 12px;\n"
 "	border-bottom-left-radius: 12px;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon5 = QIcon()
@@ -425,7 +431,7 @@ class Ui_MainWindow(object):
 "	font-family: Arial, sans-serif;\n"
 "	background-color: transparent;\n"
 "	font-size: 14pt;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	border: 0px;\n"
 "	font-weight:600;\n"
 "}")
@@ -438,7 +444,7 @@ class Ui_MainWindow(object):
 "	font-family: Arial, sans-serif;\n"
 "	background-color: transparent;\n"
 "	font-size: 14pt;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	border: 0px;\n"
 "	font-weight:600;\n"
 "}")
@@ -508,7 +514,7 @@ class Ui_MainWindow(object):
 "	font-family: Arial, sans-serif;\n"
 "	background-color: transparent;\n"
 "	font-size: 14pt;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	font-weight:600;\n"
 "}")
 
@@ -565,6 +571,7 @@ class Ui_MainWindow(object):
 "QPushButton {\n"
 "	\n"
 "	background-color: rgb(96, 194, 255);\n"
+"	color: rgb(0,0,0);\n"
 "	border-top-left-radius: 10px;\n"
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
@@ -596,6 +603,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         icon8 = QIcon()
         icon8.addFile(u":/icons/icons/delete.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -614,6 +622,7 @@ class Ui_MainWindow(object):
 "	border: 0px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.label_6, 0, Qt.AlignHCenter|Qt.AlignBottom)
@@ -627,6 +636,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nome)
@@ -640,6 +650,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cpf)
@@ -653,6 +664,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_rg)
@@ -666,6 +678,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_filiacao)
@@ -679,6 +692,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_endereco)
@@ -692,6 +706,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_nascimento)
@@ -705,6 +720,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_cidade)
@@ -718,6 +734,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_estado)
@@ -731,6 +748,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_telefone)
@@ -744,6 +762,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_18.addWidget(self.txt_cadastro_email)
@@ -797,6 +816,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon9 = QIcon()
@@ -823,6 +843,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         icon10 = QIcon()
         icon10.addFile(u":/icons/icons/remove.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -849,6 +870,7 @@ class Ui_MainWindow(object):
 "	border-top-left-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.btn_limpar_lista_cadastro.setIcon(icon8)
 
@@ -863,9 +885,10 @@ class Ui_MainWindow(object):
         self.lista_documentos_cadastro.setMaximumSize(QSize(250, 250))
         self.lista_documentos_cadastro.setStyleSheet(u"QListWidget{\n"
 "	background-color: white;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	border-radius: 0px;\n"
 "	border: 1px solid black;\n"
+"	Qt::SelectOnDrag;\n"
 "}")
         self.lista_documentos_cadastro.setDragEnabled(False)
         self.lista_documentos_cadastro.setDragDropMode(QAbstractItemView.NoDragDrop)
@@ -887,6 +910,7 @@ class Ui_MainWindow(object):
 "    text-align: center;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.miniatura_documento.setScaledContents(True)
         self.miniatura_documento.setAlignment(Qt.AlignCenter)
@@ -920,6 +944,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "\n"
 "")
@@ -962,8 +987,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setSizePolicy(sizePolicy4)
         self.tabWidget.setCursor(QCursor(Qt.PointingHandCursor))
         self.tabWidget.setStyleSheet(u"QTabWidget {\n"
-"	background-color: transparent;\n"
+"	background-color: rgb(255,255,255);\n"
 "	border: 0px;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.tabWidget.setElideMode(Qt.ElideNone)
         self.tabWidget.setTabBarAutoHide(False)
@@ -1013,13 +1039,20 @@ class Ui_MainWindow(object):
 "QTableWidget{\n"
 "	background-color: rgb(252, 252, 252);\n"
 "	color: rgb(0,0,0);\n"
+"}\n"
+"\n"
+"QTableWidget::verticalHeader() {\n"
+"	visibility: visible;\n"
+"}\n"
+"QTableWidget {\n"
+"	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
         self.tabela_historico_cadastros.setRowCount(10)
         self.tabela_historico_cadastros.horizontalHeader().setCascadingSectionResizes(False)
         self.tabela_historico_cadastros.horizontalHeader().setHighlightSections(True)
         self.tabela_historico_cadastros.horizontalHeader().setProperty("showSortIndicator", False)
         self.tabela_historico_cadastros.horizontalHeader().setStretchLastSection(True)
-        self.tabela_historico_cadastros.verticalHeader().setVisible(True)
+        self.tabela_historico_cadastros.verticalHeader().setVisible(False)
         self.tabela_historico_cadastros.verticalHeader().setProperty("showSortIndicator", False)
         self.tabela_historico_cadastros.verticalHeader().setStretchLastSection(False)
 
@@ -1077,6 +1110,13 @@ class Ui_MainWindow(object):
 "QTableWidget{\n"
 "	background-color: rgb(252, 252, 252);\n"
 "	color: rgb(0,0,0);\n"
+"}\n"
+"\n"
+"QTableWidget::verticalHeader() {\n"
+"	visibility: visible;\n"
+"}\n"
+"QTableWidget {\n"
+"	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
         self.tabela_historico_documentos.setShowGrid(True)
         self.tabela_historico_documentos.setGridStyle(Qt.SolidLine)
@@ -1153,6 +1193,22 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox QAbstractItemView {\n"
 "	background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0,0,0);\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow-icon {\n"
+"  background-color: rgb(0,0,0);\n"
+"  color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QComboBox::list {\n"
+"  background-color: rgb(255, 255, 255);\n"
+"  color: rgb(0, 0, 0); \n"
+"}\n"
+"\n"
+"QComboBox::editField {\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_20.addWidget(self.tipo_documento)
@@ -1174,6 +1230,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         self.btn_arquivo_documento.setIcon(icon9)
@@ -1198,6 +1255,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.btn_remover_doc.setIcon(icon8)
 
@@ -1214,6 +1272,7 @@ class Ui_MainWindow(object):
 "	border: 0px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_20.addWidget(self.label_9, 0, Qt.AlignHCenter)
@@ -1225,7 +1284,7 @@ class Ui_MainWindow(object):
         self.lista_envio_documento.setMaximumSize(QSize(16777215, 100))
         self.lista_envio_documento.setStyleSheet(u"QListWidget{\n"
 "	background-color: white;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	border-radius: 0px;\n"
 "	border: 1px solid black;\n"
 "}")
@@ -1246,6 +1305,7 @@ class Ui_MainWindow(object):
 "    text-align: center;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
         self.amostra_imagem.setScaledContents(True)
         self.amostra_imagem.setAlignment(Qt.AlignCenter)
@@ -1276,6 +1336,7 @@ class Ui_MainWindow(object):
 "	border: 0px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_17.addWidget(self.label_8, 0, Qt.AlignHCenter)
@@ -1315,6 +1376,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "\n"
 "")
@@ -1368,7 +1430,7 @@ class Ui_MainWindow(object):
 "	font-family: Arial, sans-serif;\n"
 "	background-color: transparent;\n"
 "	font-size: 14pt;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.label_11)
@@ -1382,6 +1444,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_nome)
@@ -1395,6 +1458,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_email)
@@ -1408,6 +1472,7 @@ class Ui_MainWindow(object):
 "	border-bottom-right-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 10pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.verticalLayout_12.addWidget(self.txt_perfil_alterar_telefone)
@@ -1428,6 +1493,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "\n"
 "")
@@ -1470,6 +1536,7 @@ class Ui_MainWindow(object):
 "	border: 0px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 14pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.horizontalLayout_6.addWidget(self.label_7)
@@ -1503,7 +1570,7 @@ class Ui_MainWindow(object):
 "	background-color:transparent;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 16px;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	text-align: center;\n"
 "}")
         self.txt_nome_perfil.setAlignment(Qt.AlignCenter)
@@ -1518,7 +1585,7 @@ class Ui_MainWindow(object):
 "	background-color:transparent;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 12px;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	text-align: center;\n"
 "}")
         self.txt_email_perfil.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
@@ -1533,7 +1600,7 @@ class Ui_MainWindow(object):
 "	background-color:transparent;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 12px;\n"
-"	color: black;\n"
+"	color: rgb(0,0,0);\n"
 "	text-align: center;\n"
 "}")
         self.txt_telefone_perfil.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
@@ -1575,6 +1642,7 @@ class Ui_MainWindow(object):
 "	border-radius: 10px;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 11pt;\n"
+"	color: rgb(0,0,0);\n"
 "}\n"
 "")
         icon12 = QIcon()
@@ -1610,6 +1678,7 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	font-family: Arial, sans-serif;\n"
 "	font-size: 8pt;\n"
+"	color: rgb(0,0,0);\n"
 "}")
 
         self.horizontalLayout_3.addWidget(self.label_2)

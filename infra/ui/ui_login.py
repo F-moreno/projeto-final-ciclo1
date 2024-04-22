@@ -28,7 +28,7 @@ class Ui_Form(object):
         Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         Form.setStyleSheet(u"QWidget{\n"
-"	background-color: transparent;\n"
+"	background-color: white;\n"
 "	border: 0px;\n"
 "}")
         self.login_h = QFrame(Form)

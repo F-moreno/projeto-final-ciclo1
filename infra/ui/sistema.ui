@@ -256,6 +256,7 @@ QPushButton {
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	color: rgb(0,0,0);
 }
 </string>
                 </property>
@@ -312,6 +313,7 @@ QPushButton {
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	color: rgb(0,0,0);
 }
 </string>
                 </property>
@@ -362,6 +364,7 @@ QPushButton {
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	color: rgb(0,0,0);
 	
 }</string>
                 </property>
@@ -412,6 +415,7 @@ QPushButton {
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	color: rgb(0,0,0);
 }
 </string>
                 </property>
@@ -462,6 +466,7 @@ QPushButton {
 	border-bottom-left-radius: 12px;
 	text-align: left;
 	padding-left: 10px;
+	color: rgb(0,0,0);
 }
 </string>
                 </property>
@@ -525,6 +530,7 @@ QPushButton {
 	font-size: 11pt;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
+	color: rgb(0,0,0);
 }
 </string>
                 </property>
@@ -784,7 +790,7 @@ margin-left: 0px;
 	font-family: Arial, sans-serif;
 	background-color: transparent;
 	font-size: 14pt;
-	color: black;
+	color: rgb(0,0,0);
 	border: 0px;
 	font-weight:600;
 }</string>
@@ -801,7 +807,7 @@ margin-left: 0px;
 	font-family: Arial, sans-serif;
 	background-color: transparent;
 	font-size: 14pt;
-	color: black;
+	color: rgb(0,0,0);
 	border: 0px;
 	font-weight:600;
 }</string>
@@ -907,7 +913,7 @@ margin-left: 0px;
 	font-family: Arial, sans-serif;
 	background-color: transparent;
 	font-size: 14pt;
-	color: black;
+	color: rgb(0,0,0);
 	font-weight:600;
 }</string>
                    </property>
@@ -1021,6 +1027,7 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	color: rgb(0,0,0);
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
@@ -1075,6 +1082,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -1110,6 +1118,7 @@ QPushButton {
 	border: 0px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -1138,6 +1147,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1166,6 +1176,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1194,6 +1205,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1222,6 +1234,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1250,6 +1263,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1278,6 +1292,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1306,6 +1321,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1334,6 +1350,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1362,6 +1379,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1390,6 +1408,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="placeholderText">
@@ -1487,6 +1506,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 </string>
                             </property>
@@ -1531,6 +1551,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                             </property>
                             <property name="text">
@@ -1580,6 +1601,7 @@ QPushButton {
 	border-top-left-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                             </property>
                             <property name="text">
@@ -1623,9 +1645,10 @@ QPushButton {
                             <property name="styleSheet">
                              <string notr="true">QListWidget{
 	background-color: white;
-	color: black;
+	color: rgb(0,0,0);
 	border-radius: 0px;
 	border: 1px solid black;
+	Qt::SelectOnDrag;
 }</string>
                             </property>
                             <property name="dragEnabled">
@@ -1676,6 +1699,7 @@ QPushButton {
     text-align: center;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                             </property>
                             <property name="text">
@@ -1739,6 +1763,7 @@ QPushButton {
 	border-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 
 </string>
@@ -1802,8 +1827,9 @@ QPushButton {
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QTabWidget {
-	background-color: transparent;
+	background-color: rgb(255,255,255);
 	border: 0px;
+	color: rgb(0,0,0);
 }</string>
                 </property>
                 <property name="currentIndex">
@@ -1890,6 +1916,13 @@ QPushButton {
 QTableWidget{
 	background-color: rgb(252, 252, 252);
 	color: rgb(0,0,0);
+}
+
+QTableWidget::verticalHeader() {
+	visibility: visible;
+}
+QTableWidget {
+	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);
 }</string>
                        </property>
                        <property name="rowCount">
@@ -2020,6 +2053,13 @@ QTableWidget{
 QTableWidget{
 	background-color: rgb(252, 252, 252);
 	color: rgb(0,0,0);
+}
+
+QTableWidget::verticalHeader() {
+	visibility: visible;
+}
+QTableWidget {
+	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);
 }</string>
                        </property>
                        <property name="showGrid">
@@ -2168,6 +2208,22 @@ QTableWidget{
 
 QComboBox QAbstractItemView {
 	background-color: rgb(255, 255, 255);
+	color: rgb(0,0,0);
+}
+
+QComboBox::down-arrow-icon {
+  background-color: rgb(0,0,0);
+  color: rgb(0, 0, 0);
+}
+
+QComboBox::list {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0); 
+}
+
+QComboBox::editField {
+	background-color: rgb(255, 255, 255);
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <item>
@@ -2228,6 +2284,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 </string>
                          </property>
@@ -2272,6 +2329,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -2304,6 +2362,7 @@ QPushButton {
 	border: 0px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -2334,7 +2393,7 @@ QPushButton {
                          <property name="styleSheet">
                           <string notr="true">QListWidget{
 	background-color: white;
-	color: black;
+	color: rgb(0,0,0);
 	border-radius: 0px;
 	border: 1px solid black;
 }</string>
@@ -2378,6 +2437,7 @@ QPushButton {
     text-align: center;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -2430,6 +2490,7 @@ QPushButton {
 	border: 0px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }</string>
                          </property>
                          <property name="text">
@@ -2501,6 +2562,7 @@ QPushButton {
 	border-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 
 </string>
@@ -2603,7 +2665,7 @@ QPushButton {
 	font-family: Arial, sans-serif;
 	background-color: transparent;
 	font-size: 14pt;
-	color: black;
+	color: rgb(0,0,0);
 }</string>
                    </property>
                    <property name="text">
@@ -2632,6 +2694,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2660,6 +2723,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2688,6 +2752,7 @@ QPushButton {
 	border-bottom-right-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+	color: rgb(0,0,0);
 }</string>
                    </property>
                    <property name="placeholderText">
@@ -2725,6 +2790,7 @@ QPushButton {
 	border-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 
 </string>
@@ -2793,6 +2859,7 @@ QPushButton {
 	border: 0px;
 	font-family: Arial, sans-serif;
 	font-size: 14pt;
+	color: rgb(0,0,0);
 }</string>
                    </property>
                    <property name="text">
@@ -2863,7 +2930,7 @@ QPushButton {
 	background-color:transparent;
 	font-family: Arial, sans-serif;
 	font-size: 16px;
-	color: black;
+	color: rgb(0,0,0);
 	text-align: center;
 }</string>
                    </property>
@@ -2894,7 +2961,7 @@ QPushButton {
 	background-color:transparent;
 	font-family: Arial, sans-serif;
 	font-size: 12px;
-	color: black;
+	color: rgb(0,0,0);
 	text-align: center;
 }</string>
                    </property>
@@ -2925,7 +2992,7 @@ QPushButton {
 	background-color:transparent;
 	font-family: Arial, sans-serif;
 	font-size: 12px;
-	color: black;
+	color: rgb(0,0,0);
 	text-align: center;
 }</string>
                    </property>
@@ -3004,6 +3071,7 @@ QPushButton {
 	border-radius: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
+	color: rgb(0,0,0);
 }
 </string>
                    </property>
@@ -3049,6 +3117,7 @@ QPushButton {
 	background-color: transparent;
 	font-family: Arial, sans-serif;
 	font-size: 8pt;
+	color: rgb(0,0,0);
 }</string>
             </property>
             <property name="text">

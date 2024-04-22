@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
-	background-color: transparent;
+	background-color: white;
 	border: 0px;
 }</string>
   </property>
