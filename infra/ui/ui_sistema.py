@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1145, 695)
+        MainWindow.resize(1145, 696)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"QFrame{\n"
@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
         self.toolBox.setMidLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 220, 636))
+        self.page.setGeometry(QRect(0, 0, 220, 637))
         self.page.setStyleSheet(u"QWidget {\n"
 "	background-color:transparent;\n"
 "}")
@@ -309,6 +309,7 @@ class Ui_MainWindow(object):
         self.main_container.setStyleSheet(u"QFrame{\n"
 "	background-color: rgb(255,255,255);\n"
 "	border: 0px;\n"
+"	color: black;\n"
 "}")
         self.main_container.setFrameShape(QFrame.StyledPanel)
         self.main_container.setFrameShadow(QFrame.Raised)
@@ -991,7 +992,7 @@ class Ui_MainWindow(object):
 "	border: 0px;\n"
 "	color: rgb(0,0,0);\n"
 "}")
-        self.tabWidget.setElideMode(Qt.ElideNone)
+        self.tabWidget.setElideMode(Qt.ElideMiddle)
         self.tabWidget.setTabBarAutoHide(False)
         self.tab_historico_cadastro = QWidget()
         self.tab_historico_cadastro.setObjectName(u"tab_historico_cadastro")
@@ -999,8 +1000,8 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	border: 0px;\n"
 "}")
-        self.verticalLayout_19 = QVBoxLayout(self.tab_historico_cadastro)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.horizontalLayout_5 = QHBoxLayout(self.tab_historico_cadastro)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.frame_10 = QFrame(self.tab_historico_cadastro)
         self.frame_10.setObjectName(u"frame_10")
         sizePolicy.setHeightForWidth(self.frame_10.sizePolicy().hasHeightForWidth())
@@ -1047,19 +1048,21 @@ class Ui_MainWindow(object):
 "QTableWidget {\n"
 "	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
+        self.tabela_historico_cadastros.setTextElideMode(Qt.ElideMiddle)
         self.tabela_historico_cadastros.setRowCount(10)
         self.tabela_historico_cadastros.horizontalHeader().setCascadingSectionResizes(False)
+        self.tabela_historico_cadastros.horizontalHeader().setDefaultSectionSize(250)
         self.tabela_historico_cadastros.horizontalHeader().setHighlightSections(True)
         self.tabela_historico_cadastros.horizontalHeader().setProperty("showSortIndicator", False)
-        self.tabela_historico_cadastros.horizontalHeader().setStretchLastSection(True)
-        self.tabela_historico_cadastros.verticalHeader().setVisible(False)
+        self.tabela_historico_cadastros.horizontalHeader().setStretchLastSection(False)
+        self.tabela_historico_cadastros.verticalHeader().setVisible(True)
         self.tabela_historico_cadastros.verticalHeader().setProperty("showSortIndicator", False)
         self.tabela_historico_cadastros.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_8.addWidget(self.tabela_historico_cadastros)
 
 
-        self.verticalLayout_19.addWidget(self.frame_10)
+        self.horizontalLayout_5.addWidget(self.frame_10)
 
         self.tabWidget.addTab(self.tab_historico_cadastro, "")
         self.tab_2 = QWidget()
@@ -1118,10 +1121,12 @@ class Ui_MainWindow(object):
 "QTableWidget {\n"
 "	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
+        self.tabela_historico_documentos.setTextElideMode(Qt.ElideMiddle)
         self.tabela_historico_documentos.setShowGrid(True)
         self.tabela_historico_documentos.setGridStyle(Qt.SolidLine)
         self.tabela_historico_documentos.setRowCount(10)
-        self.tabela_historico_documentos.horizontalHeader().setStretchLastSection(True)
+        self.tabela_historico_documentos.horizontalHeader().setDefaultSectionSize(175)
+        self.tabela_historico_documentos.horizontalHeader().setStretchLastSection(False)
         self.tabela_historico_documentos.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_11.addWidget(self.tabela_historico_documentos)
