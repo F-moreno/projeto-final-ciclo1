@@ -1,4 +1,5 @@
 import os
+from passlib.hash import argon2
 from dotenv import load_dotenv, set_key
 from sqlalchemy import (
     create_engine,
@@ -169,7 +170,7 @@ def connect_bd() -> bool:
         engine = create_engine(
             f'postgresql://{db_user}:{db_pass}@{db_host}{f":{db_port}" if db_port else ""}/{db_name}'
         )
-        Session = sessionmaker(bind=engine)
+        Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
         session = Session()
         Base.metadata.create_all(engine)
         print(f"Conectado ao Banco de Dados '{db_name}' com sucesso.")
@@ -204,17 +205,17 @@ class Cliente(Base):
 
     id = Column(Integer, primary_key=True)
     nome = Column(String(90), nullable=False)
-    cpf = Column(String(13), nullable=False)
-    rg = Column(String(9), nullable=False)
+    cpf = Column(String(13), nullable=False, unique=True)
+    rg = Column(String(9), nullable=False, unique=True)
     filiacao = Column(String(90), nullable=False)
     municipio = Column(String(50), nullable=False)
     estado = Column(String(20), nullable=False)
     endereco = Column(String(120), nullable=False)
     data_nascimento = Column(Date, nullable=False)
-    telefone = Column(String(15))
-    email = Column(String)
+    telefone = Column(String(15), unique=True)
+    email = Column(String, unique=True)
 
-    documentos = relationship("Documento", back_populates="cliente")
+    documentos = relationship("Documento", back_populates="cliente", cascade="all, delete")
 
     idx_cliente_id = Index("idx_cliente_id", id)
     idx_cliente_nome = Index("idx_cliente_nome", nome)
@@ -240,12 +241,12 @@ class Funcionario(Base):
 
     id = Column(Integer, primary_key=True)
     nome = Column(String(90), nullable=False)
-    cpf = Column(String(13), nullable=False)
-    telefone = Column(String(15), nullable=False)
-    email = Column(String, nullable=False)
+    cpf = Column(String(13), nullable=False, unique=True)
+    telefone = Column(String(15), nullable=False, unique=True)
+    email = Column(String, nullable=False, unique=True)
     senha = Column(String, nullable=False)
 
-    sessoes = relationship("Sessao", back_populates="funcionario")
+    sessoes = relationship("Sessao", back_populates="funcionario", cascade="all, delete")
 
     idx_funcionario_id = Index("idx_funcionario_id", id)
     idx_funcionario_nome = Index("idx_funcionario_nome", nome)
@@ -255,7 +256,7 @@ class Funcionario(Base):
     def atualizar(
         self, nome: str = None, cpf: str = None, telefone: str = None, email: str = None
     ) -> None:
-        """Atualiza os atributos de um Funcionario
+        """Atualiza os atributos do Funcionario.
 
         Args:
             nome (str, opcional): novo nome completo do funcionário.
@@ -276,6 +277,20 @@ class Funcionario(Base):
         except Exception as e:
             session.rollback()
             print(f"Erro ao atualizar funcionário: {e}")
+        
+    def atualizar_senha(self, nova_senha: str) -> None:
+        """Atualiza somente a senha do Funcionário.
+
+        Args:
+            nova_senha (str): nova senha de login do funcionário.
+        """
+        self.senha = argon2.hash(nova_senha)
+        try:
+            session.commit()
+            print(f"Senha atualizada.")
+        except Exception as e:
+            session.rollback()
+            print(f"Erro ao atualizar senha: {e}")
 
 
 class Registro(Base):
@@ -299,7 +314,7 @@ class Registro(Base):
     titulo_atividade = Column(String)
 
     sessao = relationship("Sessao", back_populates="registros")
-    documento = relationship("Documento", back_populates="registro")
+    documento = relationship("Documento", back_populates="registro", cascade="all, delete")
 
     idx_registro_sessao = Index("idx_registro_sessao", fk_sessao)
     idx_registro_horario = Index("idx_registro_horario", horario)

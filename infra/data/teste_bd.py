@@ -35,10 +35,13 @@ def main():
         print("cadastro_funcionario(): OK")
     except Exception as e:
         print(f"ERRO EM 'gerenciamento.cadastro_funcionario()': {e}")
-
+    
+    funcionario.atualizar_senha("teste1234")
+    print(funcionario.senha)
     # Teste gerenciamento.iniciar_sessao().
     try:
-        sessao = gerenciamento.iniciar_sessao("12345678912", "teste123")
+        sessao = gerenciamento.iniciar_sessao("12345678912", "teste1234")
+    
         print("iniciar_sessao(): OK")
     except Exception as e:
         print(f"ERRO EM 'gerenciamento.iniciar_sessao()': {e}")
@@ -79,6 +82,8 @@ def main():
     try:
         funcionarios = gerenciamento.get_funcionarios(nome="Funcionario Teste")
         funcionarios = gerenciamento.get_funcionarios(cpf="12345678912")
+        funcionarios = gerenciamento.get_funcionarios(email="funcionarioteste@gmail.com")
+        print(funcionarios[0].email)
         funcionarios = gerenciamento.get_funcionarios(id=funcionario.id)
         funcionarios = gerenciamento.get_funcionarios(
             nome="Funcionario Teste", cpf="12345678912", id=funcionario.id

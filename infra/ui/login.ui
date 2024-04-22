@@ -13,18 +13,27 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: white;
+	border: 0px;
+	color: black;
+}</string>
+  </property>
   <widget class="QFrame" name="login_h">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>70</x>
      <y>150</y>
-     <width>661</width>
+     <width>691</width>
      <height>321</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
-border-radius: 8px</string>
+    <string notr="true">QFrame {
+background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
+border-radius: 8px
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -35,38 +44,41 @@ border-radius: 8px</string>
    <widget class="QStackedWidget" name="Pages">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>40</x>
       <y>0</y>
       <width>361</width>
       <height>311</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">backgroun:transparent;</string>
+     <string notr="true">background:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="pg_config">
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>30</y>
+        <x>0</x>
+        <y>20</y>
         <width>131</width>
         <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Arial,sans-serif</family>
         <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;
-color: #fff</string>
+       <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: white;
+}</string>
       </property>
       <property name="text">
        <string>Configuração</string>
@@ -81,8 +93,17 @@ color: #fff</string>
         <height>31</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Endereço IP</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0,0,0,25);</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="placeholderText">
        <string>  Endereço de IP</string>
@@ -97,8 +118,17 @@ color: #fff</string>
         <height>31</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Porta</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0,0,0,20);</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="placeholderText">
        <string>  Porta</string>
@@ -107,22 +137,28 @@ color: #fff</string>
      <widget class="QPushButton" name="btn_salvar">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>200</x>
         <y>210</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Salvar</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">
-QPushButton:hover{
+       <string notr="true">QPushButton:hover{
 	color: rgb(255, 255, 255);
 	
-	background-color: rgb(0, 170, 255);
+	
+	background-color: rgb(93, 186, 0);
 }
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px
 }
 </string>
       </property>
@@ -133,11 +169,14 @@ QPushButton {
      <widget class="QPushButton" name="btn_padrao">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>40</x>
         <y>210</y>
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Padrão</string>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -149,6 +188,9 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px
 }
 </string>
       </property>
@@ -157,26 +199,198 @@ QPushButton {
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="pg_esqueci_senha">
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Troque sua Senha</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_esqueci_cpf">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>CPF</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
+      </property>
+      <property name="placeholderText">
+       <string>Informe seu CPF</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_esqueci_nova_senha">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Nova Senha</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+      <property name="placeholderText">
+       <string>Nova Senha</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_esqueci_codigo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Código de Verificação</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
+      </property>
+      <property name="placeholderText">
+       <string>Código de Verificação</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_esqueci_confirmar">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>240</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>Confirmar</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	
+	background-color: rgb(93, 186, 0);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px
+}</string>
+      </property>
+      <property name="text">
+       <string>Trocar Senha</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_enviar_codigo">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>160</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>Receber Código</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover{
+	color: rgb(255, 255, 255);
+	
+	
+	background-color: rgb(93, 186, 0);
+}
+QPushButton {
+	
+	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px
+}</string>
+      </property>
+      <property name="text">
+       <string>Receber</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="pg_home">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>60</y>
+        <x>50</x>
+        <y>40</y>
         <width>231</width>
         <height>81</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Arial,sans-serif</family>
         <pointsize>32</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;
-color: rgb(255, 255, 255);</string>
+       <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 32pt;
+	color: white;
+}</string>
       </property>
       <property name="text">
        <string>Bem Vindo</string>
@@ -185,8 +399,8 @@ color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>140</y>
+        <x>80</x>
+        <y>130</y>
         <width>141</width>
         <height>131</height>
        </rect>
@@ -233,46 +447,6 @@ color: #fff
        <string>Versão 1.1</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_config">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>280</y>
-        <width>41</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton:hover{
-	color: rgb(255, 255, 255);
-	background-color: rgb(0, 170, 255);
-	border-radius: 15px;
-}
-QPushButton {
-	
-	background: transparent;;
-}
-
-
-</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="icons.qrc">
-        <normaloff>:/icons/icons/settings.png</normaloff>:/icons/icons/settings.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="pg_cadastrar">
      <widget class="QLabel" name="label_4">
@@ -286,14 +460,17 @@ QPushButton {
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Arial,sans-serif</family>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:transparent;
-color: #fff</string>
+       <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 14pt;
+	color: white;
+}</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cadastrar-se&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -310,20 +487,64 @@ color: #fff</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
-        <strikeout>false</strikeout>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Nome</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
-color: rgb(255, 255, 255);
-border-radius: 2px</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="placeholderText">
        <string>  Nome</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_cpf_cadastro">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>Email</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>  CPF</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_email_cadastro">
@@ -337,17 +558,21 @@ border-radius: 2px</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
-        <strikeout>false</strikeout>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
-      <property name="cursor">
-       <cursorShape>IBeamCursor</cursorShape>
+      <property name="toolTip">
+       <string>Telefone</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
-color: rgb(255, 255, 255);
-border-radius: 2px</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -367,17 +592,27 @@ border-radius: 2px</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
-        <strikeout>false</strikeout>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Senha</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
-color: rgb(255, 255, 255);
-border-radius: 2px</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Normal</enum>
       </property>
       <property name="placeholderText">
        <string>  Telefone</string>
@@ -394,14 +629,21 @@ border-radius: 2px</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
-        <strikeout>false</strikeout>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string>CPF</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
-color: rgb(255, 255, 255);
-border-radius: 2px</string>
+       <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -416,19 +658,23 @@ border-radius: 2px</string>
      <widget class="QPushButton" name="btn_cadastrar">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>60</x>
         <y>260</y>
         <width>201</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <family>Arial,sans-serif</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>Cadastrar</string>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -440,6 +686,9 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	border-radius: 10px;
 }
 </string>
       </property>
@@ -447,34 +696,50 @@ QPushButton {
        <string>Cadastrar</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_cpf_cadastro">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>100</y>
-        <width>341</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>9</pointsize>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.1);
-color: rgb(255, 255, 255);
-border-radius: 2px</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>  CPF</string>
-      </property>
-     </widget>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="btn_config">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>280</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Configurações</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:hover{
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 170, 255);
+	border-radius: 15px;
+}
+QPushButton {
+	
+	background: transparent;;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/icons/settings.png</normaloff>:/icons/icons/settings.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
    </widget>
   </widget>
   <widget class="QFrame" name="login_v">
@@ -487,8 +752,10 @@ border-radius: 2px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
-border-radius: 8px;</string>
+    <string notr="true">QFrame {
+background-color: qlineargradient(spread:pad, x1:0.465, y1:0.481682, x2:0, y2:0, stop:0.147727 rgba(0, 164, 218, 255), stop:0.931818 rgba(0, 219, 255, 255));
+border-radius: 8px;
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -507,13 +774,17 @@ border-radius: 8px;</string>
     </property>
     <property name="font">
      <font>
+      <family>Arial,sans-serif</family>
       <pointsize>18</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:transparent;
-color: #fff
-</string>
+     <string notr="true">QLabel {
+	font-family: Arial, sans-serif;
+	background-color: transparent;
+	font-size: 18pt;
+	color: white;
+}</string>
     </property>
     <property name="text">
      <string>Login</string>
@@ -528,8 +799,17 @@ color: #fff
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>CPF</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0, 0.1);</string>
+     <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
     </property>
     <property name="placeholderText">
      <string>  CPF</string>
@@ -544,8 +824,17 @@ color: #fff
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Senha</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0, 0.1);</string>
+     <string notr="true">QLineEdit {
+	background-color: rgba(0,0,0,25);
+	color: white;
+	border-radius: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
@@ -557,20 +846,25 @@ color: #fff
    <widget class="QPushButton" name="btn_esqueci_login">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>250</y>
-      <width>81</width>
+      <width>111</width>
       <height>23</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="toolTip">
+     <string>Esqueci a Senha</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	background:transparent;
 	border-radius: 0px;
-	color: #fff;	
+	color: white;	
+	font-family: Arial, sans-serif;
+	font-size: 8pt;
 }
 
 QPushButton:hover {
@@ -595,11 +889,16 @@ QPushButton:hover {
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="toolTip">
+     <string>Cadastrar</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	background:transparent;
 	border-radius: 0px;
-	color: #fff;	
+	color: white;	
+	font-family: Arial, sans-serif;
+	font-size: 8pt;
 }
 
 QPushButton:hover {
@@ -618,16 +917,20 @@ QPushButton:hover {
       <x>30</x>
       <y>290</y>
       <width>201</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Arial,sans-serif</family>
       <pointsize>12</pointsize>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Entrar</string>
     </property>
     <property name="styleSheet">
      <string notr="true">
@@ -639,6 +942,8 @@ QPushButton:hover{
 QPushButton {
 	
 	background-color: rgb(96, 194, 255);
+	font-family: Arial, sans-serif;
+	font-size: 12pt;
 }
 </string>
     </property>
@@ -649,20 +954,25 @@ QPushButton {
    <widget class="QPushButton" name="btn_closed">
     <property name="geometry">
      <rect>
-      <x>214</x>
+      <x>235</x>
       <y>10</y>
-      <width>41</width>
-      <height>41</height>
+      <width>20</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Fechar</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	background: transparent;
     border-radius: 20px;
+	margin: 0px;
 }
 
 QPushButton:hover {
     background-color: red;
+	border-radius: 20px;
 }
 </string>
     </property>
@@ -675,9 +985,12 @@ QPushButton:hover {
     </property>
     <property name="iconSize">
      <size>
-      <width>20</width>
-      <height>20</height>
+      <width>38</width>
+      <height>38</height>
      </size>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

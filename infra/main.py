@@ -19,22 +19,29 @@ from infra.ui.ui_login import Ui_Form
 from infra.ui.ui_sistema import Ui_MainWindow
 import sys
 from infra.func.ocr import TesseractOCR
+from infra.email import enviar_email
 import io
-
+import random
+app = None
 
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
         super(Login, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Login do Sistema")
+        self.codigo_recuperacao = None
+        self.email_usuario_recuperacao = None
 
         self.btn_entrar_login.clicked.connect(self.abrir_sistema)
         self.btn_cadastrar_login.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_config.clicked.connect(self.mostrar_pag_config)
-        self.btn_closed.clicked.connect(self.close)
+        self.btn_closed.clicked.connect(self.fechar_sistema)
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
         self.btn_padrao.clicked.connect(self.padrao_configuracao)
         self.btn_salvar.clicked.connect(self.salvar_configuracao)
+        self.btn_esqueci_login.clicked.connect(self.esqueci_senha)
+        self.btn_enviar_codigo.clicked.connect(self.enviar_codigo)
+        self.btn_esqueci_confirmar.clicked.connect(self.recuperar_senha)
 
     def abrir_sistema(self):
         usuario = self.txt_cpf_login.text()
@@ -46,6 +53,9 @@ class Login(QWidget, Ui_Form):
         except Exception as e:
             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
             print(e)
+
+    def fechar_sistema(self):
+        sys.exit()
 
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
@@ -96,13 +106,16 @@ class Login(QWidget, Ui_Form):
                     self, "CPF Inválido", "Por favor, insira um CPF válido."
                 )
                 return
+        try:
+            gerenciamento.cadastro_funcionario(
+                nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
+            )
 
-        gerenciamento.cadastro_funcionario(
-            nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
-        )
-
-        QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
-        self.limpar_campos_cadastro()
+            QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
+            self.limpar_campos_cadastro()
+        except Exception:
+            QMessageBox.warning(self, "Erro", "Dados já existentes no sistema.")
+            
 
     def limpar_campos_cadastro(self):
         self.txt_nome_cadastro.clear()
@@ -121,7 +134,8 @@ class Login(QWidget, Ui_Form):
         self.w = MainWindow(sessao)
         self.w.show()
         self.w.showMaximized()
-        self.close()
+        self.hide()
+        return self.w.showMaximized()      
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
@@ -143,17 +157,71 @@ class Login(QWidget, Ui_Form):
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
-        bd_classes.set_config(db_host=ip, db_port=porta)
-        QMessageBox.information(
-            self,
-            "Configuração",
-            "Configuração do banco de dados atualizada com sucesso!",
-        )
+        
+        if bd_classes.set_config(db_host=ip, db_port=porta):
+            QMessageBox.information(
+                self,
+                "Configuração",
+                "Configuração do banco de dados atualizada com sucesso!",
+            )
+        else:   
+            QMessageBox.information(
+                self,
+                "Configuração",
+                "Configuração do banco de dados não atualizada!",
+            )
 
     def padrao_configuracao(self):
         self.txt_ip.setText("localhost")
         self.txt_porta.setText("5432")
 
+    def gerar_codigo(self, length=6):
+        caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return "".join(random.choices(caracteres, k=length))
+
+    def enviar_codigo(self):
+        cpf = self.txt_esqueci_cpf.text()
+        try:
+            user = gerenciamento.get_funcionarios(cpf=cpf)[0]
+
+            if user:
+                self.email_usuario_recuperacao = user.email
+                QMessageBox.information(
+                    self, "Envio de e-mail", "Foi enviado o código para o seu e-mail!"
+                )
+
+        except Exception as e:
+            QMessageBox.information(
+                self, "CPF Inexistente", "CPF não cadastrado no sistema."
+            )
+
+        email = self.email_usuario_recuperacao
+        self.codigo_recuperacao = self.gerar_codigo()
+        enviar_email.enviar(destinatario=email, codigo=self.codigo_recuperacao)
+
+    def recuperar_senha(self):
+        email = self.email_usuario_recuperacao
+        codigo = self.txt_esqueci_codigo.text()
+        nova_senha = self.txt_esqueci_nova_senha.text()
+        if self.codigo_recuperacao == codigo:
+            funcionario = gerenciamento.get_funcionarios(email=email)[0]
+            funcionario.atualizar_senha(nova_senha)
+            QMessageBox.information(
+                self, "Recuperação de senha", "Senha alterada com sucesso!"
+            )
+            self.txt_esqueci_nova_senha.clear()
+            self.txt_esqueci_codigo.clear()
+            self.txt_esqueci_cpf.clear()
+            self.codigo_recuperacao = None
+            self.email_usuario_recuperacao = None
+
+        else:
+            QMessageBox.information(
+                self, "Recuperação de senha", "Código inválido!"
+            )
+
+    def esqueci_senha(self):
+        self.Pages.setCurrentWidget(self.pg_esqueci_senha)
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
@@ -169,7 +237,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_perfil_menu.clicked.connect(self.mostrar_pag_perfil)
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
-        self.btn_encerrar_menu.clicked.connect(self.close)
+        self.btn_encerrar_menu.clicked.connect(self.encerrar_sessao)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
@@ -328,7 +396,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txt_cadastro_cpf.setText(json.get("cpf", ""))
             self.txt_cadastro_rg.setText(json.get("rg", ""))
             self.txt_cadastro_filiacao.setText(json.get("filiacao", ""))
-            self.txt_cadastro_nascimento.setText(json.get("nascimento", ""))
+            self.txt_cadastro_nascimento.setText(json.get("datadenascimento", ""))
             self.txt_cadastro_endereco.setText(json.get("endereco", ""))
             self.txt_cadastro_cidade.setText(json.get("cidade", ""))
             self.txt_cadastro_estado.setText(json.get("estado", ""))
@@ -527,12 +595,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         pixmap = QPixmap(item.text())
         self.amostra_imagem.setPixmap(pixmap)
 
+    def encerrar_sessao(self):
+        gerenciamento.encerrar_sessao(self.sessao)
+        self.window = Login()
+        self.window.show()
+        self.close()
+
+    def closeEvent(self, event):
+        self.encerrar_sessao()
 
 def main():
+    global app
     app = QApplication(sys.argv)
     window = Login()
     window.show()
     app.exec_()
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
