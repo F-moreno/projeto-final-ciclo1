@@ -1,7 +1,5 @@
 from sqlalchemy import func
-
-# Caso queira rodar o teste_bd.py, elimine esse "." abaixo
-from infra.data.bd_classes import (
+from infra.data.entidades import (
     session,
     Cliente,
     Funcionario,

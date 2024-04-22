@@ -1,6 +1,6 @@
 from infra import main as initialize_sys
-import infra.data.bd_classes as initialize_db
-import infra.data.teste_bd as test
+import infra.data.entidades as initialize_db
+import tests.bd.teste_bd as test
 
 
 if __name__ == "__main__":
