@@ -212,8 +212,8 @@ class Cliente(Base):
     estado = Column(String(20), nullable=False)
     endereco = Column(String(120), nullable=False)
     data_nascimento = Column(Date, nullable=False)
-    telefone = Column(String(15))
-    email = Column(String)
+    telefone = Column(String(15), unique=True)
+    email = Column(String, unique=True)
 
     documentos = relationship("Documento", back_populates="cliente", cascade="all, delete")
 
@@ -242,7 +242,7 @@ class Funcionario(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String(90), nullable=False)
     cpf = Column(String(13), nullable=False, unique=True)
-    telefone = Column(String(15), nullable=False)
+    telefone = Column(String(15), nullable=False, unique=True)
     email = Column(String, nullable=False, unique=True)
     senha = Column(String, nullable=False)
 
@@ -285,7 +285,6 @@ class Funcionario(Base):
             nova_senha (str): nova senha de login do funcionário.
         """
         self.senha = argon2.hash(nova_senha)
-        print(nova_senha)
         try:
             session.commit()
             print(f"Senha atualizada.")
