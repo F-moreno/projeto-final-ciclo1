@@ -17,6 +17,7 @@
    <string notr="true">QWidget{
 	background-color: white;
 	border: 0px;
+	color: black;
 }</string>
   </property>
   <widget class="QFrame" name="login_h">

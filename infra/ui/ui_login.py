@@ -30,6 +30,7 @@ class Ui_Form(object):
         Form.setStyleSheet(u"QWidget{\n"
 "	background-color: white;\n"
 "	border: 0px;\n"
+"	color: black;\n"
 "}")
         self.login_h = QFrame(Form)
         self.login_h.setObjectName(u"login_h")
