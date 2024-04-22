@@ -207,20 +207,36 @@ class TesseractOCR:
                 json[key.strip()] = value.strip()
 
         return json
+            
+            
+            ###  ÁRea 51 ###
+    def teste(self, img_path):
+        TesseractOCR.nome_arquivo = img_path.split("/")[-1]
+        img = self.__get_rgb_img(img_path)
+        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
+        gray = self.__get_grayscale_img(img)
+        thresh = self.__get_thresholded_img(gray)
+        img = self.__get_fixed_img(thresh, gray)
+
+        # corrige o angulo do texto para 0º
+        img = self.__get_contrasted_img(img, beta=0)
+        angle = self.__get_angle_img(img)
+        img = self.__get_rotated_img(img, angle)
+
+        text = pytesseract.image_to_string(
+            img, lang="por", config=self.config_tesseract
+        )
+        return text
+    
+    
 
 
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo_path = (
-        "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario"
-    )
-    for img in os.listdir(arquivo_path):
-        arquivo = f"{arquivo_path}/{img}"
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
 
-        texto_reconhecido = tesseract.read_text(arquivo)
+    print(tesseract.teste(arquivo_path))
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_ruido.png"
 
-        print(texto_reconhecido)
-        json = tesseract.read_json(texto_reconhecido)
-
-        print(f"json:\n{json}")
+    print(tesseract.teste(arquivo_path))
