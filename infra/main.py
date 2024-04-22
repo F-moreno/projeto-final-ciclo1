@@ -106,13 +106,16 @@ class Login(QWidget, Ui_Form):
                     self, "CPF Inválido", "Por favor, insira um CPF válido."
                 )
                 return
+        try:
+            gerenciamento.cadastro_funcionario(
+                nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
+            )
 
-        gerenciamento.cadastro_funcionario(
-            nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
-        )
-
-        QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
-        self.limpar_campos_cadastro()
+            QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
+            self.limpar_campos_cadastro()
+        except Exception:
+            QMessageBox.warning(self, "Erro", "Dados já existentes no sistema.")
+            
 
     def limpar_campos_cadastro(self):
         self.txt_nome_cadastro.clear()
@@ -154,12 +157,19 @@ class Login(QWidget, Ui_Form):
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
-        bd_classes.set_config(db_host=ip, db_port=porta)
-        QMessageBox.information(
-            self,
-            "Configuração",
-            "Configuração do banco de dados atualizada com sucesso!",
-        )
+        
+        if bd_classes.set_config(db_host=ip, db_port=porta):
+            QMessageBox.information(
+                self,
+                "Configuração",
+                "Configuração do banco de dados atualizada com sucesso!",
+            )
+        else:   
+            QMessageBox.information(
+                self,
+                "Configuração",
+                "Configuração do banco de dados não atualizada!",
+            )
 
     def padrao_configuracao(self):
         self.txt_ip.setText("localhost")
