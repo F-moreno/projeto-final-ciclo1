@@ -715,8 +715,9 @@ margin-left: 0px;
             </property>
             <property name="styleSheet">
              <string notr="true">QFrame{
-	background-color: transparent;
+	background-color: white;
 	border: 0px;
+	color: black;
 }</string>
             </property>
             <property name="currentIndex">
@@ -1649,17 +1650,28 @@ QPushButton {
 	color: rgb(0,0,0);
 	border-radius: 0px;
 	border: 1px solid black;
-	Qt::SelectOnDrag;
 }</string>
+                            </property>
+                            <property name="editTriggers">
+                             <set>QAbstractItemView::NoEditTriggers</set>
+                            </property>
+                            <property name="showDropIndicator" stdset="0">
+                             <bool>false</bool>
                             </property>
                             <property name="dragEnabled">
                              <bool>false</bool>
                             </property>
                             <property name="dragDropMode">
-                             <enum>QAbstractItemView::NoDragDrop</enum>
+                             <enum>QAbstractItemView::DropOnly</enum>
+                            </property>
+                            <property name="defaultDropAction">
+                             <enum>Qt::CopyAction</enum>
+                            </property>
+                            <property name="movement">
+                             <enum>QListView::Static</enum>
                             </property>
                             <property name="viewMode">
-                             <enum>QListView::ListMode</enum>
+                             <enum>QListView::IconMode</enum>
                             </property>
                            </widget>
                           </item>
@@ -1926,8 +1938,14 @@ QTableWidget {
 	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);
 }</string>
                        </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
                        <property name="textElideMode">
                         <enum>Qt::ElideMiddle</enum>
+                       </property>
+                       <property name="cornerButtonEnabled">
+                        <bool>true</bool>
                        </property>
                        <property name="rowCount">
                         <number>10</number>
@@ -2068,6 +2086,9 @@ QTableWidget::verticalHeader() {
 QTableWidget {
 	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);
 }</string>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
                        </property>
                        <property name="textElideMode">
                         <enum>Qt::ElideMiddle</enum>

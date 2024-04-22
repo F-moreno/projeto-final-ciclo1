@@ -602,6 +602,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.window.show()
         self.close()
 
+    def closeEvent(self, event):
+        self.encerrar_sessao()
 
 def main():
     global app
