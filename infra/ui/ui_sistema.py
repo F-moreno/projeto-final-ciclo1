@@ -385,8 +385,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.Pages.sizePolicy().hasHeightForWidth())
         self.Pages.setSizePolicy(sizePolicy)
         self.Pages.setStyleSheet(u"QFrame{\n"
-"	background-color: transparent;\n"
+"	background-color: white;\n"
 "	border: 0px;\n"
+"	color: black;\n"
 "}")
         self.pg_home = QWidget()
         self.pg_home.setObjectName(u"pg_home")
@@ -889,11 +890,14 @@ class Ui_MainWindow(object):
 "	color: rgb(0,0,0);\n"
 "	border-radius: 0px;\n"
 "	border: 1px solid black;\n"
-"	Qt::SelectOnDrag;\n"
 "}")
+        self.lista_documentos_cadastro.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.lista_documentos_cadastro.setProperty("showDropIndicator", False)
         self.lista_documentos_cadastro.setDragEnabled(False)
-        self.lista_documentos_cadastro.setDragDropMode(QAbstractItemView.NoDragDrop)
-        self.lista_documentos_cadastro.setViewMode(QListView.ListMode)
+        self.lista_documentos_cadastro.setDragDropMode(QAbstractItemView.DropOnly)
+        self.lista_documentos_cadastro.setDefaultDropAction(Qt.CopyAction)
+        self.lista_documentos_cadastro.setMovement(QListView.Static)
+        self.lista_documentos_cadastro.setViewMode(QListView.IconMode)
 
         self.verticalLayout_21.addWidget(self.lista_documentos_cadastro)
 
@@ -1048,7 +1052,9 @@ class Ui_MainWindow(object):
 "QTableWidget {\n"
 "	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
+        self.tabela_historico_cadastros.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tabela_historico_cadastros.setTextElideMode(Qt.ElideMiddle)
+        self.tabela_historico_cadastros.setCornerButtonEnabled(True)
         self.tabela_historico_cadastros.setRowCount(10)
         self.tabela_historico_cadastros.horizontalHeader().setCascadingSectionResizes(False)
         self.tabela_historico_cadastros.horizontalHeader().setDefaultSectionSize(250)
@@ -1121,6 +1127,7 @@ class Ui_MainWindow(object):
 "QTableWidget {\n"
 "	QHeaderView::sectionResizeMode(QHeaderView::Horizontal);\n"
 "}")
+        self.tabela_historico_documentos.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tabela_historico_documentos.setTextElideMode(Qt.ElideMiddle)
         self.tabela_historico_documentos.setShowGrid(True)
         self.tabela_historico_documentos.setGridStyle(Qt.SolidLine)
