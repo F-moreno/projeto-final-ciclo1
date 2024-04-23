@@ -33,7 +33,7 @@ class TesseractOCR:
         if img_in is None:
             img = self.__get_rgb_img(img_path)
         else:
-            img = img_in
+            img = cv2.bitwise_not(img_in)
         return self.__get_text_from_img(img)
 
     def read_image(self, img_path):
@@ -51,13 +51,15 @@ class TesseractOCR:
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         gray = self.__get_grayscale_img(img)
         thresh = self.__get_thresholded_img(gray)
-        img = self.__get_fixed_img_teste(thresh, gray)
+        img = self.__get_fixed_img(thresh, gray)
 
         # corrige o angulo do texto para 0º
-        img = self.__get_contrasted_img(img, beta=0)
+        img = self.__get_contrasted_img(img, beta=-50)
+        self.__show_img(img)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
 
+        # leitura do texto
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
         )
@@ -66,7 +68,6 @@ class TesseractOCR:
     def __get_rgb_img(self, img_path):
         img_bgr = cv2.imread(img_path)
         img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
-        # self.__show_two_images(img_bgr, img_rgb)
         return img_rgb
 
     def __get_grayscale_img(self, img):
@@ -78,10 +79,7 @@ class TesseractOCR:
         return img_gray
 
     def __get_thresholded_img(self, img_gray):
-
-        self.__show_img(img_gray)
         img_threshold = cv2.threshold(img_gray, 150, 255, cv2.THRESH_BINARY_INV)[1]
-        self.__show_img(img_threshold)
         return img_threshold
 
     def __get_corners_img(self, thresh, img):
@@ -109,6 +107,8 @@ class TesseractOCR:
         self.__show_img(img_destacada)"""
         return min_square_contours, rect
 
+    '''
+    #versao antiga
     def __get_fixed_img(self, thresh, img):
 
         external_points, rect = self.__get_corners_img(thresh, img)
@@ -127,9 +127,9 @@ class TesseractOCR:
             f"Docs/imagens/rotacionada/{TesseractOCR.nome_arquivo}",
             img_fixed,
         )"""
-        return img_fixed
+        return img_fixed'''
 
-    def __get_fixed_img_teste(self, thresh, img):
+    def __get_fixed_img(self, thresh, img):
         external_points, rect = self.__get_corners_img(thresh, img)
         angle = rect[2]
 
@@ -138,9 +138,10 @@ class TesseractOCR:
         rotated_height = int(rect[1][1])
 
         # Calcula a proporção para manter a largura máxima de 600 pixels
-        scale_factor = 1000 / rotated_width
-        rotated_width = 1000
-        rotated_height = int(rotated_height * scale_factor)
+        if rotated_width > 600:
+            scale_factor = 600 / rotated_width
+            rotated_width = 600
+            rotated_height = int(rotated_height * scale_factor)
 
         # Cria uma nova imagem com as dimensões da rotação calculada
         rotated_image = np.zeros((rotated_height, rotated_width), dtype=np.uint8)
@@ -171,7 +172,6 @@ class TesseractOCR:
             f"Docs/imagens/rotacionada/{TesseractOCRNome_arquivo}",
             rotated_image,
         )"""
-        self.__show_img(rotated_image)
         return rotated_image
 
     def __get_angle_img(self, img_gray):
@@ -179,7 +179,7 @@ class TesseractOCR:
             osd = pytesseract.image_to_osd(img_gray)
             print(osd)
             # self.__show_img(cv2.resize(img_gray, (500, 500)))
-            angulo = float(osd.split("\n")[2].split(":")[-1])
+            angulo = float(osd.split("\n")[1].split(":")[-1])
         except Exception as e:
             print(e)
             angulo = 0
@@ -188,7 +188,9 @@ class TesseractOCR:
     # corrige angulo
     def __get_rotated_img(self, img, angle):
         print(angle)
-        rows = cols = max(img.shape[:2])
+        rows, cols = img.shape[:2]
+        if angle == 90 or angle == 270:
+            cols, rows = rows, cols
         M = cv2.getRotationMatrix2D((cols / 2, rows / 2), angle, 1)
         img_rotated = cv2.warpAffine(img, M, (cols, rows))
 
@@ -217,9 +219,7 @@ class TesseractOCR:
         return binary_image
 
     def __get_contrasted_img(self, img, alpha=1.5, beta=0):
-        img_contrasted = cv2.convertScaleAbs(
-            cv2.bitwise_not(img), alpha=alpha, beta=beta
-        )
+        img_contrasted = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
         return img_contrasted
 
     def __get_laplacian_img(self, img):
@@ -277,9 +277,6 @@ class TesseractOCR:
         infos[gt == 0] = 255
 
         infos = cv2.threshold(infos, 117, 255, cv2.THRESH_BINARY_INV)[1]
-        cv2.imshow("infos", infos)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
 
         return infos
 
@@ -305,6 +302,9 @@ class TesseractOCR:
 if __name__ == "__main__":
     # Processa cada imagem e exibe o texto reconhecido
     tesseract = TesseractOCR()
-    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00018411.jpg"
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
+    texto = tesseract.read_text(arquivo_path)
+    print(tesseract.read_json(texto))
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00025929.jpg"
 
     print(tesseract.read_rg(arquivo_path))
