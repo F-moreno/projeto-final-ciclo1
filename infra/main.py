@@ -14,7 +14,8 @@ from PySide6.QtWidgets import (
     QListWidget,
     QComboBox,
 )
-from infra.data import bd_classes, gerenciamento
+from infra.data import entidades
+from infra.data.gerenciamento import config_bd, func_bd
 from infra.ui.ui_login import Ui_Form
 from infra.ui.ui_sistema import Ui_MainWindow
 import sys
@@ -48,7 +49,7 @@ class Login(QWidget, Ui_Form):
         senha = self.txt_senha_login.text()
 
         try:
-            sessao = gerenciamento.iniciar_sessao(usuario, senha)
+            sessao = func_bd.iniciar_sessao(usuario, senha)
             self.abrir_main_window(sessao)
         except Exception as e:
             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
@@ -107,7 +108,7 @@ class Login(QWidget, Ui_Form):
                 )
                 return
         try:
-            gerenciamento.cadastro_funcionario(
+            func_bd.cadastro_funcionario(
                 nome=nome, cpf=cpf, email=email, telefone=telefone, senha=senha
             )
 
@@ -143,7 +144,7 @@ class Login(QWidget, Ui_Form):
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
 
-        configuracao = bd_classes.get_config()
+        configuracao = config_bd.get_config()
         if configuracao:
             ip = configuracao["db_host"]
             porta = configuracao["db_port"]
@@ -158,7 +159,7 @@ class Login(QWidget, Ui_Form):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
         
-        if bd_classes.set_config(db_host=ip, db_port=porta):
+        if config_bd.set_config(db_host=ip, db_port=porta):
             QMessageBox.information(
                 self,
                 "Configuração",
@@ -182,7 +183,7 @@ class Login(QWidget, Ui_Form):
     def enviar_codigo(self):
         cpf = self.txt_esqueci_cpf.text()
         try:
-            user = gerenciamento.get_funcionarios(cpf=cpf)[0]
+            user = func_bd.get_funcionarios(cpf=cpf)[0]
 
             if user:
                 self.email_usuario_recuperacao = user.email
@@ -204,7 +205,7 @@ class Login(QWidget, Ui_Form):
         codigo = self.txt_esqueci_codigo.text()
         nova_senha = self.txt_esqueci_nova_senha.text()
         if self.codigo_recuperacao == codigo:
-            funcionario = gerenciamento.get_funcionarios(email=email)[0]
+            funcionario = func_bd.get_funcionarios(email=email)[0]
             funcionario.atualizar_senha(nova_senha)
             QMessageBox.information(
                 self, "Recuperação de senha", "Senha alterada com sucesso!"
@@ -279,11 +280,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_historico)
 
         # Chama a função do módulo de gerenciamento para buscar os clientes
-        documentos = gerenciamento.get_documentos(
+        documentos = func_bd.get_documentos(
             fk_funcionario=self.sessao.funcionario.id
         )
         print(documentos)
-        doc_clientes = gerenciamento.get_documentos(
+        doc_clientes = func_bd.get_documentos(
             fk_funcionario=self.sessao.funcionario.id, tipo="Formulario de Cadastro"
         )
 
@@ -596,7 +597,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.amostra_imagem.setPixmap(pixmap)
 
     def encerrar_sessao(self):
-        gerenciamento.encerrar_sessao(self.sessao)
+        func_bd.encerrar_sessao(self.sessao)
         self.window = Login()
         self.window.show()
         self.close()
