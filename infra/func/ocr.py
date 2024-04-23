@@ -55,7 +55,6 @@ class TesseractOCR:
 
         # corrige o angulo do texto para 0º
         img = self.__get_contrasted_img(img, beta=-50)
-        self.__show_img(img)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
 
