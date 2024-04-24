@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 from pytesseract import Output
 import os
 import datetime
+from tensorflow.keras.models import load_model
+
+model = load_model("tessdata/model_hand.h5")
 
 diretorio = "tests/forms"
 
@@ -47,6 +50,24 @@ class TesseractOCR:
         return self.read_text("", img_in=rg_info)
 
     def __get_text_from_img(self, img):
+
+        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
+        gray = self.__get_grayscale_img(img)
+        thresh = self.__get_thresholded_img(gray)
+        img = self.__get_fixed_img(thresh, gray)
+
+        # corrige o angulo do texto para 0º
+        img = self.__get_contrasted_img(img, beta=-50)
+        angle = self.__get_angle_img(img)
+        img = self.__get_rotated_img(img, angle)
+
+        # leitura do texto
+        text = pytesseract.image_to_string(
+            img, lang="por", config=self.config_tesseract
+        )
+        return text
+
+    def __get_text_from_img_handwriting(self, img):
 
         # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
         gray = self.__get_grayscale_img(img)

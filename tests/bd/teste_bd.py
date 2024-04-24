@@ -39,12 +39,11 @@ def main():
 
     except Exception as e:
         print(f"ERRO EM 'gerenciamento.cadastro_funcionario()': {e}")
-    
-    
+
     # Teste gerenciamento.iniciar_sessao().
     try:
         sessao = func_bd.iniciar_sessao("12345678912", "teste1234")
-    
+
         print("iniciar_sessao(): OK")
     except Exception as e:
         print(f"ERRO EM 'gerenciamento.iniciar_sessao()': {e}")

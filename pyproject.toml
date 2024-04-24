@@ -18,6 +18,9 @@ pytesseract = "^0.3.10"
 matplotlib = "^3.8.4"
 opencv-python = "^4.9.0.80"
 pillow = "^10.3.0"
+tensorflow = "^2.8"
+imutils = "^0.5.4"
+scikit-learn = "^1.4.2"
 
 
 [build-system]

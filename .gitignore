@@ -1,5 +1,8 @@
 poetry.lock
 .venv
 venv
+myenv
+.myenv
 .env
+tests
 __pycache__
