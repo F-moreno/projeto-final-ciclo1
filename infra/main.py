@@ -448,7 +448,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 )
                 QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
                 self.remover_documento()
-                
+
             except Exception as e:
                 QMessageBox.critical(self, "Erro", f"Erro ao cadastrar documento: {str(e)}")
         else:
@@ -600,15 +600,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.miniatura_documento.setPixmap(pixmap)
 
     def atualizar_documento_selecionado(self):
+        item = self.tipo_documento.currentText()
+        
         if self.documento_selecionado:
             pixmap = QPixmap(self.documento_selecionado)
             self.amostra_imagem.setPixmap(pixmap)
             self.btn_remover_doc.setEnabled(True)
             self.lista_envio_documento.clear()
             self.lista_envio_documento.addItem(self.documento_selecionado)
-            self.txt_dados_documento.setText(
-                TesseractOCR().read_text(self.documento_selecionado)
-            )
+            if item == None:
+                self.txt_dados_documento.setText(
+                    TesseractOCR().read_text(self.documento_selecionado)
+                )
+            else:
+                self.txt_dados_documento.setText(
+                    TesseractOCR().read_rg(self.documento_selecionado)
+                )
         else:
             self.amostra_imagem.clear()
             self.amostra_imagem.setText("Amostra de Imagem")
