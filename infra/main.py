@@ -230,26 +230,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessao = sessao
         self.setupUi(self)
         self.setWindowTitle("Sistema de Cadastro de Áreas Remotas")
-        
+
         self.menu_fechado.setVisible(True)
         self.menu_aberto.setHidden(True)
         self.btn_toogle_aberto.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_aberto))
         self.btn_toogle_fechado.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_fechado))
-        
+
         self.btn_home_menu_aberto.clicked.connect(self.mostrar_pag_home)
         self.btn_cadastrar_menu_aberto.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_historico_menu_aberto.clicked.connect(self.mostrar_pag_historico)
         self.btn_perfil_menu_aberto.clicked.connect(self.mostrar_pag_perfil)
         self.btn_enviardocumento_menu_aberto.clicked.connect(self.mostrar_pag_enviar_doc)
         self.btn_encerrar_menu_aberto.clicked.connect(self.encerrar_sessao)
-        
+
         self.btn_home_menu_fechado.clicked.connect(self.mostrar_pag_home)
         self.btn_cadastrar_menu_fechado.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_historico_menu_fechado.clicked.connect(self.mostrar_pag_historico)
         self.btn_enviardocumento_menu_fechado.clicked.connect(self.mostrar_pag_enviar_doc)
         self.btn_perfil_menu_fechado.clicked.connect(self.mostrar_pag_perfil)
         self.btn_encerrar_menu_fechado.clicked.connect(self.encerrar_sessao)
-        
+
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
@@ -265,14 +265,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mostrar_pag_home()
 
     def menu_lateral(self, botao_clicado):
-                
-       if botao_clicado == self.btn_toogle_aberto:
-           self.menu_aberto.setHidden(True)
-           self.menu_fechado.setVisible(True)
 
-       elif botao_clicado == self.btn_toogle_fechado:
-           self.menu_aberto.setVisible(True)
-           self.menu_fechado.setHidden(True)
+        if botao_clicado == self.btn_toogle_aberto:
+            self.menu_aberto.setHidden(True)
+            self.menu_fechado.setVisible(True)
+
+        elif botao_clicado == self.btn_toogle_fechado:
+            self.menu_aberto.setVisible(True)
+            self.menu_fechado.setHidden(True)
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
@@ -433,23 +433,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         caminho_arquivo = documento.text()
         tipo = self.tipo_documento.currentText()
         conteudo = self.txt_dados_documento.toPlainText()
+        cpf_ciente = self.txt_pesquisa_cliente.text()
 
-        try:
-            with io.open(caminho_arquivo, "rb") as f:
-                bytes_imagem = f.read()
+        with io.open(caminho_arquivo, "rb") as f:
+            bytes_imagem = f.read()
 
-            self.sessao.salvar_documento(
-                titulo=caminho_arquivo.split("/")[-1],
-                tipo=tipo,
-                arquivo_original=bytes_imagem,
-                conteudo=conteudo,
-            )
+        if cpf_ciente == "":
+            try:
+                self.sessao.salvar_documento(
+                    titulo=caminho_arquivo.split("/")[-1],
+                    tipo=tipo,
+                    arquivo_original=bytes_imagem,
+                    conteudo=conteudo,
+                )
+                QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
+                self.remover_documento()
+                
+            except Exception as e:
+                QMessageBox.critical(self, "Erro", f"Erro ao cadastrar documento: {str(e)}")
+        else:
+            try:
+                cliente = func_bd.get_clientes(cpf=cpf_ciente)[0]
 
-        except Exception as e:
-            QMessageBox.critical(self, "Erro", f"Erro ao cadastrar documento: {str(e)}")
-
-        QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
-        self.remover_documento()
+                if cliente != None:
+                    self.sessao.salvar_documento(
+                    titulo=caminho_arquivo.split("/")[-1],
+                    tipo=tipo,
+                    arquivo_original=bytes_imagem,
+                    conteudo=conteudo,
+                    cliente=cliente,
+                )
+                QMessageBox.information(self, "Sucesso", "Documentos enviados com sucesso!")
+                self.remover_documento()
+            except Exception as e:
+                QMessageBox.information(
+                    self, "Erro", "Cliente não encontrado. Verifique o CPF informado. Erro: " + str(e)
+                )
 
     def carregar_docs_cadastro(self):
         options = QFileDialog.Option()
