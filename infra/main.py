@@ -1,3 +1,4 @@
+# Importação das bibliotecas
 from PySide6 import QtCore
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon, QPixmap
@@ -24,6 +25,7 @@ from infra.email import enviar_email
 import io
 import random
 
+# Criando variável global
 app = None
 
 
@@ -46,6 +48,7 @@ class Login(QWidget, Ui_Form):
         self.btn_enviar_codigo.clicked.connect(self.enviar_codigo)
         self.btn_esqueci_confirmar.clicked.connect(self.recuperar_senha)
 
+    # Função para abrir o sistema após o login
     def abrir_sistema(self):
         usuario = self.txt_cpf_login.text()
         senha = self.txt_senha_login.text()
@@ -57,9 +60,11 @@ class Login(QWidget, Ui_Form):
             QMessageBox.warning(self, "Login", "Usuário ou senha inválidos!")
             print(e)
 
+    # Função para fechar o sistema
     def fechar_sistema(self):
         sys.exit()
 
+    # Função para validar um CPF
     def validar_cpf(self, cpf):
         cpf = "".join(filter(str.isdigit, cpf))
 
@@ -83,6 +88,7 @@ class Login(QWidget, Ui_Form):
 
         return True
 
+    # Função para validar um e-mail
     def validar_email(self, email):
         # Verifica se o e-mail possui um "@" e pelo menos um ponto após o "@"
         if "@" in email and "." in email[email.index("@") :]:
@@ -90,6 +96,7 @@ class Login(QWidget, Ui_Form):
         else:
             return False
 
+    # Função para cadastrar um novo usuário
     def cadastrar_usuario(self):
         nome = self.txt_nome_cadastro.text()
         cpf = self.txt_cpf_cadastro.text()
@@ -119,6 +126,7 @@ class Login(QWidget, Ui_Form):
         except Exception:
             QMessageBox.warning(self, "Erro", "Dados já existentes no sistema.")
 
+    # Função para limpar os campos do formulário de cadastro
     def limpar_campos_cadastro(self):
         self.txt_nome_cadastro.clear()
         self.txt_cpf_cadastro.clear()
@@ -126,12 +134,14 @@ class Login(QWidget, Ui_Form):
         self.txt_telefone_cadastro.clear()
         self.txt_senha_cadastro.clear()
 
+    # Função para exibir a página de cadastro na interface
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
         # Conectar o botão de cadastrar ao método cadastrar_usuario
         self.btn_cadastrar.clicked.connect(self.cadastrar_usuario)
 
+    # Função para abrir a janela principal do sistema após o login
     def abrir_main_window(self, sessao):
         self.w = MainWindow(sessao)
         self.w.show()
@@ -139,9 +149,11 @@ class Login(QWidget, Ui_Form):
         self.hide()
         return self.w.showMaximized()
 
+    # Função para exibir a página de configurações na interface
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
+    # Função para mostrar as configurações do banco
     def mostrar_pag_config(self):
         self.Pages.setCurrentWidget(self.pg_config)
 
@@ -156,6 +168,7 @@ class Login(QWidget, Ui_Form):
                 self, "Configuração", "Configuração do banco de dados não encontrada!"
             )
 
+    # Função para salvar as configurações do banco de dados
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
@@ -173,14 +186,17 @@ class Login(QWidget, Ui_Form):
                 "Configuração do banco de dados não atualizada!",
             )
 
+    # Função para definir as configurações padrão do banco de dados
     def padrao_configuracao(self):
         self.txt_ip.setText("localhost")
         self.txt_porta.setText("5432")
 
+    # Função para gerar um código aleatório
     def gerar_codigo(self, length=6):
         caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return "".join(random.choices(caracteres, k=length))
 
+    # Função para enviar um código de recuperação de senha para o e-mail do usuário
     def enviar_codigo(self):
         cpf = self.txt_esqueci_cpf.text()
         try:
@@ -201,6 +217,7 @@ class Login(QWidget, Ui_Form):
         self.codigo_recuperacao = self.gerar_codigo()
         enviar_email.enviar(destinatario=email, codigo=self.codigo_recuperacao)
 
+    # Função para recuperar a senha do usuário com base no código de recuperação
     def recuperar_senha(self):
         email = self.email_usuario_recuperacao
         codigo = self.txt_esqueci_codigo.text()
@@ -220,6 +237,7 @@ class Login(QWidget, Ui_Form):
         else:
             QMessageBox.information(self, "Recuperação de senha", "Código inválido!")
 
+    # Função para mostrar a página de esqueci minha senha na interface
     def esqueci_senha(self):
         self.Pages.setCurrentWidget(self.pg_esqueci_senha)
 
@@ -272,6 +290,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.documento_selecionado = None
         self.mostrar_pag_home()
 
+    # Função para abrir o menu lateral
     def menu_lateral(self, botao_clicado):
 
         if botao_clicado == self.btn_toogle_aberto:
@@ -282,6 +301,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.menu_aberto.setVisible(True)
             self.menu_fechado.setHidden(True)
 
+    # Funções para mostrar pagina home
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
         sessao = self.sessao
@@ -290,9 +310,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if informacoes:
                 self.txt_nome_perfil_home.setText(informacoes.nome)
 
+    # Funções para mostrar pagina de cadastro
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
 
+    # Funções para mostrar pagina de historico
     def mostrar_pag_historico(self):
         self.Pages.setCurrentWidget(self.pg_historico)
 
@@ -350,9 +372,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 ),
             )
 
+    # Funções para mostrar pagina de enviar documento
     def mostrar_pag_enviar_doc(self):
         self.Pages.setCurrentWidget(self.pg_enviar_doc)
 
+    # Funções para mostrar pagina de perfil
     def mostrar_pag_perfil(self):
         sessao = self.sessao
 
@@ -372,15 +396,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self, "Perfil", "Sessão inválida! Faça login novamente."
             )
 
+    # Funções para limpar campos de alteração
     def limpar_campos_alteracao(self):
         self.txt_perfil_alterar_nome.clear()
         self.txt_perfil_alterar_email.clear()
         self.txt_perfil_alterar_telefone.clear()
 
+    # Funções para mostrar alteração de perfil
     def mostrar_pag_alteracao_perfil(self):
         self.Pages.setCurrentWidget(self.pg_alteracao_perfil)
         self.btn_salvar_alteracoes.clicked.connect(self.salvar_alteracoes_perfil)
 
+    # Função para salvar alteração de perfil
     def salvar_alteracoes_perfil(self):
         novo_nome = self.txt_perfil_alterar_nome.text()
         novo_email = self.txt_perfil_alterar_email.text()
@@ -397,6 +424,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             QMessageBox.warning(self, "Aviso", "Nenhuma alteração foi feita.")
 
+    # Função para abrir arquivo cadastro de cliente
     def abrir_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
@@ -421,6 +449,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_de_imagens.extend([(nomeArquivo, "formulario")])
             self.atualizar_lista()
 
+    # Função para abrir arquivo envio de docs
     def carregar_arquivo(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
@@ -434,6 +463,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.documento_selecionado = nomeArquivo
             self.atualizar_documento_selecionado()
 
+    # Função para enviar documento
     def enviar_docs(self):
         documento = self.lista_envio_documento.item(0)
         caminho_arquivo = documento.text()
@@ -485,6 +515,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     + str(e),
                 )
 
+    # Função para abrir outros documentos na sessaão de cadastro de cliente 
     def carregar_docs_cadastro(self):
         options = QFileDialog.Option()
         nomeArquivo, _ = QFileDialog.getOpenFileName(
@@ -498,6 +529,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_de_imagens.extend([(nomeArquivo, "documento")])
             self.atualizar_lista()
 
+    # Função para cadastrar cliente
     def enviar_cadastrar_cliente(self):
         nome = self.txt_cadastro_nome.text()
         cpf = self.txt_cadastro_cpf.text().replace(".", "").replace("-", "")
@@ -567,6 +599,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.limpar_docs_cadastro()
         QMessageBox.information(self, "Sucesso", "Cliente cadastrado com sucesso!")
 
+    # Função para limpar o formulário
     def limpar_formulario(self):
         self.txt_cadastro_nome.clear()
         self.txt_cadastro_cpf.clear()
@@ -579,18 +612,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txt_cadastro_telefone.clear()
         self.txt_cadastro_email.clear()
 
+    # Função para remover um documento um a um
     def remover_doc_cadastro(self):
         if self.lista_documentos_cadastro.currentItem():
             item = self.lista_documentos_cadastro.currentRow()
             del self.lista_de_imagens[item]
             self.lista_documentos_cadastro.takeItem(item)
 
+    # Função para limpar a lista de documentos
     def limpar_docs_cadastro(self):
         self.lista_documentos_cadastro.clear()
         self.lista_de_imagens.clear()
         self.limpar_imagem_selecionada()
         self.miniatura_documento.setText("Amostra de Imagem")
 
+    # Função para atualizar a lista de documentos
     def atualizar_lista(self):
         self.lista_documentos_cadastro.clear()
 
@@ -607,13 +643,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mostrar_imagem_selecionada
         )
 
+    # Função para limpar a imagem selecionada
     def limpar_imagem_selecionada(self):
         self.miniatura_documento.clear()
 
+    # Função para mostrar a imagem selecionada
     def mostrar_imagem_selecionada(self, item):
         pixmap = QPixmap(item.text())
         self.miniatura_documento.setPixmap(pixmap)
 
+    # Função para atualizar a imagem selecionada
     def atualizar_documento_selecionado(self):
         item = self.tipo_documento.currentText()
         if self.documento_selecionado:
@@ -635,22 +674,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.amostra_imagem.setText("Amostra de Imagem")
             self.btn_remover_doc.setEnabled(False)
 
+    # Função para remover o documento selecionado
     def remover_documento(self):
         self.documento_selecionado = ""
         self.lista_envio_documento.clear()
         self.atualizar_documento_selecionado()
         self.txt_dados_documento.clear()
 
+    # Função para mostrar o documento selecionado
     def mostrar_documento_selecionado(self, item):
         pixmap = QPixmap(item.text())
         self.amostra_imagem.setPixmap(pixmap)
 
+    # Função para encerrar a sessão
     def encerrar_sessao(self):
         func_bd.encerrar_sessao(self.sessao)
         self.window = Login()
         self.window.show()
         self.close()
 
+    # Função para fechar o programa
     def closeEvent(self, event):
         self.encerrar_sessao()
 
