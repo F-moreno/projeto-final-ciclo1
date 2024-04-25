@@ -1,5 +1,4 @@
 import re
-from PIL import ImageFont, ImageDraw, Image
 import numpy as np
 import cv2
 import pytesseract
@@ -39,9 +38,9 @@ class TesseractOCR:
     def read_json(self, text):
         return self.__get_json(text)
 
-    def read_rg(self, img_path):
-        rg_info = self.__get_rg(img_path)
-        return self.__get_text_from_img("", img_in=rg_info)
+    def read_document(self, img_path):
+        rg_info = self.__get_document(img_path)
+        return self.__get_text_from_img(rg_info)
 
     def __get_text_from_img(self, img):
 
@@ -279,7 +278,7 @@ class TesseractOCR:
 
         ###  ÁRea 51 ###
 
-    def __get_rg(self, img_path):
+    def __get_document(self, img_path):
         # busca filtro com mesmo nome em outra pasta gt
         img_name = img_path.split("/")[-1]
         filtro_path = os.path.join("/".join(img_path.split("/")[:-2]), "gt", img_name)
@@ -319,6 +318,12 @@ if __name__ == "__main__":
     arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/formulario/Normal_225g.png"
     texto = tesseract.read_text(arquivo_path)
     print(tesseract.read_json(texto))
-    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00025929.jpg"
 
-    print(tesseract.read_rg(arquivo_path))
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00025929.jpg"
+    print(tesseract.read_document(arquivo_path))
+
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/cpf/in/00010892.jpg"
+    print(tesseract.read_document(arquivo_path))
+
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/cnh/in/00003604.jpg"
+    print(tesseract.read_document(arquivo_path))
