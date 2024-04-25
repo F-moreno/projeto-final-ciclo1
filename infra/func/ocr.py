@@ -31,6 +31,7 @@ class TesseractOCR:
 
     def read_text(self, img_path):
         img = self.__get_rgb_img(img_path)
+        return img
 
     def read_image(self, img_path):
         return self.__get_rgb_img(img_path)
