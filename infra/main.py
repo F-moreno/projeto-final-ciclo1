@@ -616,20 +616,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def atualizar_documento_selecionado(self):
         item = self.tipo_documento.currentText()
-        
         if self.documento_selecionado:
             pixmap = QPixmap(self.documento_selecionado)
             self.amostra_imagem.setPixmap(pixmap)
             self.btn_remover_doc.setEnabled(True)
             self.lista_envio_documento.clear()
             self.lista_envio_documento.addItem(self.documento_selecionado)
-            if item == None:
+            if item == "Escolha o tipo do documento":
                 self.txt_dados_documento.setText(
                     TesseractOCR().read_text(self.documento_selecionado)
                 )
             else:
                 self.txt_dados_documento.setText(
-                    TesseractOCR().read_rg(self.documento_selecionado)
+                    TesseractOCR().read_document(self.documento_selecionado)
                 )
         else:
             self.amostra_imagem.clear()
