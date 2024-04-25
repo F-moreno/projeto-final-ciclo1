@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 from pytesseract import Output
 import os
 import datetime
-from tensorflow.keras.models import load_model
-
-model = load_model("tessdata/model_hand.h5")
 
 diretorio = "tests/forms"
 
@@ -32,12 +29,8 @@ class TesseractOCR:
     def __init__(self):
         self.config_tesseract = "--tessdata-dir infra/func/tessdata"
 
-    def read_text(self, img_path, img_in=None):
-        if img_in is None:
-            img = self.__get_rgb_img(img_path)
-        else:
-            img = cv2.bitwise_not(img_in)
-        return self.__get_text_from_img(img)
+    def read_text(self, img_path):
+        img = self.__get_rgb_img(img_path)
 
     def read_image(self, img_path):
         return self.__get_rgb_img(img_path)
@@ -47,7 +40,7 @@ class TesseractOCR:
 
     def read_rg(self, img_path):
         rg_info = self.__get_rg(img_path)
-        return self.read_text("", img_in=rg_info)
+        return self.__get_text_from_img("", img_in=rg_info)
 
     def __get_text_from_img(self, img):
 
@@ -290,13 +283,13 @@ class TesseractOCR:
         img_name = img_path.split("/")[-1]
         filtro_path = os.path.join("/".join(img_path.split("/")[:-2]), "gt", img_name)
 
-        rg = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-        gt = cv2.imread(filtro_path, cv2.IMREAD_GRAYSCALE)
+        rg = cv2.imread(img_path)  # , cv2.IMREAD_GRAYSCALE)
+        gt = cv2.imread(filtro_path)  # , cv2.IMREAD_GRAYSCALE)
 
         infos = rg.copy()
         infos[gt == 0] = 255
 
-        infos = cv2.threshold(infos, 117, 255, cv2.THRESH_BINARY_INV)[1]
+        # infos = cv2.threshold(infos, 117, 255, cv2.THRESH_BINARY_INV)[1]
 
         return infos
 
