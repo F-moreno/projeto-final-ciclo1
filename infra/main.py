@@ -230,15 +230,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessao = sessao
         self.setupUi(self)
         self.setWindowTitle("Sistema de Cadastro de Áreas Remotas")
-        self.btn_toogle.clicked.connect(self.left_menu)
-        self.btn_home_menu.clicked.connect(self.mostrar_pag_home)
-        self.btn_cadastrar_menu.clicked.connect(self.mostrar_pag_cadastro)
-        self.btn_historico_menu.clicked.connect(self.mostrar_pag_historico)
-        self.btn_enviar_menu.clicked.connect(self.mostrar_pag_enviar_doc)
-        self.btn_perfil_menu.clicked.connect(self.mostrar_pag_perfil)
+        
+        self.menu_fechado.setVisible(True)
+        self.menu_aberto.setHidden(True)
+        self.btn_toogle_aberto.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_aberto))
+        self.btn_toogle_fechado.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_fechado))
+        
+        self.btn_home_menu_aberto.clicked.connect(self.mostrar_pag_home)
+        self.btn_cadastrar_menu_aberto.clicked.connect(self.mostrar_pag_cadastro)
+        self.btn_historico_menu_aberto.clicked.connect(self.mostrar_pag_historico)
+        self.btn_perfil_menu_aberto.clicked.connect(self.mostrar_pag_perfil)
+        self.btn_enviardocumento_menu_aberto.clicked.connect(self.mostrar_pag_enviar_doc)
+        self.btn_encerrar_menu_aberto.clicked.connect(self.encerrar_sessao)
+        
+        self.btn_home_menu_fechado.clicked.connect(self.mostrar_pag_home)
+        self.btn_cadastrar_menu_fechado.clicked.connect(self.mostrar_pag_cadastro)
+        self.btn_historico_menu_fechado.clicked.connect(self.mostrar_pag_historico)
+        self.btn_enviardocumento_menu_fechado.clicked.connect(self.mostrar_pag_enviar_doc)
+        self.btn_perfil_menu_fechado.clicked.connect(self.mostrar_pag_perfil)
+        self.btn_encerrar_menu_fechado.clicked.connect(self.encerrar_sessao)
+        
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
-        self.btn_encerrar_menu.clicked.connect(self.encerrar_sessao)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
         self.btn_enviar_arquivo.clicked.connect(self.enviar_docs)
         self.btn_carregar_documentos.clicked.connect(self.carregar_docs_cadastro)
@@ -251,19 +264,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.documento_selecionado = None
         self.mostrar_pag_home()
 
-    def left_menu(self):
-        width = self.menu.width()
+    def menu_lateral(self, botao_clicado):
+                
+       if botao_clicado == self.btn_toogle_aberto:
+           self.menu_aberto.setHidden(True)
+           self.menu_fechado.setVisible(True)
 
-        if width == 0:
-            newWidth = 200
-        else:
-            newWidth = 0
-        self.animation = QtCore.QPropertyAnimation(self.menu, b"maximumWidth")
-        self.animation.setDuration(500)
-        self.animation.setStartValue(width)
-        self.animation.setEndValue(newWidth)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
-        self.animation.start()
+       elif botao_clicado == self.btn_toogle_fechado:
+           self.menu_aberto.setVisible(True)
+           self.menu_fechado.setHidden(True)
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
