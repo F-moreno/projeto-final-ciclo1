@@ -23,7 +23,9 @@ from infra.func.ocr import TesseractOCR
 from infra.email import enviar_email
 import io
 import random
+
 app = None
+
 
 class Login(QWidget, Ui_Form):
     def __init__(self) -> None:
@@ -116,7 +118,6 @@ class Login(QWidget, Ui_Form):
             self.limpar_campos_cadastro()
         except Exception:
             QMessageBox.warning(self, "Erro", "Dados já existentes no sistema.")
-            
 
     def limpar_campos_cadastro(self):
         self.txt_nome_cadastro.clear()
@@ -136,7 +137,7 @@ class Login(QWidget, Ui_Form):
         self.w.show()
         self.w.showMaximized()
         self.hide()
-        return self.w.showMaximized()      
+        return self.w.showMaximized()
 
     def mostrar_pag_cadastro(self):
         self.Pages.setCurrentWidget(self.pg_cadastrar)
@@ -158,14 +159,14 @@ class Login(QWidget, Ui_Form):
     def salvar_configuracao(self):
         ip = self.txt_ip.text()
         porta = self.txt_porta.text()
-        
+
         if config_bd.set_config(db_host=ip, db_port=porta):
             QMessageBox.information(
                 self,
                 "Configuração",
                 "Configuração do banco de dados atualizada com sucesso!",
             )
-        else:   
+        else:
             QMessageBox.information(
                 self,
                 "Configuração",
@@ -217,12 +218,11 @@ class Login(QWidget, Ui_Form):
             self.email_usuario_recuperacao = None
 
         else:
-            QMessageBox.information(
-                self, "Recuperação de senha", "Código inválido!"
-            )
+            QMessageBox.information(self, "Recuperação de senha", "Código inválido!")
 
     def esqueci_senha(self):
         self.Pages.setCurrentWidget(self.pg_esqueci_senha)
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, sessao):
@@ -230,26 +230,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessao = sessao
         self.setupUi(self)
         self.setWindowTitle("Sistema de Cadastro de Áreas Remotas")
-        
+
         self.menu_fechado.setVisible(True)
         self.menu_aberto.setHidden(True)
-        self.btn_toogle_aberto.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_aberto))
-        self.btn_toogle_fechado.clicked.connect(lambda: self.menu_lateral(self.btn_toogle_fechado))
-        
+        self.btn_toogle_aberto.clicked.connect(
+            lambda: self.menu_lateral(self.btn_toogle_aberto)
+        )
+        self.btn_toogle_fechado.clicked.connect(
+            lambda: self.menu_lateral(self.btn_toogle_fechado)
+        )
+
         self.btn_home_menu_aberto.clicked.connect(self.mostrar_pag_home)
         self.btn_cadastrar_menu_aberto.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_historico_menu_aberto.clicked.connect(self.mostrar_pag_historico)
         self.btn_perfil_menu_aberto.clicked.connect(self.mostrar_pag_perfil)
-        self.btn_enviardocumento_menu_aberto.clicked.connect(self.mostrar_pag_enviar_doc)
+        self.btn_enviardocumento_menu_aberto.clicked.connect(
+            self.mostrar_pag_enviar_doc
+        )
         self.btn_encerrar_menu_aberto.clicked.connect(self.encerrar_sessao)
-        
+
         self.btn_home_menu_fechado.clicked.connect(self.mostrar_pag_home)
         self.btn_cadastrar_menu_fechado.clicked.connect(self.mostrar_pag_cadastro)
         self.btn_historico_menu_fechado.clicked.connect(self.mostrar_pag_historico)
-        self.btn_enviardocumento_menu_fechado.clicked.connect(self.mostrar_pag_enviar_doc)
+        self.btn_enviardocumento_menu_fechado.clicked.connect(
+            self.mostrar_pag_enviar_doc
+        )
         self.btn_perfil_menu_fechado.clicked.connect(self.mostrar_pag_perfil)
         self.btn_encerrar_menu_fechado.clicked.connect(self.encerrar_sessao)
-        
+
         self.btn_alterar_dados.clicked.connect(self.mostrar_pag_alteracao_perfil)
         self.btn_carregar_formulario.clicked.connect(self.abrir_arquivo)
         self.btn_arquivo_documento.clicked.connect(self.carregar_arquivo)
@@ -265,14 +273,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mostrar_pag_home()
 
     def menu_lateral(self, botao_clicado):
-                
-       if botao_clicado == self.btn_toogle_aberto:
-           self.menu_aberto.setHidden(True)
-           self.menu_fechado.setVisible(True)
 
-       elif botao_clicado == self.btn_toogle_fechado:
-           self.menu_aberto.setVisible(True)
-           self.menu_fechado.setHidden(True)
+        if botao_clicado == self.btn_toogle_aberto:
+            self.menu_aberto.setHidden(True)
+            self.menu_fechado.setVisible(True)
+
+        elif botao_clicado == self.btn_toogle_fechado:
+            self.menu_aberto.setVisible(True)
+            self.menu_fechado.setHidden(True)
 
     def mostrar_pag_home(self):
         self.Pages.setCurrentWidget(self.pg_home)
@@ -289,9 +297,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_historico)
 
         # Chama a função do módulo de gerenciamento para buscar os clientes
-        documentos = func_bd.get_documentos(
-            fk_funcionario=self.sessao.funcionario.id
-        )
+        documentos = func_bd.get_documentos(fk_funcionario=self.sessao.funcionario.id)
         print(documentos)
         doc_clientes = func_bd.get_documentos(
             fk_funcionario=self.sessao.funcionario.id, tipo="Formulario de Cadastro"
@@ -613,6 +619,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def closeEvent(self, event):
         self.encerrar_sessao()
+
 
 def main():
     global app
