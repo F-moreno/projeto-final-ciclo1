@@ -40,10 +40,10 @@ poetry install
 
 ## Como Usar
 
-1. Execute o arquivo `api.py` para iniciar o sistema:
+1. Execute o poetry para iniciar o sistema:
 
 ```
-python main.py
+poetry run python app.py
 ```
 
 2. Siga as instruções na interface do usuário para utilizar as funcionalidades do sistema.
