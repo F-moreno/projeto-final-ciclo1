@@ -61,25 +61,6 @@ class TesseractOCR:
         )
         return text
 
-    def __get_text_from_img_handwriting(self, img):
-
-        # transforma a imagem caso ela venha em angulos diferentes de 0,90,180,270
-        gray = self.__get_grayscale_img(img)
-        thresh = self.__get_thresholded_img(gray)
-        img = self.__get_fixed_img(thresh, gray)
-
-        # corrige o angulo do texto para 0º
-        img = self.__get_contrasted_img(img, beta=-50)
-        angle = self.__get_angle_img(img)
-        img = self.__get_rotated_img(img, angle)
-
-        # leitura do texto
-        self.__show_img(img)
-        text = pytesseract.image_to_string(
-            img, lang="por", config=self.config_tesseract
-        )
-        return text
-
     def __get_rgb_img(self, img_path):
         img_bgr = cv2.imread(img_path)
         img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
@@ -114,35 +95,7 @@ class TesseractOCR:
         img_destacada = img.copy()
         cv2.drawContours(img_destacada, [box], 0, (0, 255, 0), 2)
 
-        """# Salvar a imagem com a área destacada
-        cv2.imwrite(
-            f"Docs/imagens/destacada/{TesseractOCR.nome_arquivo}",
-            img_destacada,
-        )
-        self.__show_img(img_destacada)"""
         return min_square_contours, rect
-
-    '''
-    #versao antiga
-    def __get_fixed_img(self, thresh, img):
-
-        external_points, rect = self.__get_corners_img(thresh, img)
-        angle = rect[2]
-
-        w = rect[1][0]
-        h = rect[1][1]
-        destined_points = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]])
-        external_points = np.array(external_points, dtype=np.float32)
-
-        M = cv2.getPerspectiveTransform(external_points, destined_points)
-        img_fixed = cv2.warpPerspective(img, M, (w, h))
-        img_fixed = cv2.flip(img_fixed, 1)
-
-        """cv2.imwrite(
-            f"Docs/imagens/rotacionada/{TesseractOCR.nome_arquivo}",
-            img_fixed,
-        )"""
-        return img_fixed'''
 
     def __get_fixed_img(self, thresh, img):
         external_points, rect = self.__get_corners_img(thresh, img)
@@ -185,18 +138,16 @@ class TesseractOCR:
             img, M, (rotated_width, rotated_height), flags=cv2.INTER_LINEAR
         )
         rotated_image = cv2.flip(rotated_image, 1)
-        """cv2.imwrite(
-            f"Docs/imagens/rotacionada/{TesseractOCRNome_arquivo}",
-            rotated_image,
-        )"""
+
         return rotated_image
 
     def __get_angle_img(self, img_gray):
+        img_gray = cv2.threshold(img_gray, 230, 255, cv2.THRESH_BINARY)[1]
         try:
             osd = pytesseract.image_to_osd(img_gray)
             print(osd)
             # self.__show_img(cv2.resize(img_gray, (500, 500)))
-            angulo = float(osd.split("\n")[2].split(":")[-1])
+            angulo = float(osd.split("\n")[1].split(":")[-1])
         except Exception as e:
             print(e)
             angulo = 0
@@ -204,17 +155,16 @@ class TesseractOCR:
 
     # corrige angulo
     def __get_rotated_img(self, img, angle):
-        print(angle)
         rows, cols = img.shape[:2]
 
         if angle == 90 or angle == 270:
             new_cols, new_rows = rows, cols
+            meio = (min(new_cols, new_rows) / 2, min(new_cols, new_rows) / 2)
         else:
             new_cols, new_rows = cols, rows
+            meio = (new_cols / 2, new_rows / 2)
 
-        meio = min(new_cols, new_rows) / 2
-
-        M = cv2.getRotationMatrix2D((meio, meio), angle, 1)
+        M = cv2.getRotationMatrix2D(meio, angle, 1)
 
         img_rotated = cv2.warpAffine(img, M, (new_cols, new_rows))
 
