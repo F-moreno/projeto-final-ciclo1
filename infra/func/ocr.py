@@ -30,6 +30,7 @@ class TesseractOCR:
 
     def read_text(self, img_path):
         img = self.__get_rgb_img(img_path)
+        self.__show_img(img)
         return self.__get_text_from_img(img)
 
     def read_image(self, img_path):
@@ -53,7 +54,7 @@ class TesseractOCR:
         img = self.__get_contrasted_img(img, beta=-50)
         angle = self.__get_angle_img(img)
         img = self.__get_rotated_img(img, angle)
-
+        self.__show_img(img)
         # leitura do texto
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
@@ -73,6 +74,7 @@ class TesseractOCR:
         img = self.__get_rotated_img(img, angle)
 
         # leitura do texto
+        self.__show_img(img)
         text = pytesseract.image_to_string(
             img, lang="por", config=self.config_tesseract
         )
@@ -155,9 +157,13 @@ class TesseractOCR:
             scale_factor = 600 / rotated_width
             rotated_width = 600
             rotated_height = int(rotated_height * scale_factor)
+        elif rotated_height > 600:
+            scale_factor = 600 / rotated_height
+            rotated_height = 600
+            rotated_width = int(rotated_width * scale_factor)
 
         # Cria uma nova imagem com as dimensões da rotação calculada
-        rotated_image = np.zeros((rotated_height, rotated_width), dtype=np.uint8)
+        rotated_image = np.ones((rotated_height, rotated_width), dtype=np.uint8) * 255
 
         # Converte os pontos externos e os pontos de destino para np.float32
         external_points = np.array(external_points, dtype=np.float32)
@@ -178,9 +184,7 @@ class TesseractOCR:
         rotated_image = cv2.warpPerspective(
             img, M, (rotated_width, rotated_height), flags=cv2.INTER_LINEAR
         )
-
         rotated_image = cv2.flip(rotated_image, 1)
-
         """cv2.imwrite(
             f"Docs/imagens/rotacionada/{TesseractOCRNome_arquivo}",
             rotated_image,
@@ -192,7 +196,7 @@ class TesseractOCR:
             osd = pytesseract.image_to_osd(img_gray)
             print(osd)
             # self.__show_img(cv2.resize(img_gray, (500, 500)))
-            angulo = float(osd.split("\n")[1].split(":")[-1])
+            angulo = float(osd.split("\n")[2].split(":")[-1])
         except Exception as e:
             print(e)
             angulo = 0
@@ -202,10 +206,17 @@ class TesseractOCR:
     def __get_rotated_img(self, img, angle):
         print(angle)
         rows, cols = img.shape[:2]
+
         if angle == 90 or angle == 270:
-            cols, rows = rows, cols
-        M = cv2.getRotationMatrix2D((cols / 2, rows / 2), angle, 1)
-        img_rotated = cv2.warpAffine(img, M, (cols, rows))
+            new_cols, new_rows = rows, cols
+        else:
+            new_cols, new_rows = cols, rows
+
+        meio = min(new_cols, new_rows) / 2
+
+        M = cv2.getRotationMatrix2D((meio, meio), angle, 1)
+
+        img_rotated = cv2.warpAffine(img, M, (new_cols, new_rows))
 
         """cv2.imwrite(
             f"Docs/imagens/alinhada/{TesseractOCR.nome_arquivo}",
@@ -283,10 +294,11 @@ class TesseractOCR:
         img_name = img_path.split("/")[-1]
         filtro_path = os.path.join("/".join(img_path.split("/")[:-2]), "gt", img_name)
 
-        rg = cv2.imread(img_path)  # , cv2.IMREAD_GRAYSCALE)
+        document = cv2.imread(img_path)  # , cv2.IMREAD_GRAYSCALE)
+        self.__show_img(document)
         gt = cv2.imread(filtro_path)  # , cv2.IMREAD_GRAYSCALE)
 
-        infos = rg.copy()
+        infos = document.copy()
         infos[gt == 0] = 255
 
         # infos = cv2.threshold(infos, 117, 255, cv2.THRESH_BINARY_INV)[1]
@@ -319,7 +331,7 @@ if __name__ == "__main__":
     texto = tesseract.read_text(arquivo_path)
     print(tesseract.read_json(texto))
 
-    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00025929.jpg"
+    arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/rg/in/00025930.jpg"
     print(tesseract.read_document(arquivo_path))
 
     arquivo_path = "/home/fermoreno/workspace/alpha/ciclo_01/Projeto_Final/Docs/imagens/cpf/in/00010892.jpg"
