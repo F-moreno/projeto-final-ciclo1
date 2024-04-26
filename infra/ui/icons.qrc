@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/cobra_HD.png</file>
     <file>icons/history.png</file>
     <file>icons/import.png</file>
     <file>icons/cadastros.png</file>
